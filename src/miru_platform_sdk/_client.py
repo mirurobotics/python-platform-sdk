@@ -106,7 +106,7 @@ class Miru(SyncAPIClient):
 
         This automatically infers the following arguments from their corresponding environment variables if they are not provided:
         - `api_key` from `MIRU_API_KEY`
-        - `miru_version` from `MIRU_PLATFORM_API_VERSION`
+        - `miru_version` from `MIRU_API_VERSION`
         """
         if api_key is None:
             api_key = os.environ.get("MIRU_API_KEY")
@@ -117,7 +117,7 @@ class Miru(SyncAPIClient):
         self.api_key = api_key
 
         if miru_version is None:
-            miru_version = os.environ.get("MIRU_PLATFORM_API_VERSION") or "2026-03-09.tetons"
+            miru_version = os.environ.get("MIRU_API_VERSION") or "2026-03-09.tetons"
         self.miru_version = miru_version
 
         self._environment = environment
@@ -359,7 +359,7 @@ class AsyncMiru(AsyncAPIClient):
 
         This automatically infers the following arguments from their corresponding environment variables if they are not provided:
         - `api_key` from `MIRU_API_KEY`
-        - `miru_version` from `MIRU_PLATFORM_API_VERSION`
+        - `miru_version` from `MIRU_API_VERSION`
         """
         if api_key is None:
             api_key = os.environ.get("MIRU_API_KEY")
@@ -370,7 +370,7 @@ class AsyncMiru(AsyncAPIClient):
         self.api_key = api_key
 
         if miru_version is None:
-            miru_version = os.environ.get("MIRU_PLATFORM_API_VERSION") or "2026-03-09.tetons"
+            miru_version = os.environ.get("MIRU_API_VERSION") or "2026-03-09.tetons"
         self.miru_version = miru_version
 
         self._environment = environment
