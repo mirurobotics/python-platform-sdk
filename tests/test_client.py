@@ -853,20 +853,20 @@ class TestMiru:
     @mock.patch("miru_platform_sdk._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     def test_retrying_timeout_errors_doesnt_leak(self, respx_mock: MockRouter, client: Miru) -> None:
-        respx_mock.get("/deployments/dpl_123").mock(side_effect=httpx.TimeoutException("Test timeout error"))
+        respx_mock.get("/deployments").mock(side_effect=httpx.TimeoutException("Test timeout error"))
 
         with pytest.raises(APITimeoutError):
-            client.deployments.with_streaming_response.retrieve(deployment_id="dpl_123").__enter__()
+            client.deployments.with_streaming_response.list().__enter__()
 
         assert _get_open_connections(client) == 0
 
     @mock.patch("miru_platform_sdk._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     def test_retrying_status_errors_doesnt_leak(self, respx_mock: MockRouter, client: Miru) -> None:
-        respx_mock.get("/deployments/dpl_123").mock(return_value=httpx.Response(500))
+        respx_mock.get("/deployments").mock(return_value=httpx.Response(500))
 
         with pytest.raises(APIStatusError):
-            client.deployments.with_streaming_response.retrieve(deployment_id="dpl_123").__enter__()
+            client.deployments.with_streaming_response.list().__enter__()
         assert _get_open_connections(client) == 0
 
     @pytest.mark.parametrize("failures_before_success", [0, 2, 4])
@@ -893,9 +893,9 @@ class TestMiru:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.get("/deployments/dpl_123").mock(side_effect=retry_handler)
+        respx_mock.get("/deployments").mock(side_effect=retry_handler)
 
-        response = client.deployments.with_raw_response.retrieve(deployment_id="dpl_123")
+        response = client.deployments.with_raw_response.list()
 
         assert response.retries_taken == failures_before_success
         assert int(response.http_request.headers.get("x-stainless-retry-count")) == failures_before_success
@@ -915,11 +915,9 @@ class TestMiru:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.get("/deployments/dpl_123").mock(side_effect=retry_handler)
+        respx_mock.get("/deployments").mock(side_effect=retry_handler)
 
-        response = client.deployments.with_raw_response.retrieve(
-            deployment_id="dpl_123", extra_headers={"x-stainless-retry-count": Omit()}
-        )
+        response = client.deployments.with_raw_response.list(extra_headers={"x-stainless-retry-count": Omit()})
 
         assert len(response.http_request.headers.get_list("x-stainless-retry-count")) == 0
 
@@ -940,11 +938,9 @@ class TestMiru:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.get("/deployments/dpl_123").mock(side_effect=retry_handler)
+        respx_mock.get("/deployments").mock(side_effect=retry_handler)
 
-        response = client.deployments.with_raw_response.retrieve(
-            deployment_id="dpl_123", extra_headers={"x-stainless-retry-count": "42"}
-        )
+        response = client.deployments.with_raw_response.list(extra_headers={"x-stainless-retry-count": "42"})
 
         assert response.http_request.headers.get("x-stainless-retry-count") == "42"
 
@@ -1761,20 +1757,20 @@ class TestAsyncMiru:
     @mock.patch("miru_platform_sdk._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     async def test_retrying_timeout_errors_doesnt_leak(self, respx_mock: MockRouter, async_client: AsyncMiru) -> None:
-        respx_mock.get("/deployments/dpl_123").mock(side_effect=httpx.TimeoutException("Test timeout error"))
+        respx_mock.get("/deployments").mock(side_effect=httpx.TimeoutException("Test timeout error"))
 
         with pytest.raises(APITimeoutError):
-            await async_client.deployments.with_streaming_response.retrieve(deployment_id="dpl_123").__aenter__()
+            await async_client.deployments.with_streaming_response.list().__aenter__()
 
         assert _get_open_connections(async_client) == 0
 
     @mock.patch("miru_platform_sdk._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     async def test_retrying_status_errors_doesnt_leak(self, respx_mock: MockRouter, async_client: AsyncMiru) -> None:
-        respx_mock.get("/deployments/dpl_123").mock(return_value=httpx.Response(500))
+        respx_mock.get("/deployments").mock(return_value=httpx.Response(500))
 
         with pytest.raises(APIStatusError):
-            await async_client.deployments.with_streaming_response.retrieve(deployment_id="dpl_123").__aenter__()
+            await async_client.deployments.with_streaming_response.list().__aenter__()
         assert _get_open_connections(async_client) == 0
 
     @pytest.mark.parametrize("failures_before_success", [0, 2, 4])
@@ -1801,9 +1797,9 @@ class TestAsyncMiru:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.get("/deployments/dpl_123").mock(side_effect=retry_handler)
+        respx_mock.get("/deployments").mock(side_effect=retry_handler)
 
-        response = await client.deployments.with_raw_response.retrieve(deployment_id="dpl_123")
+        response = await client.deployments.with_raw_response.list()
 
         assert response.retries_taken == failures_before_success
         assert int(response.http_request.headers.get("x-stainless-retry-count")) == failures_before_success
@@ -1825,11 +1821,9 @@ class TestAsyncMiru:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.get("/deployments/dpl_123").mock(side_effect=retry_handler)
+        respx_mock.get("/deployments").mock(side_effect=retry_handler)
 
-        response = await client.deployments.with_raw_response.retrieve(
-            deployment_id="dpl_123", extra_headers={"x-stainless-retry-count": Omit()}
-        )
+        response = await client.deployments.with_raw_response.list(extra_headers={"x-stainless-retry-count": Omit()})
 
         assert len(response.http_request.headers.get_list("x-stainless-retry-count")) == 0
 
@@ -1850,11 +1844,9 @@ class TestAsyncMiru:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.get("/deployments/dpl_123").mock(side_effect=retry_handler)
+        respx_mock.get("/deployments").mock(side_effect=retry_handler)
 
-        response = await client.deployments.with_raw_response.retrieve(
-            deployment_id="dpl_123", extra_headers={"x-stainless-retry-count": "42"}
-        )
+        response = await client.deployments.with_raw_response.list(extra_headers={"x-stainless-retry-count": "42"})
 
         assert response.http_request.headers.get("x-stainless-retry-count") == "42"
 
