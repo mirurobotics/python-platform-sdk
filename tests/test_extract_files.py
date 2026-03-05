@@ -4,8 +4,8 @@ from typing import Sequence
 
 import pytest
 
-from miru_platform._types import FileTypes
-from miru_platform._utils import extract_files
+from miru_platform_sdk._types import FileTypes
+from miru_platform_sdk._utils import extract_files
 
 
 def test_removes_files_from_input() -> None:

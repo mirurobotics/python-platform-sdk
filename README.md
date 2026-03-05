@@ -1,9 +1,9 @@
-# Miru Platform Python API library
+# Miru Python API library
 
 <!-- prettier-ignore -->
-[![PyPI version](https://img.shields.io/pypi/v/miru_platform.svg?label=pypi%20(stable))](https://pypi.org/project/miru_platform/)
+[![PyPI version](https://img.shields.io/pypi/v/miru-platform-sdk.svg?label=pypi%20(stable))](https://pypi.org/project/miru-platform-sdk/)
 
-The Miru Platform Python library provides convenient access to the Miru Platform REST API from any Python 3.9+
+The Miru Python library provides convenient access to the Miru REST API from any Python 3.9+
 application. The library includes type definitions for all request params and response fields,
 and offers both synchronous and asynchronous clients powered by [httpx](https://github.com/encode/httpx).
 
@@ -11,17 +11,14 @@ It is generated with [Stainless](https://www.stainless.com/).
 
 ## Documentation
 
-The full API of this library can be found in [api.md](api.md).
+The REST API documentation can be found on [docs.mirurobotics.com](https://docs.mirurobotics.com). The full API of this library can be found in [api.md](api.md).
 
 ## Installation
 
 ```sh
-# install from the production repo
-pip install git+ssh://git@github.com/mirurobotics/python-platform-sdk.git
+# install from PyPI
+pip install --pre miru-platform-sdk
 ```
-
-> [!NOTE]
-> Once this package is [published to PyPI](https://www.stainless.com/docs/guides/publish), this will become: `pip install miru_platform`
 
 ## Usage
 
@@ -29,44 +26,40 @@ The full API of this library can be found in [api.md](api.md).
 
 ```python
 import os
-from miru_platform import MiruPlatform
+from miru_platform_sdk import Miru
 
-client = MiruPlatform(
-    api_key=os.environ.get("MIRU_PLATFORM_API_KEY"),  # This is the default and can be omitted
+client = Miru(
+    api_key=os.environ.get("MIRU_API_KEY"),  # This is the default and can be omitted
+    # or 'prod' | 'staging' | 'local'; defaults to "prod".
+    environment="uat",
 )
 
-config_instance = client.config_instances.retrieve(
-    config_instance_id="cfg_inst_123",
-    miru_version="2026-03-09.tetons",
-)
-print(config_instance.id)
+deployment_list = client.deployments.list()
 ```
 
 While you can provide an `api_key` keyword argument,
 we recommend using [python-dotenv](https://pypi.org/project/python-dotenv/)
-to add `MIRU_PLATFORM_API_KEY="My API Key"` to your `.env` file
+to add `MIRU_API_KEY="My API Key"` to your `.env` file
 so that your API Key is not stored in source control.
 
 ## Async usage
 
-Simply import `AsyncMiruPlatform` instead of `MiruPlatform` and use `await` with each API call:
+Simply import `AsyncMiru` instead of `Miru` and use `await` with each API call:
 
 ```python
 import os
 import asyncio
-from miru_platform import AsyncMiruPlatform
+from miru_platform_sdk import AsyncMiru
 
-client = AsyncMiruPlatform(
-    api_key=os.environ.get("MIRU_PLATFORM_API_KEY"),  # This is the default and can be omitted
+client = AsyncMiru(
+    api_key=os.environ.get("MIRU_API_KEY"),  # This is the default and can be omitted
+    # or 'prod' | 'staging' | 'local'; defaults to "prod".
+    environment="uat",
 )
 
 
 async def main() -> None:
-    config_instance = await client.config_instances.retrieve(
-        config_instance_id="cfg_inst_123",
-        miru_version="2026-03-09.tetons",
-    )
-    print(config_instance.id)
+    deployment_list = await client.deployments.list()
 
 
 asyncio.run(main())
@@ -81,8 +74,8 @@ By default, the async client uses `httpx` for HTTP requests. However, for improv
 You can enable this by installing `aiohttp`:
 
 ```sh
-# install from the production repo
-pip install 'miru_platform[aiohttp] @ git+ssh://git@github.com/mirurobotics/python-platform-sdk.git'
+# install from PyPI
+pip install --pre miru-platform-sdk[aiohttp]
 ```
 
 Then you can enable it by instantiating the client with `http_client=DefaultAioHttpClient()`:
@@ -90,20 +83,16 @@ Then you can enable it by instantiating the client with `http_client=DefaultAioH
 ```python
 import os
 import asyncio
-from miru_platform import DefaultAioHttpClient
-from miru_platform import AsyncMiruPlatform
+from miru_platform_sdk import DefaultAioHttpClient
+from miru_platform_sdk import AsyncMiru
 
 
 async def main() -> None:
-    async with AsyncMiruPlatform(
-        api_key=os.environ.get("MIRU_PLATFORM_API_KEY"),  # This is the default and can be omitted
+    async with AsyncMiru(
+        api_key=os.environ.get("MIRU_API_KEY"),  # This is the default and can be omitted
         http_client=DefaultAioHttpClient(),
     ) as client:
-        config_instance = await client.config_instances.retrieve(
-            config_instance_id="cfg_inst_123",
-            miru_version="2026-03-09.tetons",
-        )
-        print(config_instance.id)
+        deployment_list = await client.deployments.list()
 
 
 asyncio.run(main())
@@ -123,9 +112,9 @@ Typed requests and responses provide autocomplete and documentation within your 
 Nested parameters are dictionaries, typed using `TypedDict`, for example:
 
 ```python
-from miru_platform import MiruPlatform
+from miru_platform_sdk import Miru
 
-client = MiruPlatform()
+client = Miru()
 
 config_instance = client.config_instances.create(
     config_schema_id="cfg_sch_123",
@@ -133,37 +122,33 @@ config_instance = client.config_instances.create(
         "data": '{\n  "enable_autonomy": true,\n  "enable_remote_control": true,\n  "max_payload_kg": 10.0\n}\n',
         "format": "json",
     },
-    miru_version="2026-03-09.tetons",
 )
 print(config_instance.content)
 ```
 
 ## Handling errors
 
-When the library is unable to connect to the API (for example, due to network connection problems or a timeout), a subclass of `miru_platform.APIConnectionError` is raised.
+When the library is unable to connect to the API (for example, due to network connection problems or a timeout), a subclass of `miru_platform_sdk.APIConnectionError` is raised.
 
 When the API returns a non-success status code (that is, 4xx or 5xx
-response), a subclass of `miru_platform.APIStatusError` is raised, containing `status_code` and `response` properties.
+response), a subclass of `miru_platform_sdk.APIStatusError` is raised, containing `status_code` and `response` properties.
 
-All errors inherit from `miru_platform.APIError`.
+All errors inherit from `miru_platform_sdk.APIError`.
 
 ```python
-import miru_platform
-from miru_platform import MiruPlatform
+import miru_platform_sdk
+from miru_platform_sdk import Miru
 
-client = MiruPlatform()
+client = Miru()
 
 try:
-    client.config_instances.retrieve(
-        config_instance_id="cfg_inst_123",
-        miru_version="2026-03-09.tetons",
-    )
-except miru_platform.APIConnectionError as e:
+    client.deployments.list()
+except miru_platform_sdk.APIConnectionError as e:
     print("The server could not be reached")
     print(e.__cause__)  # an underlying Exception, likely raised within httpx.
-except miru_platform.RateLimitError as e:
+except miru_platform_sdk.RateLimitError as e:
     print("A 429 status code was received; we should back off a bit.")
-except miru_platform.APIStatusError as e:
+except miru_platform_sdk.APIStatusError as e:
     print("Another non-200-range status code was received")
     print(e.status_code)
     print(e.response)
@@ -191,19 +176,16 @@ Connection errors (for example, due to a network connectivity problem), 408 Requ
 You can use the `max_retries` option to configure or disable retry settings:
 
 ```python
-from miru_platform import MiruPlatform
+from miru_platform_sdk import Miru
 
 # Configure the default for all requests:
-client = MiruPlatform(
+client = Miru(
     # default is 2
     max_retries=0,
 )
 
 # Or, configure per-request:
-client.with_options(max_retries=5).config_instances.retrieve(
-    config_instance_id="cfg_inst_123",
-    miru_version="2026-03-09.tetons",
-)
+client.with_options(max_retries=5).deployments.list()
 ```
 
 ### Timeouts
@@ -212,24 +194,21 @@ By default requests time out after 1 minute. You can configure this with a `time
 which accepts a float or an [`httpx.Timeout`](https://www.python-httpx.org/advanced/timeouts/#fine-tuning-the-configuration) object:
 
 ```python
-from miru_platform import MiruPlatform
+from miru_platform_sdk import Miru
 
 # Configure the default for all requests:
-client = MiruPlatform(
+client = Miru(
     # 20 seconds (default is 1 minute)
     timeout=20.0,
 )
 
 # More granular control:
-client = MiruPlatform(
+client = Miru(
     timeout=httpx.Timeout(60.0, read=5.0, write=10.0, connect=2.0),
 )
 
 # Override per-request:
-client.with_options(timeout=5.0).config_instances.retrieve(
-    config_instance_id="cfg_inst_123",
-    miru_version="2026-03-09.tetons",
-)
+client.with_options(timeout=5.0).deployments.list()
 ```
 
 On timeout, an `APITimeoutError` is thrown.
@@ -242,10 +221,10 @@ Note that requests that time out are [retried twice by default](#retries).
 
 We use the standard library [`logging`](https://docs.python.org/3/library/logging.html) module.
 
-You can enable logging by setting the environment variable `MIRU_PLATFORM_LOG` to `info`.
+You can enable logging by setting the environment variable `MIRU_LOG` to `info`.
 
 ```shell
-$ export MIRU_PLATFORM_LOG=info
+$ export MIRU_LOG=info
 ```
 
 Or to `debug` for more verbose logging.
@@ -267,22 +246,19 @@ if response.my_field is None:
 The "raw" Response object can be accessed by prefixing `.with_raw_response.` to any HTTP method call, e.g.,
 
 ```py
-from miru_platform import MiruPlatform
+from miru_platform_sdk import Miru
 
-client = MiruPlatform()
-response = client.config_instances.with_raw_response.retrieve(
-    config_instance_id="cfg_inst_123",
-    miru_version="2026-03-09.tetons",
-)
+client = Miru()
+response = client.deployments.with_raw_response.list()
 print(response.headers.get('X-My-Header'))
 
-config_instance = response.parse()  # get the object that `config_instances.retrieve()` would have returned
-print(config_instance.id)
+deployment = response.parse()  # get the object that `deployments.list()` would have returned
+print(deployment)
 ```
 
-These methods return an [`APIResponse`](https://github.com/mirurobotics/python-platform-sdk/tree/main/src/miru_platform/_response.py) object.
+These methods return an [`APIResponse`](https://github.com/mirurobotics/python-platform-sdk/tree/main/src/miru_platform_sdk/_response.py) object.
 
-The async client returns an [`AsyncAPIResponse`](https://github.com/mirurobotics/python-platform-sdk/tree/main/src/miru_platform/_response.py) with the same structure, the only difference being `await`able methods for reading the response content.
+The async client returns an [`AsyncAPIResponse`](https://github.com/mirurobotics/python-platform-sdk/tree/main/src/miru_platform_sdk/_response.py) with the same structure, the only difference being `await`able methods for reading the response content.
 
 #### `.with_streaming_response`
 
@@ -291,10 +267,7 @@ The above interface eagerly reads the full response body when you make the reque
 To stream the response body, use `.with_streaming_response` instead, which requires a context manager and only reads the response body once you call `.read()`, `.text()`, `.json()`, `.iter_bytes()`, `.iter_text()`, `.iter_lines()` or `.parse()`. In the async client, these are async methods.
 
 ```python
-with client.config_instances.with_streaming_response.retrieve(
-    config_instance_id="cfg_inst_123",
-    miru_version="2026-03-09.tetons",
-) as response:
+with client.deployments.with_streaming_response.list() as response:
     print(response.headers.get("X-My-Header"))
 
     for line in response.iter_lines():
@@ -347,10 +320,10 @@ You can directly override the [httpx client](https://www.python-httpx.org/api/#c
 
 ```python
 import httpx
-from miru_platform import MiruPlatform, DefaultHttpxClient
+from miru_platform_sdk import Miru, DefaultHttpxClient
 
-client = MiruPlatform(
-    # Or use the `MIRU_PLATFORM_BASE_URL` env var
+client = Miru(
+    # Or use the `MIRU_BASE_URL` env var
     base_url="http://my.test.server.example.com:8083",
     http_client=DefaultHttpxClient(
         proxy="http://my.test.proxy.example.com",
@@ -370,9 +343,9 @@ client.with_options(http_client=DefaultHttpxClient(...))
 By default the library closes underlying HTTP connections whenever the client is [garbage collected](https://docs.python.org/3/reference/datamodel.html#object.__del__). You can manually close the client using the `.close()` method if desired, or with a context manager that closes when exiting.
 
 ```py
-from miru_platform import MiruPlatform
+from miru_platform_sdk import Miru
 
-with MiruPlatform() as client:
+with Miru() as client:
   # make requests here
   ...
 
@@ -398,8 +371,8 @@ If you've upgraded to the latest version but aren't seeing any new features you 
 You can determine the version that is being used at runtime with:
 
 ```py
-import miru_platform
-print(miru_platform.__version__)
+import miru_platform_sdk
+print(miru_platform_sdk.__version__)
 ```
 
 ## Requirements
