@@ -1,7 +1,7 @@
 # Miru Python API library
 
 <!-- prettier-ignore -->
-[![PyPI version](https://img.shields.io/pypi/v/miru_platform_sdk.svg?label=pypi%20(stable))](https://pypi.org/project/miru_platform_sdk/)
+[![PyPI version](https://img.shields.io/pypi/v/miru-platform-sdk.svg?label=pypi%20(stable))](https://pypi.org/project/miru-platform-sdk/)
 
 The Miru Python library provides convenient access to the Miru REST API from any Python 3.9+
 application. The library includes type definitions for all request params and response fields,
@@ -17,7 +17,7 @@ The REST API documentation can be found on [docs.mirurobotics.com](https://docs.
 
 ```sh
 # install from PyPI
-pip install miru_platform_sdk
+pip install miru-platform-sdk
 ```
 
 ## Usage
@@ -75,7 +75,7 @@ You can enable this by installing `aiohttp`:
 
 ```sh
 # install from PyPI
-pip install miru_platform_sdk[aiohttp]
+pip install miru-platform-sdk[aiohttp]
 ```
 
 Then you can enable it by instantiating the client with `http_client=DefaultAioHttpClient()`:
