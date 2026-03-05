@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.7.0-beta.4 (2026-03-05)
+
+Full Changelog: [v0.7.0-beta.3...v0.7.0-beta.4](https://github.com/mirurobotics/python-platform-sdk/compare/v0.7.0-beta.3...v0.7.0-beta.4)
+
+### Bug Fixes
+
+* pydantic model not being parsed on forward references ([5507c1c](https://github.com/mirurobotics/python-platform-sdk/commit/5507c1cc7c05c559a0f62e431005b472a7232796))
+
 ## 0.7.0-beta.3 (2026-03-05)
 
 Full Changelog: [v0.7.0-beta.2...v0.7.0-beta.3](https://github.com/mirurobotics/python-platform-sdk/compare/v0.7.0-beta.2...v0.7.0-beta.3)
