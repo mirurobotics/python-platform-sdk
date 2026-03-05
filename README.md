@@ -29,7 +29,7 @@ import os
 from miru_platform_sdk import Miru
 
 client = Miru(
-    api_key=os.environ.get("MIRU_PLATFORM_API_KEY"),  # This is the default and can be omitted
+    api_key=os.environ.get("MIRU_API_KEY"),  # This is the default and can be omitted
     # or 'prod' | 'staging' | 'local'; defaults to "prod".
     environment="uat",
 )
@@ -42,7 +42,7 @@ print(deployment.id)
 
 While you can provide an `api_key` keyword argument,
 we recommend using [python-dotenv](https://pypi.org/project/python-dotenv/)
-to add `MIRU_PLATFORM_API_KEY="My API Key"` to your `.env` file
+to add `MIRU_API_KEY="My API Key"` to your `.env` file
 so that your API Key is not stored in source control.
 
 ## Async usage
@@ -55,7 +55,7 @@ import asyncio
 from miru_platform_sdk import AsyncMiru
 
 client = AsyncMiru(
-    api_key=os.environ.get("MIRU_PLATFORM_API_KEY"),  # This is the default and can be omitted
+    api_key=os.environ.get("MIRU_API_KEY"),  # This is the default and can be omitted
     # or 'prod' | 'staging' | 'local'; defaults to "prod".
     environment="uat",
 )
@@ -95,7 +95,7 @@ from miru_platform_sdk import AsyncMiru
 
 async def main() -> None:
     async with AsyncMiru(
-        api_key=os.environ.get("MIRU_PLATFORM_API_KEY"),  # This is the default and can be omitted
+        api_key=os.environ.get("MIRU_API_KEY"),  # This is the default and can be omitted
         http_client=DefaultAioHttpClient(),
     ) as client:
         deployment = await client.deployments.retrieve(

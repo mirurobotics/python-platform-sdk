@@ -105,14 +105,14 @@ class Miru(SyncAPIClient):
         """Construct a new synchronous Miru client instance.
 
         This automatically infers the following arguments from their corresponding environment variables if they are not provided:
-        - `api_key` from `MIRU_PLATFORM_API_KEY`
+        - `api_key` from `MIRU_API_KEY`
         - `miru_version` from `MIRU_PLATFORM_API_VERSION`
         """
         if api_key is None:
-            api_key = os.environ.get("MIRU_PLATFORM_API_KEY")
+            api_key = os.environ.get("MIRU_API_KEY")
         if api_key is None:
             raise MiruError(
-                "The api_key client option must be set either by passing api_key to the client or by setting the MIRU_PLATFORM_API_KEY environment variable"
+                "The api_key client option must be set either by passing api_key to the client or by setting the MIRU_API_KEY environment variable"
             )
         self.api_key = api_key
 
@@ -358,14 +358,14 @@ class AsyncMiru(AsyncAPIClient):
         """Construct a new async AsyncMiru client instance.
 
         This automatically infers the following arguments from their corresponding environment variables if they are not provided:
-        - `api_key` from `MIRU_PLATFORM_API_KEY`
+        - `api_key` from `MIRU_API_KEY`
         - `miru_version` from `MIRU_PLATFORM_API_VERSION`
         """
         if api_key is None:
-            api_key = os.environ.get("MIRU_PLATFORM_API_KEY")
+            api_key = os.environ.get("MIRU_API_KEY")
         if api_key is None:
             raise MiruError(
-                "The api_key client option must be set either by passing api_key to the client or by setting the MIRU_PLATFORM_API_KEY environment variable"
+                "The api_key client option must be set either by passing api_key to the client or by setting the MIRU_API_KEY environment variable"
             )
         self.api_key = api_key
 

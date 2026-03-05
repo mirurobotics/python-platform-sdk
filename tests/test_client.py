@@ -397,7 +397,7 @@ class TestMiru:
         assert request.headers.get("X-API-Key") == api_key
 
         with pytest.raises(MiruError):
-            with update_env(**{"MIRU_PLATFORM_API_KEY": Omit()}):
+            with update_env(**{"MIRU_API_KEY": Omit()}):
                 client2 = Miru(base_url=base_url, api_key=None, _strict_response_validation=True)
             _ = client2
 
@@ -1300,7 +1300,7 @@ class TestAsyncMiru:
         assert request.headers.get("X-API-Key") == api_key
 
         with pytest.raises(MiruError):
-            with update_env(**{"MIRU_PLATFORM_API_KEY": Omit()}):
+            with update_env(**{"MIRU_API_KEY": Omit()}):
                 client2 = AsyncMiru(base_url=base_url, api_key=None, _strict_response_validation=True)
             _ = client2
 
