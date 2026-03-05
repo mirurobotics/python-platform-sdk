@@ -8,8 +8,8 @@ from typing import Any, cast
 import pytest
 
 from tests.utils import assert_matches_type
-from miru_platform import MiruPlatform, AsyncMiruPlatform
-from miru_platform.types import (
+from miru_platform_sdk import Miru, AsyncMiru
+from miru_platform_sdk.types import (
     ConfigSchema,
     ConfigSchemaList,
 )
@@ -22,7 +22,7 @@ class TestConfigSchemas:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_create(self, client: MiruPlatform) -> None:
+    def test_method_create(self, client: Miru) -> None:
         config_schema = client.config_schemas.create(
             config_type_ref={},
             documents=[
@@ -33,13 +33,12 @@ class TestConfigSchemas:
             ],
             format="json",
             language="jsonschema",
-            miru_version="2026-03-09.tetons",
         )
         assert_matches_type(ConfigSchema, config_schema, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_create_with_all_params(self, client: MiruPlatform) -> None:
+    def test_method_create_with_all_params(self, client: Miru) -> None:
         config_schema = client.config_schemas.create(
             config_type_ref={
                 "id": "cfg_123",
@@ -53,7 +52,6 @@ class TestConfigSchemas:
             ],
             format="json",
             language="jsonschema",
-            miru_version="2026-03-09.tetons",
             expand=["documents"],
             git_commit={
                 "commit_ref": {
@@ -68,7 +66,7 @@ class TestConfigSchemas:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_create(self, client: MiruPlatform) -> None:
+    def test_raw_response_create(self, client: Miru) -> None:
         response = client.config_schemas.with_raw_response.create(
             config_type_ref={},
             documents=[
@@ -79,7 +77,6 @@ class TestConfigSchemas:
             ],
             format="json",
             language="jsonschema",
-            miru_version="2026-03-09.tetons",
         )
 
         assert response.is_closed is True
@@ -89,7 +86,7 @@ class TestConfigSchemas:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_create(self, client: MiruPlatform) -> None:
+    def test_streaming_response_create(self, client: Miru) -> None:
         with client.config_schemas.with_streaming_response.create(
             config_type_ref={},
             documents=[
@@ -100,7 +97,6 @@ class TestConfigSchemas:
             ],
             format="json",
             language="jsonschema",
-            miru_version="2026-03-09.tetons",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -112,29 +108,26 @@ class TestConfigSchemas:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_retrieve(self, client: MiruPlatform) -> None:
+    def test_method_retrieve(self, client: Miru) -> None:
         config_schema = client.config_schemas.retrieve(
             config_schema_id="cfg_sch_123",
-            miru_version="2026-03-09.tetons",
         )
         assert_matches_type(ConfigSchema, config_schema, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_retrieve_with_all_params(self, client: MiruPlatform) -> None:
+    def test_method_retrieve_with_all_params(self, client: Miru) -> None:
         config_schema = client.config_schemas.retrieve(
             config_schema_id="cfg_sch_123",
-            miru_version="2026-03-09.tetons",
             expand=["documents"],
         )
         assert_matches_type(ConfigSchema, config_schema, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_retrieve(self, client: MiruPlatform) -> None:
+    def test_raw_response_retrieve(self, client: Miru) -> None:
         response = client.config_schemas.with_raw_response.retrieve(
             config_schema_id="cfg_sch_123",
-            miru_version="2026-03-09.tetons",
         )
 
         assert response.is_closed is True
@@ -144,10 +137,9 @@ class TestConfigSchemas:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_retrieve(self, client: MiruPlatform) -> None:
+    def test_streaming_response_retrieve(self, client: Miru) -> None:
         with client.config_schemas.with_streaming_response.retrieve(
             config_schema_id="cfg_sch_123",
-            miru_version="2026-03-09.tetons",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -159,26 +151,22 @@ class TestConfigSchemas:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_retrieve(self, client: MiruPlatform) -> None:
+    def test_path_params_retrieve(self, client: Miru) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `config_schema_id` but received ''"):
             client.config_schemas.with_raw_response.retrieve(
                 config_schema_id="",
-                miru_version="2026-03-09.tetons",
             )
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_list(self, client: MiruPlatform) -> None:
-        config_schema = client.config_schemas.list(
-            miru_version="2026-03-09.tetons",
-        )
+    def test_method_list(self, client: Miru) -> None:
+        config_schema = client.config_schemas.list()
         assert_matches_type(ConfigSchemaList, config_schema, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_list_with_all_params(self, client: MiruPlatform) -> None:
+    def test_method_list_with_all_params(self, client: Miru) -> None:
         config_schema = client.config_schemas.list(
-            miru_version="2026-03-09.tetons",
             id=["cfg_sch_123"],
             config_type_id=["cfg_typ_123"],
             expand=["total_count"],
@@ -190,10 +178,8 @@ class TestConfigSchemas:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_list(self, client: MiruPlatform) -> None:
-        response = client.config_schemas.with_raw_response.list(
-            miru_version="2026-03-09.tetons",
-        )
+    def test_raw_response_list(self, client: Miru) -> None:
+        response = client.config_schemas.with_raw_response.list()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -202,10 +188,8 @@ class TestConfigSchemas:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_list(self, client: MiruPlatform) -> None:
-        with client.config_schemas.with_streaming_response.list(
-            miru_version="2026-03-09.tetons",
-        ) as response:
+    def test_streaming_response_list(self, client: Miru) -> None:
+        with client.config_schemas.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -222,7 +206,7 @@ class TestAsyncConfigSchemas:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_create(self, async_client: AsyncMiruPlatform) -> None:
+    async def test_method_create(self, async_client: AsyncMiru) -> None:
         config_schema = await async_client.config_schemas.create(
             config_type_ref={},
             documents=[
@@ -233,13 +217,12 @@ class TestAsyncConfigSchemas:
             ],
             format="json",
             language="jsonschema",
-            miru_version="2026-03-09.tetons",
         )
         assert_matches_type(ConfigSchema, config_schema, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_create_with_all_params(self, async_client: AsyncMiruPlatform) -> None:
+    async def test_method_create_with_all_params(self, async_client: AsyncMiru) -> None:
         config_schema = await async_client.config_schemas.create(
             config_type_ref={
                 "id": "cfg_123",
@@ -253,7 +236,6 @@ class TestAsyncConfigSchemas:
             ],
             format="json",
             language="jsonschema",
-            miru_version="2026-03-09.tetons",
             expand=["documents"],
             git_commit={
                 "commit_ref": {
@@ -268,7 +250,7 @@ class TestAsyncConfigSchemas:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_create(self, async_client: AsyncMiruPlatform) -> None:
+    async def test_raw_response_create(self, async_client: AsyncMiru) -> None:
         response = await async_client.config_schemas.with_raw_response.create(
             config_type_ref={},
             documents=[
@@ -279,7 +261,6 @@ class TestAsyncConfigSchemas:
             ],
             format="json",
             language="jsonschema",
-            miru_version="2026-03-09.tetons",
         )
 
         assert response.is_closed is True
@@ -289,7 +270,7 @@ class TestAsyncConfigSchemas:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_create(self, async_client: AsyncMiruPlatform) -> None:
+    async def test_streaming_response_create(self, async_client: AsyncMiru) -> None:
         async with async_client.config_schemas.with_streaming_response.create(
             config_type_ref={},
             documents=[
@@ -300,7 +281,6 @@ class TestAsyncConfigSchemas:
             ],
             format="json",
             language="jsonschema",
-            miru_version="2026-03-09.tetons",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -312,29 +292,26 @@ class TestAsyncConfigSchemas:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_retrieve(self, async_client: AsyncMiruPlatform) -> None:
+    async def test_method_retrieve(self, async_client: AsyncMiru) -> None:
         config_schema = await async_client.config_schemas.retrieve(
             config_schema_id="cfg_sch_123",
-            miru_version="2026-03-09.tetons",
         )
         assert_matches_type(ConfigSchema, config_schema, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_retrieve_with_all_params(self, async_client: AsyncMiruPlatform) -> None:
+    async def test_method_retrieve_with_all_params(self, async_client: AsyncMiru) -> None:
         config_schema = await async_client.config_schemas.retrieve(
             config_schema_id="cfg_sch_123",
-            miru_version="2026-03-09.tetons",
             expand=["documents"],
         )
         assert_matches_type(ConfigSchema, config_schema, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_retrieve(self, async_client: AsyncMiruPlatform) -> None:
+    async def test_raw_response_retrieve(self, async_client: AsyncMiru) -> None:
         response = await async_client.config_schemas.with_raw_response.retrieve(
             config_schema_id="cfg_sch_123",
-            miru_version="2026-03-09.tetons",
         )
 
         assert response.is_closed is True
@@ -344,10 +321,9 @@ class TestAsyncConfigSchemas:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_retrieve(self, async_client: AsyncMiruPlatform) -> None:
+    async def test_streaming_response_retrieve(self, async_client: AsyncMiru) -> None:
         async with async_client.config_schemas.with_streaming_response.retrieve(
             config_schema_id="cfg_sch_123",
-            miru_version="2026-03-09.tetons",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -359,26 +335,22 @@ class TestAsyncConfigSchemas:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_retrieve(self, async_client: AsyncMiruPlatform) -> None:
+    async def test_path_params_retrieve(self, async_client: AsyncMiru) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `config_schema_id` but received ''"):
             await async_client.config_schemas.with_raw_response.retrieve(
                 config_schema_id="",
-                miru_version="2026-03-09.tetons",
             )
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_list(self, async_client: AsyncMiruPlatform) -> None:
-        config_schema = await async_client.config_schemas.list(
-            miru_version="2026-03-09.tetons",
-        )
+    async def test_method_list(self, async_client: AsyncMiru) -> None:
+        config_schema = await async_client.config_schemas.list()
         assert_matches_type(ConfigSchemaList, config_schema, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_list_with_all_params(self, async_client: AsyncMiruPlatform) -> None:
+    async def test_method_list_with_all_params(self, async_client: AsyncMiru) -> None:
         config_schema = await async_client.config_schemas.list(
-            miru_version="2026-03-09.tetons",
             id=["cfg_sch_123"],
             config_type_id=["cfg_typ_123"],
             expand=["total_count"],
@@ -390,10 +362,8 @@ class TestAsyncConfigSchemas:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_list(self, async_client: AsyncMiruPlatform) -> None:
-        response = await async_client.config_schemas.with_raw_response.list(
-            miru_version="2026-03-09.tetons",
-        )
+    async def test_raw_response_list(self, async_client: AsyncMiru) -> None:
+        response = await async_client.config_schemas.with_raw_response.list()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -402,10 +372,8 @@ class TestAsyncConfigSchemas:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_list(self, async_client: AsyncMiruPlatform) -> None:
-        async with async_client.config_schemas.with_streaming_response.list(
-            miru_version="2026-03-09.tetons",
-        ) as response:
+    async def test_streaming_response_list(self, async_client: AsyncMiru) -> None:
+        async with async_client.config_schemas.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 

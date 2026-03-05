@@ -5,8 +5,8 @@ from typing import Union
 
 import pydantic
 
-from miru_platform import _compat
-from miru_platform._utils._json import openapi_dumps
+from miru_platform_sdk import _compat
+from miru_platform_sdk._utils._json import openapi_dumps
 
 
 class TestOpenapiDumps:
