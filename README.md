@@ -34,10 +34,7 @@ client = Miru(
     environment="uat",
 )
 
-deployment = client.deployments.retrieve(
-    deployment_id="dpl_123",
-)
-print(deployment.id)
+deployment_list = client.deployments.list()
 ```
 
 While you can provide an `api_key` keyword argument,
@@ -62,10 +59,7 @@ client = AsyncMiru(
 
 
 async def main() -> None:
-    deployment = await client.deployments.retrieve(
-        deployment_id="dpl_123",
-    )
-    print(deployment.id)
+    deployment_list = await client.deployments.list()
 
 
 asyncio.run(main())
@@ -98,10 +92,7 @@ async def main() -> None:
         api_key=os.environ.get("MIRU_API_KEY"),  # This is the default and can be omitted
         http_client=DefaultAioHttpClient(),
     ) as client:
-        deployment = await client.deployments.retrieve(
-            deployment_id="dpl_123",
-        )
-        print(deployment.id)
+        deployment_list = await client.deployments.list()
 
 
 asyncio.run(main())
@@ -151,9 +142,7 @@ from miru_platform_sdk import Miru
 client = Miru()
 
 try:
-    client.deployments.retrieve(
-        deployment_id="dpl_123",
-    )
+    client.deployments.list()
 except miru_platform_sdk.APIConnectionError as e:
     print("The server could not be reached")
     print(e.__cause__)  # an underlying Exception, likely raised within httpx.
@@ -196,9 +185,7 @@ client = Miru(
 )
 
 # Or, configure per-request:
-client.with_options(max_retries=5).deployments.retrieve(
-    deployment_id="dpl_123",
-)
+client.with_options(max_retries=5).deployments.list()
 ```
 
 ### Timeouts
@@ -221,9 +208,7 @@ client = Miru(
 )
 
 # Override per-request:
-client.with_options(timeout=5.0).deployments.retrieve(
-    deployment_id="dpl_123",
-)
+client.with_options(timeout=5.0).deployments.list()
 ```
 
 On timeout, an `APITimeoutError` is thrown.
@@ -264,13 +249,11 @@ The "raw" Response object can be accessed by prefixing `.with_raw_response.` to 
 from miru_platform_sdk import Miru
 
 client = Miru()
-response = client.deployments.with_raw_response.retrieve(
-    deployment_id="dpl_123",
-)
+response = client.deployments.with_raw_response.list()
 print(response.headers.get('X-My-Header'))
 
-deployment = response.parse()  # get the object that `deployments.retrieve()` would have returned
-print(deployment.id)
+deployment = response.parse()  # get the object that `deployments.list()` would have returned
+print(deployment)
 ```
 
 These methods return an [`APIResponse`](https://github.com/mirurobotics/python-platform-sdk/tree/main/src/miru_platform_sdk/_response.py) object.
@@ -284,9 +267,7 @@ The above interface eagerly reads the full response body when you make the reque
 To stream the response body, use `.with_streaming_response` instead, which requires a context manager and only reads the response body once you call `.read()`, `.text()`, `.json()`, `.iter_bytes()`, `.iter_text()`, `.iter_lines()` or `.parse()`. In the async client, these are async methods.
 
 ```python
-with client.deployments.with_streaming_response.retrieve(
-    deployment_id="dpl_123",
-) as response:
+with client.deployments.with_streaming_response.list() as response:
     print(response.headers.get("X-My-Header"))
 
     for line in response.iter_lines():
