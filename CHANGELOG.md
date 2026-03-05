@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.7.0-beta.3 (2026-03-05)
+
+Full Changelog: [v0.7.0-beta.2...v0.7.0-beta.3](https://github.com/mirurobotics/python-platform-sdk/compare/v0.7.0-beta.2...v0.7.0-beta.3)
+
+### Features
+
+* **api:** manual updates ([7c6d61a](https://github.com/mirurobotics/python-platform-sdk/commit/7c6d61aa3d231a787539fbe62138a46de725ee81))
+
 ## 0.7.0-beta.2 (2026-03-05)
 
 Full Changelog: [v0.0.2...v0.7.0-beta.2](https://github.com/mirurobotics/python-platform-sdk/compare/v0.0.2...v0.7.0-beta.2)
