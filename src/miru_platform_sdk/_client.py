@@ -73,7 +73,7 @@ ENVIRONMENTS: Dict[str, str] = {
 class Miru(SyncAPIClient):
     # client options
     api_key: str
-    miru_version: str | None
+    miru_version: str
 
     _environment: Literal["prod", "uat", "staging", "local"] | NotGiven
 
@@ -117,7 +117,7 @@ class Miru(SyncAPIClient):
         self.api_key = api_key
 
         if miru_version is None:
-            miru_version = os.environ.get("MIRU_PLATFORM_API_VERSION")
+            miru_version = os.environ.get("MIRU_PLATFORM_API_VERSION") or "2026-03-09.tetons"
         self.miru_version = miru_version
 
         self._environment = environment
@@ -230,7 +230,7 @@ class Miru(SyncAPIClient):
         return {
             **super().default_headers,
             "X-Stainless-Async": "false",
-            "Miru-Version": self.miru_version if self.miru_version is not None else Omit(),
+            "Miru-Version": self.miru_version,
             **self._custom_headers,
         }
 
@@ -326,7 +326,7 @@ class Miru(SyncAPIClient):
 class AsyncMiru(AsyncAPIClient):
     # client options
     api_key: str
-    miru_version: str | None
+    miru_version: str
 
     _environment: Literal["prod", "uat", "staging", "local"] | NotGiven
 
@@ -370,7 +370,7 @@ class AsyncMiru(AsyncAPIClient):
         self.api_key = api_key
 
         if miru_version is None:
-            miru_version = os.environ.get("MIRU_PLATFORM_API_VERSION")
+            miru_version = os.environ.get("MIRU_PLATFORM_API_VERSION") or "2026-03-09.tetons"
         self.miru_version = miru_version
 
         self._environment = environment
@@ -483,7 +483,7 @@ class AsyncMiru(AsyncAPIClient):
         return {
             **super().default_headers,
             "X-Stainless-Async": f"async:{get_async_library()}",
-            "Miru-Version": self.miru_version if self.miru_version is not None else Omit(),
+            "Miru-Version": self.miru_version,
             **self._custom_headers,
         }
 
