@@ -61,6 +61,6 @@
   ],
   "release-type": "python",
   "extra-files": [
-    "src/miru_platform/_version.py"
+    "src/miru_platform_sdk/_version.py"
   ]
 }

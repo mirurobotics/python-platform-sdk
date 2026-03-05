@@ -10,15 +10,15 @@ import httpx
 import pytest
 from pytest_asyncio import is_async_test
 
-from miru_platform import MiruPlatform, AsyncMiruPlatform, DefaultAioHttpClient
-from miru_platform._utils import is_dict
+from miru_platform_sdk import Miru, AsyncMiru, DefaultAioHttpClient
+from miru_platform_sdk._utils import is_dict
 
 if TYPE_CHECKING:
     from _pytest.fixtures import FixtureRequest  # pyright: ignore[reportPrivateImportUsage]
 
 pytest.register_assert_rewrite("tests.utils")
 
-logging.getLogger("miru_platform").setLevel(logging.DEBUG)
+logging.getLogger("miru_platform_sdk").setLevel(logging.DEBUG)
 
 
 # automatically add `pytest.mark.asyncio()` to all of our async tests
@@ -49,17 +49,17 @@ api_key = "My API Key"
 
 
 @pytest.fixture(scope="session")
-def client(request: FixtureRequest) -> Iterator[MiruPlatform]:
+def client(request: FixtureRequest) -> Iterator[Miru]:
     strict = getattr(request, "param", True)
     if not isinstance(strict, bool):
         raise TypeError(f"Unexpected fixture parameter type {type(strict)}, expected {bool}")
 
-    with MiruPlatform(base_url=base_url, api_key=api_key, _strict_response_validation=strict) as client:
+    with Miru(base_url=base_url, api_key=api_key, _strict_response_validation=strict) as client:
         yield client
 
 
 @pytest.fixture(scope="session")
-async def async_client(request: FixtureRequest) -> AsyncIterator[AsyncMiruPlatform]:
+async def async_client(request: FixtureRequest) -> AsyncIterator[AsyncMiru]:
     param = getattr(request, "param", True)
 
     # defaults
@@ -78,7 +78,7 @@ async def async_client(request: FixtureRequest) -> AsyncIterator[AsyncMiruPlatfo
     else:
         raise TypeError(f"Unexpected fixture parameter type {type(param)}, expected bool or dict")
 
-    async with AsyncMiruPlatform(
+    async with AsyncMiru(
         base_url=base_url, api_key=api_key, _strict_response_validation=strict, http_client=http_client
     ) as client:
         yield client
