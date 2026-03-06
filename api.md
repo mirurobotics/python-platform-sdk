@@ -38,14 +38,19 @@ Methods:
 Types:
 
 ```python
-from miru_platform_sdk.types import ConfigType, ConfigTypeListResponse
+from miru_platform_sdk.types import (
+    ConfigTypeCreateResponse,
+    ConfigTypeRetrieveResponse,
+    ConfigTypeUpdateResponse,
+    ConfigTypeListResponse,
+)
 ```
 
 Methods:
 
-- <code title="post /config_types">client.config_types.<a href="./src/miru_platform_sdk/resources/config_types.py">create</a>(\*\*<a href="src/miru_platform_sdk/types/config_type_create_params.py">params</a>) -> <a href="./src/miru_platform_sdk/types/config_type.py">ConfigType</a></code>
-- <code title="get /config_types/{config_type_id}">client.config_types.<a href="./src/miru_platform_sdk/resources/config_types.py">retrieve</a>(config_type_id, \*\*<a href="src/miru_platform_sdk/types/config_type_retrieve_params.py">params</a>) -> <a href="./src/miru_platform_sdk/types/config_type.py">ConfigType</a></code>
-- <code title="patch /config_types/{config_type_id}">client.config_types.<a href="./src/miru_platform_sdk/resources/config_types.py">update</a>(config_type_id, \*\*<a href="src/miru_platform_sdk/types/config_type_update_params.py">params</a>) -> <a href="./src/miru_platform_sdk/types/config_type.py">ConfigType</a></code>
+- <code title="post /config_types">client.config_types.<a href="./src/miru_platform_sdk/resources/config_types.py">create</a>(\*\*<a href="src/miru_platform_sdk/types/config_type_create_params.py">params</a>) -> <a href="./src/miru_platform_sdk/types/config_type_create_response.py">ConfigTypeCreateResponse</a></code>
+- <code title="get /config_types/{config_type_id}">client.config_types.<a href="./src/miru_platform_sdk/resources/config_types.py">retrieve</a>(config_type_id) -> <a href="./src/miru_platform_sdk/types/config_type_retrieve_response.py">ConfigTypeRetrieveResponse</a></code>
+- <code title="patch /config_types/{config_type_id}">client.config_types.<a href="./src/miru_platform_sdk/resources/config_types.py">update</a>(config_type_id, \*\*<a href="src/miru_platform_sdk/types/config_type_update_params.py">params</a>) -> <a href="./src/miru_platform_sdk/types/config_type_update_response.py">ConfigTypeUpdateResponse</a></code>
 - <code title="get /config_types">client.config_types.<a href="./src/miru_platform_sdk/resources/config_types.py">list</a>(\*\*<a href="src/miru_platform_sdk/types/config_type_list_params.py">params</a>) -> <a href="./src/miru_platform_sdk/types/config_type_list_response.py">ConfigTypeListResponse</a></code>
 
 # Deployments

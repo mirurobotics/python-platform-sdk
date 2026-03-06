@@ -7,12 +7,7 @@ from typing_extensions import Literal
 
 import httpx
 
-from ..types import (
-    config_type_list_params,
-    config_type_create_params,
-    config_type_update_params,
-    config_type_retrieve_params,
-)
+from ..types import config_type_list_params, config_type_create_params, config_type_update_params
 from .._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
@@ -24,8 +19,10 @@ from .._response import (
     async_to_streamed_response_wrapper,
 )
 from .._base_client import make_request_options
-from ..types.config_type import ConfigType
 from ..types.config_type_list_response import ConfigTypeListResponse
+from ..types.config_type_create_response import ConfigTypeCreateResponse
+from ..types.config_type_update_response import ConfigTypeUpdateResponse
+from ..types.config_type_retrieve_response import ConfigTypeRetrieveResponse
 
 __all__ = ["ConfigTypesResource", "AsyncConfigTypesResource"]
 
@@ -55,14 +52,13 @@ class ConfigTypesResource(SyncAPIResource):
         *,
         name: str,
         slug: str,
-        expand: List[Literal["config_schemas"]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> ConfigType:
+    ) -> ConfigTypeCreateResponse:
         """
         Create a new config type.
 
@@ -70,8 +66,6 @@ class ConfigTypesResource(SyncAPIResource):
           name: The name of the config type.
 
           slug: An immutable, code-friendly name for the config type.
-
-          expand: Fields to expand on the config type resource.
 
           extra_headers: Send extra headers
 
@@ -91,33 +85,26 @@ class ConfigTypesResource(SyncAPIResource):
                 config_type_create_params.ConfigTypeCreateParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform({"expand": expand}, config_type_create_params.ConfigTypeCreateParams),
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ConfigType,
+            cast_to=ConfigTypeCreateResponse,
         )
 
     def retrieve(
         self,
         config_type_id: str,
         *,
-        expand: List[Literal["config_schemas"]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> ConfigType:
+    ) -> ConfigTypeRetrieveResponse:
         """
         Retrieve a config type by ID.
 
         Args:
-          expand: Fields to expand on the config type resource.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -131,20 +118,15 @@ class ConfigTypesResource(SyncAPIResource):
         return self._get(
             f"/config_types/{config_type_id}",
             options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform({"expand": expand}, config_type_retrieve_params.ConfigTypeRetrieveParams),
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ConfigType,
+            cast_to=ConfigTypeRetrieveResponse,
         )
 
     def update(
         self,
         config_type_id: str,
         *,
-        expand: List[Literal["config_schemas"]] | Omit = omit,
         name: str | Omit = omit,
         slug: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -153,13 +135,11 @@ class ConfigTypesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> ConfigType:
+    ) -> ConfigTypeUpdateResponse:
         """
         Update a config type by ID.
 
         Args:
-          expand: Fields to expand on the config type resource.
-
           name: The updated name of the config type.
 
           slug: The updated slug for the config type.
@@ -184,20 +164,16 @@ class ConfigTypesResource(SyncAPIResource):
                 config_type_update_params.ConfigTypeUpdateParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform({"expand": expand}, config_type_update_params.ConfigTypeUpdateParams),
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ConfigType,
+            cast_to=ConfigTypeUpdateResponse,
         )
 
     def list(
         self,
         *,
         id: SequenceNotStr[str] | Omit = omit,
-        expand: List[Literal["total_count", "config_schemas"]] | Omit = omit,
+        expand: List[Literal["total_count"]] | Omit = omit,
         limit: int | Omit = omit,
         name: SequenceNotStr[str] | Omit = omit,
         offset: int | Omit = omit,
@@ -287,14 +263,13 @@ class AsyncConfigTypesResource(AsyncAPIResource):
         *,
         name: str,
         slug: str,
-        expand: List[Literal["config_schemas"]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> ConfigType:
+    ) -> ConfigTypeCreateResponse:
         """
         Create a new config type.
 
@@ -302,8 +277,6 @@ class AsyncConfigTypesResource(AsyncAPIResource):
           name: The name of the config type.
 
           slug: An immutable, code-friendly name for the config type.
-
-          expand: Fields to expand on the config type resource.
 
           extra_headers: Send extra headers
 
@@ -323,33 +296,26 @@ class AsyncConfigTypesResource(AsyncAPIResource):
                 config_type_create_params.ConfigTypeCreateParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform({"expand": expand}, config_type_create_params.ConfigTypeCreateParams),
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ConfigType,
+            cast_to=ConfigTypeCreateResponse,
         )
 
     async def retrieve(
         self,
         config_type_id: str,
         *,
-        expand: List[Literal["config_schemas"]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> ConfigType:
+    ) -> ConfigTypeRetrieveResponse:
         """
         Retrieve a config type by ID.
 
         Args:
-          expand: Fields to expand on the config type resource.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -363,22 +329,15 @@ class AsyncConfigTypesResource(AsyncAPIResource):
         return await self._get(
             f"/config_types/{config_type_id}",
             options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform(
-                    {"expand": expand}, config_type_retrieve_params.ConfigTypeRetrieveParams
-                ),
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ConfigType,
+            cast_to=ConfigTypeRetrieveResponse,
         )
 
     async def update(
         self,
         config_type_id: str,
         *,
-        expand: List[Literal["config_schemas"]] | Omit = omit,
         name: str | Omit = omit,
         slug: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -387,13 +346,11 @@ class AsyncConfigTypesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> ConfigType:
+    ) -> ConfigTypeUpdateResponse:
         """
         Update a config type by ID.
 
         Args:
-          expand: Fields to expand on the config type resource.
-
           name: The updated name of the config type.
 
           slug: The updated slug for the config type.
@@ -418,20 +375,16 @@ class AsyncConfigTypesResource(AsyncAPIResource):
                 config_type_update_params.ConfigTypeUpdateParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform({"expand": expand}, config_type_update_params.ConfigTypeUpdateParams),
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ConfigType,
+            cast_to=ConfigTypeUpdateResponse,
         )
 
     async def list(
         self,
         *,
         id: SequenceNotStr[str] | Omit = omit,
-        expand: List[Literal["total_count", "config_schemas"]] | Omit = omit,
+        expand: List[Literal["total_count"]] | Omit = omit,
         limit: int | Omit = omit,
         name: SequenceNotStr[str] | Omit = omit,
         offset: int | Omit = omit,
