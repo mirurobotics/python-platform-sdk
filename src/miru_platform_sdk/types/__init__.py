@@ -8,6 +8,7 @@ from .release import Release as Release
 from .principal import Principal as Principal
 from .deployment import Deployment as Deployment
 from .git_commit import GitCommit as GitCommit
+from .config_type import ConfigType as ConfigType
 from .device_list import DeviceList as DeviceList
 from .release_list import ReleaseList as ReleaseList
 from .config_schema import ConfigSchema as ConfigSchema
@@ -42,12 +43,9 @@ from .deployment_archive_params import DeploymentArchiveParams as DeploymentArch
 from .deployment_retrieve_params import DeploymentRetrieveParams as DeploymentRetrieveParams
 from .config_instance_list_params import ConfigInstanceListParams as ConfigInstanceListParams
 from .config_schema_create_params import ConfigSchemaCreateParams as ConfigSchemaCreateParams
-from .config_type_create_response import ConfigTypeCreateResponse as ConfigTypeCreateResponse
-from .config_type_update_response import ConfigTypeUpdateResponse as ConfigTypeUpdateResponse
 from .config_instance_create_params import ConfigInstanceCreateParams as ConfigInstanceCreateParams
 from .config_instance_list_response import ConfigInstanceListResponse as ConfigInstanceListResponse
 from .config_schema_retrieve_params import ConfigSchemaRetrieveParams as ConfigSchemaRetrieveParams
-from .config_type_retrieve_response import ConfigTypeRetrieveResponse as ConfigTypeRetrieveResponse
 from .deployment_list_drifts_params import DeploymentListDriftsParams as DeploymentListDriftsParams
 from .config_instance_content_params import ConfigInstanceContentParams as ConfigInstanceContentParams
 from .config_instance_retrieve_params import ConfigInstanceRetrieveParams as ConfigInstanceRetrieveParams

@@ -5,32 +5,11 @@ from datetime import datetime
 from typing_extensions import Literal
 
 from .._models import BaseModel
+from .config_type import ConfigType
 from .schema_document import SchemaDocument
 from .schema_language import SchemaLanguage
 
-__all__ = ["ConfigSchema", "ConfigType"]
-
-
-class ConfigType(BaseModel):
-    """Expand the config type using 'expand=config_type' in the query string."""
-
-    id: str
-    """ID of the config type."""
-
-    created_at: datetime
-    """Timestamp of when the config type was created."""
-
-    name: str
-    """Name of the config type."""
-
-    object: Literal["config_type"]
-    """The object type, which is always `config_type`."""
-
-    slug: str
-    """An immutable, code-friendly name for the config type."""
-
-    updated_at: datetime
-    """Timestamp of when the config type was last updated."""
+__all__ = ["ConfigSchema"]
 
 
 class ConfigSchema(BaseModel):

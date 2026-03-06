@@ -19,10 +19,8 @@ from .._response import (
     async_to_streamed_response_wrapper,
 )
 from .._base_client import make_request_options
+from ..types.config_type import ConfigType
 from ..types.config_type_list_response import ConfigTypeListResponse
-from ..types.config_type_create_response import ConfigTypeCreateResponse
-from ..types.config_type_update_response import ConfigTypeUpdateResponse
-from ..types.config_type_retrieve_response import ConfigTypeRetrieveResponse
 
 __all__ = ["ConfigTypesResource", "AsyncConfigTypesResource"]
 
@@ -58,7 +56,7 @@ class ConfigTypesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> ConfigTypeCreateResponse:
+    ) -> ConfigType:
         """
         Create a new config type.
 
@@ -87,7 +85,7 @@ class ConfigTypesResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ConfigTypeCreateResponse,
+            cast_to=ConfigType,
         )
 
     def retrieve(
@@ -100,7 +98,7 @@ class ConfigTypesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> ConfigTypeRetrieveResponse:
+    ) -> ConfigType:
         """
         Retrieve a config type by ID.
 
@@ -120,7 +118,7 @@ class ConfigTypesResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ConfigTypeRetrieveResponse,
+            cast_to=ConfigType,
         )
 
     def update(
@@ -135,7 +133,7 @@ class ConfigTypesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> ConfigTypeUpdateResponse:
+    ) -> ConfigType:
         """
         Update a config type by ID.
 
@@ -166,7 +164,7 @@ class ConfigTypesResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ConfigTypeUpdateResponse,
+            cast_to=ConfigType,
         )
 
     def list(
@@ -269,7 +267,7 @@ class AsyncConfigTypesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> ConfigTypeCreateResponse:
+    ) -> ConfigType:
         """
         Create a new config type.
 
@@ -298,7 +296,7 @@ class AsyncConfigTypesResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ConfigTypeCreateResponse,
+            cast_to=ConfigType,
         )
 
     async def retrieve(
@@ -311,7 +309,7 @@ class AsyncConfigTypesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> ConfigTypeRetrieveResponse:
+    ) -> ConfigType:
         """
         Retrieve a config type by ID.
 
@@ -331,7 +329,7 @@ class AsyncConfigTypesResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ConfigTypeRetrieveResponse,
+            cast_to=ConfigType,
         )
 
     async def update(
@@ -346,7 +344,7 @@ class AsyncConfigTypesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> ConfigTypeUpdateResponse:
+    ) -> ConfigType:
         """
         Update a config type by ID.
 
@@ -377,7 +375,7 @@ class AsyncConfigTypesResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ConfigTypeUpdateResponse,
+            cast_to=ConfigType,
         )
 
     async def list(

@@ -10,10 +10,8 @@ import pytest
 from tests.utils import assert_matches_type
 from miru_platform_sdk import Miru, AsyncMiru
 from miru_platform_sdk.types import (
+    ConfigType,
     ConfigTypeListResponse,
-    ConfigTypeCreateResponse,
-    ConfigTypeUpdateResponse,
-    ConfigTypeRetrieveResponse,
 )
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -29,7 +27,7 @@ class TestConfigTypes:
             name="My Config Type",
             slug="my-config-type",
         )
-        assert_matches_type(ConfigTypeCreateResponse, config_type, path=["response"])
+        assert_matches_type(ConfigType, config_type, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -42,7 +40,7 @@ class TestConfigTypes:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         config_type = response.parse()
-        assert_matches_type(ConfigTypeCreateResponse, config_type, path=["response"])
+        assert_matches_type(ConfigType, config_type, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -55,7 +53,7 @@ class TestConfigTypes:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             config_type = response.parse()
-            assert_matches_type(ConfigTypeCreateResponse, config_type, path=["response"])
+            assert_matches_type(ConfigType, config_type, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -65,7 +63,7 @@ class TestConfigTypes:
         config_type = client.config_types.retrieve(
             "cfg_typ_123",
         )
-        assert_matches_type(ConfigTypeRetrieveResponse, config_type, path=["response"])
+        assert_matches_type(ConfigType, config_type, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -77,7 +75,7 @@ class TestConfigTypes:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         config_type = response.parse()
-        assert_matches_type(ConfigTypeRetrieveResponse, config_type, path=["response"])
+        assert_matches_type(ConfigType, config_type, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -89,7 +87,7 @@ class TestConfigTypes:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             config_type = response.parse()
-            assert_matches_type(ConfigTypeRetrieveResponse, config_type, path=["response"])
+            assert_matches_type(ConfigType, config_type, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -107,7 +105,7 @@ class TestConfigTypes:
         config_type = client.config_types.update(
             config_type_id="cfg_typ_123",
         )
-        assert_matches_type(ConfigTypeUpdateResponse, config_type, path=["response"])
+        assert_matches_type(ConfigType, config_type, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -117,7 +115,7 @@ class TestConfigTypes:
             name="My Config Type",
             slug="my-config-type",
         )
-        assert_matches_type(ConfigTypeUpdateResponse, config_type, path=["response"])
+        assert_matches_type(ConfigType, config_type, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -129,7 +127,7 @@ class TestConfigTypes:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         config_type = response.parse()
-        assert_matches_type(ConfigTypeUpdateResponse, config_type, path=["response"])
+        assert_matches_type(ConfigType, config_type, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -141,7 +139,7 @@ class TestConfigTypes:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             config_type = response.parse()
-            assert_matches_type(ConfigTypeUpdateResponse, config_type, path=["response"])
+            assert_matches_type(ConfigType, config_type, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -208,7 +206,7 @@ class TestAsyncConfigTypes:
             name="My Config Type",
             slug="my-config-type",
         )
-        assert_matches_type(ConfigTypeCreateResponse, config_type, path=["response"])
+        assert_matches_type(ConfigType, config_type, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -221,7 +219,7 @@ class TestAsyncConfigTypes:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         config_type = await response.parse()
-        assert_matches_type(ConfigTypeCreateResponse, config_type, path=["response"])
+        assert_matches_type(ConfigType, config_type, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -234,7 +232,7 @@ class TestAsyncConfigTypes:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             config_type = await response.parse()
-            assert_matches_type(ConfigTypeCreateResponse, config_type, path=["response"])
+            assert_matches_type(ConfigType, config_type, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -244,7 +242,7 @@ class TestAsyncConfigTypes:
         config_type = await async_client.config_types.retrieve(
             "cfg_typ_123",
         )
-        assert_matches_type(ConfigTypeRetrieveResponse, config_type, path=["response"])
+        assert_matches_type(ConfigType, config_type, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -256,7 +254,7 @@ class TestAsyncConfigTypes:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         config_type = await response.parse()
-        assert_matches_type(ConfigTypeRetrieveResponse, config_type, path=["response"])
+        assert_matches_type(ConfigType, config_type, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -268,7 +266,7 @@ class TestAsyncConfigTypes:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             config_type = await response.parse()
-            assert_matches_type(ConfigTypeRetrieveResponse, config_type, path=["response"])
+            assert_matches_type(ConfigType, config_type, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -286,7 +284,7 @@ class TestAsyncConfigTypes:
         config_type = await async_client.config_types.update(
             config_type_id="cfg_typ_123",
         )
-        assert_matches_type(ConfigTypeUpdateResponse, config_type, path=["response"])
+        assert_matches_type(ConfigType, config_type, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -296,7 +294,7 @@ class TestAsyncConfigTypes:
             name="My Config Type",
             slug="my-config-type",
         )
-        assert_matches_type(ConfigTypeUpdateResponse, config_type, path=["response"])
+        assert_matches_type(ConfigType, config_type, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -308,7 +306,7 @@ class TestAsyncConfigTypes:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         config_type = await response.parse()
-        assert_matches_type(ConfigTypeUpdateResponse, config_type, path=["response"])
+        assert_matches_type(ConfigType, config_type, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -320,7 +318,7 @@ class TestAsyncConfigTypes:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             config_type = await response.parse()
-            assert_matches_type(ConfigTypeUpdateResponse, config_type, path=["response"])
+            assert_matches_type(ConfigType, config_type, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

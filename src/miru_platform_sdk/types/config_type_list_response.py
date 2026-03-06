@@ -1,35 +1,13 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 from typing import List
-from datetime import datetime
-from typing_extensions import Literal
 
-from .._models import BaseModel
+from .config_type import ConfigType
 from .shared.paginated_list import PaginatedList
 
-__all__ = ["ConfigTypeListResponse", "ConfigTypeListResponseData"]
-
-
-class ConfigTypeListResponseData(BaseModel):
-    id: str
-    """ID of the config type."""
-
-    created_at: datetime
-    """Timestamp of when the config type was created."""
-
-    name: str
-    """Name of the config type."""
-
-    object: Literal["config_type"]
-    """The object type, which is always `config_type`."""
-
-    slug: str
-    """An immutable, code-friendly name for the config type."""
-
-    updated_at: datetime
-    """Timestamp of when the config type was last updated."""
+__all__ = ["ConfigTypeListResponse"]
 
 
 class ConfigTypeListResponse(PaginatedList):
-    data: List[ConfigTypeListResponseData]
+    data: List[ConfigType]
     """The list of config types."""
