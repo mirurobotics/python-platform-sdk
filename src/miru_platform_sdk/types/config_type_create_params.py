@@ -2,8 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List
-from typing_extensions import Literal, Required, TypedDict
+from typing_extensions import Required, TypedDict
 
 __all__ = ["ConfigTypeCreateParams"]
 
@@ -14,6 +13,3 @@ class ConfigTypeCreateParams(TypedDict, total=False):
 
     slug: Required[str]
     """An immutable, code-friendly name for the config type."""
-
-    expand: List[Literal["config_schemas"]]
-    """Fields to expand on the config type resource."""

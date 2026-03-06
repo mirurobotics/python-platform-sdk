@@ -111,9 +111,9 @@ class TestGitCommits:
         git_commit = client.git_commits.list(
             id=["git_cmt_123"],
             expand=["total_count"],
-            limit=1,
+            limit=10,
             offset=0,
-            order_by=["id:asc"],
+            order_by=["created_at:desc"],
             sha=["a1b2c3d4e5f6"],
         )
         assert_matches_type(GitCommitList, git_commit, path=["response"])
@@ -240,9 +240,9 @@ class TestAsyncGitCommits:
         git_commit = await async_client.git_commits.list(
             id=["git_cmt_123"],
             expand=["total_count"],
-            limit=1,
+            limit=10,
             offset=0,
-            order_by=["id:asc"],
+            order_by=["created_at:desc"],
             sha=["a1b2c3d4e5f6"],
         )
         assert_matches_type(GitCommitList, git_commit, path=["response"])

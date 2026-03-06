@@ -1,12 +1,11 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from __future__ import annotations
-
 from typing import List, Optional
 from datetime import datetime
 from typing_extensions import Literal
 
 from .._models import BaseModel
+from .config_type import ConfigType
 from .schema_document import SchemaDocument
 from .schema_language import SchemaLanguage
 
@@ -46,13 +45,10 @@ class ConfigSchema(BaseModel):
     updated_at: datetime
     """Timestamp of when the config schema was last updated."""
 
-    config_type: Optional["ConfigType"] = None
+    config_type: Optional[ConfigType] = None
     """Expand the config type using 'expand=config_type' in the query string."""
 
     documents: Optional[List[SchemaDocument]] = None
     """
     Expand the config schema documents using `expand=documents` in the query string.
     """
-
-
-from .config_type import ConfigType

@@ -1,12 +1,12 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from __future__ import annotations
-
 from typing import Optional
 from datetime import datetime
 from typing_extensions import Literal
 
 from .._models import BaseModel
+from .config_type import ConfigType
+from .config_schema import ConfigSchema
 from .instance_content import InstanceContent
 
 __all__ = ["ConfigInstance"]
@@ -38,10 +38,10 @@ class ConfigInstance(BaseModel):
     object: Literal["config_instance"]
     """The object type, which is always `config_instance`."""
 
-    config_schema: Optional["ConfigSchema"] = None
+    config_schema: Optional[ConfigSchema] = None
     """Expand the config schema using 'expand=config_schema' in the query string."""
 
-    config_type: Optional["ConfigType"] = None
+    config_type: Optional[ConfigType] = None
     """Expand the config type using 'expand=config_type' in the query string."""
 
     content: Optional[InstanceContent] = None
@@ -49,7 +49,3 @@ class ConfigInstance(BaseModel):
 
     Expand the content using 'expand=content' in the query string.
     """
-
-
-from .config_type import ConfigType
-from .config_schema import ConfigSchema

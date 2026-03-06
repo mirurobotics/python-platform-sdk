@@ -169,10 +169,10 @@ class TestConfigSchemas:
         config_schema = client.config_schemas.list(
             id=["cfg_sch_123"],
             config_type_id=["cfg_typ_123"],
-            expand=["total_count"],
-            limit=1,
+            expand=["documents"],
+            limit=10,
             offset=0,
-            order_by=["id:asc"],
+            order_by=["created_at:desc"],
         )
         assert_matches_type(ConfigSchemaList, config_schema, path=["response"])
 
@@ -353,10 +353,10 @@ class TestAsyncConfigSchemas:
         config_schema = await async_client.config_schemas.list(
             id=["cfg_sch_123"],
             config_type_id=["cfg_typ_123"],
-            expand=["total_count"],
-            limit=1,
+            expand=["documents"],
+            limit=10,
             offset=0,
-            order_by=["id:asc"],
+            order_by=["created_at:desc"],
         )
         assert_matches_type(ConfigSchemaList, config_schema, path=["response"])
 
