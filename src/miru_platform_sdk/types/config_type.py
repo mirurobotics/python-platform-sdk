@@ -5,10 +5,10 @@ from typing_extensions import Literal
 
 from .._models import BaseModel
 
-__all__ = ["ConfigTypeUpdateResponse"]
+__all__ = ["ConfigType"]
 
 
-class ConfigTypeUpdateResponse(BaseModel):
+class ConfigType(BaseModel):
     id: str
     """ID of the config type."""
 
