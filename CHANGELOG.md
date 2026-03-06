@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.7.0-beta.5 (2026-03-06)
+
+Full Changelog: [v0.7.0-beta.4...v0.7.0-beta.5](https://github.com/mirurobotics/python-platform-sdk/compare/v0.7.0-beta.4...v0.7.0-beta.5)
+
+### Features
+
+* **api:** manual updates ([e15b371](https://github.com/mirurobotics/python-platform-sdk/commit/e15b371d7a9a5687b9fbc60524a818c167cba97a))
+* **api:** update to v2026-03-09.tetons-beta.2 spec ([1a97c7f](https://github.com/mirurobotics/python-platform-sdk/commit/1a97c7f1df22f5cfb6f5e4729af66630a50b3889))
+
 ## 0.7.0-beta.4 (2026-03-05)
 
 Full Changelog: [v0.7.0-beta.3...v0.7.0-beta.4](https://github.com/mirurobotics/python-platform-sdk/compare/v0.7.0-beta.3...v0.7.0-beta.4)
