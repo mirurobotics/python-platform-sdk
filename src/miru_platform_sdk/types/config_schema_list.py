@@ -1,17 +1,13 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from __future__ import annotations
-
 from typing import List
 
+from .config_schema import ConfigSchema
 from .shared.paginated_list import PaginatedList
 
 __all__ = ["ConfigSchemaList"]
 
 
 class ConfigSchemaList(PaginatedList):
-    data: List["ConfigSchema"]
+    data: List[ConfigSchema]
     """The list of config schemas."""
-
-
-from .config_schema import ConfigSchema

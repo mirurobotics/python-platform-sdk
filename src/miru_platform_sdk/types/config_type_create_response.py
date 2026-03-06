@@ -1,16 +1,14 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List
 from datetime import datetime
 from typing_extensions import Literal
 
 from .._models import BaseModel
-from .shared.paginated_list import PaginatedList
 
-__all__ = ["ConfigTypeListResponse", "ConfigTypeListResponseData"]
+__all__ = ["ConfigTypeCreateResponse"]
 
 
-class ConfigTypeListResponseData(BaseModel):
+class ConfigTypeCreateResponse(BaseModel):
     id: str
     """ID of the config type."""
 
@@ -28,8 +26,3 @@ class ConfigTypeListResponseData(BaseModel):
 
     updated_at: datetime
     """Timestamp of when the config type was last updated."""
-
-
-class ConfigTypeListResponse(PaginatedList):
-    data: List[ConfigTypeListResponseData]
-    """The list of config types."""

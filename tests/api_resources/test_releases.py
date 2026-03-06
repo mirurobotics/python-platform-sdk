@@ -133,10 +133,10 @@ class TestReleases:
     def test_method_list_with_all_params(self, client: Miru) -> None:
         release = client.releases.list(
             id=["rls_123"],
-            expand=["total_count"],
-            limit=1,
+            expand=["config_schemas"],
+            limit=10,
             offset=0,
-            order_by=["id:asc"],
+            order_by=["created_at:desc"],
             version=["v1.0.0"],
         )
         assert_matches_type(ReleaseList, release, path=["response"])
@@ -282,10 +282,10 @@ class TestAsyncReleases:
     async def test_method_list_with_all_params(self, async_client: AsyncMiru) -> None:
         release = await async_client.releases.list(
             id=["rls_123"],
-            expand=["total_count"],
-            limit=1,
+            expand=["config_schemas"],
+            limit=10,
             offset=0,
-            order_by=["id:asc"],
+            order_by=["created_at:desc"],
             version=["v1.0.0"],
         )
         assert_matches_type(ReleaseList, release, path=["response"])

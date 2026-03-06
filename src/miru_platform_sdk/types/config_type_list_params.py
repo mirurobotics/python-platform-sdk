@@ -14,7 +14,7 @@ class ConfigTypeListParams(TypedDict, total=False):
     id: SequenceNotStr[str]
     """The config type IDs to filter by."""
 
-    expand: List[Literal["total_count", "config_schemas"]]
+    expand: List[Literal["total_count"]]
     """Fields to expand on each config type in the list."""
 
     limit: int

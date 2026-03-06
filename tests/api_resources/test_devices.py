@@ -162,10 +162,10 @@ class TestDevices:
             id=["dev_123"],
             agent_version=["v1.0.0"],
             expand=["total_count"],
-            limit=1,
+            limit=10,
             name=["My Device"],
             offset=0,
-            order_by=["id:asc"],
+            order_by=["created_at:desc"],
         )
         assert_matches_type(DeviceList, device, path=["response"])
 
@@ -434,10 +434,10 @@ class TestAsyncDevices:
             id=["dev_123"],
             agent_version=["v1.0.0"],
             expand=["total_count"],
-            limit=1,
+            limit=10,
             name=["My Device"],
             offset=0,
-            order_by=["id:asc"],
+            order_by=["created_at:desc"],
         )
         assert_matches_type(DeviceList, device, path=["response"])
 

@@ -151,10 +151,10 @@ class TestConfigInstances:
             id=["cfg_inst_123"],
             config_schema_id=["cfg_sch_123"],
             config_type_id=["cfg_typ_123"],
-            expand=["total_count"],
-            limit=1,
+            expand=["content"],
+            limit=10,
             offset=0,
-            order_by=["id:asc"],
+            order_by=["created_at:desc"],
         )
         assert_matches_type(ConfigInstanceListResponse, config_instance, path=["response"])
 
@@ -380,10 +380,10 @@ class TestAsyncConfigInstances:
             id=["cfg_inst_123"],
             config_schema_id=["cfg_sch_123"],
             config_type_id=["cfg_typ_123"],
-            expand=["total_count"],
-            limit=1,
+            expand=["content"],
+            limit=10,
             offset=0,
-            order_by=["id:asc"],
+            order_by=["created_at:desc"],
         )
         assert_matches_type(ConfigInstanceListResponse, config_instance, path=["response"])
 
