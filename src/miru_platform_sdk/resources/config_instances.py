@@ -10,7 +10,7 @@ import httpx
 from ..types import (
     config_instance_list_params,
     config_instance_create_params,
-    config_instance_content_params,
+    config_instance_download_params,
     config_instance_retrieve_params,
 )
 from .._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
@@ -215,7 +215,7 @@ class ConfigInstancesResource(SyncAPIResource):
             cast_to=ConfigInstanceListResponse,
         )
 
-    def content(
+    def download(
         self,
         config_instance_id: str,
         *,
@@ -253,7 +253,7 @@ class ConfigInstancesResource(SyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=maybe_transform(
-                    {"disposition": disposition}, config_instance_content_params.ConfigInstanceContentParams
+                    {"disposition": disposition}, config_instance_download_params.ConfigInstanceDownloadParams
                 ),
             ),
             cast_to=BinaryAPIResponse,
@@ -440,7 +440,7 @@ class AsyncConfigInstancesResource(AsyncAPIResource):
             cast_to=ConfigInstanceListResponse,
         )
 
-    async def content(
+    async def download(
         self,
         config_instance_id: str,
         *,
@@ -478,7 +478,7 @@ class AsyncConfigInstancesResource(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform(
-                    {"disposition": disposition}, config_instance_content_params.ConfigInstanceContentParams
+                    {"disposition": disposition}, config_instance_download_params.ConfigInstanceDownloadParams
                 ),
             ),
             cast_to=AsyncBinaryAPIResponse,
@@ -498,8 +498,8 @@ class ConfigInstancesResourceWithRawResponse:
         self.list = to_raw_response_wrapper(
             config_instances.list,
         )
-        self.content = to_custom_raw_response_wrapper(
-            config_instances.content,
+        self.download = to_custom_raw_response_wrapper(
+            config_instances.download,
             BinaryAPIResponse,
         )
 
@@ -517,8 +517,8 @@ class AsyncConfigInstancesResourceWithRawResponse:
         self.list = async_to_raw_response_wrapper(
             config_instances.list,
         )
-        self.content = async_to_custom_raw_response_wrapper(
-            config_instances.content,
+        self.download = async_to_custom_raw_response_wrapper(
+            config_instances.download,
             AsyncBinaryAPIResponse,
         )
 
@@ -536,8 +536,8 @@ class ConfigInstancesResourceWithStreamingResponse:
         self.list = to_streamed_response_wrapper(
             config_instances.list,
         )
-        self.content = to_custom_streamed_response_wrapper(
-            config_instances.content,
+        self.download = to_custom_streamed_response_wrapper(
+            config_instances.download,
             StreamedBinaryAPIResponse,
         )
 
@@ -555,7 +555,7 @@ class AsyncConfigInstancesResourceWithStreamingResponse:
         self.list = async_to_streamed_response_wrapper(
             config_instances.list,
         )
-        self.content = async_to_custom_streamed_response_wrapper(
-            config_instances.content,
+        self.download = async_to_custom_streamed_response_wrapper(
+            config_instances.download,
             AsyncStreamedBinaryAPIResponse,
         )
