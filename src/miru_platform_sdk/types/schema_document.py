@@ -13,4 +13,4 @@ class SchemaDocument(BaseModel):
     """The raw document content."""
 
     name: str
-    """The identifier for this document."""
+    """The document filename."""

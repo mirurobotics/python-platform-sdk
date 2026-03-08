@@ -182,11 +182,11 @@ class TestConfigInstances:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_method_content(self, client: Miru, respx_mock: MockRouter) -> None:
+    def test_method_download(self, client: Miru, respx_mock: MockRouter) -> None:
         respx_mock.get("/config_instances/cfg_inst_123/content").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
-        config_instance = client.config_instances.content(
+        config_instance = client.config_instances.download(
             config_instance_id="cfg_inst_123",
         )
         assert config_instance.is_closed
@@ -196,11 +196,11 @@ class TestConfigInstances:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_method_content_with_all_params(self, client: Miru, respx_mock: MockRouter) -> None:
+    def test_method_download_with_all_params(self, client: Miru, respx_mock: MockRouter) -> None:
         respx_mock.get("/config_instances/cfg_inst_123/content").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
-        config_instance = client.config_instances.content(
+        config_instance = client.config_instances.download(
             config_instance_id="cfg_inst_123",
             disposition="inline",
         )
@@ -211,12 +211,12 @@ class TestConfigInstances:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_raw_response_content(self, client: Miru, respx_mock: MockRouter) -> None:
+    def test_raw_response_download(self, client: Miru, respx_mock: MockRouter) -> None:
         respx_mock.get("/config_instances/cfg_inst_123/content").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
 
-        config_instance = client.config_instances.with_raw_response.content(
+        config_instance = client.config_instances.with_raw_response.download(
             config_instance_id="cfg_inst_123",
         )
 
@@ -227,11 +227,11 @@ class TestConfigInstances:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_streaming_response_content(self, client: Miru, respx_mock: MockRouter) -> None:
+    def test_streaming_response_download(self, client: Miru, respx_mock: MockRouter) -> None:
         respx_mock.get("/config_instances/cfg_inst_123/content").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
-        with client.config_instances.with_streaming_response.content(
+        with client.config_instances.with_streaming_response.download(
             config_instance_id="cfg_inst_123",
         ) as config_instance:
             assert not config_instance.is_closed
@@ -245,9 +245,9 @@ class TestConfigInstances:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_path_params_content(self, client: Miru) -> None:
+    def test_path_params_download(self, client: Miru) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `config_instance_id` but received ''"):
-            client.config_instances.with_raw_response.content(
+            client.config_instances.with_raw_response.download(
                 config_instance_id="",
             )
 
@@ -411,11 +411,11 @@ class TestAsyncConfigInstances:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_method_content(self, async_client: AsyncMiru, respx_mock: MockRouter) -> None:
+    async def test_method_download(self, async_client: AsyncMiru, respx_mock: MockRouter) -> None:
         respx_mock.get("/config_instances/cfg_inst_123/content").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
-        config_instance = await async_client.config_instances.content(
+        config_instance = await async_client.config_instances.download(
             config_instance_id="cfg_inst_123",
         )
         assert config_instance.is_closed
@@ -425,11 +425,11 @@ class TestAsyncConfigInstances:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_method_content_with_all_params(self, async_client: AsyncMiru, respx_mock: MockRouter) -> None:
+    async def test_method_download_with_all_params(self, async_client: AsyncMiru, respx_mock: MockRouter) -> None:
         respx_mock.get("/config_instances/cfg_inst_123/content").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
-        config_instance = await async_client.config_instances.content(
+        config_instance = await async_client.config_instances.download(
             config_instance_id="cfg_inst_123",
             disposition="inline",
         )
@@ -440,12 +440,12 @@ class TestAsyncConfigInstances:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_raw_response_content(self, async_client: AsyncMiru, respx_mock: MockRouter) -> None:
+    async def test_raw_response_download(self, async_client: AsyncMiru, respx_mock: MockRouter) -> None:
         respx_mock.get("/config_instances/cfg_inst_123/content").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
 
-        config_instance = await async_client.config_instances.with_raw_response.content(
+        config_instance = await async_client.config_instances.with_raw_response.download(
             config_instance_id="cfg_inst_123",
         )
 
@@ -456,11 +456,11 @@ class TestAsyncConfigInstances:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_streaming_response_content(self, async_client: AsyncMiru, respx_mock: MockRouter) -> None:
+    async def test_streaming_response_download(self, async_client: AsyncMiru, respx_mock: MockRouter) -> None:
         respx_mock.get("/config_instances/cfg_inst_123/content").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
-        async with async_client.config_instances.with_streaming_response.content(
+        async with async_client.config_instances.with_streaming_response.download(
             config_instance_id="cfg_inst_123",
         ) as config_instance:
             assert not config_instance.is_closed
@@ -474,8 +474,8 @@ class TestAsyncConfigInstances:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_path_params_content(self, async_client: AsyncMiru) -> None:
+    async def test_path_params_download(self, async_client: AsyncMiru) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `config_instance_id` but received ''"):
-            await async_client.config_instances.with_raw_response.content(
+            await async_client.config_instances.with_raw_response.download(
                 config_instance_id="",
             )
