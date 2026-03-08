@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.7.0-beta.6 (2026-03-08)
+
+Full Changelog: [v0.7.0-beta.5...v0.7.0-beta.6](https://github.com/mirurobotics/python-platform-sdk/compare/v0.7.0-beta.5...v0.7.0-beta.6)
+
+### Chores
+
+* **ci:** skip uploading artifacts on stainless-internal branches ([983e18f](https://github.com/mirurobotics/python-platform-sdk/commit/983e18ff19e0214adf95819a74e1fd50a3da7dae))
+
 ## 0.7.0-beta.5 (2026-03-06)
 
 Full Changelog: [v0.7.0-beta.4...v0.7.0-beta.5](https://github.com/mirurobotics/python-platform-sdk/compare/v0.7.0-beta.4...v0.7.0-beta.5)
