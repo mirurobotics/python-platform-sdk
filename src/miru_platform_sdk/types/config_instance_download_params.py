@@ -4,10 +4,10 @@ from __future__ import annotations
 
 from typing_extensions import Literal, TypedDict
 
-__all__ = ["ConfigInstanceContentParams"]
+__all__ = ["ConfigInstanceDownloadParams"]
 
 
-class ConfigInstanceContentParams(TypedDict, total=False):
+class ConfigInstanceDownloadParams(TypedDict, total=False):
     disposition: Literal["inline", "attachment"]
     """Controls the Content-Disposition behavior.
 

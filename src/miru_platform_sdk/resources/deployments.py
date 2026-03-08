@@ -337,8 +337,7 @@ class DeploymentsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DeploymentList:
         """
-        List the deployments which have been deployed since this deployment was staged
-        and need to be reviewed.
+        List the deployments which have been deployed since this deployment was staged.
 
         Args:
           expand: Fields to expand on the deployment resource.
@@ -675,8 +674,7 @@ class AsyncDeploymentsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DeploymentList:
         """
-        List the deployments which have been deployed since this deployment was staged
-        and need to be reviewed.
+        List the deployments which have been deployed since this deployment was staged.
 
         Args:
           expand: Fields to expand on the deployment resource.

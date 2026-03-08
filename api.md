@@ -17,7 +17,7 @@ Methods:
 - <code title="post /config_instances">client.config_instances.<a href="./src/miru_platform_sdk/resources/config_instances.py">create</a>(\*\*<a href="src/miru_platform_sdk/types/config_instance_create_params.py">params</a>) -> <a href="./src/miru_platform_sdk/types/config_instance.py">ConfigInstance</a></code>
 - <code title="get /config_instances/{config_instance_id}">client.config_instances.<a href="./src/miru_platform_sdk/resources/config_instances.py">retrieve</a>(config_instance_id, \*\*<a href="src/miru_platform_sdk/types/config_instance_retrieve_params.py">params</a>) -> <a href="./src/miru_platform_sdk/types/config_instance.py">ConfigInstance</a></code>
 - <code title="get /config_instances">client.config_instances.<a href="./src/miru_platform_sdk/resources/config_instances.py">list</a>(\*\*<a href="src/miru_platform_sdk/types/config_instance_list_params.py">params</a>) -> <a href="./src/miru_platform_sdk/types/config_instance_list_response.py">ConfigInstanceListResponse</a></code>
-- <code title="get /config_instances/{config_instance_id}/content">client.config_instances.<a href="./src/miru_platform_sdk/resources/config_instances.py">content</a>(config_instance_id, \*\*<a href="src/miru_platform_sdk/types/config_instance_content_params.py">params</a>) -> BinaryAPIResponse</code>
+- <code title="get /config_instances/{config_instance_id}/content">client.config_instances.<a href="./src/miru_platform_sdk/resources/config_instances.py">download</a>(config_instance_id, \*\*<a href="src/miru_platform_sdk/types/config_instance_download_params.py">params</a>) -> BinaryAPIResponse</code>
 
 # ConfigSchemas
 

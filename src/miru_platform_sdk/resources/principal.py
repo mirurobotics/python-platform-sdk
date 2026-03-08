@@ -49,11 +49,7 @@ class PrincipalResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Principal:
-        """Identify the currently authenticated principal.
-
-        Returns the identity associated
-        with the API key used in the request.
-        """
+        """Retrieve the currently authenticated principal."""
         return self._get(
             "/principal",
             options=make_request_options(
@@ -93,11 +89,7 @@ class AsyncPrincipalResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Principal:
-        """Identify the currently authenticated principal.
-
-        Returns the identity associated
-        with the API key used in the request.
-        """
+        """Retrieve the currently authenticated principal."""
         return await self._get(
             "/principal",
             options=make_request_options(
