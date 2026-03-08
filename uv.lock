@@ -560,7 +560,7 @@ wheels = [
 
 [[package]]
 name = "miru-platform-sdk"
-version = "0.7.0b5"
+version = "0.7.0"
 source = { editable = "." }
 dependencies = [
     { name = "anyio" },

@@ -17,7 +17,7 @@ The REST API documentation can be found on [docs.mirurobotics.com](https://docs.
 
 ```sh
 # install from PyPI
-pip install '--pre miru-platform-sdk'
+pip install miru-platform-sdk
 ```
 
 ## Usage
@@ -75,7 +75,7 @@ You can enable this by installing `aiohttp`:
 
 ```sh
 # install from PyPI
-pip install '--pre miru-platform-sdk[aiohttp]'
+pip install miru-platform-sdk[aiohttp]
 ```
 
 Then you can enable it by instantiating the client with `http_client=DefaultAioHttpClient()`:
