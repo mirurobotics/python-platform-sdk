@@ -14,7 +14,7 @@ from ..types import (
     config_instance_retrieve_params,
 )
 from .._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
-from .._utils import maybe_transform, async_maybe_transform
+from .._utils import path_template, maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -136,7 +136,7 @@ class ConfigInstancesResource(SyncAPIResource):
         if not config_instance_id:
             raise ValueError(f"Expected a non-empty value for `config_instance_id` but received {config_instance_id!r}")
         return self._get(
-            f"/config_instances/{config_instance_id}",
+            path_template("/config_instances/{config_instance_id}", config_instance_id=config_instance_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -246,7 +246,7 @@ class ConfigInstancesResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `config_instance_id` but received {config_instance_id!r}")
         extra_headers = {"Accept": "application/octet-stream", **(extra_headers or {})}
         return self._get(
-            f"/config_instances/{config_instance_id}/content",
+            path_template("/config_instances/{config_instance_id}/content", config_instance_id=config_instance_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -359,7 +359,7 @@ class AsyncConfigInstancesResource(AsyncAPIResource):
         if not config_instance_id:
             raise ValueError(f"Expected a non-empty value for `config_instance_id` but received {config_instance_id!r}")
         return await self._get(
-            f"/config_instances/{config_instance_id}",
+            path_template("/config_instances/{config_instance_id}", config_instance_id=config_instance_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -471,7 +471,7 @@ class AsyncConfigInstancesResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `config_instance_id` but received {config_instance_id!r}")
         extra_headers = {"Accept": "application/octet-stream", **(extra_headers or {})}
         return await self._get(
-            f"/config_instances/{config_instance_id}/content",
+            path_template("/config_instances/{config_instance_id}/content", config_instance_id=config_instance_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
