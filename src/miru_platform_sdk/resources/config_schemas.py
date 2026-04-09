@@ -14,7 +14,7 @@ from ..types import (
     config_schema_retrieve_params,
 )
 from .._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
-from .._utils import maybe_transform, async_maybe_transform
+from .._utils import path_template, maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -143,7 +143,7 @@ class ConfigSchemasResource(SyncAPIResource):
         if not config_schema_id:
             raise ValueError(f"Expected a non-empty value for `config_schema_id` but received {config_schema_id!r}")
         return self._get(
-            f"/config_schemas/{config_schema_id}",
+            path_template("/config_schemas/{config_schema_id}", config_schema_id=config_schema_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -333,7 +333,7 @@ class AsyncConfigSchemasResource(AsyncAPIResource):
         if not config_schema_id:
             raise ValueError(f"Expected a non-empty value for `config_schema_id` but received {config_schema_id!r}")
         return await self._get(
-            f"/config_schemas/{config_schema_id}",
+            path_template("/config_schemas/{config_schema_id}", config_schema_id=config_schema_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,

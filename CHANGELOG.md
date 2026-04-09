@@ -1,5 +1,28 @@
 # Changelog
 
+## 0.8.0 (2026-04-08)
+
+Full Changelog: [v0.7.0...v0.8.0](https://github.com/mirurobotics/python-platform-sdk/compare/v0.7.0...v0.8.0)
+
+### Features
+
+* **internal:** implement indices array format for query and form serialization ([81adbec](https://github.com/mirurobotics/python-platform-sdk/commit/81adbec701adf8e2952ae8211de868dafce42732))
+
+
+### Bug Fixes
+
+* **client:** preserve hardcoded query params when merging with user params ([c9d40ca](https://github.com/mirurobotics/python-platform-sdk/commit/c9d40cac501fd18c68af97b2928200a3e99cdd59))
+* **deps:** bump minimum typing-extensions version ([63f1814](https://github.com/mirurobotics/python-platform-sdk/commit/63f18147c08d24cae32665f5fd2f77de259a9900))
+* **pydantic:** do not pass `by_alias` unless set ([3a25c23](https://github.com/mirurobotics/python-platform-sdk/commit/3a25c23ed2863ea1b9b4670e53084d4a6e295321))
+* sanitize endpoint path params ([1b9b9e4](https://github.com/mirurobotics/python-platform-sdk/commit/1b9b9e4388cd49a78f128ff0c466c42442fb5d5a))
+
+
+### Chores
+
+* **ci:** skip lint on metadata-only changes ([0fa2565](https://github.com/mirurobotics/python-platform-sdk/commit/0fa2565e73e4a5ff9a5a97375a541e4c858d00b1))
+* **internal:** tweak CI branches ([14940d2](https://github.com/mirurobotics/python-platform-sdk/commit/14940d2920c3866e32c17169923aafe45e4f3a9a))
+* **internal:** update gitignore ([aa19164](https://github.com/mirurobotics/python-platform-sdk/commit/aa19164d96d62b5b345a740ed6260fc091637fe6))
+
 ## 0.7.0 (2026-03-08)
 
 Full Changelog: [v0.7.0-beta.5...v0.7.0](https://github.com/mirurobotics/python-platform-sdk/compare/v0.7.0-beta.5...v0.7.0)
