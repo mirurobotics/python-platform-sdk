@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.8.1 (2026-04-11)
+
+Full Changelog: [v0.8.0...v0.8.1](https://github.com/mirurobotics/python-platform-sdk/compare/v0.8.0...v0.8.1)
+
+### Bug Fixes
+
+* ensure file data are only sent as 1 parameter ([1ac879d](https://github.com/mirurobotics/python-platform-sdk/commit/1ac879de2432f0e5ea2abbfe28f4242c4a99f792))
+
 ## 0.8.0 (2026-04-08)
 
 Full Changelog: [v0.7.0...v0.8.0](https://github.com/mirurobotics/python-platform-sdk/compare/v0.7.0...v0.8.0)
