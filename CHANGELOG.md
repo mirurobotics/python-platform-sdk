@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.8.2 (2026-04-18)
+
+Full Changelog: [v0.8.1...v0.8.2](https://github.com/mirurobotics/python-platform-sdk/compare/v0.8.1...v0.8.2)
+
+### Performance Improvements
+
+* **client:** optimize file structure copying in multipart requests ([954d6ab](https://github.com/mirurobotics/python-platform-sdk/commit/954d6ab91aea4648ec0f7a2cddf0e0fa4a44a73b))
+
 ## 0.8.1 (2026-04-11)
 
 Full Changelog: [v0.8.0...v0.8.1](https://github.com/mirurobotics/python-platform-sdk/compare/v0.8.0...v0.8.1)
