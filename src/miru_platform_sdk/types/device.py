@@ -1,9 +1,12 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
+from __future__ import annotations
+
 from typing import Optional
 from datetime import datetime
 from typing_extensions import Literal
 
+from .release import Release
 from .._models import BaseModel
 
 __all__ = ["Device"]
@@ -51,3 +54,12 @@ class Device(BaseModel):
 
     updated_at: datetime
     """Timestamp of when the device was last updated."""
+
+    current_deployment: Optional["Deployment"] = None
+    """The current deployment for the device."""
+
+    current_release: Optional[Release] = None
+    """The current release for the device."""
+
+
+from .deployment import Deployment

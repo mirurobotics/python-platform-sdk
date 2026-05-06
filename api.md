@@ -70,22 +70,28 @@ Methods:
 Types:
 
 ```python
-from miru_platform_sdk.types import (
-    Device,
-    DeviceList,
-    DeviceIssueActivationTokenResponse,
-    DevicePingResponse,
-)
+from miru_platform_sdk.types import Device, DeviceList, DevicePingResponse
 ```
 
 Methods:
 
 - <code title="post /devices">client.devices.<a href="./src/miru_platform_sdk/resources/devices.py">create</a>(\*\*<a href="src/miru_platform_sdk/types/device_create_params.py">params</a>) -> <a href="./src/miru_platform_sdk/types/device.py">Device</a></code>
-- <code title="get /devices/{device_id}">client.devices.<a href="./src/miru_platform_sdk/resources/devices.py">retrieve</a>(device_id) -> <a href="./src/miru_platform_sdk/types/device.py">Device</a></code>
+- <code title="get /devices/{device_id}">client.devices.<a href="./src/miru_platform_sdk/resources/devices.py">retrieve</a>(device_id, \*\*<a href="src/miru_platform_sdk/types/device_retrieve_params.py">params</a>) -> <a href="./src/miru_platform_sdk/types/device.py">Device</a></code>
 - <code title="patch /devices/{device_id}">client.devices.<a href="./src/miru_platform_sdk/resources/devices.py">update</a>(device_id, \*\*<a href="src/miru_platform_sdk/types/device_update_params.py">params</a>) -> <a href="./src/miru_platform_sdk/types/device.py">Device</a></code>
 - <code title="get /devices">client.devices.<a href="./src/miru_platform_sdk/resources/devices.py">list</a>(\*\*<a href="src/miru_platform_sdk/types/device_list_params.py">params</a>) -> <a href="./src/miru_platform_sdk/types/device_list.py">DeviceList</a></code>
-- <code title="post /devices/{device_id}/activation_token">client.devices.<a href="./src/miru_platform_sdk/resources/devices.py">issue_activation_token</a>(device_id, \*\*<a href="src/miru_platform_sdk/types/device_issue_activation_token_params.py">params</a>) -> <a href="./src/miru_platform_sdk/types/device_issue_activation_token_response.py">DeviceIssueActivationTokenResponse</a></code>
 - <code title="post /devices/{device_id}/ping">client.devices.<a href="./src/miru_platform_sdk/resources/devices.py">ping</a>(device_id, \*\*<a href="src/miru_platform_sdk/types/device_ping_params.py">params</a>) -> <a href="./src/miru_platform_sdk/types/device_ping_response.py">DevicePingResponse</a></code>
+
+# ProvisioningTokens
+
+Types:
+
+```python
+from miru_platform_sdk.types import ProvisioningToken
+```
+
+Methods:
+
+- <code title="post /provisioning_tokens">client.provisioning_tokens.<a href="./src/miru_platform_sdk/resources/provisioning_tokens.py">create</a>() -> <a href="./src/miru_platform_sdk/types/provisioning_token.py">ProvisioningToken</a></code>
 
 # GitCommits
 

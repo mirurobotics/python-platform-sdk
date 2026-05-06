@@ -84,10 +84,11 @@ class DeploymentsResource(SyncAPIResource):
 
           target_status: Desired state of the deployment.
 
-              - Staged: ready for deployment. Deployments can only be staged if their release
-                is not the current release for the device.
-              - Deployed: deployed to the device. Deployments can only be deployed if their
-                release is the device's current release.
+              `staged` means the deployment is ready for deployment. Deployments can only be
+              staged if their release is not the device's current release.
+
+              `deployed` means the deployment should be deployed to the device. Deployments
+              can only be deployed if their release is the device's current release.
 
           expand: Fields to expand on the deployment resource.
 
@@ -168,7 +169,7 @@ class DeploymentsResource(SyncAPIResource):
         self,
         *,
         id: SequenceNotStr[str] | Omit = omit,
-        activity_status: List[Literal["drifted", "staged", "queued", "deployed", "archived"]] | Omit = omit,
+        activity_status: List[Literal["drifted", "staged", "queued", "deployed", "removing", "archived"]] | Omit = omit,
         device_id: SequenceNotStr[str] | Omit = omit,
         error_status: List[Literal["none", "failed", "retrying"]] | Omit = omit,
         expand: List[Literal["total_count", "device", "release", "config_instances"]] | Omit = omit,
@@ -417,10 +418,11 @@ class AsyncDeploymentsResource(AsyncAPIResource):
 
           target_status: Desired state of the deployment.
 
-              - Staged: ready for deployment. Deployments can only be staged if their release
-                is not the current release for the device.
-              - Deployed: deployed to the device. Deployments can only be deployed if their
-                release is the device's current release.
+              `staged` means the deployment is ready for deployment. Deployments can only be
+              staged if their release is not the device's current release.
+
+              `deployed` means the deployment should be deployed to the device. Deployments
+              can only be deployed if their release is the device's current release.
 
           expand: Fields to expand on the deployment resource.
 
@@ -503,7 +505,7 @@ class AsyncDeploymentsResource(AsyncAPIResource):
         self,
         *,
         id: SequenceNotStr[str] | Omit = omit,
-        activity_status: List[Literal["drifted", "staged", "queued", "deployed", "archived"]] | Omit = omit,
+        activity_status: List[Literal["drifted", "staged", "queued", "deployed", "removing", "archived"]] | Omit = omit,
         device_id: SequenceNotStr[str] | Omit = omit,
         error_status: List[Literal["none", "failed", "retrying"]] | Omit = omit,
         expand: List[Literal["total_count", "device", "release", "config_instances"]] | Omit = omit,
