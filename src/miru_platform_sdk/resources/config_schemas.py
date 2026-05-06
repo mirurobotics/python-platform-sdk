@@ -81,7 +81,7 @@ class ConfigSchemasResource(SyncAPIResource):
 
           git_commit: The git commit to link to this config schema.
 
-          instance_filepath: The file path for config instances created from this schema.
+          instance_filepath: The absolute file system path config instances for this schema are written to.
 
           extra_headers: Send extra headers
 
@@ -269,7 +269,7 @@ class AsyncConfigSchemasResource(AsyncAPIResource):
 
           git_commit: The git commit to link to this config schema.
 
-          instance_filepath: The file path for config instances created from this schema.
+          instance_filepath: The absolute file system path config instances for this schema are written to.
 
           extra_headers: Send extra headers
 

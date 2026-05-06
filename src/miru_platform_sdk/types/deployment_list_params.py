@@ -14,7 +14,7 @@ class DeploymentListParams(TypedDict, total=False):
     id: SequenceNotStr[str]
     """The deployment IDs to filter by."""
 
-    activity_status: List[Literal["drifted", "staged", "queued", "deployed", "archived"]]
+    activity_status: List[Literal["drifted", "staged", "queued", "deployed", "removing", "archived"]]
     """The deployment activity statuses to filter by."""
 
     device_id: SequenceNotStr[str]

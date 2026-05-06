@@ -12,7 +12,7 @@ from ..types import (
     device_ping_params,
     device_create_params,
     device_update_params,
-    device_issue_activation_token_params,
+    device_retrieve_params,
 )
 from .._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
 from .._utils import path_template, maybe_transform, async_maybe_transform
@@ -28,7 +28,6 @@ from .._base_client import make_request_options
 from ..types.device import Device
 from ..types.device_list import DeviceList
 from ..types.device_ping_response import DevicePingResponse
-from ..types.device_issue_activation_token_response import DeviceIssueActivationTokenResponse
 
 __all__ = ["DevicesResource", "AsyncDevicesResource"]
 
@@ -57,6 +56,7 @@ class DevicesResource(SyncAPIResource):
         self,
         *,
         name: str,
+        expand: List[Literal["current_deployment", "current_release"]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -70,6 +70,8 @@ class DevicesResource(SyncAPIResource):
         Args:
           name: The name of the device.
 
+          expand: Fields to expand on the device resource.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -82,7 +84,11 @@ class DevicesResource(SyncAPIResource):
             "/devices",
             body=maybe_transform({"name": name}, device_create_params.DeviceCreateParams),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform({"expand": expand}, device_create_params.DeviceCreateParams),
             ),
             cast_to=Device,
         )
@@ -91,6 +97,7 @@ class DevicesResource(SyncAPIResource):
         self,
         device_id: str,
         *,
+        expand: List[Literal["current_deployment", "current_release"]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -102,6 +109,8 @@ class DevicesResource(SyncAPIResource):
         Get a device by ID.
 
         Args:
+          expand: Fields to expand on the device resource.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -115,7 +124,11 @@ class DevicesResource(SyncAPIResource):
         return self._get(
             path_template("/devices/{device_id}", device_id=device_id),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform({"expand": expand}, device_retrieve_params.DeviceRetrieveParams),
             ),
             cast_to=Device,
         )
@@ -124,6 +137,7 @@ class DevicesResource(SyncAPIResource):
         self,
         device_id: str,
         *,
+        expand: List[Literal["current_deployment", "current_release"]] | Omit = omit,
         name: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -132,12 +146,13 @@ class DevicesResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Device:
-        """Update a device by ID.
+        """
+        Update a device by ID.
 
         Args:
-          name: The new name of the device.
+          expand: Fields to expand on the device resource.
 
-        If excluded from the request, the device name is not
+          name: The new name of the device. If excluded from the request, the device name is not
               updated.
 
           extra_headers: Send extra headers
@@ -154,7 +169,11 @@ class DevicesResource(SyncAPIResource):
             path_template("/devices/{device_id}", device_id=device_id),
             body=maybe_transform({"name": name}, device_update_params.DeviceUpdateParams),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform({"expand": expand}, device_update_params.DeviceUpdateParams),
             ),
             cast_to=Device,
         )
@@ -164,7 +183,8 @@ class DevicesResource(SyncAPIResource):
         *,
         id: SequenceNotStr[str] | Omit = omit,
         agent_version: SequenceNotStr[str] | Omit = omit,
-        expand: List[Literal["total_count"]] | Omit = omit,
+        current_release_id: SequenceNotStr[str] | Omit = omit,
+        expand: List[Literal["total_count", "current_deployment", "current_release"]] | Omit = omit,
         limit: int | Omit = omit,
         name: SequenceNotStr[str] | Omit = omit,
         offset: int | Omit = omit,
@@ -183,6 +203,8 @@ class DevicesResource(SyncAPIResource):
           id: The device IDs to filter by.
 
           agent_version: The agent versions to filter by.
+
+          current_release_id: The release IDs to filter devices by their current release.
 
           expand: Fields to expand on each device in the list.
 
@@ -215,6 +237,7 @@ class DevicesResource(SyncAPIResource):
                     {
                         "id": id,
                         "agent_version": agent_version,
+                        "current_release_id": current_release_id,
                         "expand": expand,
                         "limit": limit,
                         "name": name,
@@ -225,47 +248,6 @@ class DevicesResource(SyncAPIResource):
                 ),
             ),
             cast_to=DeviceList,
-        )
-
-    def issue_activation_token(
-        self,
-        device_id: str,
-        *,
-        allow_reactivation: bool | Omit = omit,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> DeviceIssueActivationTokenResponse:
-        """
-        Create a new device activation token.
-
-        Args:
-          allow_reactivation: Whether this token can reactivate already activated devices. If false, the token
-              is unable to activate devices which are already activated.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not device_id:
-            raise ValueError(f"Expected a non-empty value for `device_id` but received {device_id!r}")
-        return self._post(
-            path_template("/devices/{device_id}/activation_token", device_id=device_id),
-            body=maybe_transform(
-                {"allow_reactivation": allow_reactivation},
-                device_issue_activation_token_params.DeviceIssueActivationTokenParams,
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=DeviceIssueActivationTokenResponse,
         )
 
     def ping(
@@ -331,6 +313,7 @@ class AsyncDevicesResource(AsyncAPIResource):
         self,
         *,
         name: str,
+        expand: List[Literal["current_deployment", "current_release"]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -344,6 +327,8 @@ class AsyncDevicesResource(AsyncAPIResource):
         Args:
           name: The name of the device.
 
+          expand: Fields to expand on the device resource.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -356,7 +341,11 @@ class AsyncDevicesResource(AsyncAPIResource):
             "/devices",
             body=await async_maybe_transform({"name": name}, device_create_params.DeviceCreateParams),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform({"expand": expand}, device_create_params.DeviceCreateParams),
             ),
             cast_to=Device,
         )
@@ -365,6 +354,7 @@ class AsyncDevicesResource(AsyncAPIResource):
         self,
         device_id: str,
         *,
+        expand: List[Literal["current_deployment", "current_release"]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -376,6 +366,8 @@ class AsyncDevicesResource(AsyncAPIResource):
         Get a device by ID.
 
         Args:
+          expand: Fields to expand on the device resource.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -389,7 +381,11 @@ class AsyncDevicesResource(AsyncAPIResource):
         return await self._get(
             path_template("/devices/{device_id}", device_id=device_id),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform({"expand": expand}, device_retrieve_params.DeviceRetrieveParams),
             ),
             cast_to=Device,
         )
@@ -398,6 +394,7 @@ class AsyncDevicesResource(AsyncAPIResource):
         self,
         device_id: str,
         *,
+        expand: List[Literal["current_deployment", "current_release"]] | Omit = omit,
         name: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -406,12 +403,13 @@ class AsyncDevicesResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Device:
-        """Update a device by ID.
+        """
+        Update a device by ID.
 
         Args:
-          name: The new name of the device.
+          expand: Fields to expand on the device resource.
 
-        If excluded from the request, the device name is not
+          name: The new name of the device. If excluded from the request, the device name is not
               updated.
 
           extra_headers: Send extra headers
@@ -428,7 +426,11 @@ class AsyncDevicesResource(AsyncAPIResource):
             path_template("/devices/{device_id}", device_id=device_id),
             body=await async_maybe_transform({"name": name}, device_update_params.DeviceUpdateParams),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform({"expand": expand}, device_update_params.DeviceUpdateParams),
             ),
             cast_to=Device,
         )
@@ -438,7 +440,8 @@ class AsyncDevicesResource(AsyncAPIResource):
         *,
         id: SequenceNotStr[str] | Omit = omit,
         agent_version: SequenceNotStr[str] | Omit = omit,
-        expand: List[Literal["total_count"]] | Omit = omit,
+        current_release_id: SequenceNotStr[str] | Omit = omit,
+        expand: List[Literal["total_count", "current_deployment", "current_release"]] | Omit = omit,
         limit: int | Omit = omit,
         name: SequenceNotStr[str] | Omit = omit,
         offset: int | Omit = omit,
@@ -457,6 +460,8 @@ class AsyncDevicesResource(AsyncAPIResource):
           id: The device IDs to filter by.
 
           agent_version: The agent versions to filter by.
+
+          current_release_id: The release IDs to filter devices by their current release.
 
           expand: Fields to expand on each device in the list.
 
@@ -489,6 +494,7 @@ class AsyncDevicesResource(AsyncAPIResource):
                     {
                         "id": id,
                         "agent_version": agent_version,
+                        "current_release_id": current_release_id,
                         "expand": expand,
                         "limit": limit,
                         "name": name,
@@ -499,47 +505,6 @@ class AsyncDevicesResource(AsyncAPIResource):
                 ),
             ),
             cast_to=DeviceList,
-        )
-
-    async def issue_activation_token(
-        self,
-        device_id: str,
-        *,
-        allow_reactivation: bool | Omit = omit,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> DeviceIssueActivationTokenResponse:
-        """
-        Create a new device activation token.
-
-        Args:
-          allow_reactivation: Whether this token can reactivate already activated devices. If false, the token
-              is unable to activate devices which are already activated.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not device_id:
-            raise ValueError(f"Expected a non-empty value for `device_id` but received {device_id!r}")
-        return await self._post(
-            path_template("/devices/{device_id}/activation_token", device_id=device_id),
-            body=await async_maybe_transform(
-                {"allow_reactivation": allow_reactivation},
-                device_issue_activation_token_params.DeviceIssueActivationTokenParams,
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=DeviceIssueActivationTokenResponse,
         )
 
     async def ping(
@@ -597,9 +562,6 @@ class DevicesResourceWithRawResponse:
         self.list = to_raw_response_wrapper(
             devices.list,
         )
-        self.issue_activation_token = to_raw_response_wrapper(
-            devices.issue_activation_token,
-        )
         self.ping = to_raw_response_wrapper(
             devices.ping,
         )
@@ -620,9 +582,6 @@ class AsyncDevicesResourceWithRawResponse:
         )
         self.list = async_to_raw_response_wrapper(
             devices.list,
-        )
-        self.issue_activation_token = async_to_raw_response_wrapper(
-            devices.issue_activation_token,
         )
         self.ping = async_to_raw_response_wrapper(
             devices.ping,
@@ -645,9 +604,6 @@ class DevicesResourceWithStreamingResponse:
         self.list = to_streamed_response_wrapper(
             devices.list,
         )
-        self.issue_activation_token = to_streamed_response_wrapper(
-            devices.issue_activation_token,
-        )
         self.ping = to_streamed_response_wrapper(
             devices.ping,
         )
@@ -668,9 +624,6 @@ class AsyncDevicesResourceWithStreamingResponse:
         )
         self.list = async_to_streamed_response_wrapper(
             devices.list,
-        )
-        self.issue_activation_token = async_to_streamed_response_wrapper(
-            devices.issue_activation_token,
         )
         self.ping = async_to_streamed_response_wrapper(
             devices.ping,

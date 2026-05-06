@@ -64,6 +64,14 @@ from .config_instances import (
     ConfigInstancesResourceWithStreamingResponse,
     AsyncConfigInstancesResourceWithStreamingResponse,
 )
+from .provisioning_tokens import (
+    ProvisioningTokensResource,
+    AsyncProvisioningTokensResource,
+    ProvisioningTokensResourceWithRawResponse,
+    AsyncProvisioningTokensResourceWithRawResponse,
+    ProvisioningTokensResourceWithStreamingResponse,
+    AsyncProvisioningTokensResourceWithStreamingResponse,
+)
 
 __all__ = [
     "ConfigInstancesResource",
@@ -96,6 +104,12 @@ __all__ = [
     "AsyncDevicesResourceWithRawResponse",
     "DevicesResourceWithStreamingResponse",
     "AsyncDevicesResourceWithStreamingResponse",
+    "ProvisioningTokensResource",
+    "AsyncProvisioningTokensResource",
+    "ProvisioningTokensResourceWithRawResponse",
+    "AsyncProvisioningTokensResourceWithRawResponse",
+    "ProvisioningTokensResourceWithStreamingResponse",
+    "AsyncProvisioningTokensResourceWithStreamingResponse",
     "GitCommitsResource",
     "AsyncGitCommitsResource",
     "GitCommitsResourceWithRawResponse",

@@ -11,4 +11,4 @@ class InstanceContentParam(TypedDict, total=False):
     data: Required[str]
     """The configuration values associated with the config instance."""
 
-    format: Required[Literal["json"]]
+    format: Required[Literal["json", "yaml", "jsonc"]]

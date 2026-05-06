@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from . import device, deployment
+from .. import _compat
 from .device import Device as Device
 from .shared import PaginatedList as PaginatedList
 from .release import Release as Release
@@ -21,6 +23,7 @@ from .instance_content import InstanceContent as InstanceContent
 from .config_schema_list import ConfigSchemaList as ConfigSchemaList
 from .device_list_params import DeviceListParams as DeviceListParams
 from .device_ping_params import DevicePingParams as DevicePingParams
+from .provisioning_token import ProvisioningToken as ProvisioningToken
 from .release_list_params import ReleaseListParams as ReleaseListParams
 from .device_create_params import DeviceCreateParams as DeviceCreateParams
 from .device_ping_response import DevicePingResponse as DevicePingResponse
@@ -28,6 +31,7 @@ from .device_update_params import DeviceUpdateParams as DeviceUpdateParams
 from .git_commit_ref_param import GitCommitRefParam as GitCommitRefParam
 from .release_create_params import ReleaseCreateParams as ReleaseCreateParams
 from .deployment_list_params import DeploymentListParams as DeploymentListParams
+from .device_retrieve_params import DeviceRetrieveParams as DeviceRetrieveParams
 from .git_commit_list_params import GitCommitListParams as GitCommitListParams
 from .instance_content_param import InstanceContentParam as InstanceContentParam
 from .config_type_list_params import ConfigTypeListParams as ConfigTypeListParams
@@ -49,7 +53,14 @@ from .config_schema_retrieve_params import ConfigSchemaRetrieveParams as ConfigS
 from .deployment_list_drifts_params import DeploymentListDriftsParams as DeploymentListDriftsParams
 from .config_instance_download_params import ConfigInstanceDownloadParams as ConfigInstanceDownloadParams
 from .config_instance_retrieve_params import ConfigInstanceRetrieveParams as ConfigInstanceRetrieveParams
-from .device_issue_activation_token_params import DeviceIssueActivationTokenParams as DeviceIssueActivationTokenParams
-from .device_issue_activation_token_response import (
-    DeviceIssueActivationTokenResponse as DeviceIssueActivationTokenResponse,
-)
+
+# Rebuild cyclical models only after all modules are imported.
+# This ensures that, when building the deferred (due to cyclical references) model schema,
+# Pydantic can resolve the necessary references.
+# See: https://github.com/pydantic/pydantic/issues/11250 for more context.
+if _compat.PYDANTIC_V1:
+    deployment.Deployment.update_forward_refs()  # type: ignore
+    device.Device.update_forward_refs()  # type: ignore
+else:
+    deployment.Deployment.model_rebuild(_parent_namespace_depth=0)
+    device.Device.model_rebuild(_parent_namespace_depth=0)

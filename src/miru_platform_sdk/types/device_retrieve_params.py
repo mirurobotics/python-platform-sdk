@@ -3,14 +3,11 @@
 from __future__ import annotations
 
 from typing import List
-from typing_extensions import Literal, Required, TypedDict
+from typing_extensions import Literal, TypedDict
 
-__all__ = ["DeviceCreateParams"]
+__all__ = ["DeviceRetrieveParams"]
 
 
-class DeviceCreateParams(TypedDict, total=False):
-    name: Required[str]
-    """The name of the device."""
-
+class DeviceRetrieveParams(TypedDict, total=False):
     expand: List[Literal["current_deployment", "current_release"]]
     """Fields to expand on the device resource."""
