@@ -2,12 +2,16 @@
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import List
+from typing_extensions import Literal, TypedDict
 
 __all__ = ["DeviceUpdateParams"]
 
 
 class DeviceUpdateParams(TypedDict, total=False):
+    expand: List[Literal["current_deployment", "current_release"]]
+    """Fields to expand on the device resource."""
+
     name: str
     """The new name of the device.
 

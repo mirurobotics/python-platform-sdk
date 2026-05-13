@@ -11,4 +11,4 @@ class InstanceContent(BaseModel):
     data: str
     """The configuration values associated with the config instance."""
 
-    format: Literal["json"]
+    format: Literal["json", "yaml", "jsonc"]

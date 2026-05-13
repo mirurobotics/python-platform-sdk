@@ -34,7 +34,7 @@ class ConfigSchemaCreateParams(TypedDict, total=False):
     """The git commit to link to this config schema."""
 
     instance_filepath: str
-    """The file path for config instances created from this schema."""
+    """The absolute file system path config instances for this schema are written to."""
 
 
 class ConfigTypeRef(TypedDict, total=False):

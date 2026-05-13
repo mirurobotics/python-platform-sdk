@@ -29,11 +29,7 @@ class ConfigInstance(BaseModel):
     """The timestamp of when the config instance was created."""
 
     filepath: str
-    """
-    The file path to deploy the config instance relative to
-    `/srv/miru/config_instances`. `v1/motion-control.json` would deploy to
-    `/srv/miru/config_instances/v1/motion-control.json`.
-    """
+    """The absolute file system path where this config instance is written."""
 
     object: Literal["config_instance"]
     """The object type, which is always `config_instance`."""

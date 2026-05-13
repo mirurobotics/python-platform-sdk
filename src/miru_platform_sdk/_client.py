@@ -44,6 +44,7 @@ if TYPE_CHECKING:
         config_types,
         config_schemas,
         config_instances,
+        provisioning_tokens,
     )
     from .resources.devices import DevicesResource, AsyncDevicesResource
     from .resources.releases import ReleasesResource, AsyncReleasesResource
@@ -53,6 +54,7 @@ if TYPE_CHECKING:
     from .resources.config_types import ConfigTypesResource, AsyncConfigTypesResource
     from .resources.config_schemas import ConfigSchemasResource, AsyncConfigSchemasResource
     from .resources.config_instances import ConfigInstancesResource, AsyncConfigInstancesResource
+    from .resources.provisioning_tokens import ProvisioningTokensResource, AsyncProvisioningTokensResource
 
 __all__ = [
     "ENVIRONMENTS",
@@ -199,6 +201,12 @@ class Miru(SyncAPIClient):
         from .resources.devices import DevicesResource
 
         return DevicesResource(self)
+
+    @cached_property
+    def provisioning_tokens(self) -> ProvisioningTokensResource:
+        from .resources.provisioning_tokens import ProvisioningTokensResource
+
+        return ProvisioningTokensResource(self)
 
     @cached_property
     def git_commits(self) -> GitCommitsResource:
@@ -463,6 +471,12 @@ class AsyncMiru(AsyncAPIClient):
         return AsyncDevicesResource(self)
 
     @cached_property
+    def provisioning_tokens(self) -> AsyncProvisioningTokensResource:
+        from .resources.provisioning_tokens import AsyncProvisioningTokensResource
+
+        return AsyncProvisioningTokensResource(self)
+
+    @cached_property
     def git_commits(self) -> AsyncGitCommitsResource:
         from .resources.git_commits import AsyncGitCommitsResource
 
@@ -635,6 +649,12 @@ class MiruWithRawResponse:
         return DevicesResourceWithRawResponse(self._client.devices)
 
     @cached_property
+    def provisioning_tokens(self) -> provisioning_tokens.ProvisioningTokensResourceWithRawResponse:
+        from .resources.provisioning_tokens import ProvisioningTokensResourceWithRawResponse
+
+        return ProvisioningTokensResourceWithRawResponse(self._client.provisioning_tokens)
+
+    @cached_property
     def git_commits(self) -> git_commits.GitCommitsResourceWithRawResponse:
         from .resources.git_commits import GitCommitsResourceWithRawResponse
 
@@ -688,6 +708,12 @@ class AsyncMiruWithRawResponse:
         from .resources.devices import AsyncDevicesResourceWithRawResponse
 
         return AsyncDevicesResourceWithRawResponse(self._client.devices)
+
+    @cached_property
+    def provisioning_tokens(self) -> provisioning_tokens.AsyncProvisioningTokensResourceWithRawResponse:
+        from .resources.provisioning_tokens import AsyncProvisioningTokensResourceWithRawResponse
+
+        return AsyncProvisioningTokensResourceWithRawResponse(self._client.provisioning_tokens)
 
     @cached_property
     def git_commits(self) -> git_commits.AsyncGitCommitsResourceWithRawResponse:
@@ -745,6 +771,12 @@ class MiruWithStreamedResponse:
         return DevicesResourceWithStreamingResponse(self._client.devices)
 
     @cached_property
+    def provisioning_tokens(self) -> provisioning_tokens.ProvisioningTokensResourceWithStreamingResponse:
+        from .resources.provisioning_tokens import ProvisioningTokensResourceWithStreamingResponse
+
+        return ProvisioningTokensResourceWithStreamingResponse(self._client.provisioning_tokens)
+
+    @cached_property
     def git_commits(self) -> git_commits.GitCommitsResourceWithStreamingResponse:
         from .resources.git_commits import GitCommitsResourceWithStreamingResponse
 
@@ -798,6 +830,12 @@ class AsyncMiruWithStreamedResponse:
         from .resources.devices import AsyncDevicesResourceWithStreamingResponse
 
         return AsyncDevicesResourceWithStreamingResponse(self._client.devices)
+
+    @cached_property
+    def provisioning_tokens(self) -> provisioning_tokens.AsyncProvisioningTokensResourceWithStreamingResponse:
+        from .resources.provisioning_tokens import AsyncProvisioningTokensResourceWithStreamingResponse
+
+        return AsyncProvisioningTokensResourceWithStreamingResponse(self._client.provisioning_tokens)
 
     @cached_property
     def git_commits(self) -> git_commits.AsyncGitCommitsResourceWithStreamingResponse:

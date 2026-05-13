@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.10.0 (2026-05-13)
+
+Full Changelog: [v0.9.0...v0.10.0](https://github.com/mirurobotics/python-platform-sdk/compare/v0.9.0...v0.10.0)
+
+### Features
+
+* **api:** upgrade to 2026-05-06.rainier-beta.3 ([2dbcc65](https://github.com/mirurobotics/python-platform-sdk/commit/2dbcc652ba6c201d997a87c6bbf9810cb8c5eabb))
+* **internal/types:** support eagerly validating pydantic iterators ([1aadc67](https://github.com/mirurobotics/python-platform-sdk/commit/1aadc67a16bd634bbf368f36c28334365e50c4eb))
+
+
+### Bug Fixes
+
+* **client:** add missing f-string prefix in file type error message ([b21baec](https://github.com/mirurobotics/python-platform-sdk/commit/b21baec899aae9a318d65a0acacb76f76f946c07))
+
+
+### Chores
+
+* **internal:** reformat pyproject.toml ([bd0e40e](https://github.com/mirurobotics/python-platform-sdk/commit/bd0e40e96fecdfa1a46e4cff6260aadcde3aaf0e))
+
 ## 0.9.0 (2026-04-28)
 
 Full Changelog: [v0.8.2...v0.9.0](https://github.com/mirurobotics/python-platform-sdk/compare/v0.8.2...v0.9.0)

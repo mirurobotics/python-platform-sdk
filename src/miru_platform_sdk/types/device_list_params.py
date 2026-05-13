@@ -17,7 +17,10 @@ class DeviceListParams(TypedDict, total=False):
     agent_version: SequenceNotStr[str]
     """The agent versions to filter by."""
 
-    expand: List[Literal["total_count"]]
+    current_release_id: SequenceNotStr[str]
+    """The release IDs to filter devices by their current release."""
+
+    expand: List[Literal["total_count", "current_deployment", "current_release"]]
     """Fields to expand on each device in the list."""
 
     limit: int

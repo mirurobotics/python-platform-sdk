@@ -4,12 +4,12 @@ from datetime import datetime
 
 from .._models import BaseModel
 
-__all__ = ["DeviceIssueActivationTokenResponse"]
+__all__ = ["ProvisioningToken"]
 
 
-class DeviceIssueActivationTokenResponse(BaseModel):
+class ProvisioningToken(BaseModel):
     token: str
-    """The token."""
+    """The provisioning token. This value is only returned when the token is created."""
 
     expires_at: datetime
     """The expiration date and time of the token."""
