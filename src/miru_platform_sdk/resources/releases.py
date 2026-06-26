@@ -53,6 +53,7 @@ class ReleasesResource(SyncAPIResource):
         version: str,
         expand: List[Literal["config_schemas"]] | Omit = omit,
         git_commit_ref: GitCommitRefParam | Omit = omit,
+        upload_rule_ids: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -73,6 +74,8 @@ class ReleasesResource(SyncAPIResource):
           git_commit_ref: A reference to a git commit. At least one of `id` or `sha` must be provided.
               When both are provided, `id` takes precedence and `sha` is ignored.
 
+          upload_rule_ids: The IDs of the upload rules included in the release.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -88,6 +91,7 @@ class ReleasesResource(SyncAPIResource):
                     "config_schema_ids": config_schema_ids,
                     "version": version,
                     "git_commit_ref": git_commit_ref,
+                    "upload_rule_ids": upload_rule_ids,
                 },
                 release_create_params.ReleaseCreateParams,
             ),
@@ -233,6 +237,7 @@ class AsyncReleasesResource(AsyncAPIResource):
         version: str,
         expand: List[Literal["config_schemas"]] | Omit = omit,
         git_commit_ref: GitCommitRefParam | Omit = omit,
+        upload_rule_ids: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -253,6 +258,8 @@ class AsyncReleasesResource(AsyncAPIResource):
           git_commit_ref: A reference to a git commit. At least one of `id` or `sha` must be provided.
               When both are provided, `id` takes precedence and `sha` is ignored.
 
+          upload_rule_ids: The IDs of the upload rules included in the release.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -268,6 +275,7 @@ class AsyncReleasesResource(AsyncAPIResource):
                     "config_schema_ids": config_schema_ids,
                     "version": version,
                     "git_commit_ref": git_commit_ref,
+                    "upload_rule_ids": upload_rule_ids,
                 },
                 release_create_params.ReleaseCreateParams,
             ),

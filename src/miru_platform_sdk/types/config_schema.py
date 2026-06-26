@@ -36,6 +36,16 @@ class ConfigSchema(BaseModel):
     written.
     """
 
+    instance_format: Literal["json", "yaml", "jsonc"]
+    """
+    The on-disk format used when a config instance is written to the device
+    filesystem.
+
+    - `json`: standard JSON.
+    - `yaml`: YAML 1.2.
+    - `jsonc`: JSON with comments (JSON plus `//` and `/* */` comment syntax).
+    """
+
     language: SchemaLanguage
 
     object: Literal["config_schema"]
