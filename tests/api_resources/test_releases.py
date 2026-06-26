@@ -40,6 +40,7 @@ class TestReleases:
                 "id": "git_cmt_123",
                 "sha": "1a2b3c4d...",
             },
+            upload_rule_ids=["upl_rule_123"],
         )
         assert_matches_type(Release, release, path=["response"])
 
@@ -189,6 +190,7 @@ class TestAsyncReleases:
                 "id": "git_cmt_123",
                 "sha": "1a2b3c4d...",
             },
+            upload_rule_ids=["upl_rule_123"],
         )
         assert_matches_type(Release, release, path=["response"])
 

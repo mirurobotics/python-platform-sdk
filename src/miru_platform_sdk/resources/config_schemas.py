@@ -61,6 +61,7 @@ class ConfigSchemasResource(SyncAPIResource):
         expand: List[Literal["documents", "config_type"]] | Omit = omit,
         git_commit: config_schema_create_params.GitCommit | Omit = omit,
         instance_filepath: str | Omit = omit,
+        instance_format: Literal["json", "yaml", "jsonc"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -83,6 +84,13 @@ class ConfigSchemasResource(SyncAPIResource):
 
           instance_filepath: The absolute file system path config instances for this schema are written to.
 
+          instance_format: The on-disk format used when a config instance is written to the device
+              filesystem.
+
+              - `json`: standard JSON.
+              - `yaml`: YAML 1.2.
+              - `jsonc`: JSON with comments (JSON plus `//` and `/* */` comment syntax).
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -101,6 +109,7 @@ class ConfigSchemasResource(SyncAPIResource):
                     "language": language,
                     "git_commit": git_commit,
                     "instance_filepath": instance_filepath,
+                    "instance_format": instance_format,
                 },
                 config_schema_create_params.ConfigSchemaCreateParams,
             ),
@@ -249,6 +258,7 @@ class AsyncConfigSchemasResource(AsyncAPIResource):
         expand: List[Literal["documents", "config_type"]] | Omit = omit,
         git_commit: config_schema_create_params.GitCommit | Omit = omit,
         instance_filepath: str | Omit = omit,
+        instance_format: Literal["json", "yaml", "jsonc"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -271,6 +281,13 @@ class AsyncConfigSchemasResource(AsyncAPIResource):
 
           instance_filepath: The absolute file system path config instances for this schema are written to.
 
+          instance_format: The on-disk format used when a config instance is written to the device
+              filesystem.
+
+              - `json`: standard JSON.
+              - `yaml`: YAML 1.2.
+              - `jsonc`: JSON with comments (JSON plus `//` and `/* */` comment syntax).
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -289,6 +306,7 @@ class AsyncConfigSchemasResource(AsyncAPIResource):
                     "language": language,
                     "git_commit": git_commit,
                     "instance_filepath": instance_filepath,
+                    "instance_format": instance_format,
                 },
                 config_schema_create_params.ConfigSchemaCreateParams,
             ),

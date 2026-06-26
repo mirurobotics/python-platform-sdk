@@ -27,3 +27,6 @@ class ReleaseCreateParams(TypedDict, total=False):
     At least one of `id` or `sha` must be provided. When both are provided, `id`
     takes precedence and `sha` is ignored.
     """
+
+    upload_rule_ids: SequenceNotStr[str]
+    """The IDs of the upload rules included in the release."""

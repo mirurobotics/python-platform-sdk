@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List
+from typing import List, Optional
 from typing_extensions import Literal, Required, TypedDict
 
 from .._types import SequenceNotStr
@@ -40,5 +40,12 @@ class DeploymentCreateParams(TypedDict, total=False):
     expand: List[Literal["device", "release", "config_instances"]]
     """Fields to expand on the deployment resource."""
 
-    parent_id: str
-    """The ID of the deployment that this deployment was patched from."""
+    parent_id: Optional[str]
+    """Parent deployment ID used as an optimistic-concurrency token. Tristate:
+
+    - omitted: server fills with the device's current `target_deployment_id`; no
+      concurrency check.
+    - null: caller asserts the device has no current target; 409 if it does.
+    - value: caller asserts the device's current target equals this ID; 409 if it
+      does not match.
+    """

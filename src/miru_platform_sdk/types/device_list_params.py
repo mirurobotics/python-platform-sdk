@@ -38,5 +38,5 @@ class DeviceListParams(TypedDict, total=False):
     An offset of 10 with a limit of 10 returns items 11-20.
     """
 
-    order_by: List[Literal["id:asc", "id:desc", "created_at:desc", "created_at:asc"]]
+    order_by: List[Literal["id:asc", "id:desc", "created_at:desc", "created_at:asc", "status:asc", "status:desc"]]
     """Sort order for the device results."""

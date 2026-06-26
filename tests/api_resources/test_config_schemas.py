@@ -61,6 +61,7 @@ class TestConfigSchemas:
                 "schema_filepaths": ["path/to/config/schema/robot1.cue", "path/to/config/schema/robot2.cue"],
             },
             instance_filepath="/srv/miru/configs/v1/motion-control.json",
+            instance_format="json",
         )
         assert_matches_type(ConfigSchema, config_schema, path=["response"])
 
@@ -245,6 +246,7 @@ class TestAsyncConfigSchemas:
                 "schema_filepaths": ["path/to/config/schema/robot1.cue", "path/to/config/schema/robot2.cue"],
             },
             instance_filepath="/srv/miru/configs/v1/motion-control.json",
+            instance_format="json",
         )
         assert_matches_type(ConfigSchema, config_schema, path=["response"])
 
