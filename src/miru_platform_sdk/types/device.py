@@ -22,6 +22,9 @@ class Device(BaseModel):
     created_at: datetime
     """Timestamp of when the device was created."""
 
+    description: Optional[str] = None
+    """A free-form description of the device."""
+
     last_connected_at: Optional[datetime] = None
     """
     Timestamp of when the device was last made an initial connection (this is not
@@ -40,7 +43,7 @@ class Device(BaseModel):
     object: Literal["device"]
     """The object type, which is always `device`."""
 
-    status: Literal["inactive", "activating", "online", "offline"]
+    status: Literal["inactive", "activating", "online", "offline", "archived"]
     """The status of the device.
 
     - Inactive: The miru agent has not yet been installed / authenticated
@@ -50,6 +53,9 @@ class Device(BaseModel):
       seconds.
     - Offline: The miru agent has not successfully pinged the server within the last
       60 seconds (e.g. network issues, device is powered off, etc.)
+    - Archived: The device has been archived. The agent's session has been revoked
+      and the device no longer participates in workspace operations. See
+      `archived_at` for when this occurred.
     """
 
     updated_at: datetime

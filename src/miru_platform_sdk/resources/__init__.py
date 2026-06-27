@@ -64,6 +64,14 @@ from .config_instances import (
     ConfigInstancesResourceWithStreamingResponse,
     AsyncConfigInstancesResourceWithStreamingResponse,
 )
+from .upload_collections import (
+    UploadCollectionsResource,
+    AsyncUploadCollectionsResource,
+    UploadCollectionsResourceWithRawResponse,
+    AsyncUploadCollectionsResourceWithRawResponse,
+    UploadCollectionsResourceWithStreamingResponse,
+    AsyncUploadCollectionsResourceWithStreamingResponse,
+)
 from .provisioning_tokens import (
     ProvisioningTokensResource,
     AsyncProvisioningTokensResource,
@@ -92,6 +100,12 @@ __all__ = [
     "AsyncConfigTypesResourceWithRawResponse",
     "ConfigTypesResourceWithStreamingResponse",
     "AsyncConfigTypesResourceWithStreamingResponse",
+    "UploadCollectionsResource",
+    "AsyncUploadCollectionsResource",
+    "UploadCollectionsResourceWithRawResponse",
+    "AsyncUploadCollectionsResourceWithRawResponse",
+    "UploadCollectionsResourceWithStreamingResponse",
+    "AsyncUploadCollectionsResourceWithStreamingResponse",
     "DeploymentsResource",
     "AsyncDeploymentsResource",
     "DeploymentsResourceWithRawResponse",

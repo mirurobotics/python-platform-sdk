@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List
+from typing import List, Optional
 from typing_extensions import Literal
 
 import httpx
@@ -61,7 +61,7 @@ class DeploymentsResource(SyncAPIResource):
         release_id: str,
         target_status: Literal["staged", "deployed"],
         expand: List[Literal["device", "release", "config_instances"]] | Omit = omit,
-        parent_id: str | Omit = omit,
+        parent_id: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -92,7 +92,14 @@ class DeploymentsResource(SyncAPIResource):
 
           expand: Fields to expand on the deployment resource.
 
-          parent_id: The ID of the deployment that this deployment was patched from.
+          parent_id:
+              Parent deployment ID used as an optimistic-concurrency token. Tristate:
+
+              - omitted: server fills with the device's current `target_deployment_id`; no
+                concurrency check.
+              - null: caller asserts the device has no current target; 409 if it does.
+              - value: caller asserts the device's current target equals this ID; 409 if it
+                does not match.
 
           extra_headers: Send extra headers
 
@@ -395,7 +402,7 @@ class AsyncDeploymentsResource(AsyncAPIResource):
         release_id: str,
         target_status: Literal["staged", "deployed"],
         expand: List[Literal["device", "release", "config_instances"]] | Omit = omit,
-        parent_id: str | Omit = omit,
+        parent_id: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -426,7 +433,14 @@ class AsyncDeploymentsResource(AsyncAPIResource):
 
           expand: Fields to expand on the deployment resource.
 
-          parent_id: The ID of the deployment that this deployment was patched from.
+          parent_id:
+              Parent deployment ID used as an optimistic-concurrency token. Tristate:
+
+              - omitted: server fills with the device's current `target_deployment_id`; no
+                concurrency check.
+              - null: caller asserts the device has no current target; 409 if it does.
+              - value: caller asserts the device's current target equals this ID; 409 if it
+                does not match.
 
           extra_headers: Send extra headers
 

@@ -188,7 +188,8 @@ class DevicesResource(SyncAPIResource):
         limit: int | Omit = omit,
         name: SequenceNotStr[str] | Omit = omit,
         offset: int | Omit = omit,
-        order_by: List[Literal["id:asc", "id:desc", "created_at:desc", "created_at:asc"]] | Omit = omit,
+        order_by: List[Literal["id:asc", "id:desc", "created_at:desc", "created_at:asc", "status:asc", "status:desc"]]
+        | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -445,7 +446,8 @@ class AsyncDevicesResource(AsyncAPIResource):
         limit: int | Omit = omit,
         name: SequenceNotStr[str] | Omit = omit,
         offset: int | Omit = omit,
-        order_by: List[Literal["id:asc", "id:desc", "created_at:desc", "created_at:asc"]] | Omit = omit,
+        order_by: List[Literal["id:asc", "id:desc", "created_at:desc", "created_at:asc", "status:asc", "status:desc"]]
+        | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,

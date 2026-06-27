@@ -44,6 +44,7 @@ if TYPE_CHECKING:
         config_types,
         config_schemas,
         config_instances,
+        upload_collections,
         provisioning_tokens,
     )
     from .resources.devices import DevicesResource, AsyncDevicesResource
@@ -54,6 +55,7 @@ if TYPE_CHECKING:
     from .resources.config_types import ConfigTypesResource, AsyncConfigTypesResource
     from .resources.config_schemas import ConfigSchemasResource, AsyncConfigSchemasResource
     from .resources.config_instances import ConfigInstancesResource, AsyncConfigInstancesResource
+    from .resources.upload_collections import UploadCollectionsResource, AsyncUploadCollectionsResource
     from .resources.provisioning_tokens import ProvisioningTokensResource, AsyncProvisioningTokensResource
 
 __all__ = [
@@ -189,6 +191,12 @@ class Miru(SyncAPIClient):
         from .resources.config_types import ConfigTypesResource
 
         return ConfigTypesResource(self)
+
+    @cached_property
+    def upload_collections(self) -> UploadCollectionsResource:
+        from .resources.upload_collections import UploadCollectionsResource
+
+        return UploadCollectionsResource(self)
 
     @cached_property
     def deployments(self) -> DeploymentsResource:
@@ -459,6 +467,12 @@ class AsyncMiru(AsyncAPIClient):
         return AsyncConfigTypesResource(self)
 
     @cached_property
+    def upload_collections(self) -> AsyncUploadCollectionsResource:
+        from .resources.upload_collections import AsyncUploadCollectionsResource
+
+        return AsyncUploadCollectionsResource(self)
+
+    @cached_property
     def deployments(self) -> AsyncDeploymentsResource:
         from .resources.deployments import AsyncDeploymentsResource
 
@@ -637,6 +651,12 @@ class MiruWithRawResponse:
         return ConfigTypesResourceWithRawResponse(self._client.config_types)
 
     @cached_property
+    def upload_collections(self) -> upload_collections.UploadCollectionsResourceWithRawResponse:
+        from .resources.upload_collections import UploadCollectionsResourceWithRawResponse
+
+        return UploadCollectionsResourceWithRawResponse(self._client.upload_collections)
+
+    @cached_property
     def deployments(self) -> deployments.DeploymentsResourceWithRawResponse:
         from .resources.deployments import DeploymentsResourceWithRawResponse
 
@@ -696,6 +716,12 @@ class AsyncMiruWithRawResponse:
         from .resources.config_types import AsyncConfigTypesResourceWithRawResponse
 
         return AsyncConfigTypesResourceWithRawResponse(self._client.config_types)
+
+    @cached_property
+    def upload_collections(self) -> upload_collections.AsyncUploadCollectionsResourceWithRawResponse:
+        from .resources.upload_collections import AsyncUploadCollectionsResourceWithRawResponse
+
+        return AsyncUploadCollectionsResourceWithRawResponse(self._client.upload_collections)
 
     @cached_property
     def deployments(self) -> deployments.AsyncDeploymentsResourceWithRawResponse:
@@ -759,6 +785,12 @@ class MiruWithStreamedResponse:
         return ConfigTypesResourceWithStreamingResponse(self._client.config_types)
 
     @cached_property
+    def upload_collections(self) -> upload_collections.UploadCollectionsResourceWithStreamingResponse:
+        from .resources.upload_collections import UploadCollectionsResourceWithStreamingResponse
+
+        return UploadCollectionsResourceWithStreamingResponse(self._client.upload_collections)
+
+    @cached_property
     def deployments(self) -> deployments.DeploymentsResourceWithStreamingResponse:
         from .resources.deployments import DeploymentsResourceWithStreamingResponse
 
@@ -818,6 +850,12 @@ class AsyncMiruWithStreamedResponse:
         from .resources.config_types import AsyncConfigTypesResourceWithStreamingResponse
 
         return AsyncConfigTypesResourceWithStreamingResponse(self._client.config_types)
+
+    @cached_property
+    def upload_collections(self) -> upload_collections.AsyncUploadCollectionsResourceWithStreamingResponse:
+        from .resources.upload_collections import AsyncUploadCollectionsResourceWithStreamingResponse
+
+        return AsyncUploadCollectionsResourceWithStreamingResponse(self._client.upload_collections)
 
     @cached_property
     def deployments(self) -> deployments.AsyncDeploymentsResourceWithStreamingResponse:
