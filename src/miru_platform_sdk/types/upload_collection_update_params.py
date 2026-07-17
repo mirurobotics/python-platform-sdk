@@ -10,6 +10,3 @@ __all__ = ["UploadCollectionUpdateParams"]
 class UploadCollectionUpdateParams(TypedDict, total=False):
     name: str
     """The updated name of the upload collection."""
-
-    slug: str
-    """The updated slug for the upload collection."""

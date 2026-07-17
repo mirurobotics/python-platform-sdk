@@ -126,7 +126,6 @@ class ConfigTypesResource(SyncAPIResource):
         config_type_id: str,
         *,
         name: str | Omit = omit,
-        slug: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -140,8 +139,6 @@ class ConfigTypesResource(SyncAPIResource):
         Args:
           name: The updated name of the config type.
 
-          slug: The updated slug for the config type.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -154,13 +151,7 @@ class ConfigTypesResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `config_type_id` but received {config_type_id!r}")
         return self._patch(
             path_template("/config_types/{config_type_id}", config_type_id=config_type_id),
-            body=maybe_transform(
-                {
-                    "name": name,
-                    "slug": slug,
-                },
-                config_type_update_params.ConfigTypeUpdateParams,
-            ),
+            body=maybe_transform({"name": name}, config_type_update_params.ConfigTypeUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -337,7 +328,6 @@ class AsyncConfigTypesResource(AsyncAPIResource):
         config_type_id: str,
         *,
         name: str | Omit = omit,
-        slug: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -351,8 +341,6 @@ class AsyncConfigTypesResource(AsyncAPIResource):
         Args:
           name: The updated name of the config type.
 
-          slug: The updated slug for the config type.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -365,13 +353,7 @@ class AsyncConfigTypesResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `config_type_id` but received {config_type_id!r}")
         return await self._patch(
             path_template("/config_types/{config_type_id}", config_type_id=config_type_id),
-            body=await async_maybe_transform(
-                {
-                    "name": name,
-                    "slug": slug,
-                },
-                config_type_update_params.ConfigTypeUpdateParams,
-            ),
+            body=await async_maybe_transform({"name": name}, config_type_update_params.ConfigTypeUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

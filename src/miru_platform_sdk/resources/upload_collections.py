@@ -128,7 +128,6 @@ class UploadCollectionsResource(SyncAPIResource):
         upload_collection_id: str,
         *,
         name: str | Omit = omit,
-        slug: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -141,8 +140,6 @@ class UploadCollectionsResource(SyncAPIResource):
 
         Args:
           name: The updated name of the upload collection.
-
-          slug: The updated slug for the upload collection.
 
           extra_headers: Send extra headers
 
@@ -158,13 +155,7 @@ class UploadCollectionsResource(SyncAPIResource):
             )
         return self._patch(
             path_template("/upload_collections/{upload_collection_id}", upload_collection_id=upload_collection_id),
-            body=maybe_transform(
-                {
-                    "name": name,
-                    "slug": slug,
-                },
-                upload_collection_update_params.UploadCollectionUpdateParams,
-            ),
+            body=maybe_transform({"name": name}, upload_collection_update_params.UploadCollectionUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -343,7 +334,6 @@ class AsyncUploadCollectionsResource(AsyncAPIResource):
         upload_collection_id: str,
         *,
         name: str | Omit = omit,
-        slug: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -356,8 +346,6 @@ class AsyncUploadCollectionsResource(AsyncAPIResource):
 
         Args:
           name: The updated name of the upload collection.
-
-          slug: The updated slug for the upload collection.
 
           extra_headers: Send extra headers
 
@@ -374,11 +362,7 @@ class AsyncUploadCollectionsResource(AsyncAPIResource):
         return await self._patch(
             path_template("/upload_collections/{upload_collection_id}", upload_collection_id=upload_collection_id),
             body=await async_maybe_transform(
-                {
-                    "name": name,
-                    "slug": slug,
-                },
-                upload_collection_update_params.UploadCollectionUpdateParams,
+                {"name": name}, upload_collection_update_params.UploadCollectionUpdateParams
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout

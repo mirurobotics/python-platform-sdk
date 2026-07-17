@@ -40,3 +40,6 @@ class DeviceListParams(TypedDict, total=False):
 
     order_by: List[Literal["id:asc", "id:desc", "created_at:desc", "created_at:asc", "status:asc", "status:desc"]]
     """Sort order for the device results."""
+
+    status: List[Literal["inactive", "activating", "online", "offline", "archived"]]
+    """The device statuses to filter by."""

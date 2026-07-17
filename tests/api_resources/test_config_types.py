@@ -113,7 +113,6 @@ class TestConfigTypes:
         config_type = client.config_types.update(
             config_type_id="cfg_typ_123",
             name="My Config Type",
-            slug="my-config-type",
         )
         assert_matches_type(ConfigType, config_type, path=["response"])
 
@@ -292,7 +291,6 @@ class TestAsyncConfigTypes:
         config_type = await async_client.config_types.update(
             config_type_id="cfg_typ_123",
             name="My Config Type",
-            slug="my-config-type",
         )
         assert_matches_type(ConfigType, config_type, path=["response"])
 

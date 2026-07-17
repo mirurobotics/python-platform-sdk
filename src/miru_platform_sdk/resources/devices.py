@@ -190,6 +190,7 @@ class DevicesResource(SyncAPIResource):
         offset: int | Omit = omit,
         order_by: List[Literal["id:asc", "id:desc", "created_at:desc", "created_at:asc", "status:asc", "status:desc"]]
         | Omit = omit,
+        status: List[Literal["inactive", "activating", "online", "offline", "archived"]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -219,6 +220,8 @@ class DevicesResource(SyncAPIResource):
 
           order_by: Sort order for the device results.
 
+          status: The device statuses to filter by.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -244,6 +247,7 @@ class DevicesResource(SyncAPIResource):
                         "name": name,
                         "offset": offset,
                         "order_by": order_by,
+                        "status": status,
                     },
                     device_list_params.DeviceListParams,
                 ),
@@ -448,6 +452,7 @@ class AsyncDevicesResource(AsyncAPIResource):
         offset: int | Omit = omit,
         order_by: List[Literal["id:asc", "id:desc", "created_at:desc", "created_at:asc", "status:asc", "status:desc"]]
         | Omit = omit,
+        status: List[Literal["inactive", "activating", "online", "offline", "archived"]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -477,6 +482,8 @@ class AsyncDevicesResource(AsyncAPIResource):
 
           order_by: Sort order for the device results.
 
+          status: The device statuses to filter by.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -502,6 +509,7 @@ class AsyncDevicesResource(AsyncAPIResource):
                         "name": name,
                         "offset": offset,
                         "order_by": order_by,
+                        "status": status,
                     },
                     device_list_params.DeviceListParams,
                 ),

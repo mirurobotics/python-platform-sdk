@@ -113,7 +113,6 @@ class TestUploadCollections:
         upload_collection = client.upload_collections.update(
             upload_collection_id="upl_col_123",
             name="Robot Logs",
-            slug="robot-logs",
         )
         assert_matches_type(UploadCollection, upload_collection, path=["response"])
 
@@ -292,7 +291,6 @@ class TestAsyncUploadCollections:
         upload_collection = await async_client.upload_collections.update(
             upload_collection_id="upl_col_123",
             name="Robot Logs",
-            slug="robot-logs",
         )
         assert_matches_type(UploadCollection, upload_collection, path=["response"])
 

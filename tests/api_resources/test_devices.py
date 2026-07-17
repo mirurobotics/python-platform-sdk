@@ -185,6 +185,7 @@ class TestDevices:
             name=["My Device"],
             offset=0,
             order_by=["created_at:desc"],
+            status=["online"],
         )
         assert_matches_type(DeviceList, device, path=["response"])
 
@@ -426,6 +427,7 @@ class TestAsyncDevices:
             name=["My Device"],
             offset=0,
             order_by=["created_at:desc"],
+            status=["online"],
         )
         assert_matches_type(DeviceList, device, path=["response"])
 

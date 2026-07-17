@@ -10,6 +10,3 @@ __all__ = ["ConfigTypeUpdateParams"]
 class ConfigTypeUpdateParams(TypedDict, total=False):
     name: str
     """The updated name of the config type."""
-
-    slug: str
-    """The updated slug for the config type."""

@@ -207,12 +207,6 @@ class BaseModel(pydantic.BaseModel):
         _fields_set: set[str] | None = None,
         **values: object,
     ) -> ModelT:
-        if not PYDANTIC_V1:
-            try:
-                __cls.model_rebuild()
-            except Exception:
-                pass
-
         m = __cls.__new__(__cls)
         fields_values: dict[str, object] = {}
 
