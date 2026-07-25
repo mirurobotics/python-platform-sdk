@@ -4,4 +4,4 @@ from typing_extensions import Literal, TypeAlias
 
 __all__ = ["SchemaLanguage"]
 
-SchemaLanguage: TypeAlias = Literal["jsonschema", "cue"]
+SchemaLanguage: TypeAlias = Literal["jsonschema", "cue", "schemaless"]

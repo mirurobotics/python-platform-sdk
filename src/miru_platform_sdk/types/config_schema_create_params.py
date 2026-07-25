@@ -23,7 +23,7 @@ class ConfigSchemaCreateParams(TypedDict, total=False):
     documents: Required[Iterable[Document]]
     """The schema document files."""
 
-    format: Required[Literal["json", "yaml", "cue"]]
+    format: Required[Literal["json", "yaml", "cue", "schemaless"]]
 
     language: Required[SchemaLanguage]
 
@@ -36,7 +36,7 @@ class ConfigSchemaCreateParams(TypedDict, total=False):
     instance_filepath: str
     """The absolute file system path config instances for this schema are written to."""
 
-    instance_format: Literal["json", "yaml", "jsonc"]
+    instance_format: Literal["json", "yaml", "jsonc", "xml", "other"]
     """
     The on-disk format used when a config instance is written to the device
     filesystem.
@@ -44,6 +44,8 @@ class ConfigSchemaCreateParams(TypedDict, total=False):
     - `json`: standard JSON.
     - `yaml`: YAML 1.2.
     - `jsonc`: JSON with comments (JSON plus `//` and `/* */` comment syntax).
+    - `xml`: XML.
+    - `other`: any other format not listed here.
     """
 
 

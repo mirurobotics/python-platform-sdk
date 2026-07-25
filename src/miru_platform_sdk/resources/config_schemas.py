@@ -56,12 +56,12 @@ class ConfigSchemasResource(SyncAPIResource):
         *,
         config_type_ref: config_schema_create_params.ConfigTypeRef,
         documents: Iterable[config_schema_create_params.Document],
-        format: Literal["json", "yaml", "cue"],
+        format: Literal["json", "yaml", "cue", "schemaless"],
         language: SchemaLanguage,
         expand: List[Literal["documents", "config_type"]] | Omit = omit,
         git_commit: config_schema_create_params.GitCommit | Omit = omit,
         instance_filepath: str | Omit = omit,
-        instance_format: Literal["json", "yaml", "jsonc"] | Omit = omit,
+        instance_format: Literal["json", "yaml", "jsonc", "xml", "other"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -90,6 +90,8 @@ class ConfigSchemasResource(SyncAPIResource):
               - `json`: standard JSON.
               - `yaml`: YAML 1.2.
               - `jsonc`: JSON with comments (JSON plus `//` and `/* */` comment syntax).
+              - `xml`: XML.
+              - `other`: any other format not listed here.
 
           extra_headers: Send extra headers
 
@@ -253,12 +255,12 @@ class AsyncConfigSchemasResource(AsyncAPIResource):
         *,
         config_type_ref: config_schema_create_params.ConfigTypeRef,
         documents: Iterable[config_schema_create_params.Document],
-        format: Literal["json", "yaml", "cue"],
+        format: Literal["json", "yaml", "cue", "schemaless"],
         language: SchemaLanguage,
         expand: List[Literal["documents", "config_type"]] | Omit = omit,
         git_commit: config_schema_create_params.GitCommit | Omit = omit,
         instance_filepath: str | Omit = omit,
-        instance_format: Literal["json", "yaml", "jsonc"] | Omit = omit,
+        instance_format: Literal["json", "yaml", "jsonc", "xml", "other"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -287,6 +289,8 @@ class AsyncConfigSchemasResource(AsyncAPIResource):
               - `json`: standard JSON.
               - `yaml`: YAML 1.2.
               - `jsonc`: JSON with comments (JSON plus `//` and `/* */` comment syntax).
+              - `xml`: XML.
+              - `other`: any other format not listed here.
 
           extra_headers: Send extra headers
 

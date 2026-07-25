@@ -28,7 +28,7 @@ class ConfigSchema(BaseModel):
     digest: str
     """The digest of the config schema."""
 
-    format: Literal["json", "yaml", "cue"]
+    format: Literal["json", "yaml", "cue", "schemaless"]
 
     instance_filepath: str
     """
@@ -36,7 +36,7 @@ class ConfigSchema(BaseModel):
     written.
     """
 
-    instance_format: Literal["json", "yaml", "jsonc"]
+    instance_format: Literal["json", "yaml", "jsonc", "xml", "other"]
     """
     The on-disk format used when a config instance is written to the device
     filesystem.
@@ -44,6 +44,8 @@ class ConfigSchema(BaseModel):
     - `json`: standard JSON.
     - `yaml`: YAML 1.2.
     - `jsonc`: JSON with comments (JSON plus `//` and `/* */` comment syntax).
+    - `xml`: XML.
+    - `other`: any other format not listed here.
     """
 
     language: SchemaLanguage
