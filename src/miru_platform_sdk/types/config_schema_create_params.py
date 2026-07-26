@@ -23,7 +23,7 @@ class ConfigSchemaCreateParams(TypedDict, total=False):
     documents: Required[Iterable[Document]]
     """The schema document files."""
 
-    format: Required[Literal["json", "yaml", "cue", "schemaless"]]
+    format: Required[Literal["json", "yaml", "cue", "opaque"]]
 
     language: Required[SchemaLanguage]
 
