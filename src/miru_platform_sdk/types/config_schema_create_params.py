@@ -36,7 +36,7 @@ class ConfigSchemaCreateParams(TypedDict, total=False):
     instance_filepath: str
     """The absolute file system path config instances for this schema are written to."""
 
-    instance_format: Literal["json", "yaml", "jsonc", "xml", "other"]
+    instance_format: Literal["json", "yaml", "jsonc", "xml", "text"]
     """
     The on-disk format used when a config instance is written to the device
     filesystem.
@@ -45,7 +45,7 @@ class ConfigSchemaCreateParams(TypedDict, total=False):
     - `yaml`: YAML 1.2.
     - `jsonc`: JSON with comments (JSON plus `//` and `/* */` comment syntax).
     - `xml`: XML.
-    - `other`: any other format not listed here.
+    - `text`: plain, unstructured text with no specific format.
     """
 
 
