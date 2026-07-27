@@ -34,6 +34,13 @@ class ConfigInstance(BaseModel):
     object: Literal["config_instance"]
     """The object type, which is always `config_instance`."""
 
+    slot_key: str
+    """The key of the config schema slot this instance is bound to.
+
+    Must match the `key` of one of the slots declared by this instance's config
+    schema.
+    """
+
     config_schema: Optional[ConfigSchema] = None
     """Expand the config schema using 'expand=config_schema' in the query string."""
 

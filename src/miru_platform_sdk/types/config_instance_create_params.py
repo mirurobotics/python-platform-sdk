@@ -18,3 +18,10 @@ class ConfigInstanceCreateParams(TypedDict, total=False):
 
     expand: List[Literal["content", "config_schema", "config_type"]]
     """Fields to expand on the config instance resource."""
+
+    slot_key: str
+    """The slot of the config schema this instance is bound to.
+
+    Optional when the schema has exactly one slot. Must match the `key` of one of
+    the slots declared by the config schema.
+    """

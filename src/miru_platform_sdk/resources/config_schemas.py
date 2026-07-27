@@ -27,6 +27,7 @@ from .._base_client import make_request_options
 from ..types.config_schema import ConfigSchema
 from ..types.schema_language import SchemaLanguage
 from ..types.config_schema_list import ConfigSchemaList
+from ..types.instance_slot_param import InstanceSlotParam
 
 __all__ = ["ConfigSchemasResource", "AsyncConfigSchemasResource"]
 
@@ -57,10 +58,10 @@ class ConfigSchemasResource(SyncAPIResource):
         config_type_ref: config_schema_create_params.ConfigTypeRef,
         documents: Iterable[config_schema_create_params.Document],
         format: Literal["json", "yaml", "cue"],
+        instance_slots: Iterable[InstanceSlotParam],
         language: SchemaLanguage,
         expand: List[Literal["documents", "config_type"]] | Omit = omit,
         git_commit: config_schema_create_params.GitCommit | Omit = omit,
-        instance_filepath: str | Omit = omit,
         instance_format: Literal["json", "yaml", "jsonc", "xml", "text"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -78,11 +79,13 @@ class ConfigSchemasResource(SyncAPIResource):
 
           documents: The schema document files.
 
+          instance_slots: The file system destinations this config schema writes to. Slot keys and
+              filepaths must each be unique within the schema, and slot filepaths must be
+              unique across every config schema in a release.
+
           expand: Fields to expand on the config schema resource.
 
           git_commit: The git commit to link to this config schema.
-
-          instance_filepath: The absolute file system path config instances for this schema are written to.
 
           instance_format: The on-disk format used when a config instance is written to the device
               filesystem.
@@ -108,9 +111,9 @@ class ConfigSchemasResource(SyncAPIResource):
                     "config_type_ref": config_type_ref,
                     "documents": documents,
                     "format": format,
+                    "instance_slots": instance_slots,
                     "language": language,
                     "git_commit": git_commit,
-                    "instance_filepath": instance_filepath,
                     "instance_format": instance_format,
                 },
                 config_schema_create_params.ConfigSchemaCreateParams,
@@ -256,10 +259,10 @@ class AsyncConfigSchemasResource(AsyncAPIResource):
         config_type_ref: config_schema_create_params.ConfigTypeRef,
         documents: Iterable[config_schema_create_params.Document],
         format: Literal["json", "yaml", "cue"],
+        instance_slots: Iterable[InstanceSlotParam],
         language: SchemaLanguage,
         expand: List[Literal["documents", "config_type"]] | Omit = omit,
         git_commit: config_schema_create_params.GitCommit | Omit = omit,
-        instance_filepath: str | Omit = omit,
         instance_format: Literal["json", "yaml", "jsonc", "xml", "text"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -277,11 +280,13 @@ class AsyncConfigSchemasResource(AsyncAPIResource):
 
           documents: The schema document files.
 
+          instance_slots: The file system destinations this config schema writes to. Slot keys and
+              filepaths must each be unique within the schema, and slot filepaths must be
+              unique across every config schema in a release.
+
           expand: Fields to expand on the config schema resource.
 
           git_commit: The git commit to link to this config schema.
-
-          instance_filepath: The absolute file system path config instances for this schema are written to.
 
           instance_format: The on-disk format used when a config instance is written to the device
               filesystem.
@@ -307,9 +312,9 @@ class AsyncConfigSchemasResource(AsyncAPIResource):
                     "config_type_ref": config_type_ref,
                     "documents": documents,
                     "format": format,
+                    "instance_slots": instance_slots,
                     "language": language,
                     "git_commit": git_commit,
-                    "instance_filepath": instance_filepath,
                     "instance_format": instance_format,
                 },
                 config_schema_create_params.ConfigSchemaCreateParams,

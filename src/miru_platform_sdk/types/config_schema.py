@@ -6,6 +6,7 @@ from typing_extensions import Literal
 
 from .._models import BaseModel
 from .config_type import ConfigType
+from .instance_slot import InstanceSlot
 from .schema_document import SchemaDocument
 from .schema_language import SchemaLanguage
 
@@ -30,12 +31,6 @@ class ConfigSchema(BaseModel):
 
     format: Literal["json", "yaml", "cue"]
 
-    instance_filepath: str
-    """
-    The absolute file system path where config instances for this schema are
-    written.
-    """
-
     instance_format: Literal["json", "yaml", "jsonc", "xml", "text"]
     """
     The on-disk format used when a config instance is written to the device
@@ -46,6 +41,16 @@ class ConfigSchema(BaseModel):
     - `jsonc`: JSON with comments (JSON plus `//` and `/* */` comment syntax).
     - `xml`: XML.
     - `text`: plain, unstructured text with no specific format.
+    """
+
+    instance_slots: List[InstanceSlot]
+    """The file system destinations this config schema writes to.
+
+    Every config schema has at least one slot. Slots share the schema's validation
+    and differ only in where the file is written; a file needing different
+    validation is a different config type, not a slot. Slot keys and filepaths must
+    each be unique within the schema, and slot filepaths must be unique across every
+    config schema in a release.
     """
 
     language: SchemaLanguage

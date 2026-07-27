@@ -37,3 +37,6 @@ class ConfigInstanceListParams(TypedDict, total=False):
 
     order_by: List[Literal["id:asc", "id:desc", "created_at:desc", "created_at:asc"]]
     """Sort order for the config instance results."""
+
+    slot_key: SequenceNotStr[str]
+    """The config schema slot keys to filter by."""

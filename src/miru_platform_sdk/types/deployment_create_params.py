@@ -14,8 +14,8 @@ class DeploymentCreateParams(TypedDict, total=False):
     config_instance_ids: Required[SequenceNotStr[str]]
     """The IDs of the config instances to deploy.
 
-    A deployment must have exactly one config instance for each config schema in the
-    deployment's release.
+    A deployment must include config instances according to the config schemas slots
+    defined in the release.
     """
 
     description: Required[str]

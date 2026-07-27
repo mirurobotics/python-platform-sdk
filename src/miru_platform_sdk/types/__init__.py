@@ -14,6 +14,7 @@ from .config_type import ConfigType as ConfigType
 from .device_list import DeviceList as DeviceList
 from .release_list import ReleaseList as ReleaseList
 from .config_schema import ConfigSchema as ConfigSchema
+from .instance_slot import InstanceSlot as InstanceSlot
 from .config_instance import ConfigInstance as ConfigInstance
 from .deployment_list import DeploymentList as DeploymentList
 from .git_commit_list import GitCommitList as GitCommitList
@@ -25,6 +26,7 @@ from .config_schema_list import ConfigSchemaList as ConfigSchemaList
 from .device_list_params import DeviceListParams as DeviceListParams
 from .device_ping_params import DevicePingParams as DevicePingParams
 from .provisioning_token import ProvisioningToken as ProvisioningToken
+from .instance_slot_param import InstanceSlotParam as InstanceSlotParam
 from .release_list_params import ReleaseListParams as ReleaseListParams
 from .device_create_params import DeviceCreateParams as DeviceCreateParams
 from .device_ping_response import DevicePingResponse as DevicePingResponse

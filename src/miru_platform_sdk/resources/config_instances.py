@@ -65,6 +65,7 @@ class ConfigInstancesResource(SyncAPIResource):
         config_schema_id: str,
         content: InstanceContentParam,
         expand: List[Literal["content", "config_schema", "config_type"]] | Omit = omit,
+        slot_key: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -80,6 +81,10 @@ class ConfigInstancesResource(SyncAPIResource):
 
           expand: Fields to expand on the config instance resource.
 
+          slot_key: The slot of the config schema this instance is bound to. Optional when the
+              schema has exactly one slot. Must match the `key` of one of the slots declared
+              by the config schema.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -94,6 +99,7 @@ class ConfigInstancesResource(SyncAPIResource):
                 {
                     "config_schema_id": config_schema_id,
                     "content": content,
+                    "slot_key": slot_key,
                 },
                 config_instance_create_params.ConfigInstanceCreateParams,
             ),
@@ -157,6 +163,7 @@ class ConfigInstancesResource(SyncAPIResource):
         limit: int | Omit = omit,
         offset: int | Omit = omit,
         order_by: List[Literal["id:asc", "id:desc", "created_at:desc", "created_at:asc"]] | Omit = omit,
+        slot_key: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -184,6 +191,8 @@ class ConfigInstancesResource(SyncAPIResource):
 
           order_by: Sort order for the config instance results.
 
+          slot_key: The config schema slot keys to filter by.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -208,6 +217,7 @@ class ConfigInstancesResource(SyncAPIResource):
                         "limit": limit,
                         "offset": offset,
                         "order_by": order_by,
+                        "slot_key": slot_key,
                     },
                     config_instance_list_params.ConfigInstanceListParams,
                 ),
@@ -286,6 +296,7 @@ class AsyncConfigInstancesResource(AsyncAPIResource):
         config_schema_id: str,
         content: InstanceContentParam,
         expand: List[Literal["content", "config_schema", "config_type"]] | Omit = omit,
+        slot_key: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -301,6 +312,10 @@ class AsyncConfigInstancesResource(AsyncAPIResource):
 
           expand: Fields to expand on the config instance resource.
 
+          slot_key: The slot of the config schema this instance is bound to. Optional when the
+              schema has exactly one slot. Must match the `key` of one of the slots declared
+              by the config schema.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -315,6 +330,7 @@ class AsyncConfigInstancesResource(AsyncAPIResource):
                 {
                     "config_schema_id": config_schema_id,
                     "content": content,
+                    "slot_key": slot_key,
                 },
                 config_instance_create_params.ConfigInstanceCreateParams,
             ),
@@ -382,6 +398,7 @@ class AsyncConfigInstancesResource(AsyncAPIResource):
         limit: int | Omit = omit,
         offset: int | Omit = omit,
         order_by: List[Literal["id:asc", "id:desc", "created_at:desc", "created_at:asc"]] | Omit = omit,
+        slot_key: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -409,6 +426,8 @@ class AsyncConfigInstancesResource(AsyncAPIResource):
 
           order_by: Sort order for the config instance results.
 
+          slot_key: The config schema slot keys to filter by.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -433,6 +452,7 @@ class AsyncConfigInstancesResource(AsyncAPIResource):
                         "limit": limit,
                         "offset": offset,
                         "order_by": order_by,
+                        "slot_key": slot_key,
                     },
                     config_instance_list_params.ConfigInstanceListParams,
                 ),

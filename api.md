@@ -24,7 +24,13 @@ Methods:
 Types:
 
 ```python
-from miru_platform_sdk.types import ConfigSchema, ConfigSchemaList, SchemaDocument, SchemaLanguage
+from miru_platform_sdk.types import (
+    ConfigSchema,
+    ConfigSchemaList,
+    InstanceSlot,
+    SchemaDocument,
+    SchemaLanguage,
+)
 ```
 
 Methods:

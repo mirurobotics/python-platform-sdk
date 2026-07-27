@@ -50,6 +50,7 @@ class TestConfigInstances:
                 "format": "json",
             },
             expand=["content"],
+            slot_key="controller_2",
         )
         assert_matches_type(ConfigInstance, config_instance, path=["response"])
 
@@ -155,6 +156,7 @@ class TestConfigInstances:
             limit=10,
             offset=0,
             order_by=["created_at:desc"],
+            slot_key=["controller_2"],
         )
         assert_matches_type(ConfigInstanceListResponse, config_instance, path=["response"])
 
@@ -279,6 +281,7 @@ class TestAsyncConfigInstances:
                 "format": "json",
             },
             expand=["content"],
+            slot_key="controller_2",
         )
         assert_matches_type(ConfigInstance, config_instance, path=["response"])
 
@@ -384,6 +387,7 @@ class TestAsyncConfigInstances:
             limit=10,
             offset=0,
             order_by=["created_at:desc"],
+            slot_key=["controller_2"],
         )
         assert_matches_type(ConfigInstanceListResponse, config_instance, path=["response"])
 

@@ -7,6 +7,7 @@ from typing_extensions import Literal, Required, TypedDict
 
 from .._types import SequenceNotStr
 from .schema_language import SchemaLanguage
+from .instance_slot_param import InstanceSlotParam
 from .git_commit_ref_param import GitCommitRefParam
 
 __all__ = ["ConfigSchemaCreateParams", "ConfigTypeRef", "Document", "GitCommit"]
@@ -25,6 +26,13 @@ class ConfigSchemaCreateParams(TypedDict, total=False):
 
     format: Required[Literal["json", "yaml", "cue"]]
 
+    instance_slots: Required[Iterable[InstanceSlotParam]]
+    """The file system destinations this config schema writes to.
+
+    Slot keys and filepaths must each be unique within the schema, and slot
+    filepaths must be unique across every config schema in a release.
+    """
+
     language: Required[SchemaLanguage]
 
     expand: List[Literal["documents", "config_type"]]
@@ -32,9 +40,6 @@ class ConfigSchemaCreateParams(TypedDict, total=False):
 
     git_commit: GitCommit
     """The git commit to link to this config schema."""
-
-    instance_filepath: str
-    """The absolute file system path config instances for this schema are written to."""
 
     instance_format: Literal["json", "yaml", "jsonc", "xml", "text"]
     """
