@@ -28,7 +28,7 @@ class ConfigSchema(BaseModel):
     digest: str
     """The digest of the config schema."""
 
-    format: Literal["json", "yaml", "cue", "opaque"]
+    format: Literal["json", "yaml", "cue"]
 
     instance_filepath: str
     """
