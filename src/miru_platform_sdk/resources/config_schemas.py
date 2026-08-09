@@ -58,11 +58,11 @@ class ConfigSchemasResource(SyncAPIResource):
         config_type_ref: config_schema_create_params.ConfigTypeRef,
         documents: Iterable[config_schema_create_params.Document],
         format: Literal["json", "yaml", "cue"],
-        instance_slots: Iterable[InstanceSlotParam],
         language: SchemaLanguage,
         expand: List[Literal["documents", "config_type"]] | Omit = omit,
         git_commit: config_schema_create_params.GitCommit | Omit = omit,
         instance_format: Literal["json", "yaml", "jsonc", "xml", "text"] | Omit = omit,
+        instance_slots: Iterable[InstanceSlotParam] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -79,10 +79,6 @@ class ConfigSchemasResource(SyncAPIResource):
 
           documents: The schema document files.
 
-          instance_slots: The file system destinations this config schema writes to. Slot keys and
-              filepaths must each be unique within the schema, and slot filepaths must be
-              unique across every config schema in a release.
-
           expand: Fields to expand on the config schema resource.
 
           git_commit: The git commit to link to this config schema.
@@ -95,6 +91,14 @@ class ConfigSchemasResource(SyncAPIResource):
               - `jsonc`: JSON with comments (JSON plus `//` and `/* */` comment syntax).
               - `xml`: XML.
               - `text`: plain, unstructured text with no specific format.
+
+          instance_slots: The file system destinations this config schema writes to. Slot keys and
+              filepaths must each be unique within the schema, and slot filepaths must be
+              unique across every config schema in a release. Optional: when omitted, the
+              server creates a single required slot with key `default`, name `Default`, and a
+              filepath of `/srv/miru/configs/<config_type_slug>.<json|yaml>` derived from the
+              config type slug and the schema format. When provided, the array must contain at
+              least one slot.
 
           extra_headers: Send extra headers
 
@@ -111,10 +115,10 @@ class ConfigSchemasResource(SyncAPIResource):
                     "config_type_ref": config_type_ref,
                     "documents": documents,
                     "format": format,
-                    "instance_slots": instance_slots,
                     "language": language,
                     "git_commit": git_commit,
                     "instance_format": instance_format,
+                    "instance_slots": instance_slots,
                 },
                 config_schema_create_params.ConfigSchemaCreateParams,
             ),
@@ -259,11 +263,11 @@ class AsyncConfigSchemasResource(AsyncAPIResource):
         config_type_ref: config_schema_create_params.ConfigTypeRef,
         documents: Iterable[config_schema_create_params.Document],
         format: Literal["json", "yaml", "cue"],
-        instance_slots: Iterable[InstanceSlotParam],
         language: SchemaLanguage,
         expand: List[Literal["documents", "config_type"]] | Omit = omit,
         git_commit: config_schema_create_params.GitCommit | Omit = omit,
         instance_format: Literal["json", "yaml", "jsonc", "xml", "text"] | Omit = omit,
+        instance_slots: Iterable[InstanceSlotParam] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -280,10 +284,6 @@ class AsyncConfigSchemasResource(AsyncAPIResource):
 
           documents: The schema document files.
 
-          instance_slots: The file system destinations this config schema writes to. Slot keys and
-              filepaths must each be unique within the schema, and slot filepaths must be
-              unique across every config schema in a release.
-
           expand: Fields to expand on the config schema resource.
 
           git_commit: The git commit to link to this config schema.
@@ -296,6 +296,14 @@ class AsyncConfigSchemasResource(AsyncAPIResource):
               - `jsonc`: JSON with comments (JSON plus `//` and `/* */` comment syntax).
               - `xml`: XML.
               - `text`: plain, unstructured text with no specific format.
+
+          instance_slots: The file system destinations this config schema writes to. Slot keys and
+              filepaths must each be unique within the schema, and slot filepaths must be
+              unique across every config schema in a release. Optional: when omitted, the
+              server creates a single required slot with key `default`, name `Default`, and a
+              filepath of `/srv/miru/configs/<config_type_slug>.<json|yaml>` derived from the
+              config type slug and the schema format. When provided, the array must contain at
+              least one slot.
 
           extra_headers: Send extra headers
 
@@ -312,10 +320,10 @@ class AsyncConfigSchemasResource(AsyncAPIResource):
                     "config_type_ref": config_type_ref,
                     "documents": documents,
                     "format": format,
-                    "instance_slots": instance_slots,
                     "language": language,
                     "git_commit": git_commit,
                     "instance_format": instance_format,
+                    "instance_slots": instance_slots,
                 },
                 config_schema_create_params.ConfigSchemaCreateParams,
             ),

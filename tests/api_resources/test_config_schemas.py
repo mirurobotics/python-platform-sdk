@@ -32,14 +32,6 @@ class TestConfigSchemas:
                 }
             ],
             format="json",
-            instance_slots=[
-                {
-                    "filepath": "/var/local/forge/configuration/robot_drivers/controller_2/topic_list.yaml",
-                    "key": "controller_2",
-                    "name": "Controller 2",
-                    "required": True,
-                }
-            ],
             language="jsonschema",
         )
         assert_matches_type(ConfigSchema, config_schema, path=["response"])
@@ -59,15 +51,6 @@ class TestConfigSchemas:
                 }
             ],
             format="json",
-            instance_slots=[
-                {
-                    "filepath": "/var/local/forge/configuration/robot_drivers/controller_2/topic_list.yaml",
-                    "key": "controller_2",
-                    "name": "Controller 2",
-                    "required": True,
-                    "description": "Topic list for the second motor controller.",
-                }
-            ],
             language="jsonschema",
             expand=["documents"],
             git_commit={
@@ -78,6 +61,15 @@ class TestConfigSchemas:
                 "schema_filepaths": ["path/to/config/schema/robot1.cue", "path/to/config/schema/robot2.cue"],
             },
             instance_format="json",
+            instance_slots=[
+                {
+                    "filepath": "/var/local/forge/configuration/robot_drivers/controller_2/topic_list.yaml",
+                    "key": "controller_2",
+                    "name": "Controller 2",
+                    "required": True,
+                    "description": "Topic list for the second motor controller.",
+                }
+            ],
         )
         assert_matches_type(ConfigSchema, config_schema, path=["response"])
 
@@ -93,14 +85,6 @@ class TestConfigSchemas:
                 }
             ],
             format="json",
-            instance_slots=[
-                {
-                    "filepath": "/var/local/forge/configuration/robot_drivers/controller_2/topic_list.yaml",
-                    "key": "controller_2",
-                    "name": "Controller 2",
-                    "required": True,
-                }
-            ],
             language="jsonschema",
         )
 
@@ -121,14 +105,6 @@ class TestConfigSchemas:
                 }
             ],
             format="json",
-            instance_slots=[
-                {
-                    "filepath": "/var/local/forge/configuration/robot_drivers/controller_2/topic_list.yaml",
-                    "key": "controller_2",
-                    "name": "Controller 2",
-                    "required": True,
-                }
-            ],
             language="jsonschema",
         ) as response:
             assert not response.is_closed
@@ -249,14 +225,6 @@ class TestAsyncConfigSchemas:
                 }
             ],
             format="json",
-            instance_slots=[
-                {
-                    "filepath": "/var/local/forge/configuration/robot_drivers/controller_2/topic_list.yaml",
-                    "key": "controller_2",
-                    "name": "Controller 2",
-                    "required": True,
-                }
-            ],
             language="jsonschema",
         )
         assert_matches_type(ConfigSchema, config_schema, path=["response"])
@@ -276,15 +244,6 @@ class TestAsyncConfigSchemas:
                 }
             ],
             format="json",
-            instance_slots=[
-                {
-                    "filepath": "/var/local/forge/configuration/robot_drivers/controller_2/topic_list.yaml",
-                    "key": "controller_2",
-                    "name": "Controller 2",
-                    "required": True,
-                    "description": "Topic list for the second motor controller.",
-                }
-            ],
             language="jsonschema",
             expand=["documents"],
             git_commit={
@@ -295,6 +254,15 @@ class TestAsyncConfigSchemas:
                 "schema_filepaths": ["path/to/config/schema/robot1.cue", "path/to/config/schema/robot2.cue"],
             },
             instance_format="json",
+            instance_slots=[
+                {
+                    "filepath": "/var/local/forge/configuration/robot_drivers/controller_2/topic_list.yaml",
+                    "key": "controller_2",
+                    "name": "Controller 2",
+                    "required": True,
+                    "description": "Topic list for the second motor controller.",
+                }
+            ],
         )
         assert_matches_type(ConfigSchema, config_schema, path=["response"])
 
@@ -310,14 +278,6 @@ class TestAsyncConfigSchemas:
                 }
             ],
             format="json",
-            instance_slots=[
-                {
-                    "filepath": "/var/local/forge/configuration/robot_drivers/controller_2/topic_list.yaml",
-                    "key": "controller_2",
-                    "name": "Controller 2",
-                    "required": True,
-                }
-            ],
             language="jsonschema",
         )
 
@@ -338,14 +298,6 @@ class TestAsyncConfigSchemas:
                 }
             ],
             format="json",
-            instance_slots=[
-                {
-                    "filepath": "/var/local/forge/configuration/robot_drivers/controller_2/topic_list.yaml",
-                    "key": "controller_2",
-                    "name": "Controller 2",
-                    "required": True,
-                }
-            ],
             language="jsonschema",
         ) as response:
             assert not response.is_closed

@@ -26,13 +26,6 @@ class ConfigSchemaCreateParams(TypedDict, total=False):
 
     format: Required[Literal["json", "yaml", "cue"]]
 
-    instance_slots: Required[Iterable[InstanceSlotParam]]
-    """The file system destinations this config schema writes to.
-
-    Slot keys and filepaths must each be unique within the schema, and slot
-    filepaths must be unique across every config schema in a release.
-    """
-
     language: Required[SchemaLanguage]
 
     expand: List[Literal["documents", "config_type"]]
@@ -51,6 +44,17 @@ class ConfigSchemaCreateParams(TypedDict, total=False):
     - `jsonc`: JSON with comments (JSON plus `//` and `/* */` comment syntax).
     - `xml`: XML.
     - `text`: plain, unstructured text with no specific format.
+    """
+
+    instance_slots: Iterable[InstanceSlotParam]
+    """The file system destinations this config schema writes to.
+
+    Slot keys and filepaths must each be unique within the schema, and slot
+    filepaths must be unique across every config schema in a release. Optional: when
+    omitted, the server creates a single required slot with key `default`, name
+    `Default`, and a filepath of `/srv/miru/configs/<config_type_slug>.<json|yaml>`
+    derived from the config type slug and the schema format. When provided, the
+    array must contain at least one slot.
     """
 
 
