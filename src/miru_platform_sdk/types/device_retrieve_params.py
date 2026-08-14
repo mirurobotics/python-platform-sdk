@@ -9,5 +9,5 @@ __all__ = ["DeviceRetrieveParams"]
 
 
 class DeviceRetrieveParams(TypedDict, total=False):
-    expand: List[Literal["current_deployment", "current_release"]]
+    expand: List[Literal["current_deployment", "current_release", "group"]]
     """Fields to expand on the device resource."""

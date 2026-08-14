@@ -12,5 +12,5 @@ class DeviceCreateParams(TypedDict, total=False):
     name: Required[str]
     """The name of the device."""
 
-    expand: List[Literal["current_deployment", "current_release"]]
+    expand: List[Literal["current_deployment", "current_release", "group"]]
     """Fields to expand on the device resource."""

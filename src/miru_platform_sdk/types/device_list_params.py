@@ -20,8 +20,11 @@ class DeviceListParams(TypedDict, total=False):
     current_release_id: SequenceNotStr[str]
     """The release IDs to filter devices by their current release."""
 
-    expand: List[Literal["total_count", "current_deployment", "current_release"]]
+    expand: List[Literal["total_count", "current_deployment", "current_release", "group"]]
     """Fields to expand on each device in the list."""
+
+    group_id: SequenceNotStr[str]
+    """The group IDs to filter devices by."""
 
     limit: int
     """The maximum number of items to return.

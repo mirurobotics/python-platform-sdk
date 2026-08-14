@@ -56,7 +56,7 @@ class DevicesResource(SyncAPIResource):
         self,
         *,
         name: str,
-        expand: List[Literal["current_deployment", "current_release"]] | Omit = omit,
+        expand: List[Literal["current_deployment", "current_release", "group"]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -97,7 +97,7 @@ class DevicesResource(SyncAPIResource):
         self,
         device_id: str,
         *,
-        expand: List[Literal["current_deployment", "current_release"]] | Omit = omit,
+        expand: List[Literal["current_deployment", "current_release", "group"]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -137,7 +137,7 @@ class DevicesResource(SyncAPIResource):
         self,
         device_id: str,
         *,
-        expand: List[Literal["current_deployment", "current_release"]] | Omit = omit,
+        expand: List[Literal["current_deployment", "current_release", "group"]] | Omit = omit,
         name: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -184,7 +184,8 @@ class DevicesResource(SyncAPIResource):
         id: SequenceNotStr[str] | Omit = omit,
         agent_version: SequenceNotStr[str] | Omit = omit,
         current_release_id: SequenceNotStr[str] | Omit = omit,
-        expand: List[Literal["total_count", "current_deployment", "current_release"]] | Omit = omit,
+        expand: List[Literal["total_count", "current_deployment", "current_release", "group"]] | Omit = omit,
+        group_id: SequenceNotStr[str] | Omit = omit,
         limit: int | Omit = omit,
         name: SequenceNotStr[str] | Omit = omit,
         offset: int | Omit = omit,
@@ -209,6 +210,8 @@ class DevicesResource(SyncAPIResource):
           current_release_id: The release IDs to filter devices by their current release.
 
           expand: Fields to expand on each device in the list.
+
+          group_id: The group IDs to filter devices by.
 
           limit: The maximum number of items to return. A limit of 15 with an offset of 0 returns
               items 1-15.
@@ -243,6 +246,7 @@ class DevicesResource(SyncAPIResource):
                         "agent_version": agent_version,
                         "current_release_id": current_release_id,
                         "expand": expand,
+                        "group_id": group_id,
                         "limit": limit,
                         "name": name,
                         "offset": offset,
@@ -318,7 +322,7 @@ class AsyncDevicesResource(AsyncAPIResource):
         self,
         *,
         name: str,
-        expand: List[Literal["current_deployment", "current_release"]] | Omit = omit,
+        expand: List[Literal["current_deployment", "current_release", "group"]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -359,7 +363,7 @@ class AsyncDevicesResource(AsyncAPIResource):
         self,
         device_id: str,
         *,
-        expand: List[Literal["current_deployment", "current_release"]] | Omit = omit,
+        expand: List[Literal["current_deployment", "current_release", "group"]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -399,7 +403,7 @@ class AsyncDevicesResource(AsyncAPIResource):
         self,
         device_id: str,
         *,
-        expand: List[Literal["current_deployment", "current_release"]] | Omit = omit,
+        expand: List[Literal["current_deployment", "current_release", "group"]] | Omit = omit,
         name: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -446,7 +450,8 @@ class AsyncDevicesResource(AsyncAPIResource):
         id: SequenceNotStr[str] | Omit = omit,
         agent_version: SequenceNotStr[str] | Omit = omit,
         current_release_id: SequenceNotStr[str] | Omit = omit,
-        expand: List[Literal["total_count", "current_deployment", "current_release"]] | Omit = omit,
+        expand: List[Literal["total_count", "current_deployment", "current_release", "group"]] | Omit = omit,
+        group_id: SequenceNotStr[str] | Omit = omit,
         limit: int | Omit = omit,
         name: SequenceNotStr[str] | Omit = omit,
         offset: int | Omit = omit,
@@ -471,6 +476,8 @@ class AsyncDevicesResource(AsyncAPIResource):
           current_release_id: The release IDs to filter devices by their current release.
 
           expand: Fields to expand on each device in the list.
+
+          group_id: The group IDs to filter devices by.
 
           limit: The maximum number of items to return. A limit of 15 with an offset of 0 returns
               items 1-15.
@@ -505,6 +512,7 @@ class AsyncDevicesResource(AsyncAPIResource):
                         "agent_version": agent_version,
                         "current_release_id": current_release_id,
                         "expand": expand,
+                        "group_id": group_id,
                         "limit": limit,
                         "name": name,
                         "offset": offset,

@@ -25,6 +25,9 @@ class Device(BaseModel):
     description: Optional[str] = None
     """A free-form description of the device."""
 
+    group_id: Optional[str] = None
+    """ID of the group this device belongs to. Null if the device is unassigned."""
+
     last_connected_at: Optional[datetime] = None
     """
     Timestamp of when the device was last made an initial connection (this is not
@@ -67,5 +70,9 @@ class Device(BaseModel):
     current_release: Optional[Release] = None
     """The current release for the device."""
 
+    group: Optional["Group"] = None
+    """The group this device belongs to. Null if the device is unassigned."""
 
+
+from .group import Group
 from .deployment import Deployment
