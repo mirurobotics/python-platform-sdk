@@ -36,6 +36,7 @@ from ._base_client import (
 
 if TYPE_CHECKING:
     from .resources import (
+        groups,
         devices,
         releases,
         principal,
@@ -46,6 +47,7 @@ if TYPE_CHECKING:
         config_instances,
         provisioning_tokens,
     )
+    from .resources.groups import GroupsResource, AsyncGroupsResource
     from .resources.devices import DevicesResource, AsyncDevicesResource
     from .resources.releases import ReleasesResource, AsyncReleasesResource
     from .resources.principal import PrincipalResource, AsyncPrincipalResource
@@ -213,6 +215,12 @@ class Miru(SyncAPIClient):
         from .resources.git_commits import GitCommitsResource
 
         return GitCommitsResource(self)
+
+    @cached_property
+    def groups(self) -> GroupsResource:
+        from .resources.groups import GroupsResource
+
+        return GroupsResource(self)
 
     @cached_property
     def principal(self) -> PrincipalResource:
@@ -483,6 +491,12 @@ class AsyncMiru(AsyncAPIClient):
         return AsyncGitCommitsResource(self)
 
     @cached_property
+    def groups(self) -> AsyncGroupsResource:
+        from .resources.groups import AsyncGroupsResource
+
+        return AsyncGroupsResource(self)
+
+    @cached_property
     def principal(self) -> AsyncPrincipalResource:
         from .resources.principal import AsyncPrincipalResource
 
@@ -661,6 +675,12 @@ class MiruWithRawResponse:
         return GitCommitsResourceWithRawResponse(self._client.git_commits)
 
     @cached_property
+    def groups(self) -> groups.GroupsResourceWithRawResponse:
+        from .resources.groups import GroupsResourceWithRawResponse
+
+        return GroupsResourceWithRawResponse(self._client.groups)
+
+    @cached_property
     def principal(self) -> principal.PrincipalResourceWithRawResponse:
         from .resources.principal import PrincipalResourceWithRawResponse
 
@@ -720,6 +740,12 @@ class AsyncMiruWithRawResponse:
         from .resources.git_commits import AsyncGitCommitsResourceWithRawResponse
 
         return AsyncGitCommitsResourceWithRawResponse(self._client.git_commits)
+
+    @cached_property
+    def groups(self) -> groups.AsyncGroupsResourceWithRawResponse:
+        from .resources.groups import AsyncGroupsResourceWithRawResponse
+
+        return AsyncGroupsResourceWithRawResponse(self._client.groups)
 
     @cached_property
     def principal(self) -> principal.AsyncPrincipalResourceWithRawResponse:
@@ -783,6 +809,12 @@ class MiruWithStreamedResponse:
         return GitCommitsResourceWithStreamingResponse(self._client.git_commits)
 
     @cached_property
+    def groups(self) -> groups.GroupsResourceWithStreamingResponse:
+        from .resources.groups import GroupsResourceWithStreamingResponse
+
+        return GroupsResourceWithStreamingResponse(self._client.groups)
+
+    @cached_property
     def principal(self) -> principal.PrincipalResourceWithStreamingResponse:
         from .resources.principal import PrincipalResourceWithStreamingResponse
 
@@ -842,6 +874,12 @@ class AsyncMiruWithStreamedResponse:
         from .resources.git_commits import AsyncGitCommitsResourceWithStreamingResponse
 
         return AsyncGitCommitsResourceWithStreamingResponse(self._client.git_commits)
+
+    @cached_property
+    def groups(self) -> groups.AsyncGroupsResourceWithStreamingResponse:
+        from .resources.groups import AsyncGroupsResourceWithStreamingResponse
+
+        return AsyncGroupsResourceWithStreamingResponse(self._client.groups)
 
     @cached_property
     def principal(self) -> principal.AsyncPrincipalResourceWithStreamingResponse:

@@ -2,14 +2,16 @@
 
 from __future__ import annotations
 
-from . import device, deployment
+from . import group, device, deployment
 from .. import _compat
+from .group import Group as Group
 from .device import Device as Device
 from .shared import PaginatedList as PaginatedList
 from .release import Release as Release
 from .principal import Principal as Principal
 from .deployment import Deployment as Deployment
 from .git_commit import GitCommit as GitCommit
+from .group_list import GroupList as GroupList
 from .config_type import ConfigType as ConfigType
 from .device_list import DeviceList as DeviceList
 from .release_list import ReleaseList as ReleaseList
@@ -21,6 +23,7 @@ from .git_commit_list import GitCommitList as GitCommitList
 from .schema_document import SchemaDocument as SchemaDocument
 from .schema_language import SchemaLanguage as SchemaLanguage
 from .instance_content import InstanceContent as InstanceContent
+from .group_list_params import GroupListParams as GroupListParams
 from .config_schema_list import ConfigSchemaList as ConfigSchemaList
 from .device_list_params import DeviceListParams as DeviceListParams
 from .device_ping_params import DevicePingParams as DevicePingParams
@@ -31,6 +34,7 @@ from .device_create_params import DeviceCreateParams as DeviceCreateParams
 from .device_ping_response import DevicePingResponse as DevicePingResponse
 from .device_update_params import DeviceUpdateParams as DeviceUpdateParams
 from .git_commit_ref_param import GitCommitRefParam as GitCommitRefParam
+from .group_retrieve_params import GroupRetrieveParams as GroupRetrieveParams
 from .release_create_params import ReleaseCreateParams as ReleaseCreateParams
 from .deployment_list_params import DeploymentListParams as DeploymentListParams
 from .device_retrieve_params import DeviceRetrieveParams as DeviceRetrieveParams
@@ -63,6 +67,8 @@ from .config_instance_retrieve_params import ConfigInstanceRetrieveParams as Con
 if _compat.PYDANTIC_V1:
     deployment.Deployment.update_forward_refs()  # type: ignore
     device.Device.update_forward_refs()  # type: ignore
+    group.Group.update_forward_refs()  # type: ignore
 else:
     deployment.Deployment.model_rebuild(_parent_namespace_depth=0)
     device.Device.model_rebuild(_parent_namespace_depth=0)
+    group.Group.model_rebuild(_parent_namespace_depth=0)

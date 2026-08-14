@@ -1,5 +1,13 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
+from .groups import (
+    GroupsResource,
+    AsyncGroupsResource,
+    GroupsResourceWithRawResponse,
+    AsyncGroupsResourceWithRawResponse,
+    GroupsResourceWithStreamingResponse,
+    AsyncGroupsResourceWithStreamingResponse,
+)
 from .devices import (
     DevicesResource,
     AsyncDevicesResource,
@@ -116,6 +124,12 @@ __all__ = [
     "AsyncGitCommitsResourceWithRawResponse",
     "GitCommitsResourceWithStreamingResponse",
     "AsyncGitCommitsResourceWithStreamingResponse",
+    "GroupsResource",
+    "AsyncGroupsResource",
+    "GroupsResourceWithRawResponse",
+    "AsyncGroupsResourceWithRawResponse",
+    "GroupsResourceWithStreamingResponse",
+    "AsyncGroupsResourceWithStreamingResponse",
     "PrincipalResource",
     "AsyncPrincipalResource",
     "PrincipalResourceWithRawResponse",

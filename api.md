@@ -113,6 +113,19 @@ Methods:
 - <code title="get /git_commits/{git_commit_id}">client.git_commits.<a href="./src/miru_platform_sdk/resources/git_commits.py">retrieve</a>(git_commit_id) -> <a href="./src/miru_platform_sdk/types/git_commit.py">GitCommit</a></code>
 - <code title="get /git_commits">client.git_commits.<a href="./src/miru_platform_sdk/resources/git_commits.py">list</a>(\*\*<a href="src/miru_platform_sdk/types/git_commit_list_params.py">params</a>) -> <a href="./src/miru_platform_sdk/types/git_commit_list.py">GitCommitList</a></code>
 
+# Groups
+
+Types:
+
+```python
+from miru_platform_sdk.types import Group, GroupList
+```
+
+Methods:
+
+- <code title="get /groups/{group_id}">client.groups.<a href="./src/miru_platform_sdk/resources/groups.py">retrieve</a>(group_id, \*\*<a href="src/miru_platform_sdk/types/group_retrieve_params.py">params</a>) -> <a href="./src/miru_platform_sdk/types/group.py">Group</a></code>
+- <code title="get /groups">client.groups.<a href="./src/miru_platform_sdk/resources/groups.py">list</a>(\*\*<a href="src/miru_platform_sdk/types/group_list_params.py">params</a>) -> <a href="./src/miru_platform_sdk/types/group_list.py">GroupList</a></code>
+
 # Principal
 
 Types:
