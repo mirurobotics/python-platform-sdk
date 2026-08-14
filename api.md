@@ -54,21 +54,6 @@ Methods:
 - <code title="patch /config_types/{config_type_id}">client.config_types.<a href="./src/miru_platform_sdk/resources/config_types.py">update</a>(config_type_id, \*\*<a href="src/miru_platform_sdk/types/config_type_update_params.py">params</a>) -> <a href="./src/miru_platform_sdk/types/config_type.py">ConfigType</a></code>
 - <code title="get /config_types">client.config_types.<a href="./src/miru_platform_sdk/resources/config_types.py">list</a>(\*\*<a href="src/miru_platform_sdk/types/config_type_list_params.py">params</a>) -> <a href="./src/miru_platform_sdk/types/config_type_list_response.py">ConfigTypeListResponse</a></code>
 
-# UploadCollections
-
-Types:
-
-```python
-from miru_platform_sdk.types import UploadCollection, UploadCollectionListResponse
-```
-
-Methods:
-
-- <code title="post /upload_collections">client.upload_collections.<a href="./src/miru_platform_sdk/resources/upload_collections.py">create</a>(\*\*<a href="src/miru_platform_sdk/types/upload_collection_create_params.py">params</a>) -> <a href="./src/miru_platform_sdk/types/upload_collection.py">UploadCollection</a></code>
-- <code title="get /upload_collections/{upload_collection_id}">client.upload_collections.<a href="./src/miru_platform_sdk/resources/upload_collections.py">retrieve</a>(upload_collection_id) -> <a href="./src/miru_platform_sdk/types/upload_collection.py">UploadCollection</a></code>
-- <code title="patch /upload_collections/{upload_collection_id}">client.upload_collections.<a href="./src/miru_platform_sdk/resources/upload_collections.py">update</a>(upload_collection_id, \*\*<a href="src/miru_platform_sdk/types/upload_collection_update_params.py">params</a>) -> <a href="./src/miru_platform_sdk/types/upload_collection.py">UploadCollection</a></code>
-- <code title="get /upload_collections">client.upload_collections.<a href="./src/miru_platform_sdk/resources/upload_collections.py">list</a>(\*\*<a href="src/miru_platform_sdk/types/upload_collection_list_params.py">params</a>) -> <a href="./src/miru_platform_sdk/types/upload_collection_list_response.py">UploadCollectionListResponse</a></code>
-
 # Deployments
 
 Types:

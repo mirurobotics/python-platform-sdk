@@ -21,7 +21,6 @@ from .git_commit_list import GitCommitList as GitCommitList
 from .schema_document import SchemaDocument as SchemaDocument
 from .schema_language import SchemaLanguage as SchemaLanguage
 from .instance_content import InstanceContent as InstanceContent
-from .upload_collection import UploadCollection as UploadCollection
 from .config_schema_list import ConfigSchemaList as ConfigSchemaList
 from .device_list_params import DeviceListParams as DeviceListParams
 from .device_ping_params import DevicePingParams as DevicePingParams
@@ -54,12 +53,8 @@ from .config_instance_create_params import ConfigInstanceCreateParams as ConfigI
 from .config_instance_list_response import ConfigInstanceListResponse as ConfigInstanceListResponse
 from .config_schema_retrieve_params import ConfigSchemaRetrieveParams as ConfigSchemaRetrieveParams
 from .deployment_list_drifts_params import DeploymentListDriftsParams as DeploymentListDriftsParams
-from .upload_collection_list_params import UploadCollectionListParams as UploadCollectionListParams
 from .config_instance_download_params import ConfigInstanceDownloadParams as ConfigInstanceDownloadParams
 from .config_instance_retrieve_params import ConfigInstanceRetrieveParams as ConfigInstanceRetrieveParams
-from .upload_collection_create_params import UploadCollectionCreateParams as UploadCollectionCreateParams
-from .upload_collection_list_response import UploadCollectionListResponse as UploadCollectionListResponse
-from .upload_collection_update_params import UploadCollectionUpdateParams as UploadCollectionUpdateParams
 
 # Rebuild cyclical models only after all modules are imported.
 # This ensures that, when building the deferred (due to cyclical references) model schema,
