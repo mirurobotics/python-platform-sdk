@@ -38,8 +38,14 @@ class Deployment(BaseModel):
     be deployed and is not active on the device.
     """
 
+    archived_at: Optional[datetime] = None
+    """Timestamp of when the deployment was archived."""
+
     created_at: datetime
     """Timestamp of when the device release was created."""
+
+    deployed_at: Optional[datetime] = None
+    """Timestamp of when the deployment was deployed."""
 
     description: str
     """The description of the deployment."""
@@ -67,6 +73,9 @@ class Deployment(BaseModel):
 
     Null if this deployment has no parent.
     """
+
+    queued_at: Optional[datetime] = None
+    """Timestamp of when the deployment was queued."""
 
     release_id: str
     """ID of the release."""
