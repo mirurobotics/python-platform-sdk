@@ -9,5 +9,5 @@ __all__ = ["DeploymentArchiveParams"]
 
 
 class DeploymentArchiveParams(TypedDict, total=False):
-    expand: List[Literal["device", "release", "config_instances"]]
+    expand: List[Literal["device", "release", "parent", "config_instances"]]
     """Fields to expand on the deployment resource."""

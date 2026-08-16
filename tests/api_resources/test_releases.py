@@ -36,7 +36,6 @@ class TestReleases:
             config_schema_ids=["cfg_sch_123"],
             version="v1.0.0",
             expand=["config_schemas"],
-            file_rule_ids=["file_rule_123"],
             git_commit_ref={
                 "id": "git_cmt_123",
                 "sha": "1a2b3c4d...",
@@ -186,7 +185,6 @@ class TestAsyncReleases:
             config_schema_ids=["cfg_sch_123"],
             version="v1.0.0",
             expand=["config_schemas"],
-            file_rule_ids=["file_rule_123"],
             git_commit_ref={
                 "id": "git_cmt_123",
                 "sha": "1a2b3c4d...",

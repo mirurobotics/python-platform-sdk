@@ -62,6 +62,12 @@ class Deployment(BaseModel):
     object: Literal["deployment"]
     """The object type, which is always `deployment`."""
 
+    parent_id: Optional[str] = None
+    """ID of the deployment that this deployment was patched from.
+
+    Null if this deployment has no parent.
+    """
+
     release_id: str
     """ID of the release."""
 
@@ -96,6 +102,13 @@ class Deployment(BaseModel):
 
     device: Optional["Device"] = None
     """Expand the device using 'expand=device' in the query string."""
+
+    parent: Optional["Deployment"] = None
+    """The parent deployment that this deployment was patched from.
+
+    Null if this deployment has no parent. Expand the parent using 'expand=parent'
+    in the query string.
+    """
 
     release: Optional[Release] = None
     """Expand the release using 'expand=release' in the query string."""

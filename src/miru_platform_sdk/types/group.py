@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Optional
+from typing import Optional
 from datetime import datetime
 from typing_extensions import Literal
 
@@ -29,13 +29,6 @@ class Group(BaseModel):
 
     updated_at: datetime
     """Timestamp of when the group was last updated."""
-
-    ancestors: Optional[List["Group"]] = None
-    """The chain of ancestor groups, ordered root-first.
-
-    The group itself is not included. Empty array for top-level groups. Expand using
-    `expand=ancestors` in the query string.
-    """
 
     parent: Optional["Group"] = None
     """The parent group.
