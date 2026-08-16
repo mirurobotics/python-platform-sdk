@@ -13,6 +13,7 @@ from miru_platform_sdk.types import (
     Device,
     DeviceList,
     DevicePingResponse,
+    DeviceBulkMoveResponse,
 )
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -35,6 +36,7 @@ class TestDevices:
         device = client.devices.create(
             name="Robot 1",
             expand=["current_release"],
+            group_id="grp_123",
         )
         assert_matches_type(Device, device, path=["response"])
 
@@ -214,6 +216,53 @@ class TestDevices:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
+    def test_method_bulk_move(self, client: Miru) -> None:
+        device = client.devices.bulk_move(
+            device_ids=["dvc_123"],
+            target_group_id="grp_789",
+        )
+        assert_matches_type(DeviceBulkMoveResponse, device, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_bulk_move_with_all_params(self, client: Miru) -> None:
+        device = client.devices.bulk_move(
+            device_ids=["dvc_123"],
+            target_group_id="grp_789",
+            expand=["current_release"],
+        )
+        assert_matches_type(DeviceBulkMoveResponse, device, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_raw_response_bulk_move(self, client: Miru) -> None:
+        response = client.devices.with_raw_response.bulk_move(
+            device_ids=["dvc_123"],
+            target_group_id="grp_789",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        device = response.parse()
+        assert_matches_type(DeviceBulkMoveResponse, device, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_streaming_response_bulk_move(self, client: Miru) -> None:
+        with client.devices.with_streaming_response.bulk_move(
+            device_ids=["dvc_123"],
+            target_group_id="grp_789",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            device = response.parse()
+            assert_matches_type(DeviceBulkMoveResponse, device, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
     def test_method_ping(self, client: Miru) -> None:
         device = client.devices.ping(
             device_id="dvc_123",
@@ -278,6 +327,7 @@ class TestAsyncDevices:
         device = await async_client.devices.create(
             name="Robot 1",
             expand=["current_release"],
+            group_id="grp_123",
         )
         assert_matches_type(Device, device, path=["response"])
 
@@ -452,6 +502,53 @@ class TestAsyncDevices:
 
             device = await response.parse()
             assert_matches_type(DeviceList, device, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_bulk_move(self, async_client: AsyncMiru) -> None:
+        device = await async_client.devices.bulk_move(
+            device_ids=["dvc_123"],
+            target_group_id="grp_789",
+        )
+        assert_matches_type(DeviceBulkMoveResponse, device, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_bulk_move_with_all_params(self, async_client: AsyncMiru) -> None:
+        device = await async_client.devices.bulk_move(
+            device_ids=["dvc_123"],
+            target_group_id="grp_789",
+            expand=["current_release"],
+        )
+        assert_matches_type(DeviceBulkMoveResponse, device, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_raw_response_bulk_move(self, async_client: AsyncMiru) -> None:
+        response = await async_client.devices.with_raw_response.bulk_move(
+            device_ids=["dvc_123"],
+            target_group_id="grp_789",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        device = await response.parse()
+        assert_matches_type(DeviceBulkMoveResponse, device, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_streaming_response_bulk_move(self, async_client: AsyncMiru) -> None:
+        async with async_client.devices.with_streaming_response.bulk_move(
+            device_ids=["dvc_123"],
+            target_group_id="grp_789",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            device = await response.parse()
+            assert_matches_type(DeviceBulkMoveResponse, device, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

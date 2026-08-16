@@ -24,10 +24,13 @@ from .schema_document import SchemaDocument as SchemaDocument
 from .schema_language import SchemaLanguage as SchemaLanguage
 from .instance_content import InstanceContent as InstanceContent
 from .group_list_params import GroupListParams as GroupListParams
+from .group_move_params import GroupMoveParams as GroupMoveParams
 from .config_schema_list import ConfigSchemaList as ConfigSchemaList
 from .device_list_params import DeviceListParams as DeviceListParams
 from .device_ping_params import DevicePingParams as DevicePingParams
 from .provisioning_token import ProvisioningToken as ProvisioningToken
+from .group_create_params import GroupCreateParams as GroupCreateParams
+from .group_update_params import GroupUpdateParams as GroupUpdateParams
 from .instance_slot_param import InstanceSlotParam as InstanceSlotParam
 from .release_list_params import ReleaseListParams as ReleaseListParams
 from .device_create_params import DeviceCreateParams as DeviceCreateParams
@@ -41,6 +44,7 @@ from .device_retrieve_params import DeviceRetrieveParams as DeviceRetrieveParams
 from .git_commit_list_params import GitCommitListParams as GitCommitListParams
 from .instance_content_param import InstanceContentParam as InstanceContentParam
 from .config_type_list_params import ConfigTypeListParams as ConfigTypeListParams
+from .device_bulk_move_params import DeviceBulkMoveParams as DeviceBulkMoveParams
 from .release_retrieve_params import ReleaseRetrieveParams as ReleaseRetrieveParams
 from .deployment_create_params import DeploymentCreateParams as DeploymentCreateParams
 from .deployment_deploy_params import DeploymentDeployParams as DeploymentDeployParams
@@ -50,6 +54,7 @@ from .config_type_create_params import ConfigTypeCreateParams as ConfigTypeCreat
 from .config_type_list_response import ConfigTypeListResponse as ConfigTypeListResponse
 from .config_type_update_params import ConfigTypeUpdateParams as ConfigTypeUpdateParams
 from .deployment_archive_params import DeploymentArchiveParams as DeploymentArchiveParams
+from .device_bulk_move_response import DeviceBulkMoveResponse as DeviceBulkMoveResponse
 from .deployment_retrieve_params import DeploymentRetrieveParams as DeploymentRetrieveParams
 from .config_instance_list_params import ConfigInstanceListParams as ConfigInstanceListParams
 from .config_schema_create_params import ConfigSchemaCreateParams as ConfigSchemaCreateParams
