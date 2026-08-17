@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.11.1](https://github.com/mirurobotics/python-platform-sdk/compare/v0.11.0...v0.11.1) (2026-08-17)
+
+
+### Chores
+
+* **stainless:** configure release-please for the platform sdk ([#252](https://github.com/mirurobotics/python-platform-sdk/issues/252)) ([0f8050d](https://github.com/mirurobotics/python-platform-sdk/commit/0f8050dc21d57d819358cb64d1ed73e209ec0f01))
+
 ## [0.11.0](https://github.com/mirurobotics/python-platform-sdk/compare/v0.10.0...v0.11.0) (2026-08-17)
 
 
