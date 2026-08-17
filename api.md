@@ -76,7 +76,7 @@ Methods:
 Types:
 
 ```python
-from miru_platform_sdk.types import Device, DeviceList, DeviceBulkMoveResponse, DevicePingResponse
+from miru_platform_sdk.types import Device, DeviceList, DevicePingResponse
 ```
 
 Methods:
@@ -85,7 +85,6 @@ Methods:
 - <code title="get /devices/{device_id}">client.devices.<a href="./src/miru_platform_sdk/resources/devices.py">retrieve</a>(device_id, \*\*<a href="src/miru_platform_sdk/types/device_retrieve_params.py">params</a>) -> <a href="./src/miru_platform_sdk/types/device.py">Device</a></code>
 - <code title="patch /devices/{device_id}">client.devices.<a href="./src/miru_platform_sdk/resources/devices.py">update</a>(device_id, \*\*<a href="src/miru_platform_sdk/types/device_update_params.py">params</a>) -> <a href="./src/miru_platform_sdk/types/device.py">Device</a></code>
 - <code title="get /devices">client.devices.<a href="./src/miru_platform_sdk/resources/devices.py">list</a>(\*\*<a href="src/miru_platform_sdk/types/device_list_params.py">params</a>) -> <a href="./src/miru_platform_sdk/types/device_list.py">DeviceList</a></code>
-- <code title="post /devices/move/bulk">client.devices.<a href="./src/miru_platform_sdk/resources/devices.py">bulk_move</a>(\*\*<a href="src/miru_platform_sdk/types/device_bulk_move_params.py">params</a>) -> <a href="./src/miru_platform_sdk/types/device_bulk_move_response.py">DeviceBulkMoveResponse</a></code>
 - <code title="post /devices/{device_id}/ping">client.devices.<a href="./src/miru_platform_sdk/resources/devices.py">ping</a>(device_id, \*\*<a href="src/miru_platform_sdk/types/device_ping_params.py">params</a>) -> <a href="./src/miru_platform_sdk/types/device_ping_response.py">DevicePingResponse</a></code>
 
 # ProvisioningTokens

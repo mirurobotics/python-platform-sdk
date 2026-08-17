@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Optional
+from typing import List
 from typing_extensions import Literal, Required, TypedDict
 
 __all__ = ["DeviceCreateParams"]
@@ -14,9 +14,3 @@ class DeviceCreateParams(TypedDict, total=False):
 
     expand: List[Literal["current_deployment", "current_release", "group"]]
     """Fields to expand on the device resource."""
-
-    group_id: Optional[str]
-    """ID of the group to assign the device to.
-
-    Omit or set to null to leave the device unassigned.
-    """

@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Optional
+from typing import List
 from typing_extensions import Literal
 
 import httpx
@@ -13,7 +13,6 @@ from ..types import (
     device_create_params,
     device_update_params,
     device_retrieve_params,
-    device_bulk_move_params,
 )
 from .._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
 from .._utils import path_template, maybe_transform, async_maybe_transform
@@ -29,7 +28,6 @@ from .._base_client import make_request_options
 from ..types.device import Device
 from ..types.device_list import DeviceList
 from ..types.device_ping_response import DevicePingResponse
-from ..types.device_bulk_move_response import DeviceBulkMoveResponse
 
 __all__ = ["DevicesResource", "AsyncDevicesResource"]
 
@@ -59,7 +57,6 @@ class DevicesResource(SyncAPIResource):
         *,
         name: str,
         expand: List[Literal["current_deployment", "current_release", "group"]] | Omit = omit,
-        group_id: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -75,9 +72,6 @@ class DevicesResource(SyncAPIResource):
 
           expand: Fields to expand on the device resource.
 
-          group_id: ID of the group to assign the device to. Omit or set to null to leave the device
-              unassigned.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -88,13 +82,7 @@ class DevicesResource(SyncAPIResource):
         """
         return self._post(
             "/devices",
-            body=maybe_transform(
-                {
-                    "name": name,
-                    "group_id": group_id,
-                },
-                device_create_params.DeviceCreateParams,
-            ),
+            body=maybe_transform({"name": name}, device_create_params.DeviceCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -271,61 +259,6 @@ class DevicesResource(SyncAPIResource):
             cast_to=DeviceList,
         )
 
-    def bulk_move(
-        self,
-        *,
-        device_ids: SequenceNotStr[str],
-        target_group_id: Optional[str],
-        expand: List[Literal["total_count", "current_deployment", "current_release", "group"]] | Omit = omit,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> DeviceBulkMoveResponse:
-        """Move multiple devices to a target group in a single request.
-
-        Unlike the other
-        `devices:write` operations, this one is authorized against the target group
-        rather than the devices, so the API key must be granted `devices:write` on that
-        group. Moving devices to the root of the tree, by omitting the target group,
-        requires a workspace-level grant.
-
-        Args:
-          device_ids: IDs of the devices to move.
-
-          target_group_id: ID of the target group. Set to null to unassign all listed devices.
-
-          expand: Fields to expand on each device in the list.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return self._post(
-            "/devices/move/bulk",
-            body=maybe_transform(
-                {
-                    "device_ids": device_ids,
-                    "target_group_id": target_group_id,
-                },
-                device_bulk_move_params.DeviceBulkMoveParams,
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform({"expand": expand}, device_bulk_move_params.DeviceBulkMoveParams),
-            ),
-            cast_to=DeviceBulkMoveResponse,
-        )
-
     def ping(
         self,
         device_id: str,
@@ -390,7 +323,6 @@ class AsyncDevicesResource(AsyncAPIResource):
         *,
         name: str,
         expand: List[Literal["current_deployment", "current_release", "group"]] | Omit = omit,
-        group_id: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -406,9 +338,6 @@ class AsyncDevicesResource(AsyncAPIResource):
 
           expand: Fields to expand on the device resource.
 
-          group_id: ID of the group to assign the device to. Omit or set to null to leave the device
-              unassigned.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -419,13 +348,7 @@ class AsyncDevicesResource(AsyncAPIResource):
         """
         return await self._post(
             "/devices",
-            body=await async_maybe_transform(
-                {
-                    "name": name,
-                    "group_id": group_id,
-                },
-                device_create_params.DeviceCreateParams,
-            ),
+            body=await async_maybe_transform({"name": name}, device_create_params.DeviceCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -602,61 +525,6 @@ class AsyncDevicesResource(AsyncAPIResource):
             cast_to=DeviceList,
         )
 
-    async def bulk_move(
-        self,
-        *,
-        device_ids: SequenceNotStr[str],
-        target_group_id: Optional[str],
-        expand: List[Literal["total_count", "current_deployment", "current_release", "group"]] | Omit = omit,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> DeviceBulkMoveResponse:
-        """Move multiple devices to a target group in a single request.
-
-        Unlike the other
-        `devices:write` operations, this one is authorized against the target group
-        rather than the devices, so the API key must be granted `devices:write` on that
-        group. Moving devices to the root of the tree, by omitting the target group,
-        requires a workspace-level grant.
-
-        Args:
-          device_ids: IDs of the devices to move.
-
-          target_group_id: ID of the target group. Set to null to unassign all listed devices.
-
-          expand: Fields to expand on each device in the list.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return await self._post(
-            "/devices/move/bulk",
-            body=await async_maybe_transform(
-                {
-                    "device_ids": device_ids,
-                    "target_group_id": target_group_id,
-                },
-                device_bulk_move_params.DeviceBulkMoveParams,
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform({"expand": expand}, device_bulk_move_params.DeviceBulkMoveParams),
-            ),
-            cast_to=DeviceBulkMoveResponse,
-        )
-
     async def ping(
         self,
         device_id: str,
@@ -712,9 +580,6 @@ class DevicesResourceWithRawResponse:
         self.list = to_raw_response_wrapper(
             devices.list,
         )
-        self.bulk_move = to_raw_response_wrapper(
-            devices.bulk_move,
-        )
         self.ping = to_raw_response_wrapper(
             devices.ping,
         )
@@ -735,9 +600,6 @@ class AsyncDevicesResourceWithRawResponse:
         )
         self.list = async_to_raw_response_wrapper(
             devices.list,
-        )
-        self.bulk_move = async_to_raw_response_wrapper(
-            devices.bulk_move,
         )
         self.ping = async_to_raw_response_wrapper(
             devices.ping,
@@ -760,9 +622,6 @@ class DevicesResourceWithStreamingResponse:
         self.list = to_streamed_response_wrapper(
             devices.list,
         )
-        self.bulk_move = to_streamed_response_wrapper(
-            devices.bulk_move,
-        )
         self.ping = to_streamed_response_wrapper(
             devices.ping,
         )
@@ -783,9 +642,6 @@ class AsyncDevicesResourceWithStreamingResponse:
         )
         self.list = async_to_streamed_response_wrapper(
             devices.list,
-        )
-        self.bulk_move = async_to_streamed_response_wrapper(
-            devices.bulk_move,
         )
         self.ping = async_to_streamed_response_wrapper(
             devices.ping,

@@ -44,7 +44,6 @@ from .device_retrieve_params import DeviceRetrieveParams as DeviceRetrieveParams
 from .git_commit_list_params import GitCommitListParams as GitCommitListParams
 from .instance_content_param import InstanceContentParam as InstanceContentParam
 from .config_type_list_params import ConfigTypeListParams as ConfigTypeListParams
-from .device_bulk_move_params import DeviceBulkMoveParams as DeviceBulkMoveParams
 from .release_retrieve_params import ReleaseRetrieveParams as ReleaseRetrieveParams
 from .deployment_create_params import DeploymentCreateParams as DeploymentCreateParams
 from .deployment_deploy_params import DeploymentDeployParams as DeploymentDeployParams
@@ -54,7 +53,6 @@ from .config_type_create_params import ConfigTypeCreateParams as ConfigTypeCreat
 from .config_type_list_response import ConfigTypeListResponse as ConfigTypeListResponse
 from .config_type_update_params import ConfigTypeUpdateParams as ConfigTypeUpdateParams
 from .deployment_archive_params import DeploymentArchiveParams as DeploymentArchiveParams
-from .device_bulk_move_response import DeviceBulkMoveResponse as DeviceBulkMoveResponse
 from .deployment_retrieve_params import DeploymentRetrieveParams as DeploymentRetrieveParams
 from .config_instance_list_params import ConfigInstanceListParams as ConfigInstanceListParams
 from .config_schema_create_params import ConfigSchemaCreateParams as ConfigSchemaCreateParams
