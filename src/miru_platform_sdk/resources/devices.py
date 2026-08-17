@@ -286,10 +286,11 @@ class DevicesResource(SyncAPIResource):
     ) -> DeviceBulkMoveResponse:
         """Move multiple devices to a target group in a single request.
 
-        The `devices:move`
-        permission is evaluated against the target group, so the API key must be granted
-        it on that group. Moving devices to the root of the tree, by omitting the target
-        group, requires a workspace-level grant.
+        Unlike the other
+        `devices:write` operations, this one is authorized against the target group
+        rather than the devices, so the API key must be granted `devices:write` on that
+        group. Moving devices to the root of the tree, by omitting the target group,
+        requires a workspace-level grant.
 
         Args:
           device_ids: IDs of the devices to move.
@@ -616,10 +617,11 @@ class AsyncDevicesResource(AsyncAPIResource):
     ) -> DeviceBulkMoveResponse:
         """Move multiple devices to a target group in a single request.
 
-        The `devices:move`
-        permission is evaluated against the target group, so the API key must be granted
-        it on that group. Moving devices to the root of the tree, by omitting the target
-        group, requires a workspace-level grant.
+        Unlike the other
+        `devices:write` operations, this one is authorized against the target group
+        rather than the devices, so the API key must be granted `devices:write` on that
+        group. Moving devices to the root of the tree, by omitting the target group,
+        requires a workspace-level grant.
 
         Args:
           device_ids: IDs of the devices to move.
