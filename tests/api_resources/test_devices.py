@@ -41,6 +41,7 @@ class TestDevices:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_create(self, client: Miru) -> None:
+
         response = client.devices.with_raw_response.create(
             name="Robot 1",
         )
@@ -84,6 +85,7 @@ class TestDevices:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_retrieve(self, client: Miru) -> None:
+
         response = client.devices.with_raw_response.retrieve(
             device_id="dvc_123",
         )
@@ -136,6 +138,7 @@ class TestDevices:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_update(self, client: Miru) -> None:
+
         response = client.devices.with_raw_response.update(
             device_id="dvc_123",
         )
@@ -193,6 +196,7 @@ class TestDevices:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_list(self, client: Miru) -> None:
+
         response = client.devices.with_raw_response.list()
 
         assert response.is_closed is True
@@ -224,6 +228,7 @@ class TestDevices:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_ping(self, client: Miru) -> None:
+
         response = client.devices.with_raw_response.ping(
             device_id="dvc_123",
             timeout_nanos=1000000000,
@@ -284,6 +289,7 @@ class TestAsyncDevices:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncMiru) -> None:
+
         response = await async_client.devices.with_raw_response.create(
             name="Robot 1",
         )
@@ -327,6 +333,7 @@ class TestAsyncDevices:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncMiru) -> None:
+
         response = await async_client.devices.with_raw_response.retrieve(
             device_id="dvc_123",
         )
@@ -379,6 +386,7 @@ class TestAsyncDevices:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncMiru) -> None:
+
         response = await async_client.devices.with_raw_response.update(
             device_id="dvc_123",
         )
@@ -436,6 +444,7 @@ class TestAsyncDevices:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncMiru) -> None:
+
         response = await async_client.devices.with_raw_response.list()
 
         assert response.is_closed is True
@@ -467,6 +476,7 @@ class TestAsyncDevices:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_ping(self, async_client: AsyncMiru) -> None:
+
         response = await async_client.devices.with_raw_response.ping(
             device_id="dvc_123",
             timeout_nanos=1000000000,

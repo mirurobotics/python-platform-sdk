@@ -76,6 +76,7 @@ class TestConfigSchemas:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_create(self, client: Miru) -> None:
+
         response = client.config_schemas.with_raw_response.create(
             config_type_ref={},
             documents=[
@@ -135,6 +136,7 @@ class TestConfigSchemas:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_retrieve(self, client: Miru) -> None:
+
         response = client.config_schemas.with_raw_response.retrieve(
             config_schema_id="cfg_sch_123",
         )
@@ -188,6 +190,7 @@ class TestConfigSchemas:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_list(self, client: Miru) -> None:
+
         response = client.config_schemas.with_raw_response.list()
 
         assert response.is_closed is True
@@ -269,6 +272,7 @@ class TestAsyncConfigSchemas:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncMiru) -> None:
+
         response = await async_client.config_schemas.with_raw_response.create(
             config_type_ref={},
             documents=[
@@ -328,6 +332,7 @@ class TestAsyncConfigSchemas:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncMiru) -> None:
+
         response = await async_client.config_schemas.with_raw_response.retrieve(
             config_schema_id="cfg_sch_123",
         )
@@ -381,6 +386,7 @@ class TestAsyncConfigSchemas:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncMiru) -> None:
+
         response = await async_client.config_schemas.with_raw_response.list()
 
         assert response.is_closed is True

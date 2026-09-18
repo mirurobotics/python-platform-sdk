@@ -49,6 +49,7 @@ class TestDeployments:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_create(self, client: Miru) -> None:
+
         response = client.deployments.with_raw_response.create(
             config_instance_ids=["cfg_inst_123"],
             description="Deployment for the motion control config instance",
@@ -100,6 +101,7 @@ class TestDeployments:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_retrieve(self, client: Miru) -> None:
+
         response = client.deployments.with_raw_response.retrieve(
             deployment_id="dpl_123",
         )
@@ -157,6 +159,7 @@ class TestDeployments:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_list(self, client: Miru) -> None:
+
         response = client.deployments.with_raw_response.list()
 
         assert response.is_closed is True
@@ -196,6 +199,7 @@ class TestDeployments:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_archive(self, client: Miru) -> None:
+
         response = client.deployments.with_raw_response.archive(
             deployment_id="dpl_123",
         )
@@ -247,6 +251,7 @@ class TestDeployments:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_deploy(self, client: Miru) -> None:
+
         response = client.deployments.with_raw_response.deploy(
             deployment_id="dpl_123",
         )
@@ -298,6 +303,7 @@ class TestDeployments:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_list_drifts(self, client: Miru) -> None:
+
         response = client.deployments.with_raw_response.list_drifts(
             deployment_id="dpl_123",
         )
@@ -364,6 +370,7 @@ class TestAsyncDeployments:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncMiru) -> None:
+
         response = await async_client.deployments.with_raw_response.create(
             config_instance_ids=["cfg_inst_123"],
             description="Deployment for the motion control config instance",
@@ -415,6 +422,7 @@ class TestAsyncDeployments:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncMiru) -> None:
+
         response = await async_client.deployments.with_raw_response.retrieve(
             deployment_id="dpl_123",
         )
@@ -472,6 +480,7 @@ class TestAsyncDeployments:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncMiru) -> None:
+
         response = await async_client.deployments.with_raw_response.list()
 
         assert response.is_closed is True
@@ -511,6 +520,7 @@ class TestAsyncDeployments:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_archive(self, async_client: AsyncMiru) -> None:
+
         response = await async_client.deployments.with_raw_response.archive(
             deployment_id="dpl_123",
         )
@@ -562,6 +572,7 @@ class TestAsyncDeployments:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_deploy(self, async_client: AsyncMiru) -> None:
+
         response = await async_client.deployments.with_raw_response.deploy(
             deployment_id="dpl_123",
         )
@@ -613,6 +624,7 @@ class TestAsyncDeployments:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_list_drifts(self, async_client: AsyncMiru) -> None:
+
         response = await async_client.deployments.with_raw_response.list_drifts(
             deployment_id="dpl_123",
         )

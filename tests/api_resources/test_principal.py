@@ -26,6 +26,7 @@ class TestPrincipal:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_self(self, client: Miru) -> None:
+
         response = client.principal.with_raw_response.self()
 
         assert response.is_closed is True
@@ -60,6 +61,7 @@ class TestAsyncPrincipal:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_self(self, async_client: AsyncMiru) -> None:
+
         response = await async_client.principal.with_raw_response.self()
 
         assert response.is_closed is True

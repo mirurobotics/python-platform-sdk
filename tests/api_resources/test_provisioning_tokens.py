@@ -26,6 +26,7 @@ class TestProvisioningTokens:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_create(self, client: Miru) -> None:
+
         response = client.provisioning_tokens.with_raw_response.create()
 
         assert response.is_closed is True
@@ -60,6 +61,7 @@ class TestAsyncProvisioningTokens:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncMiru) -> None:
+
         response = await async_client.provisioning_tokens.with_raw_response.create()
 
         assert response.is_closed is True
