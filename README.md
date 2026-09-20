@@ -235,10 +235,10 @@ In an API response, a field may be explicitly `null`, or missing entirely; in ei
 
 ```py
 if response.my_field is None:
-    if "my_field" not in response.model_fields_set:
-        print('Got json like {}, without a "my_field" key present at all.')
-    else:
-        print('Got json like {"my_field": null}.')
+  if 'my_field' not in response.model_fields_set:
+    print('Got json like {}, without a "my_field" key present at all.')
+  else:
+    print('Got json like {"my_field": null}.')
 ```
 
 ### Accessing raw response data (e.g. headers)
@@ -250,7 +250,7 @@ from miru_platform_sdk import Miru
 
 client = Miru()
 response = client.deployments.with_raw_response.list()
-print(response.headers.get("X-My-Header"))
+print(response.headers.get('X-My-Header'))
 
 deployment = response.parse()  # get the object that `deployments.list()` would have returned
 print(deployment)
@@ -346,8 +346,8 @@ By default the library closes underlying HTTP connections whenever the client is
 from miru_platform_sdk import Miru
 
 with Miru() as client:
-    # make requests here
-    ...
+  # make requests here
+  ...
 
 # HTTP client is now closed
 ```
@@ -372,7 +372,6 @@ You can determine the version that is being used at runtime with:
 
 ```py
 import miru_platform_sdk
-
 print(miru_platform_sdk.__version__)
 ```
 

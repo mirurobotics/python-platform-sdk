@@ -30,7 +30,6 @@ class TestGitCommits:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_create(self, client: Miru) -> None:
-
         response = client.git_commits.with_raw_response.create(
             message="Update config schema for robot1",
             origin="https://github.com/robot1/robot1.git",
@@ -69,7 +68,6 @@ class TestGitCommits:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_retrieve(self, client: Miru) -> None:
-
         response = client.git_commits.with_raw_response.retrieve(
             "git_commit_123",
         )
@@ -123,7 +121,6 @@ class TestGitCommits:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_list(self, client: Miru) -> None:
-
         response = client.git_commits.with_raw_response.list()
 
         assert response.is_closed is True
@@ -162,7 +159,6 @@ class TestAsyncGitCommits:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncMiru) -> None:
-
         response = await async_client.git_commits.with_raw_response.create(
             message="Update config schema for robot1",
             origin="https://github.com/robot1/robot1.git",
@@ -201,7 +197,6 @@ class TestAsyncGitCommits:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncMiru) -> None:
-
         response = await async_client.git_commits.with_raw_response.retrieve(
             "git_commit_123",
         )
@@ -255,7 +250,6 @@ class TestAsyncGitCommits:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncMiru) -> None:
-
         response = await async_client.git_commits.with_raw_response.list()
 
         assert response.is_closed is True

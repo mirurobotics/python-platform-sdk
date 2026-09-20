@@ -41,7 +41,6 @@ class TestGroups:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_create(self, client: Miru) -> None:
-
         response = client.groups.with_raw_response.create(
             name="Robots",
         )
@@ -85,7 +84,6 @@ class TestGroups:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_retrieve(self, client: Miru) -> None:
-
         response = client.groups.with_raw_response.retrieve(
             group_id="grp_123",
         )
@@ -138,7 +136,6 @@ class TestGroups:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_update(self, client: Miru) -> None:
-
         response = client.groups.with_raw_response.update(
             group_id="grp_123",
         )
@@ -193,7 +190,6 @@ class TestGroups:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_list(self, client: Miru) -> None:
-
         response = client.groups.with_raw_response.list()
 
         assert response.is_closed is True
@@ -235,7 +231,6 @@ class TestGroups:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_move(self, client: Miru) -> None:
-
         response = client.groups.with_raw_response.move(
             group_id="grp_123",
             parent_id="grp_456",
@@ -297,7 +292,6 @@ class TestAsyncGroups:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncMiru) -> None:
-
         response = await async_client.groups.with_raw_response.create(
             name="Robots",
         )
@@ -341,7 +335,6 @@ class TestAsyncGroups:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncMiru) -> None:
-
         response = await async_client.groups.with_raw_response.retrieve(
             group_id="grp_123",
         )
@@ -394,7 +387,6 @@ class TestAsyncGroups:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncMiru) -> None:
-
         response = await async_client.groups.with_raw_response.update(
             group_id="grp_123",
         )
@@ -449,7 +441,6 @@ class TestAsyncGroups:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncMiru) -> None:
-
         response = await async_client.groups.with_raw_response.list()
 
         assert response.is_closed is True
@@ -491,7 +482,6 @@ class TestAsyncGroups:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_move(self, async_client: AsyncMiru) -> None:
-
         response = await async_client.groups.with_raw_response.move(
             group_id="grp_123",
             parent_id="grp_456",
