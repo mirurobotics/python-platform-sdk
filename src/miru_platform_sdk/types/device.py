@@ -19,6 +19,12 @@ class Device(BaseModel):
     agent_version: Optional[str] = None
     """The version of the agent the device is running."""
 
+    arch: Optional[str] = None
+    """
+    The CPU architecture the device is running, reported by the agent from its
+    build-time architecture vocabulary (for example `x86_64` or `aarch64`).
+    """
+
     created_at: datetime
     """Timestamp of when the device was created."""
 
@@ -27,6 +33,12 @@ class Device(BaseModel):
 
     group_id: Optional[str] = None
     """ID of the group this device belongs to. Null if the device is unassigned."""
+
+    hostname: Optional[str] = None
+    """The hostname of the device as reported by the agent."""
+
+    kernel_version: Optional[str] = None
+    """The operating system kernel version string reported by the agent."""
 
     last_connected_at: Optional[datetime] = None
     """
@@ -45,6 +57,20 @@ class Device(BaseModel):
 
     object: Literal["device"]
     """The object type, which is always `device`."""
+
+    os: Optional[str] = None
+    """
+    The operating system family the device is running, reported by the agent from
+    its build-time OS vocabulary (`linux`, `windows`, or `macos`). This is the
+    machine-readable OS kind, distinct from the human-readable `os_version` string.
+    """
+
+    os_version: Optional[str] = None
+    """
+    The human-readable long operating system version string reported by the agent
+    (for example `Ubuntu 22.04` or `Windows 11 Pro`). Distinct from the
+    machine-readable `os` family.
+    """
 
     status: Literal["inactive", "activating", "online", "offline", "archived"]
     """The status of the device.
