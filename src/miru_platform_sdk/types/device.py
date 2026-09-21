@@ -19,10 +19,14 @@ class Device(BaseModel):
     agent_version: Optional[str] = None
     """The version of the agent the device is running."""
 
-    arch: Optional[str] = None
-    """
-    The CPU architecture the device is running, reported by the agent from its
-    build-time architecture vocabulary (for example `x86_64` or `aarch64`).
+    arch: Optional[Literal["x86_64", "aarch64"]] = None
+    """A CPU architecture, from the agent's build-time architecture vocabulary.
+
+    Shared across resources (devices, config schemas, file rules). These are the
+    canonical wire values.
+
+    - `x86_64`
+    - `aarch64`
     """
 
     created_at: datetime
@@ -58,11 +62,14 @@ class Device(BaseModel):
     object: Literal["device"]
     """The object type, which is always `device`."""
 
-    os: Optional[str] = None
-    """
-    The operating system family the device is running, reported by the agent from
-    its build-time OS vocabulary (`linux`, `windows`, or `macos`). This is the
-    machine-readable OS kind, distinct from the human-readable `os_version` string.
+    os: Optional[Literal["linux", "windows"]] = None
+    """An operating system family, from the agent's build-time OS vocabulary.
+
+    Shared across resources (devices, config schemas, file rules). This is the
+    machine-readable OS kind, distinct from a human-readable version string.
+
+    - `linux`
+    - `windows`
     """
 
     os_version: Optional[str] = None
