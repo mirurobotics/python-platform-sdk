@@ -65,8 +65,8 @@ class Device(BaseModel):
     os: Optional[Literal["linux", "windows"]] = None
     """An operating system family, from the agent's build-time OS vocabulary.
 
-    Shared across resources (devices, config schemas, file rules). This is the
-    machine-readable OS kind, distinct from a human-readable version string.
+    Shared across resources (devices, config schemas, file rules, releases). This is
+    the machine-readable OS kind, distinct from a human-readable version string.
 
     - `linux`
     - `windows`
