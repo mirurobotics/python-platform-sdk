@@ -39,13 +39,21 @@ class Deployment(BaseModel):
     """
 
     archived_at: Optional[datetime] = None
-    """Timestamp of when the deployment was archived."""
+    """
+    Timestamp of the last time the device's agent confirmed that the deployment was
+    archived. Set by the agent. A watermark of the latest transition; it is not
+    cleared when the deployment later changes state.
+    """
 
     created_at: datetime
-    """Timestamp of when the device release was created."""
+    """Timestamp of when the deployment was created."""
 
     deployed_at: Optional[datetime] = None
-    """Timestamp of when the deployment was deployed."""
+    """
+    Timestamp of the last time the device's agent confirmed that the deployment was
+    deployed. Set by the agent. A watermark of the latest transition; it is not
+    cleared when the deployment later changes state.
+    """
 
     description: str
     """The description of the deployment."""
@@ -75,7 +83,11 @@ class Deployment(BaseModel):
     """
 
     queued_at: Optional[datetime] = None
-    """Timestamp of when the deployment was queued."""
+    """Timestamp of when a principal last queued the deployment, i.e.
+
+    requested that it be deployed to its device. Device status reports do not change
+    it.
+    """
 
     release_id: str
     """ID of the release."""
@@ -102,7 +114,7 @@ class Deployment(BaseModel):
     """
 
     updated_at: datetime
-    """Timestamp of when the device release was last updated."""
+    """Timestamp of when the deployment was last updated."""
 
     config_instances: Optional[List[ConfigInstance]] = None
     """
