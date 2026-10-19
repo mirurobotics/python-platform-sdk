@@ -9,12 +9,12 @@ __all__ = ["InstanceContentParam"]
 
 class InstanceContentParam(TypedDict, total=False):
     data: Required[str]
-    """The configuration values associated with the config instance."""
+    """The content's values, serialized in `format`."""
 
     format: Required[Literal["json", "yaml", "jsonc", "xml", "text"]]
-    """
-    The on-disk format used when a config instance is written to the device
-    filesystem.
+    """The serialization format of config content.
+
+    A config instance is written to the device filesystem in this format.
 
     - `json`: standard JSON.
     - `yaml`: YAML 1.2.

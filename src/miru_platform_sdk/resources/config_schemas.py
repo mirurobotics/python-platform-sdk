@@ -83,8 +83,8 @@ class ConfigSchemasResource(SyncAPIResource):
 
           git_commit: The git commit to link to this config schema.
 
-          instance_format: The on-disk format used when a config instance is written to the device
-              filesystem.
+          instance_format: The serialization format of config content. A config instance is written to the
+              device filesystem in this format.
 
               - `json`: standard JSON.
               - `yaml`: YAML 1.2.
@@ -288,8 +288,8 @@ class AsyncConfigSchemasResource(AsyncAPIResource):
 
           git_commit: The git commit to link to this config schema.
 
-          instance_format: The on-disk format used when a config instance is written to the device
-              filesystem.
+          instance_format: The serialization format of config content. A config instance is written to the
+              device filesystem in this format.
 
               - `json`: standard JSON.
               - `yaml`: YAML 1.2.
