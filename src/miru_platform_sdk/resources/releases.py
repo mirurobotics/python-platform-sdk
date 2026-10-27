@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List
+from typing import List, Optional
 from typing_extensions import Literal
 
 import httpx
@@ -52,6 +52,7 @@ class ReleasesResource(SyncAPIResource):
         config_schema_ids: SequenceNotStr[str],
         version: str,
         expand: List[Literal["config_schemas"]] | Omit = omit,
+        description: Optional[str] | Omit = omit,
         git_commit_ref: GitCommitRefParam | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -70,6 +71,8 @@ class ReleasesResource(SyncAPIResource):
 
           expand: Fields to expand on the release resource.
 
+          description: A free-form description of the release.
+
           git_commit_ref: A reference to a git commit. At least one of `id` or `sha` must be provided.
               When both are provided, `id` takes precedence and `sha` is ignored.
 
@@ -87,6 +90,7 @@ class ReleasesResource(SyncAPIResource):
                 {
                     "config_schema_ids": config_schema_ids,
                     "version": version,
+                    "description": description,
                     "git_commit_ref": git_commit_ref,
                 },
                 release_create_params.ReleaseCreateParams,
@@ -232,6 +236,7 @@ class AsyncReleasesResource(AsyncAPIResource):
         config_schema_ids: SequenceNotStr[str],
         version: str,
         expand: List[Literal["config_schemas"]] | Omit = omit,
+        description: Optional[str] | Omit = omit,
         git_commit_ref: GitCommitRefParam | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -250,6 +255,8 @@ class AsyncReleasesResource(AsyncAPIResource):
 
           expand: Fields to expand on the release resource.
 
+          description: A free-form description of the release.
+
           git_commit_ref: A reference to a git commit. At least one of `id` or `sha` must be provided.
               When both are provided, `id` takes precedence and `sha` is ignored.
 
@@ -267,6 +274,7 @@ class AsyncReleasesResource(AsyncAPIResource):
                 {
                     "config_schema_ids": config_schema_ids,
                     "version": version,
+                    "description": description,
                     "git_commit_ref": git_commit_ref,
                 },
                 release_create_params.ReleaseCreateParams,

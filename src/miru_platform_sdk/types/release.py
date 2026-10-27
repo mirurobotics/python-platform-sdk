@@ -17,6 +17,9 @@ class Release(BaseModel):
     created_at: datetime
     """Timestamp of when the release was created."""
 
+    description: Optional[str] = None
+    """A free-form description of the release."""
+
     git_commit_id: Optional[str] = None
     """The ID of the git commit associated with this release."""
 

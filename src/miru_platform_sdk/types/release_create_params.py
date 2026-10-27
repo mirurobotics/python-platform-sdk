@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List
+from typing import List, Optional
 from typing_extensions import Literal, Required, TypedDict
 
 from .._types import SequenceNotStr
@@ -20,6 +20,9 @@ class ReleaseCreateParams(TypedDict, total=False):
 
     expand: List[Literal["config_schemas"]]
     """Fields to expand on the release resource."""
+
+    description: Optional[str]
+    """A free-form description of the release."""
 
     git_commit_ref: GitCommitRefParam
     """A reference to a git commit.
