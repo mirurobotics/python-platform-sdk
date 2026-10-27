@@ -34,7 +34,7 @@ class ConfigSchemaCreateParams(TypedDict, total=False):
     git_commit: GitCommit
     """The git commit to link to this config schema."""
 
-    instance_format: Literal["json", "yaml", "jsonc", "xml", "text"]
+    instance_format: Literal["json", "yaml", "jsonc", "xml", "csv", "text"]
     """The serialization format of config content.
 
     A config instance is written to the device filesystem in this format.
@@ -43,6 +43,7 @@ class ConfigSchemaCreateParams(TypedDict, total=False):
     - `yaml`: YAML 1.2.
     - `jsonc`: JSON with comments (JSON plus `//` and `/* */` comment syntax).
     - `xml`: XML.
+    - `csv`: comma-separated values (RFC 4180).
     - `text`: plain, unstructured text with no specific format.
     """
 

@@ -61,7 +61,7 @@ class ConfigSchemasResource(SyncAPIResource):
         language: SchemaLanguage,
         expand: List[Literal["documents", "config_type"]] | Omit = omit,
         git_commit: config_schema_create_params.GitCommit | Omit = omit,
-        instance_format: Literal["json", "yaml", "jsonc", "xml", "text"] | Omit = omit,
+        instance_format: Literal["json", "yaml", "jsonc", "xml", "csv", "text"] | Omit = omit,
         instance_slots: Iterable[InstanceSlotParam] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -90,6 +90,7 @@ class ConfigSchemasResource(SyncAPIResource):
               - `yaml`: YAML 1.2.
               - `jsonc`: JSON with comments (JSON plus `//` and `/* */` comment syntax).
               - `xml`: XML.
+              - `csv`: comma-separated values (RFC 4180).
               - `text`: plain, unstructured text with no specific format.
 
           instance_slots: The file system destinations this config schema writes to. Slot keys and
@@ -266,7 +267,7 @@ class AsyncConfigSchemasResource(AsyncAPIResource):
         language: SchemaLanguage,
         expand: List[Literal["documents", "config_type"]] | Omit = omit,
         git_commit: config_schema_create_params.GitCommit | Omit = omit,
-        instance_format: Literal["json", "yaml", "jsonc", "xml", "text"] | Omit = omit,
+        instance_format: Literal["json", "yaml", "jsonc", "xml", "csv", "text"] | Omit = omit,
         instance_slots: Iterable[InstanceSlotParam] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -295,6 +296,7 @@ class AsyncConfigSchemasResource(AsyncAPIResource):
               - `yaml`: YAML 1.2.
               - `jsonc`: JSON with comments (JSON plus `//` and `/* */` comment syntax).
               - `xml`: XML.
+              - `csv`: comma-separated values (RFC 4180).
               - `text`: plain, unstructured text with no specific format.
 
           instance_slots: The file system destinations this config schema writes to. Slot keys and
