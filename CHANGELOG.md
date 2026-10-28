@@ -1,5 +1,43 @@
 # Changelog
 
+## [0.12.0](https://github.com/mirurobotics/python-platform-sdk/compare/v0.11.0...v0.12.0) (2026-10-28)
+
+
+### ⚠ BREAKING CHANGES
+
+* **deployments:** rename deployed_by to queued_by and add derived staged_by ([#316](https://github.com/mirurobotics/python-platform-sdk/issues/316))
+* **frontend:** remove release migrate endpoint ([#310](https://github.com/mirurobotics/python-platform-sdk/issues/310))
+
+### Features
+
+* add calibration contracts to the agent, Device and frontend APIs ([#301](https://github.com/mirurobotics/python-platform-sdk/issues/301)) ([1c7cb0e](https://github.com/mirurobotics/python-platform-sdk/commit/1c7cb0e27ecdb460921bc265183c3bf9acedd71a))
+* buffered calibrations in the Device API, reported_at in the agent API ([#327](https://github.com/mirurobotics/python-platform-sdk/issues/327)) ([4bae2fe](https://github.com/mirurobotics/python-platform-sdk/commit/4bae2fe1b7a66fc71f0ce100b0ae3271eaf9c11b))
+* **cli:** add OAuth Device Flow (RFC 8628) auth endpoints ([#255](https://github.com/mirurobotics/python-platform-sdk/issues/255)) ([488b819](https://github.com/mirurobotics/python-platform-sdk/commit/488b8193b9787f8faa8dd5199f11caaa328f52f2))
+* **configs:** add csv to InstanceFormat ([#366](https://github.com/mirurobotics/python-platform-sdk/issues/366)) ([6df3dba](https://github.com/mirurobotics/python-platform-sdk/commit/6df3dbaee5c166333ab51e48e82a457a2abd84f8))
+* **configs:** Windows file rule globs and read-only os fields ([#293](https://github.com/mirurobotics/python-platform-sdk/issues/293)) ([ad439ad](https://github.com/mirurobotics/python-platform-sdk/commit/ad439adc53dc791089e8a760618b95186fb3b41c))
+* **deployments:** rename deployed_by to queued_by and add derived staged_by ([#316](https://github.com/mirurobotics/python-platform-sdk/issues/316)) ([1a282ee](https://github.com/mirurobotics/python-platform-sdk/commit/1a282eea622c8670754325ff40bd20c4f915df4f))
+* **device:** add agent-reported system-metadata fields ([#284](https://github.com/mirurobotics/python-platform-sdk/issues/284)) ([73aba87](https://github.com/mirurobotics/python-platform-sdk/commit/73aba8732f059fcc963c18eeee9bfc6a73f6a5eb))
+* **device:** constrain device os/arch to DeviceOS/DeviceArch enums ([#289](https://github.com/mirurobotics/python-platform-sdk/issues/289)) ([f84bf90](https://github.com/mirurobotics/python-platform-sdk/commit/f84bf9041a25bb3483aafd3d0ef16906642f5146))
+* **platform:** add calibrations get and list endpoints ([#378](https://github.com/mirurobotics/python-platform-sdk/issues/378)) ([1fcfc16](https://github.com/mirurobotics/python-platform-sdk/commit/1fcfc169f60d58f8ff1c7fb69d4f965a8354ff3a))
+* **platform:** add components, component roles and aspects read endpoints ([#379](https://github.com/mirurobotics/python-platform-sdk/issues/379)) ([3d065ba](https://github.com/mirurobotics/python-platform-sdk/commit/3d065baa010b4d6e407f81afaedcd6b6ba0b159c))
+* **releases:** add description to releases ([#371](https://github.com/mirurobotics/python-platform-sdk/issues/371)) ([3ca2e9c](https://github.com/mirurobotics/python-platform-sdk/commit/3ca2e9cbdd430fdd0da39a60268562179b48c123))
+
+
+### Bug Fixes
+
+* **platform:** send 2026-10-28.everglades as the SDK's default Miru-Version ([#384](https://github.com/mirurobotics/python-platform-sdk/issues/384)) ([cf2e771](https://github.com/mirurobotics/python-platform-sdk/commit/cf2e7718b4cf87d340a1c14ec0f60ef8bd48d1cc))
+
+
+### Chores
+
+* **sdkgen:** repin stlc-python at a7fb576, set python floor &gt;= 3.10 ([#285](https://github.com/mirurobotics/python-platform-sdk/issues/285)) ([893774a](https://github.com/mirurobotics/python-platform-sdk/commit/893774a00b7e0ca74f9e2f8ec292f7cfc80e398c))
+* **sdkgen:** repin stlc-python to surgical re-lock (570bf02) ([#287](https://github.com/mirurobotics/python-platform-sdk/issues/287)) ([f0302df](https://github.com/mirurobotics/python-platform-sdk/commit/f0302df50fdf44a1585d47d33c6af212d212a511))
+
+
+### Refactors
+
+* **frontend:** remove release migrate endpoint ([#310](https://github.com/mirurobotics/python-platform-sdk/issues/310)) ([39466c3](https://github.com/mirurobotics/python-platform-sdk/commit/39466c3558c98c09ff6b58f823ea108d9acfdbd8))
+
 ## [0.11.0](https://github.com/mirurobotics/python-platform-sdk/compare/v0.10.0...v0.11.0) (2026-08-17)
 
 
