@@ -42,6 +42,7 @@ if TYPE_CHECKING:
         principal,
         deployments,
         git_commits,
+        calibrations,
         config_types,
         config_schemas,
         config_instances,
@@ -53,6 +54,7 @@ if TYPE_CHECKING:
     from .resources.principal import PrincipalResource, AsyncPrincipalResource
     from .resources.deployments import DeploymentsResource, AsyncDeploymentsResource
     from .resources.git_commits import GitCommitsResource, AsyncGitCommitsResource
+    from .resources.calibrations import CalibrationsResource, AsyncCalibrationsResource
     from .resources.config_types import ConfigTypesResource, AsyncConfigTypesResource
     from .resources.config_schemas import ConfigSchemasResource, AsyncConfigSchemasResource
     from .resources.config_instances import ConfigInstancesResource, AsyncConfigInstancesResource
@@ -173,6 +175,12 @@ class Miru(SyncAPIClient):
             custom_query=default_query,
             _strict_response_validation=_strict_response_validation,
         )
+
+    @cached_property
+    def calibrations(self) -> CalibrationsResource:
+        from .resources.calibrations import CalibrationsResource
+
+        return CalibrationsResource(self)
 
     @cached_property
     def config_instances(self) -> ConfigInstancesResource:
@@ -449,6 +457,12 @@ class AsyncMiru(AsyncAPIClient):
         )
 
     @cached_property
+    def calibrations(self) -> AsyncCalibrationsResource:
+        from .resources.calibrations import AsyncCalibrationsResource
+
+        return AsyncCalibrationsResource(self)
+
+    @cached_property
     def config_instances(self) -> AsyncConfigInstancesResource:
         from .resources.config_instances import AsyncConfigInstancesResource
 
@@ -633,6 +647,12 @@ class MiruWithRawResponse:
         self._client = client
 
     @cached_property
+    def calibrations(self) -> calibrations.CalibrationsResourceWithRawResponse:
+        from .resources.calibrations import CalibrationsResourceWithRawResponse
+
+        return CalibrationsResourceWithRawResponse(self._client.calibrations)
+
+    @cached_property
     def config_instances(self) -> config_instances.ConfigInstancesResourceWithRawResponse:
         from .resources.config_instances import ConfigInstancesResourceWithRawResponse
 
@@ -698,6 +718,12 @@ class AsyncMiruWithRawResponse:
 
     def __init__(self, client: AsyncMiru) -> None:
         self._client = client
+
+    @cached_property
+    def calibrations(self) -> calibrations.AsyncCalibrationsResourceWithRawResponse:
+        from .resources.calibrations import AsyncCalibrationsResourceWithRawResponse
+
+        return AsyncCalibrationsResourceWithRawResponse(self._client.calibrations)
 
     @cached_property
     def config_instances(self) -> config_instances.AsyncConfigInstancesResourceWithRawResponse:
@@ -767,6 +793,12 @@ class MiruWithStreamedResponse:
         self._client = client
 
     @cached_property
+    def calibrations(self) -> calibrations.CalibrationsResourceWithStreamingResponse:
+        from .resources.calibrations import CalibrationsResourceWithStreamingResponse
+
+        return CalibrationsResourceWithStreamingResponse(self._client.calibrations)
+
+    @cached_property
     def config_instances(self) -> config_instances.ConfigInstancesResourceWithStreamingResponse:
         from .resources.config_instances import ConfigInstancesResourceWithStreamingResponse
 
@@ -832,6 +864,12 @@ class AsyncMiruWithStreamedResponse:
 
     def __init__(self, client: AsyncMiru) -> None:
         self._client = client
+
+    @cached_property
+    def calibrations(self) -> calibrations.AsyncCalibrationsResourceWithStreamingResponse:
+        from .resources.calibrations import AsyncCalibrationsResourceWithStreamingResponse
+
+        return AsyncCalibrationsResourceWithStreamingResponse(self._client.calibrations)
 
     @cached_property
     def config_instances(self) -> config_instances.AsyncConfigInstancesResourceWithStreamingResponse:

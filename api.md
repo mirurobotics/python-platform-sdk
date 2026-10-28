@@ -4,6 +4,19 @@
 from miru_platform_sdk.types import PaginatedList
 ```
 
+# Calibrations
+
+Types:
+
+```python
+from miru_platform_sdk.types import Calibration, CalibrationList
+```
+
+Methods:
+
+- <code title="get /calibrations/{calibration_id}">client.calibrations.<a href="./src/miru_platform_sdk/resources/calibrations.py">retrieve</a>(calibration_id, \*\*<a href="src/miru_platform_sdk/types/calibration_retrieve_params.py">params</a>) -> <a href="./src/miru_platform_sdk/types/calibration.py">Calibration</a></code>
+- <code title="get /calibrations">client.calibrations.<a href="./src/miru_platform_sdk/resources/calibrations.py">list</a>(\*\*<a href="src/miru_platform_sdk/types/calibration_list_params.py">params</a>) -> <a href="./src/miru_platform_sdk/types/calibration_list.py">CalibrationList</a></code>
+
 # ConfigInstances
 
 Types:
