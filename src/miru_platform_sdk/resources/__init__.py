@@ -32,6 +32,14 @@ from .principal import (
     PrincipalResourceWithStreamingResponse,
     AsyncPrincipalResourceWithStreamingResponse,
 )
+from .components import (
+    ComponentsResource,
+    AsyncComponentsResource,
+    ComponentsResourceWithRawResponse,
+    AsyncComponentsResourceWithRawResponse,
+    ComponentsResourceWithStreamingResponse,
+    AsyncComponentsResourceWithStreamingResponse,
+)
 from .deployments import (
     DeploymentsResource,
     AsyncDeploymentsResource,
@@ -72,6 +80,14 @@ from .config_schemas import (
     ConfigSchemasResourceWithStreamingResponse,
     AsyncConfigSchemasResourceWithStreamingResponse,
 )
+from .component_roles import (
+    ComponentRolesResource,
+    AsyncComponentRolesResource,
+    ComponentRolesResourceWithRawResponse,
+    AsyncComponentRolesResourceWithRawResponse,
+    ComponentRolesResourceWithStreamingResponse,
+    AsyncComponentRolesResourceWithStreamingResponse,
+)
 from .config_instances import (
     ConfigInstancesResource,
     AsyncConfigInstancesResource,
@@ -79,6 +95,14 @@ from .config_instances import (
     AsyncConfigInstancesResourceWithRawResponse,
     ConfigInstancesResourceWithStreamingResponse,
     AsyncConfigInstancesResourceWithStreamingResponse,
+)
+from .component_aspects import (
+    ComponentAspectsResource,
+    AsyncComponentAspectsResource,
+    ComponentAspectsResourceWithRawResponse,
+    AsyncComponentAspectsResourceWithRawResponse,
+    ComponentAspectsResourceWithStreamingResponse,
+    AsyncComponentAspectsResourceWithStreamingResponse,
 )
 from .provisioning_tokens import (
     ProvisioningTokensResource,
@@ -96,6 +120,24 @@ __all__ = [
     "AsyncCalibrationsResourceWithRawResponse",
     "CalibrationsResourceWithStreamingResponse",
     "AsyncCalibrationsResourceWithStreamingResponse",
+    "ComponentsResource",
+    "AsyncComponentsResource",
+    "ComponentsResourceWithRawResponse",
+    "AsyncComponentsResourceWithRawResponse",
+    "ComponentsResourceWithStreamingResponse",
+    "AsyncComponentsResourceWithStreamingResponse",
+    "ComponentAspectsResource",
+    "AsyncComponentAspectsResource",
+    "ComponentAspectsResourceWithRawResponse",
+    "AsyncComponentAspectsResourceWithRawResponse",
+    "ComponentAspectsResourceWithStreamingResponse",
+    "AsyncComponentAspectsResourceWithStreamingResponse",
+    "ComponentRolesResource",
+    "AsyncComponentRolesResource",
+    "ComponentRolesResourceWithRawResponse",
+    "AsyncComponentRolesResourceWithRawResponse",
+    "ComponentRolesResourceWithStreamingResponse",
+    "AsyncComponentRolesResourceWithStreamingResponse",
     "ConfigInstancesResource",
     "AsyncConfigInstancesResource",
     "ConfigInstancesResourceWithRawResponse",

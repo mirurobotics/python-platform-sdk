@@ -40,24 +40,30 @@ if TYPE_CHECKING:
         devices,
         releases,
         principal,
+        components,
         deployments,
         git_commits,
         calibrations,
         config_types,
         config_schemas,
+        component_roles,
         config_instances,
+        component_aspects,
         provisioning_tokens,
     )
     from .resources.groups import GroupsResource, AsyncGroupsResource
     from .resources.devices import DevicesResource, AsyncDevicesResource
     from .resources.releases import ReleasesResource, AsyncReleasesResource
     from .resources.principal import PrincipalResource, AsyncPrincipalResource
+    from .resources.components import ComponentsResource, AsyncComponentsResource
     from .resources.deployments import DeploymentsResource, AsyncDeploymentsResource
     from .resources.git_commits import GitCommitsResource, AsyncGitCommitsResource
     from .resources.calibrations import CalibrationsResource, AsyncCalibrationsResource
     from .resources.config_types import ConfigTypesResource, AsyncConfigTypesResource
     from .resources.config_schemas import ConfigSchemasResource, AsyncConfigSchemasResource
+    from .resources.component_roles import ComponentRolesResource, AsyncComponentRolesResource
     from .resources.config_instances import ConfigInstancesResource, AsyncConfigInstancesResource
+    from .resources.component_aspects import ComponentAspectsResource, AsyncComponentAspectsResource
     from .resources.provisioning_tokens import ProvisioningTokensResource, AsyncProvisioningTokensResource
 
 __all__ = [
@@ -181,6 +187,24 @@ class Miru(SyncAPIClient):
         from .resources.calibrations import CalibrationsResource
 
         return CalibrationsResource(self)
+
+    @cached_property
+    def components(self) -> ComponentsResource:
+        from .resources.components import ComponentsResource
+
+        return ComponentsResource(self)
+
+    @cached_property
+    def component_aspects(self) -> ComponentAspectsResource:
+        from .resources.component_aspects import ComponentAspectsResource
+
+        return ComponentAspectsResource(self)
+
+    @cached_property
+    def component_roles(self) -> ComponentRolesResource:
+        from .resources.component_roles import ComponentRolesResource
+
+        return ComponentRolesResource(self)
 
     @cached_property
     def config_instances(self) -> ConfigInstancesResource:
@@ -463,6 +487,24 @@ class AsyncMiru(AsyncAPIClient):
         return AsyncCalibrationsResource(self)
 
     @cached_property
+    def components(self) -> AsyncComponentsResource:
+        from .resources.components import AsyncComponentsResource
+
+        return AsyncComponentsResource(self)
+
+    @cached_property
+    def component_aspects(self) -> AsyncComponentAspectsResource:
+        from .resources.component_aspects import AsyncComponentAspectsResource
+
+        return AsyncComponentAspectsResource(self)
+
+    @cached_property
+    def component_roles(self) -> AsyncComponentRolesResource:
+        from .resources.component_roles import AsyncComponentRolesResource
+
+        return AsyncComponentRolesResource(self)
+
+    @cached_property
     def config_instances(self) -> AsyncConfigInstancesResource:
         from .resources.config_instances import AsyncConfigInstancesResource
 
@@ -653,6 +695,24 @@ class MiruWithRawResponse:
         return CalibrationsResourceWithRawResponse(self._client.calibrations)
 
     @cached_property
+    def components(self) -> components.ComponentsResourceWithRawResponse:
+        from .resources.components import ComponentsResourceWithRawResponse
+
+        return ComponentsResourceWithRawResponse(self._client.components)
+
+    @cached_property
+    def component_aspects(self) -> component_aspects.ComponentAspectsResourceWithRawResponse:
+        from .resources.component_aspects import ComponentAspectsResourceWithRawResponse
+
+        return ComponentAspectsResourceWithRawResponse(self._client.component_aspects)
+
+    @cached_property
+    def component_roles(self) -> component_roles.ComponentRolesResourceWithRawResponse:
+        from .resources.component_roles import ComponentRolesResourceWithRawResponse
+
+        return ComponentRolesResourceWithRawResponse(self._client.component_roles)
+
+    @cached_property
     def config_instances(self) -> config_instances.ConfigInstancesResourceWithRawResponse:
         from .resources.config_instances import ConfigInstancesResourceWithRawResponse
 
@@ -724,6 +784,24 @@ class AsyncMiruWithRawResponse:
         from .resources.calibrations import AsyncCalibrationsResourceWithRawResponse
 
         return AsyncCalibrationsResourceWithRawResponse(self._client.calibrations)
+
+    @cached_property
+    def components(self) -> components.AsyncComponentsResourceWithRawResponse:
+        from .resources.components import AsyncComponentsResourceWithRawResponse
+
+        return AsyncComponentsResourceWithRawResponse(self._client.components)
+
+    @cached_property
+    def component_aspects(self) -> component_aspects.AsyncComponentAspectsResourceWithRawResponse:
+        from .resources.component_aspects import AsyncComponentAspectsResourceWithRawResponse
+
+        return AsyncComponentAspectsResourceWithRawResponse(self._client.component_aspects)
+
+    @cached_property
+    def component_roles(self) -> component_roles.AsyncComponentRolesResourceWithRawResponse:
+        from .resources.component_roles import AsyncComponentRolesResourceWithRawResponse
+
+        return AsyncComponentRolesResourceWithRawResponse(self._client.component_roles)
 
     @cached_property
     def config_instances(self) -> config_instances.AsyncConfigInstancesResourceWithRawResponse:
@@ -799,6 +877,24 @@ class MiruWithStreamedResponse:
         return CalibrationsResourceWithStreamingResponse(self._client.calibrations)
 
     @cached_property
+    def components(self) -> components.ComponentsResourceWithStreamingResponse:
+        from .resources.components import ComponentsResourceWithStreamingResponse
+
+        return ComponentsResourceWithStreamingResponse(self._client.components)
+
+    @cached_property
+    def component_aspects(self) -> component_aspects.ComponentAspectsResourceWithStreamingResponse:
+        from .resources.component_aspects import ComponentAspectsResourceWithStreamingResponse
+
+        return ComponentAspectsResourceWithStreamingResponse(self._client.component_aspects)
+
+    @cached_property
+    def component_roles(self) -> component_roles.ComponentRolesResourceWithStreamingResponse:
+        from .resources.component_roles import ComponentRolesResourceWithStreamingResponse
+
+        return ComponentRolesResourceWithStreamingResponse(self._client.component_roles)
+
+    @cached_property
     def config_instances(self) -> config_instances.ConfigInstancesResourceWithStreamingResponse:
         from .resources.config_instances import ConfigInstancesResourceWithStreamingResponse
 
@@ -870,6 +966,24 @@ class AsyncMiruWithStreamedResponse:
         from .resources.calibrations import AsyncCalibrationsResourceWithStreamingResponse
 
         return AsyncCalibrationsResourceWithStreamingResponse(self._client.calibrations)
+
+    @cached_property
+    def components(self) -> components.AsyncComponentsResourceWithStreamingResponse:
+        from .resources.components import AsyncComponentsResourceWithStreamingResponse
+
+        return AsyncComponentsResourceWithStreamingResponse(self._client.components)
+
+    @cached_property
+    def component_aspects(self) -> component_aspects.AsyncComponentAspectsResourceWithStreamingResponse:
+        from .resources.component_aspects import AsyncComponentAspectsResourceWithStreamingResponse
+
+        return AsyncComponentAspectsResourceWithStreamingResponse(self._client.component_aspects)
+
+    @cached_property
+    def component_roles(self) -> component_roles.AsyncComponentRolesResourceWithStreamingResponse:
+        from .resources.component_roles import AsyncComponentRolesResourceWithStreamingResponse
+
+        return AsyncComponentRolesResourceWithStreamingResponse(self._client.component_roles)
 
     @cached_property
     def config_instances(self) -> config_instances.AsyncConfigInstancesResourceWithStreamingResponse:

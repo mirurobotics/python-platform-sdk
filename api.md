@@ -17,6 +17,45 @@ Methods:
 - <code title="get /calibrations/{calibration_id}">client.calibrations.<a href="./src/miru_platform_sdk/resources/calibrations.py">retrieve</a>(calibration_id, \*\*<a href="src/miru_platform_sdk/types/calibration_retrieve_params.py">params</a>) -> <a href="./src/miru_platform_sdk/types/calibration.py">Calibration</a></code>
 - <code title="get /calibrations">client.calibrations.<a href="./src/miru_platform_sdk/resources/calibrations.py">list</a>(\*\*<a href="src/miru_platform_sdk/types/calibration_list_params.py">params</a>) -> <a href="./src/miru_platform_sdk/types/calibration_list.py">CalibrationList</a></code>
 
+# Components
+
+Types:
+
+```python
+from miru_platform_sdk.types import Component, ComponentList
+```
+
+Methods:
+
+- <code title="get /components/{component_id}">client.components.<a href="./src/miru_platform_sdk/resources/components.py">retrieve</a>(component_id, \*\*<a href="src/miru_platform_sdk/types/component_retrieve_params.py">params</a>) -> <a href="./src/miru_platform_sdk/types/component.py">Component</a></code>
+- <code title="get /components">client.components.<a href="./src/miru_platform_sdk/resources/components.py">list</a>(\*\*<a href="src/miru_platform_sdk/types/component_list_params.py">params</a>) -> <a href="./src/miru_platform_sdk/types/component_list.py">ComponentList</a></code>
+
+# ComponentAspects
+
+Types:
+
+```python
+from miru_platform_sdk.types import ComponentAspect, ComponentAspectList
+```
+
+Methods:
+
+- <code title="get /component_aspects/{component_aspect_id}">client.component_aspects.<a href="./src/miru_platform_sdk/resources/component_aspects.py">retrieve</a>(component_aspect_id, \*\*<a href="src/miru_platform_sdk/types/component_aspect_retrieve_params.py">params</a>) -> <a href="./src/miru_platform_sdk/types/component_aspect.py">ComponentAspect</a></code>
+- <code title="get /component_aspects">client.component_aspects.<a href="./src/miru_platform_sdk/resources/component_aspects.py">list</a>(\*\*<a href="src/miru_platform_sdk/types/component_aspect_list_params.py">params</a>) -> <a href="./src/miru_platform_sdk/types/component_aspect_list.py">ComponentAspectList</a></code>
+
+# ComponentRoles
+
+Types:
+
+```python
+from miru_platform_sdk.types import ComponentRole, ComponentRoleList
+```
+
+Methods:
+
+- <code title="get /component_roles/{component_role_id}">client.component_roles.<a href="./src/miru_platform_sdk/resources/component_roles.py">retrieve</a>(component_role_id, \*\*<a href="src/miru_platform_sdk/types/component_role_retrieve_params.py">params</a>) -> <a href="./src/miru_platform_sdk/types/component_role.py">ComponentRole</a></code>
+- <code title="get /component_roles">client.component_roles.<a href="./src/miru_platform_sdk/resources/component_roles.py">list</a>(\*\*<a href="src/miru_platform_sdk/types/component_role_list_params.py">params</a>) -> <a href="./src/miru_platform_sdk/types/component_role_list.py">ComponentRoleList</a></code>
+
 # ConfigInstances
 
 Types:
