@@ -23,6 +23,9 @@ class CalibrationListParams(TypedDict, total=False):
     expand: List[Literal["content", "total_count"]]
     """Fields to expand on each calibration in the list."""
 
+    external_user_id: SequenceNotStr[str]
+    """The external user IDs to filter by."""
+
     limit: int
     """The maximum number of items to return.
 
@@ -34,9 +37,6 @@ class CalibrationListParams(TypedDict, total=False):
 
     An offset of 10 with a limit of 10 returns items 11-20.
     """
-
-    operator_id: SequenceNotStr[str]
-    """The operator IDs to filter by."""
 
     order_by: List[
         Literal["id:asc", "id:desc", "created_at:asc", "created_at:desc", "reported_at:asc", "reported_at:desc"]

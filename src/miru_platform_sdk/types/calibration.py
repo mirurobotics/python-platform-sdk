@@ -43,14 +43,14 @@ class Calibration(BaseModel):
     characters.
     """
 
+    external_user_id: Optional[str] = None
+    """
+    ID of the external user the device reported as running the calibration; null if
+    no external user was reported.
+    """
+
     object: Literal["calibration"]
     """The object type, which is always `calibration`."""
-
-    operator_id: Optional[str] = None
-    """
-    ID of the operator the device reported as running the calibration; null if no
-    operator was reported.
-    """
 
     report_id: str
     """ID the agent gave the report this calibration came from."""

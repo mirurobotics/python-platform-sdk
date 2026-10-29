@@ -92,9 +92,9 @@ class CalibrationsResource(SyncAPIResource):
         component_id: SequenceNotStr[str] | Omit = omit,
         device_id: SequenceNotStr[str] | Omit = omit,
         expand: List[Literal["content", "total_count"]] | Omit = omit,
+        external_user_id: SequenceNotStr[str] | Omit = omit,
         limit: int | Omit = omit,
         offset: int | Omit = omit,
-        operator_id: SequenceNotStr[str] | Omit = omit,
         order_by: List[
             Literal["id:asc", "id:desc", "created_at:asc", "created_at:desc", "reported_at:asc", "reported_at:desc"]
         ]
@@ -123,13 +123,13 @@ class CalibrationsResource(SyncAPIResource):
 
           expand: Fields to expand on each calibration in the list.
 
+          external_user_id: The external user IDs to filter by.
+
           limit: The maximum number of items to return. A limit of 15 with an offset of 0 returns
               items 1-15.
 
           offset: The offset of the items to return. An offset of 10 with a limit of 10 returns
               items 11-20.
-
-          operator_id: The operator IDs to filter by.
 
           order_by: Sort order for the calibration results.
 
@@ -160,9 +160,9 @@ class CalibrationsResource(SyncAPIResource):
                         "component_id": component_id,
                         "device_id": device_id,
                         "expand": expand,
+                        "external_user_id": external_user_id,
                         "limit": limit,
                         "offset": offset,
-                        "operator_id": operator_id,
                         "order_by": order_by,
                         "report_id": report_id,
                         "role_id": role_id,
@@ -244,9 +244,9 @@ class AsyncCalibrationsResource(AsyncAPIResource):
         component_id: SequenceNotStr[str] | Omit = omit,
         device_id: SequenceNotStr[str] | Omit = omit,
         expand: List[Literal["content", "total_count"]] | Omit = omit,
+        external_user_id: SequenceNotStr[str] | Omit = omit,
         limit: int | Omit = omit,
         offset: int | Omit = omit,
-        operator_id: SequenceNotStr[str] | Omit = omit,
         order_by: List[
             Literal["id:asc", "id:desc", "created_at:asc", "created_at:desc", "reported_at:asc", "reported_at:desc"]
         ]
@@ -275,13 +275,13 @@ class AsyncCalibrationsResource(AsyncAPIResource):
 
           expand: Fields to expand on each calibration in the list.
 
+          external_user_id: The external user IDs to filter by.
+
           limit: The maximum number of items to return. A limit of 15 with an offset of 0 returns
               items 1-15.
 
           offset: The offset of the items to return. An offset of 10 with a limit of 10 returns
               items 11-20.
-
-          operator_id: The operator IDs to filter by.
 
           order_by: Sort order for the calibration results.
 
@@ -312,9 +312,9 @@ class AsyncCalibrationsResource(AsyncAPIResource):
                         "component_id": component_id,
                         "device_id": device_id,
                         "expand": expand,
+                        "external_user_id": external_user_id,
                         "limit": limit,
                         "offset": offset,
-                        "operator_id": operator_id,
                         "order_by": order_by,
                         "report_id": report_id,
                         "role_id": role_id,
