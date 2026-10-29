@@ -2,7 +2,20 @@
 
 from __future__ import annotations
 
-from . import group, device, component, deployment, component_role, component_aspect
+from . import (
+    group,
+    device,
+    component,
+    deployment,
+    group_list,
+    device_list,
+    component_list,
+    component_role,
+    deployment_list,
+    component_aspect,
+    component_role_list,
+    component_aspect_list,
+)
 from .. import _compat
 from .group import Group as Group
 from .device import Device as Device
@@ -85,15 +98,27 @@ from .component_aspect_retrieve_params import ComponentAspectRetrieveParams as C
 # See: https://github.com/pydantic/pydantic/issues/11250 for more context.
 if _compat.PYDANTIC_V1:
     component.Component.update_forward_refs()  # type: ignore
+    component_list.ComponentList.update_forward_refs()  # type: ignore
     component_aspect.ComponentAspect.update_forward_refs()  # type: ignore
+    component_aspect_list.ComponentAspectList.update_forward_refs()  # type: ignore
     component_role.ComponentRole.update_forward_refs()  # type: ignore
+    component_role_list.ComponentRoleList.update_forward_refs()  # type: ignore
     deployment.Deployment.update_forward_refs()  # type: ignore
+    deployment_list.DeploymentList.update_forward_refs()  # type: ignore
     device.Device.update_forward_refs()  # type: ignore
+    device_list.DeviceList.update_forward_refs()  # type: ignore
     group.Group.update_forward_refs()  # type: ignore
+    group_list.GroupList.update_forward_refs()  # type: ignore
 else:
     component.Component.model_rebuild(_parent_namespace_depth=0)
+    component_list.ComponentList.model_rebuild(_parent_namespace_depth=0)
     component_aspect.ComponentAspect.model_rebuild(_parent_namespace_depth=0)
+    component_aspect_list.ComponentAspectList.model_rebuild(_parent_namespace_depth=0)
     component_role.ComponentRole.model_rebuild(_parent_namespace_depth=0)
+    component_role_list.ComponentRoleList.model_rebuild(_parent_namespace_depth=0)
     deployment.Deployment.model_rebuild(_parent_namespace_depth=0)
+    deployment_list.DeploymentList.model_rebuild(_parent_namespace_depth=0)
     device.Device.model_rebuild(_parent_namespace_depth=0)
+    device_list.DeviceList.model_rebuild(_parent_namespace_depth=0)
     group.Group.model_rebuild(_parent_namespace_depth=0)
+    group_list.GroupList.model_rebuild(_parent_namespace_depth=0)
