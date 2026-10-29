@@ -88,11 +88,10 @@ class CalibrationsResource(SyncAPIResource):
     def list(
         self,
         *,
-        aspect_id: SequenceNotStr[str] | Omit = omit,
-        component_id: SequenceNotStr[str] | Omit = omit,
+        aspect: SequenceNotStr[str] | Omit = omit,
+        component: SequenceNotStr[str] | Omit = omit,
         device_id: SequenceNotStr[str] | Omit = omit,
         expand: List[Literal["content", "total_count"]] | Omit = omit,
-        external_user_id: SequenceNotStr[str] | Omit = omit,
         limit: int | Omit = omit,
         offset: int | Omit = omit,
         order_by: List[
@@ -100,7 +99,7 @@ class CalibrationsResource(SyncAPIResource):
         ]
         | Omit = omit,
         report_id: SequenceNotStr[str] | Omit = omit,
-        role_id: SequenceNotStr[str] | Omit = omit,
+        role: SequenceNotStr[str] | Omit = omit,
         serial_number: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -115,15 +114,14 @@ class CalibrationsResource(SyncAPIResource):
         with ties broken by `id`.
 
         Args:
-          aspect_id: The component aspect IDs to filter by.
+          aspect: The aspect slugs to filter by. Aspect slugs are unique only within a component,
+              so filter by component too to match one component's aspect.
 
-          component_id: The component IDs to filter by.
+          component: The component slugs to filter by.
 
           device_id: The device IDs to filter by.
 
           expand: Fields to expand on each calibration in the list.
-
-          external_user_id: The external user IDs to filter by.
 
           limit: The maximum number of items to return. A limit of 15 with an offset of 0 returns
               items 1-15.
@@ -135,7 +133,8 @@ class CalibrationsResource(SyncAPIResource):
 
           report_id: The report IDs to filter by.
 
-          role_id: The component role IDs to filter by.
+          role: The role slugs to filter by. Role slugs are unique only within a component, so
+              filter by component too to match one component's role.
 
           serial_number: The unit serial numbers to filter by.
 
@@ -156,16 +155,15 @@ class CalibrationsResource(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
-                        "aspect_id": aspect_id,
-                        "component_id": component_id,
+                        "aspect": aspect,
+                        "component": component,
                         "device_id": device_id,
                         "expand": expand,
-                        "external_user_id": external_user_id,
                         "limit": limit,
                         "offset": offset,
                         "order_by": order_by,
                         "report_id": report_id,
-                        "role_id": role_id,
+                        "role": role,
                         "serial_number": serial_number,
                     },
                     calibration_list_params.CalibrationListParams,
@@ -240,11 +238,10 @@ class AsyncCalibrationsResource(AsyncAPIResource):
     async def list(
         self,
         *,
-        aspect_id: SequenceNotStr[str] | Omit = omit,
-        component_id: SequenceNotStr[str] | Omit = omit,
+        aspect: SequenceNotStr[str] | Omit = omit,
+        component: SequenceNotStr[str] | Omit = omit,
         device_id: SequenceNotStr[str] | Omit = omit,
         expand: List[Literal["content", "total_count"]] | Omit = omit,
-        external_user_id: SequenceNotStr[str] | Omit = omit,
         limit: int | Omit = omit,
         offset: int | Omit = omit,
         order_by: List[
@@ -252,7 +249,7 @@ class AsyncCalibrationsResource(AsyncAPIResource):
         ]
         | Omit = omit,
         report_id: SequenceNotStr[str] | Omit = omit,
-        role_id: SequenceNotStr[str] | Omit = omit,
+        role: SequenceNotStr[str] | Omit = omit,
         serial_number: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -267,15 +264,14 @@ class AsyncCalibrationsResource(AsyncAPIResource):
         with ties broken by `id`.
 
         Args:
-          aspect_id: The component aspect IDs to filter by.
+          aspect: The aspect slugs to filter by. Aspect slugs are unique only within a component,
+              so filter by component too to match one component's aspect.
 
-          component_id: The component IDs to filter by.
+          component: The component slugs to filter by.
 
           device_id: The device IDs to filter by.
 
           expand: Fields to expand on each calibration in the list.
-
-          external_user_id: The external user IDs to filter by.
 
           limit: The maximum number of items to return. A limit of 15 with an offset of 0 returns
               items 1-15.
@@ -287,7 +283,8 @@ class AsyncCalibrationsResource(AsyncAPIResource):
 
           report_id: The report IDs to filter by.
 
-          role_id: The component role IDs to filter by.
+          role: The role slugs to filter by. Role slugs are unique only within a component, so
+              filter by component too to match one component's role.
 
           serial_number: The unit serial numbers to filter by.
 
@@ -308,16 +305,15 @@ class AsyncCalibrationsResource(AsyncAPIResource):
                 timeout=timeout,
                 query=await async_maybe_transform(
                     {
-                        "aspect_id": aspect_id,
-                        "component_id": component_id,
+                        "aspect": aspect,
+                        "component": component,
                         "device_id": device_id,
                         "expand": expand,
-                        "external_user_id": external_user_id,
                         "limit": limit,
                         "offset": offset,
                         "order_by": order_by,
                         "report_id": report_id,
-                        "role_id": role_id,
+                        "role": role,
                         "serial_number": serial_number,
                     },
                     calibration_list_params.CalibrationListParams,

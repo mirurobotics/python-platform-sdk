@@ -11,20 +11,21 @@ __all__ = ["CalibrationListParams"]
 
 
 class CalibrationListParams(TypedDict, total=False):
-    aspect_id: SequenceNotStr[str]
-    """The component aspect IDs to filter by."""
+    aspect: SequenceNotStr[str]
+    """The aspect slugs to filter by.
 
-    component_id: SequenceNotStr[str]
-    """The component IDs to filter by."""
+    Aspect slugs are unique only within a component, so filter by component too to
+    match one component's aspect.
+    """
+
+    component: SequenceNotStr[str]
+    """The component slugs to filter by."""
 
     device_id: SequenceNotStr[str]
     """The device IDs to filter by."""
 
     expand: List[Literal["content", "total_count"]]
     """Fields to expand on each calibration in the list."""
-
-    external_user_id: SequenceNotStr[str]
-    """The external user IDs to filter by."""
 
     limit: int
     """The maximum number of items to return.
@@ -46,8 +47,12 @@ class CalibrationListParams(TypedDict, total=False):
     report_id: SequenceNotStr[str]
     """The report IDs to filter by."""
 
-    role_id: SequenceNotStr[str]
-    """The component role IDs to filter by."""
+    role: SequenceNotStr[str]
+    """The role slugs to filter by.
+
+    Role slugs are unique only within a component, so filter by component too to
+    match one component's role.
+    """
 
     serial_number: SequenceNotStr[str]
     """The unit serial numbers to filter by."""
