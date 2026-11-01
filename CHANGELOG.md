@@ -1,5 +1,32 @@
 # Changelog
 
+## [0.13.0](https://github.com/mirurobotics/python-platform-sdk/compare/v0.12.0...v0.13.0) (2026-11-01)
+
+
+### ⚠ BREAKING CHANGES
+
+* **platform:** name calibration components, roles and aspects by slug ([#387](https://github.com/mirurobotics/python-platform-sdk/issues/387))
+
+### Features
+
+* **platform:** name calibration components, roles and aspects by slug ([#387](https://github.com/mirurobotics/python-platform-sdk/issues/387)) ([3aeeae1](https://github.com/mirurobotics/python-platform-sdk/commit/3aeeae1adfc86d29a685974c48c0f43271049c7e))
+
+
+### Bug Fixes
+
+* **platform:** send 2026-10-29.everglades as the SDK's default Miru-Version ([#401](https://github.com/mirurobotics/python-platform-sdk/issues/401)) ([e7e536f](https://github.com/mirurobotics/python-platform-sdk/commit/e7e536fda8f3ce2bf643fbe822f31b309ca1cb4e))
+
+
+### Chores
+
+* **sdkgen:** repin stlc-python to rebuild list models (6a8d16c) ([#389](https://github.com/mirurobotics/python-platform-sdk/issues/389)) ([ce1b249](https://github.com/mirurobotics/python-platform-sdk/commit/ce1b24904a68a8dfb68c79f22ef9faeddc5aa248))
+* **sdkgen:** repin stlc-python to ship CVE-fixed SDK lockfiles ([#390](https://github.com/mirurobotics/python-platform-sdk/issues/390)) ([bb09893](https://github.com/mirurobotics/python-platform-sdk/commit/bb09893fac64d0523cfa245bb21de8632c67dc79))
+
+
+### Refactors
+
+* **external-users:** rename operators to external users ([#386](https://github.com/mirurobotics/python-platform-sdk/issues/386)) ([b70e282](https://github.com/mirurobotics/python-platform-sdk/commit/b70e282aca067f2deb698727df184c89766e5a28))
+
 ## [0.12.0](https://github.com/mirurobotics/python-platform-sdk/compare/v0.11.0...v0.12.0) (2026-10-28)
 
 
