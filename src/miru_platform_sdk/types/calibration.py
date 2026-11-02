@@ -13,7 +13,7 @@ __all__ = ["Calibration"]
 class Calibration(BaseModel):
     """One calibration reported by a device for a unit of a component.
 
-    Calibrations are immutable and append-only; a device's history is kept per component, role, and aspect. Content is at most 1 MiB.
+    Calibrations are immutable.
     """
 
     id: str
@@ -66,4 +66,7 @@ class Calibration(BaseModel):
     """
 
     content: Optional[InstanceContent] = None
-    """The calibration's content. Expand using `expand=content` in the query string."""
+    """The calibration's content, at most 1 MiB.
+
+    Expand using `expand=content` in the query string.
+    """
