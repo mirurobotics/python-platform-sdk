@@ -12,10 +12,10 @@ __all__ = ["CalibrationListParams"]
 
 class CalibrationListParams(TypedDict, total=False):
     aspect: SequenceNotStr[str]
-    """
-    The aspect slugs to filter by; `null` matches calibrations reported without an
-    aspect. Aspect slugs are unique only within a component, so filter by component
-    too to match one component's aspect.
+    """The aspect slugs to filter by.
+
+    Aspect slugs are unique only within a component, so filter by component too to
+    match one component's aspect.
     """
 
     component: SequenceNotStr[str]
@@ -48,8 +48,7 @@ class CalibrationListParams(TypedDict, total=False):
     """The report IDs to filter by."""
 
     role: SequenceNotStr[str]
-    """The role slugs to filter by; `null` matches calibrations reported without a
-    role.
+    """The role slugs to filter by.
 
     Role slugs are unique only within a component, so filter by component too to
     match one component's role.
