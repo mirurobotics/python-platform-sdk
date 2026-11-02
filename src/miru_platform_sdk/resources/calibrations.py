@@ -114,8 +114,9 @@ class CalibrationsResource(SyncAPIResource):
         with ties broken by `id`.
 
         Args:
-          aspect: The aspect slugs to filter by. Aspect slugs are unique only within a component,
-              so filter by component too to match one component's aspect.
+          aspect: The aspect slugs to filter by; `null` matches calibrations reported without an
+              aspect. Aspect slugs are unique only within a component, so filter by component
+              too to match one component's aspect.
 
           component: The component slugs to filter by.
 
@@ -133,8 +134,9 @@ class CalibrationsResource(SyncAPIResource):
 
           report_id: The report IDs to filter by.
 
-          role: The role slugs to filter by. Role slugs are unique only within a component, so
-              filter by component too to match one component's role.
+          role: The role slugs to filter by; `null` matches calibrations reported without a
+              role. Role slugs are unique only within a component, so filter by component too
+              to match one component's role.
 
           serial_number: The unit serial numbers to filter by.
 
@@ -264,8 +266,9 @@ class AsyncCalibrationsResource(AsyncAPIResource):
         with ties broken by `id`.
 
         Args:
-          aspect: The aspect slugs to filter by. Aspect slugs are unique only within a component,
-              so filter by component too to match one component's aspect.
+          aspect: The aspect slugs to filter by; `null` matches calibrations reported without an
+              aspect. Aspect slugs are unique only within a component, so filter by component
+              too to match one component's aspect.
 
           component: The component slugs to filter by.
 
@@ -283,8 +286,9 @@ class AsyncCalibrationsResource(AsyncAPIResource):
 
           report_id: The report IDs to filter by.
 
-          role: The role slugs to filter by. Role slugs are unique only within a component, so
-              filter by component too to match one component's role.
+          role: The role slugs to filter by; `null` matches calibrations reported without a
+              role. Role slugs are unique only within a component, so filter by component too
+              to match one component's role.
 
           serial_number: The unit serial numbers to filter by.
 
