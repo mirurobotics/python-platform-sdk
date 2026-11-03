@@ -33,6 +33,13 @@ class Device(BaseModel):
     archived_at: Optional[datetime] = None
     """Timestamp of when the device was archived. Null if the device is not archived."""
 
+    archived_by_id: Optional[str] = None
+    """ID of the principal who archived the device.
+
+    Null if the device is not archived or was archived before this field was
+    recorded.
+    """
+
     created_at: datetime
     """Timestamp of when the device was created."""
 
@@ -106,6 +113,13 @@ class Device(BaseModel):
 
     updated_by_id: str
     """ID of the principal who last updated the device."""
+
+    archived_by: Optional[Principal] = None
+    """The principal who archived the device.
+
+    Null if `archived_by_id` is null. Expand using `expand=archived_by` in the query
+    string.
+    """
 
     created_by: Optional[Principal] = None
     """The principal who created the device.

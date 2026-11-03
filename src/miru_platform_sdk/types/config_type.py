@@ -20,6 +20,13 @@ class ConfigType(BaseModel):
     Null if the config type is not archived.
     """
 
+    archived_by_id: Optional[str] = None
+    """ID of the principal who archived the config type.
+
+    Null if the config type is not archived or was archived before this field was
+    recorded.
+    """
+
     created_at: datetime
     """Timestamp of when the config type was created."""
 
@@ -40,6 +47,13 @@ class ConfigType(BaseModel):
 
     updated_by_id: str
     """ID of the principal who last updated the config type."""
+
+    archived_by: Optional[Principal] = None
+    """The principal who archived the config type.
+
+    Null if `archived_by_id` is null. Expand using `expand=archived_by` in the query
+    string.
+    """
 
     created_by: Optional[Principal] = None
     """The principal who created the config type.

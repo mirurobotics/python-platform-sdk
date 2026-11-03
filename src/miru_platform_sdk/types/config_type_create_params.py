@@ -15,5 +15,5 @@ class ConfigTypeCreateParams(TypedDict, total=False):
     slug: Required[str]
     """An immutable, code-friendly name for the config type."""
 
-    expand: List[Literal["created_by", "updated_by"]]
+    expand: List[Literal["created_by", "updated_by", "archived_by"]]
     """Fields to expand on the config type resource."""

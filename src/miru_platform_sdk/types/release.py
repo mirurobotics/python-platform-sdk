@@ -21,6 +21,13 @@ class Release(BaseModel):
     Null if the release is not archived.
     """
 
+    archived_by_id: Optional[str] = None
+    """ID of the principal who archived the release.
+
+    Null if the release is not archived or was archived before this field was
+    recorded.
+    """
+
     created_at: datetime
     """Timestamp of when the release was created."""
 
@@ -54,6 +61,13 @@ class Release(BaseModel):
 
     version: str
     """The version of the release."""
+
+    archived_by: Optional[Principal] = None
+    """The principal who archived the release.
+
+    Null if `archived_by_id` is null. Expand using `expand=archived_by` in the query
+    string.
+    """
 
     config_schemas: Optional[List[ConfigSchema]] = None
     """Expand the config schemas using 'expand=config_schemas' in the query string."""

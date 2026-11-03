@@ -14,7 +14,7 @@ class ReleaseListParams(TypedDict, total=False):
     id: SequenceNotStr[str]
     """The release IDs to filter by."""
 
-    expand: List[Literal["total_count", "config_schemas", "created_by", "updated_by"]]
+    expand: List[Literal["total_count", "config_schemas", "created_by", "updated_by", "archived_by"]]
     """Fields to expand on each release in the list."""
 
     limit: int
