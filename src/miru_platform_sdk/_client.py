@@ -39,6 +39,7 @@ if TYPE_CHECKING:
         users,
         groups,
         devices,
+        api_keys,
         releases,
         principal,
         deployments,
@@ -52,6 +53,7 @@ if TYPE_CHECKING:
     from .resources.users import UsersResource, AsyncUsersResource
     from .resources.groups import GroupsResource, AsyncGroupsResource
     from .resources.devices import DevicesResource, AsyncDevicesResource
+    from .resources.api_keys import APIKeysResource, AsyncAPIKeysResource
     from .resources.releases import ReleasesResource, AsyncReleasesResource
     from .resources.principal import PrincipalResource, AsyncPrincipalResource
     from .resources.deployments import DeploymentsResource, AsyncDeploymentsResource
@@ -177,6 +179,12 @@ class Miru(SyncAPIClient):
             custom_query=default_query,
             _strict_response_validation=_strict_response_validation,
         )
+
+    @cached_property
+    def api_keys(self) -> APIKeysResource:
+        from .resources.api_keys import APIKeysResource
+
+        return APIKeysResource(self)
 
     @cached_property
     def calibrations(self) -> CalibrationsResource:
@@ -465,6 +473,12 @@ class AsyncMiru(AsyncAPIClient):
         )
 
     @cached_property
+    def api_keys(self) -> AsyncAPIKeysResource:
+        from .resources.api_keys import AsyncAPIKeysResource
+
+        return AsyncAPIKeysResource(self)
+
+    @cached_property
     def calibrations(self) -> AsyncCalibrationsResource:
         from .resources.calibrations import AsyncCalibrationsResource
 
@@ -661,6 +675,12 @@ class MiruWithRawResponse:
         self._client = client
 
     @cached_property
+    def api_keys(self) -> api_keys.APIKeysResourceWithRawResponse:
+        from .resources.api_keys import APIKeysResourceWithRawResponse
+
+        return APIKeysResourceWithRawResponse(self._client.api_keys)
+
+    @cached_property
     def calibrations(self) -> calibrations.CalibrationsResourceWithRawResponse:
         from .resources.calibrations import CalibrationsResourceWithRawResponse
 
@@ -738,6 +758,12 @@ class AsyncMiruWithRawResponse:
 
     def __init__(self, client: AsyncMiru) -> None:
         self._client = client
+
+    @cached_property
+    def api_keys(self) -> api_keys.AsyncAPIKeysResourceWithRawResponse:
+        from .resources.api_keys import AsyncAPIKeysResourceWithRawResponse
+
+        return AsyncAPIKeysResourceWithRawResponse(self._client.api_keys)
 
     @cached_property
     def calibrations(self) -> calibrations.AsyncCalibrationsResourceWithRawResponse:
@@ -819,6 +845,12 @@ class MiruWithStreamedResponse:
         self._client = client
 
     @cached_property
+    def api_keys(self) -> api_keys.APIKeysResourceWithStreamingResponse:
+        from .resources.api_keys import APIKeysResourceWithStreamingResponse
+
+        return APIKeysResourceWithStreamingResponse(self._client.api_keys)
+
+    @cached_property
     def calibrations(self) -> calibrations.CalibrationsResourceWithStreamingResponse:
         from .resources.calibrations import CalibrationsResourceWithStreamingResponse
 
@@ -896,6 +928,12 @@ class AsyncMiruWithStreamedResponse:
 
     def __init__(self, client: AsyncMiru) -> None:
         self._client = client
+
+    @cached_property
+    def api_keys(self) -> api_keys.AsyncAPIKeysResourceWithStreamingResponse:
+        from .resources.api_keys import AsyncAPIKeysResourceWithStreamingResponse
+
+        return AsyncAPIKeysResourceWithStreamingResponse(self._client.api_keys)
 
     @cached_property
     def calibrations(self) -> calibrations.AsyncCalibrationsResourceWithStreamingResponse:
