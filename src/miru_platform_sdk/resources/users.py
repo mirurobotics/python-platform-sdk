@@ -86,7 +86,19 @@ class UsersResource(SyncAPIResource):
         expand: List[Literal["total_count"]] | Omit = omit,
         limit: int | Omit = omit,
         offset: int | Omit = omit,
-        order_by: List[Literal["id:asc", "id:desc", "created_at:desc", "created_at:asc"]] | Omit = omit,
+        order_by: List[
+            Literal[
+                "id:asc",
+                "id:desc",
+                "created_at:desc",
+                "created_at:asc",
+                "first_name:asc",
+                "first_name:desc",
+                "last_name:asc",
+                "last_name:desc",
+            ]
+        ]
+        | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -108,7 +120,8 @@ class UsersResource(SyncAPIResource):
           offset: The offset of the items to return. An offset of 10 with a limit of 10 returns
               items 11-20.
 
-          order_by: Sort order for the user results.
+          order_by: Sort order for the user results. Defaults to first name, then last name,
+              ascending.
 
           extra_headers: Send extra headers
 
@@ -201,7 +214,19 @@ class AsyncUsersResource(AsyncAPIResource):
         expand: List[Literal["total_count"]] | Omit = omit,
         limit: int | Omit = omit,
         offset: int | Omit = omit,
-        order_by: List[Literal["id:asc", "id:desc", "created_at:desc", "created_at:asc"]] | Omit = omit,
+        order_by: List[
+            Literal[
+                "id:asc",
+                "id:desc",
+                "created_at:desc",
+                "created_at:asc",
+                "first_name:asc",
+                "first_name:desc",
+                "last_name:asc",
+                "last_name:desc",
+            ]
+        ]
+        | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -223,7 +248,8 @@ class AsyncUsersResource(AsyncAPIResource):
           offset: The offset of the items to return. An offset of 10 with a limit of 10 returns
               items 11-20.
 
-          order_by: Sort order for the user results.
+          order_by: Sort order for the user results. Defaults to first name, then last name,
+              ascending.
 
           extra_headers: Send extra headers
 

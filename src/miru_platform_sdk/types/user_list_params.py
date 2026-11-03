@@ -29,5 +29,19 @@ class UserListParams(TypedDict, total=False):
     An offset of 10 with a limit of 10 returns items 11-20.
     """
 
-    order_by: List[Literal["id:asc", "id:desc", "created_at:desc", "created_at:asc"]]
-    """Sort order for the user results."""
+    order_by: List[
+        Literal[
+            "id:asc",
+            "id:desc",
+            "created_at:desc",
+            "created_at:asc",
+            "first_name:asc",
+            "first_name:desc",
+            "last_name:asc",
+            "last_name:desc",
+        ]
+    ]
+    """Sort order for the user results.
+
+    Defaults to first name, then last name, ascending.
+    """
