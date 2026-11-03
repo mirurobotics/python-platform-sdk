@@ -14,8 +14,17 @@ class Release(BaseModel):
     id: str
     """ID of the release."""
 
+    archived_at: Optional[datetime] = None
+    """Timestamp of when the release was archived.
+
+    Null if the release is not archived.
+    """
+
     created_at: datetime
     """Timestamp of when the release was created."""
+
+    created_by_id: str
+    """ID of the principal who created the release."""
 
     description: Optional[str] = None
     """A free-form description of the release."""
@@ -38,6 +47,9 @@ class Release(BaseModel):
 
     updated_at: datetime
     """Timestamp of when the release was last updated."""
+
+    updated_by_id: str
+    """ID of the principal who last updated the release."""
 
     version: str
     """The version of the release."""

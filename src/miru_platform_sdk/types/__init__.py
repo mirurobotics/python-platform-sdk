@@ -4,17 +4,20 @@ from __future__ import annotations
 
 from . import group, device, deployment, group_list, device_list, deployment_list
 from .. import _compat
+from .user import User as User
 from .group import Group as Group
 from .device import Device as Device
 from .shared import PaginatedList as PaginatedList
 from .release import Release as Release
 from .principal import Principal as Principal
+from .user_list import UserList as UserList
 from .deployment import Deployment as Deployment
 from .git_commit import GitCommit as GitCommit
 from .group_list import GroupList as GroupList
 from .calibration import Calibration as Calibration
 from .config_type import ConfigType as ConfigType
 from .device_list import DeviceList as DeviceList
+from .user_status import UserStatus as UserStatus
 from .release_list import ReleaseList as ReleaseList
 from .config_schema import ConfigSchema as ConfigSchema
 from .instance_slot import InstanceSlot as InstanceSlot
@@ -25,6 +28,7 @@ from .schema_document import SchemaDocument as SchemaDocument
 from .schema_language import SchemaLanguage as SchemaLanguage
 from .calibration_list import CalibrationList as CalibrationList
 from .instance_content import InstanceContent as InstanceContent
+from .user_list_params import UserListParams as UserListParams
 from .group_list_params import GroupListParams as GroupListParams
 from .group_move_params import GroupMoveParams as GroupMoveParams
 from .config_schema_list import ConfigSchemaList as ConfigSchemaList
@@ -48,6 +52,7 @@ from .instance_content_param import InstanceContentParam as InstanceContentParam
 from .calibration_list_params import CalibrationListParams as CalibrationListParams
 from .config_type_list_params import ConfigTypeListParams as ConfigTypeListParams
 from .release_retrieve_params import ReleaseRetrieveParams as ReleaseRetrieveParams
+from .config_schema_git_commit import ConfigSchemaGitCommit as ConfigSchemaGitCommit
 from .deployment_create_params import DeploymentCreateParams as DeploymentCreateParams
 from .deployment_deploy_params import DeploymentDeployParams as DeploymentDeployParams
 from .git_commit_create_params import GitCommitCreateParams as GitCommitCreateParams
@@ -62,6 +67,7 @@ from .config_instance_list_params import ConfigInstanceListParams as ConfigInsta
 from .config_schema_create_params import ConfigSchemaCreateParams as ConfigSchemaCreateParams
 from .config_instance_create_params import ConfigInstanceCreateParams as ConfigInstanceCreateParams
 from .config_instance_list_response import ConfigInstanceListResponse as ConfigInstanceListResponse
+from .config_schema_git_commit_list import ConfigSchemaGitCommitList as ConfigSchemaGitCommitList
 from .config_schema_retrieve_params import ConfigSchemaRetrieveParams as ConfigSchemaRetrieveParams
 from .deployment_list_drifts_params import DeploymentListDriftsParams as DeploymentListDriftsParams
 from .config_instance_download_params import ConfigInstanceDownloadParams as ConfigInstanceDownloadParams

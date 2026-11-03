@@ -28,16 +28,17 @@ class ConfigSchemaCreateParams(TypedDict, total=False):
 
     language: Required[SchemaLanguage]
 
-    expand: List[Literal["documents", "config_type"]]
+    expand: List[Literal["documents", "config_type", "config_schema_git_commits"]]
     """Fields to expand on the config schema resource."""
 
     git_commit: GitCommit
     """The git commit to link to this config schema."""
 
     instance_format: Literal["json", "yaml", "jsonc", "xml", "csv", "text"]
-    """The serialization format of config content.
-
-    A config instance is written to the device filesystem in this format.
+    """
+    The serialization format of stored content, such as a config instance or a
+    calibration. A config instance is written to the device filesystem in this
+    format.
 
     - `json`: standard JSON.
     - `yaml`: YAML 1.2.

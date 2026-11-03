@@ -1,5 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
+from typing import Optional
 from datetime import datetime
 from typing_extensions import Literal
 
@@ -12,8 +13,17 @@ class ConfigType(BaseModel):
     id: str
     """ID of the config type."""
 
+    archived_at: Optional[datetime] = None
+    """Timestamp of when the config type was archived.
+
+    Null if the config type is not archived.
+    """
+
     created_at: datetime
     """Timestamp of when the config type was created."""
+
+    created_by_id: str
+    """ID of the principal who created the config type."""
 
     name: str
     """Name of the config type."""
@@ -26,3 +36,6 @@ class ConfigType(BaseModel):
 
     updated_at: datetime
     """Timestamp of when the config type was last updated."""
+
+    updated_by_id: str
+    """ID of the principal who last updated the config type."""

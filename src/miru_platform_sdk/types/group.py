@@ -18,6 +18,9 @@ class Group(BaseModel):
     created_at: datetime
     """Timestamp of when the group was created."""
 
+    created_by_id: str
+    """ID of the principal who created the group."""
+
     name: str
     """Name of the group."""
 
@@ -29,6 +32,9 @@ class Group(BaseModel):
 
     updated_at: datetime
     """Timestamp of when the group was last updated."""
+
+    updated_by_id: str
+    """ID of the principal who last updated the group."""
 
     parent: Optional["Group"] = None
     """The parent group.

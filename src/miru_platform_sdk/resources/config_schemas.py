@@ -59,7 +59,7 @@ class ConfigSchemasResource(SyncAPIResource):
         documents: Iterable[config_schema_create_params.Document],
         format: Literal["json", "yaml", "cue"],
         language: SchemaLanguage,
-        expand: List[Literal["documents", "config_type"]] | Omit = omit,
+        expand: List[Literal["documents", "config_type", "config_schema_git_commits"]] | Omit = omit,
         git_commit: config_schema_create_params.GitCommit | Omit = omit,
         instance_format: Literal["json", "yaml", "jsonc", "xml", "csv", "text"] | Omit = omit,
         instance_slots: Iterable[InstanceSlotParam] | Omit = omit,
@@ -83,8 +83,9 @@ class ConfigSchemasResource(SyncAPIResource):
 
           git_commit: The git commit to link to this config schema.
 
-          instance_format: The serialization format of config content. A config instance is written to the
-              device filesystem in this format.
+          instance_format: The serialization format of stored content, such as a config instance or a
+              calibration. A config instance is written to the device filesystem in this
+              format.
 
               - `json`: standard JSON.
               - `yaml`: YAML 1.2.
@@ -137,7 +138,7 @@ class ConfigSchemasResource(SyncAPIResource):
         self,
         config_schema_id: str,
         *,
-        expand: List[Literal["documents", "config_type"]] | Omit = omit,
+        expand: List[Literal["documents", "config_type", "config_schema_git_commits"]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -178,7 +179,7 @@ class ConfigSchemasResource(SyncAPIResource):
         *,
         id: SequenceNotStr[str] | Omit = omit,
         config_type_id: SequenceNotStr[str] | Omit = omit,
-        expand: List[Literal["total_count", "documents", "config_type"]] | Omit = omit,
+        expand: List[Literal["total_count", "documents", "config_type", "config_schema_git_commits"]] | Omit = omit,
         limit: int | Omit = omit,
         offset: int | Omit = omit,
         order_by: List[Literal["id:asc", "id:desc", "created_at:desc", "created_at:asc"]] | Omit = omit,
@@ -265,7 +266,7 @@ class AsyncConfigSchemasResource(AsyncAPIResource):
         documents: Iterable[config_schema_create_params.Document],
         format: Literal["json", "yaml", "cue"],
         language: SchemaLanguage,
-        expand: List[Literal["documents", "config_type"]] | Omit = omit,
+        expand: List[Literal["documents", "config_type", "config_schema_git_commits"]] | Omit = omit,
         git_commit: config_schema_create_params.GitCommit | Omit = omit,
         instance_format: Literal["json", "yaml", "jsonc", "xml", "csv", "text"] | Omit = omit,
         instance_slots: Iterable[InstanceSlotParam] | Omit = omit,
@@ -289,8 +290,9 @@ class AsyncConfigSchemasResource(AsyncAPIResource):
 
           git_commit: The git commit to link to this config schema.
 
-          instance_format: The serialization format of config content. A config instance is written to the
-              device filesystem in this format.
+          instance_format: The serialization format of stored content, such as a config instance or a
+              calibration. A config instance is written to the device filesystem in this
+              format.
 
               - `json`: standard JSON.
               - `yaml`: YAML 1.2.
@@ -345,7 +347,7 @@ class AsyncConfigSchemasResource(AsyncAPIResource):
         self,
         config_schema_id: str,
         *,
-        expand: List[Literal["documents", "config_type"]] | Omit = omit,
+        expand: List[Literal["documents", "config_type", "config_schema_git_commits"]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -388,7 +390,7 @@ class AsyncConfigSchemasResource(AsyncAPIResource):
         *,
         id: SequenceNotStr[str] | Omit = omit,
         config_type_id: SequenceNotStr[str] | Omit = omit,
-        expand: List[Literal["total_count", "documents", "config_type"]] | Omit = omit,
+        expand: List[Literal["total_count", "documents", "config_type", "config_schema_git_commits"]] | Omit = omit,
         limit: int | Omit = omit,
         offset: int | Omit = omit,
         order_by: List[Literal["id:asc", "id:desc", "created_at:desc", "created_at:asc"]] | Omit = omit,

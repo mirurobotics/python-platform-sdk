@@ -36,6 +36,7 @@ from ._base_client import (
 
 if TYPE_CHECKING:
     from .resources import (
+        users,
         groups,
         devices,
         releases,
@@ -48,6 +49,7 @@ if TYPE_CHECKING:
         config_instances,
         provisioning_tokens,
     )
+    from .resources.users import UsersResource, AsyncUsersResource
     from .resources.groups import GroupsResource, AsyncGroupsResource
     from .resources.devices import DevicesResource, AsyncDevicesResource
     from .resources.releases import ReleasesResource, AsyncReleasesResource
@@ -241,6 +243,12 @@ class Miru(SyncAPIClient):
         from .resources.releases import ReleasesResource
 
         return ReleasesResource(self)
+
+    @cached_property
+    def users(self) -> UsersResource:
+        from .resources.users import UsersResource
+
+        return UsersResource(self)
 
     @cached_property
     def with_raw_response(self) -> MiruWithRawResponse:
@@ -523,6 +531,12 @@ class AsyncMiru(AsyncAPIClient):
         return AsyncReleasesResource(self)
 
     @cached_property
+    def users(self) -> AsyncUsersResource:
+        from .resources.users import AsyncUsersResource
+
+        return AsyncUsersResource(self)
+
+    @cached_property
     def with_raw_response(self) -> AsyncMiruWithRawResponse:
         return AsyncMiruWithRawResponse(self)
 
@@ -712,6 +726,12 @@ class MiruWithRawResponse:
 
         return ReleasesResourceWithRawResponse(self._client.releases)
 
+    @cached_property
+    def users(self) -> users.UsersResourceWithRawResponse:
+        from .resources.users import UsersResourceWithRawResponse
+
+        return UsersResourceWithRawResponse(self._client.users)
+
 
 class AsyncMiruWithRawResponse:
     _client: AsyncMiru
@@ -784,6 +804,12 @@ class AsyncMiruWithRawResponse:
         from .resources.releases import AsyncReleasesResourceWithRawResponse
 
         return AsyncReleasesResourceWithRawResponse(self._client.releases)
+
+    @cached_property
+    def users(self) -> users.AsyncUsersResourceWithRawResponse:
+        from .resources.users import AsyncUsersResourceWithRawResponse
+
+        return AsyncUsersResourceWithRawResponse(self._client.users)
 
 
 class MiruWithStreamedResponse:
@@ -858,6 +884,12 @@ class MiruWithStreamedResponse:
 
         return ReleasesResourceWithStreamingResponse(self._client.releases)
 
+    @cached_property
+    def users(self) -> users.UsersResourceWithStreamingResponse:
+        from .resources.users import UsersResourceWithStreamingResponse
+
+        return UsersResourceWithStreamingResponse(self._client.users)
+
 
 class AsyncMiruWithStreamedResponse:
     _client: AsyncMiru
@@ -930,6 +962,12 @@ class AsyncMiruWithStreamedResponse:
         from .resources.releases import AsyncReleasesResourceWithStreamingResponse
 
         return AsyncReleasesResourceWithStreamingResponse(self._client.releases)
+
+    @cached_property
+    def users(self) -> users.AsyncUsersResourceWithStreamingResponse:
+        from .resources.users import AsyncUsersResourceWithStreamingResponse
+
+        return AsyncUsersResourceWithStreamingResponse(self._client.users)
 
 
 Client = Miru

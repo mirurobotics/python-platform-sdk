@@ -29,8 +29,14 @@ class Device(BaseModel):
     - `aarch64`
     """
 
+    archived_at: Optional[datetime] = None
+    """Timestamp of when the device was archived. Null if the device is not archived."""
+
     created_at: datetime
     """Timestamp of when the device was created."""
+
+    created_by_id: str
+    """ID of the principal who created the device."""
 
     description: Optional[str] = None
     """A free-form description of the device."""
@@ -96,6 +102,9 @@ class Device(BaseModel):
 
     updated_at: datetime
     """Timestamp of when the device was last updated."""
+
+    updated_by_id: str
+    """ID of the principal who last updated the device."""
 
     current_deployment: Optional["Deployment"] = None
     """The current deployment for the device."""

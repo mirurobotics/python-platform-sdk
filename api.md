@@ -39,6 +39,8 @@ Types:
 ```python
 from miru_platform_sdk.types import (
     ConfigSchema,
+    ConfigSchemaGitCommit,
+    ConfigSchemaGitCommitList,
     ConfigSchemaList,
     InstanceSlot,
     SchemaDocument,
@@ -167,3 +169,16 @@ Methods:
 - <code title="post /releases">client.releases.<a href="./src/miru_platform_sdk/resources/releases.py">create</a>(\*\*<a href="src/miru_platform_sdk/types/release_create_params.py">params</a>) -> <a href="./src/miru_platform_sdk/types/release.py">Release</a></code>
 - <code title="get /releases/{release_id}">client.releases.<a href="./src/miru_platform_sdk/resources/releases.py">retrieve</a>(release_id, \*\*<a href="src/miru_platform_sdk/types/release_retrieve_params.py">params</a>) -> <a href="./src/miru_platform_sdk/types/release.py">Release</a></code>
 - <code title="get /releases">client.releases.<a href="./src/miru_platform_sdk/resources/releases.py">list</a>(\*\*<a href="src/miru_platform_sdk/types/release_list_params.py">params</a>) -> <a href="./src/miru_platform_sdk/types/release_list.py">ReleaseList</a></code>
+
+# Users
+
+Types:
+
+```python
+from miru_platform_sdk.types import User, UserList, UserStatus
+```
+
+Methods:
+
+- <code title="get /users/{user_id}">client.users.<a href="./src/miru_platform_sdk/resources/users.py">retrieve</a>(user_id) -> <a href="./src/miru_platform_sdk/types/user.py">User</a></code>
+- <code title="get /users">client.users.<a href="./src/miru_platform_sdk/resources/users.py">list</a>(\*\*<a href="src/miru_platform_sdk/types/user_list_params.py">params</a>) -> <a href="./src/miru_platform_sdk/types/user_list.py">UserList</a></code>

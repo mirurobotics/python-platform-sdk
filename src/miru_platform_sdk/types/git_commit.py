@@ -18,6 +18,9 @@ class GitCommit(BaseModel):
     created_at: datetime
     """Timestamp of when the git commit was created."""
 
+    created_by_id: str
+    """ID of the principal who created the git commit."""
+
     message: str
     """The commit message."""
 

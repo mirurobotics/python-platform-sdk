@@ -28,6 +28,9 @@ class ConfigInstance(BaseModel):
     created_at: datetime
     """The timestamp of when the config instance was created."""
 
+    created_by_id: str
+    """ID of the principal who created the config instance."""
+
     filepath: str
     """The absolute file system path where this config instance is written."""
 

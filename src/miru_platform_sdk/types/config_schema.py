@@ -9,6 +9,7 @@ from .config_type import ConfigType
 from .instance_slot import InstanceSlot
 from .schema_document import SchemaDocument
 from .schema_language import SchemaLanguage
+from .config_schema_git_commit_list import ConfigSchemaGitCommitList
 
 __all__ = ["ConfigSchema"]
 
@@ -26,15 +27,19 @@ class ConfigSchema(BaseModel):
     created_at: datetime
     """Timestamp of when the config schema was created."""
 
+    created_by_id: str
+    """ID of the principal who created the config schema."""
+
     digest: str
     """The digest of the config schema."""
 
     format: Literal["json", "yaml", "cue"]
 
     instance_format: Literal["json", "yaml", "jsonc", "xml", "csv", "text"]
-    """The serialization format of config content.
-
-    A config instance is written to the device filesystem in this format.
+    """
+    The serialization format of stored content, such as a config instance or a
+    calibration. A config instance is written to the device filesystem in this
+    format.
 
     - `json`: standard JSON.
     - `yaml`: YAML 1.2.
@@ -71,6 +76,16 @@ class ConfigSchema(BaseModel):
 
     updated_at: datetime
     """Timestamp of when the config schema was last updated."""
+
+    updated_by_id: str
+    """ID of the principal who last updated the config schema."""
+
+    config_schema_git_commits: Optional[ConfigSchemaGitCommitList] = None
+    """
+    The git commits the config schema was registered from, with the schema's file
+    paths at each commit. Expand using 'expand=config_schema_git_commits' in the
+    query string.
+    """
 
     config_type: Optional[ConfigType] = None
     """Expand the config type using 'expand=config_type' in the query string."""

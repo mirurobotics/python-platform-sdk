@@ -48,6 +48,9 @@ class Deployment(BaseModel):
     created_at: datetime
     """Timestamp of when the deployment was created."""
 
+    created_by_id: str
+    """ID of the principal who created the deployment."""
+
     deployed_at: Optional[datetime] = None
     """
     Timestamp of the last time the device's agent confirmed that the deployment was
@@ -89,6 +92,14 @@ class Deployment(BaseModel):
     it.
     """
 
+    queued_by_id: Optional[str] = None
+    """ID of the principal who queued the deployment, i.e.
+
+    requested that it be deployed to its device. Recorded at the same moment as
+    `queued_at`. Null if the deployment was never queued or was queued before this
+    field was recorded.
+    """
+
     release_id: str
     """ID of the release."""
 
@@ -115,6 +126,12 @@ class Deployment(BaseModel):
 
     updated_at: datetime
     """Timestamp of when the deployment was last updated."""
+
+    updated_by_id: str
+    """ID of the principal who last updated the deployment.
+
+    This can be the device's principal when its agent reports a status change.
+    """
 
     config_instances: Optional[List[ConfigInstance]] = None
     """

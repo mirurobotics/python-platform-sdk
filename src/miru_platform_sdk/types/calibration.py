@@ -40,6 +40,20 @@ class Calibration(BaseModel):
     characters.
     """
 
+    format: Literal["json", "yaml", "jsonc", "xml", "csv", "text"]
+    """
+    The serialization format of stored content, such as a config instance or a
+    calibration. A config instance is written to the device filesystem in this
+    format.
+
+    - `json`: standard JSON.
+    - `yaml`: YAML 1.2.
+    - `jsonc`: JSON with comments (JSON plus `//` and `/* */` comment syntax).
+    - `xml`: XML.
+    - `csv`: comma-separated values (RFC 4180).
+    - `text`: plain, unstructured text with no specific format.
+    """
+
     object: Literal["calibration"]
     """The object type, which is always `calibration`."""
 

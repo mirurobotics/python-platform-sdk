@@ -9,5 +9,5 @@ __all__ = ["ConfigSchemaRetrieveParams"]
 
 
 class ConfigSchemaRetrieveParams(TypedDict, total=False):
-    expand: List[Literal["documents", "config_type"]]
+    expand: List[Literal["documents", "config_type", "config_schema_git_commits"]]
     """Fields to expand on the config schema resource."""
