@@ -65,7 +65,7 @@ from miru_platform_sdk.types import ConfigType, ConfigTypeListResponse
 Methods:
 
 - <code title="post /config_types">client.config_types.<a href="./src/miru_platform_sdk/resources/config_types.py">create</a>(\*\*<a href="src/miru_platform_sdk/types/config_type_create_params.py">params</a>) -> <a href="./src/miru_platform_sdk/types/config_type.py">ConfigType</a></code>
-- <code title="get /config_types/{config_type_id}">client.config_types.<a href="./src/miru_platform_sdk/resources/config_types.py">retrieve</a>(config_type_id) -> <a href="./src/miru_platform_sdk/types/config_type.py">ConfigType</a></code>
+- <code title="get /config_types/{config_type_id}">client.config_types.<a href="./src/miru_platform_sdk/resources/config_types.py">retrieve</a>(config_type_id, \*\*<a href="src/miru_platform_sdk/types/config_type_retrieve_params.py">params</a>) -> <a href="./src/miru_platform_sdk/types/config_type.py">ConfigType</a></code>
 - <code title="patch /config_types/{config_type_id}">client.config_types.<a href="./src/miru_platform_sdk/resources/config_types.py">update</a>(config_type_id, \*\*<a href="src/miru_platform_sdk/types/config_type_update_params.py">params</a>) -> <a href="./src/miru_platform_sdk/types/config_type.py">ConfigType</a></code>
 - <code title="get /config_types">client.config_types.<a href="./src/miru_platform_sdk/resources/config_types.py">list</a>(\*\*<a href="src/miru_platform_sdk/types/config_type_list_params.py">params</a>) -> <a href="./src/miru_platform_sdk/types/config_type_list_response.py">ConfigTypeListResponse</a></code>
 
@@ -125,7 +125,7 @@ from miru_platform_sdk.types import GitCommit, GitCommitList, GitCommitRef
 Methods:
 
 - <code title="post /git_commits">client.git_commits.<a href="./src/miru_platform_sdk/resources/git_commits.py">create</a>(\*\*<a href="src/miru_platform_sdk/types/git_commit_create_params.py">params</a>) -> <a href="./src/miru_platform_sdk/types/git_commit.py">GitCommit</a></code>
-- <code title="get /git_commits/{git_commit_id}">client.git_commits.<a href="./src/miru_platform_sdk/resources/git_commits.py">retrieve</a>(git_commit_id) -> <a href="./src/miru_platform_sdk/types/git_commit.py">GitCommit</a></code>
+- <code title="get /git_commits/{git_commit_id}">client.git_commits.<a href="./src/miru_platform_sdk/resources/git_commits.py">retrieve</a>(git_commit_id, \*\*<a href="src/miru_platform_sdk/types/git_commit_retrieve_params.py">params</a>) -> <a href="./src/miru_platform_sdk/types/git_commit.py">GitCommit</a></code>
 - <code title="get /git_commits">client.git_commits.<a href="./src/miru_platform_sdk/resources/git_commits.py">list</a>(\*\*<a href="src/miru_platform_sdk/types/git_commit_list_params.py">params</a>) -> <a href="./src/miru_platform_sdk/types/git_commit_list.py">GitCommitList</a></code>
 
 # Groups

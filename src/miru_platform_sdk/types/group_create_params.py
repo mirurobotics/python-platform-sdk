@@ -12,7 +12,7 @@ class GroupCreateParams(TypedDict, total=False):
     name: Required[str]
     """The name of the group."""
 
-    expand: List[Literal["parent"]]
+    expand: List[Literal["parent", "created_by", "updated_by"]]
     """Fields to expand on the group resource."""
 
     parent_id: Optional[str]

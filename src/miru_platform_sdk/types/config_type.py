@@ -5,6 +5,7 @@ from datetime import datetime
 from typing_extensions import Literal
 
 from .._models import BaseModel
+from .principal import Principal
 
 __all__ = ["ConfigType"]
 
@@ -39,3 +40,15 @@ class ConfigType(BaseModel):
 
     updated_by_id: str
     """ID of the principal who last updated the config type."""
+
+    created_by: Optional[Principal] = None
+    """The principal who created the config type.
+
+    Expand using `expand=created_by` in the query string.
+    """
+
+    updated_by: Optional[Principal] = None
+    """The principal who last updated the config type.
+
+    Expand using `expand=updated_by` in the query string.
+    """

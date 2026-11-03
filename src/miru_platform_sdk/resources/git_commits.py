@@ -7,7 +7,7 @@ from typing_extensions import Literal
 
 import httpx
 
-from ..types import git_commit_list_params, git_commit_create_params
+from ..types import git_commit_list_params, git_commit_create_params, git_commit_retrieve_params
 from .._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
 from .._utils import path_template, maybe_transform, async_maybe_transform
 from .._compat import cached_property
@@ -51,6 +51,7 @@ class GitCommitsResource(SyncAPIResource):
         message: str,
         origin: str,
         sha: str,
+        expand: List[Literal["created_by"]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -67,6 +68,8 @@ class GitCommitsResource(SyncAPIResource):
           origin: The URL of the git repository origin.
 
           sha: The SHA hash of the git commit.
+
+          expand: Fields to expand on the git commit resource.
 
           extra_headers: Send extra headers
 
@@ -87,7 +90,11 @@ class GitCommitsResource(SyncAPIResource):
                 git_commit_create_params.GitCommitCreateParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform({"expand": expand}, git_commit_create_params.GitCommitCreateParams),
             ),
             cast_to=GitCommit,
         )
@@ -96,6 +103,7 @@ class GitCommitsResource(SyncAPIResource):
         self,
         git_commit_id: str,
         *,
+        expand: List[Literal["created_by"]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -107,6 +115,8 @@ class GitCommitsResource(SyncAPIResource):
         Retrieve a git commit by ID.
 
         Args:
+          expand: Fields to expand on the git commit resource.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -120,7 +130,11 @@ class GitCommitsResource(SyncAPIResource):
         return self._get(
             path_template("/git_commits/{git_commit_id}", git_commit_id=git_commit_id),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform({"expand": expand}, git_commit_retrieve_params.GitCommitRetrieveParams),
             ),
             cast_to=GitCommit,
         )
@@ -129,7 +143,7 @@ class GitCommitsResource(SyncAPIResource):
         self,
         *,
         id: SequenceNotStr[str] | Omit = omit,
-        expand: List[Literal["total_count"]] | Omit = omit,
+        expand: List[Literal["total_count", "created_by"]] | Omit = omit,
         limit: int | Omit = omit,
         offset: int | Omit = omit,
         order_by: List[Literal["id:asc", "id:desc", "created_at:desc", "created_at:asc"]] | Omit = omit,
@@ -216,6 +230,7 @@ class AsyncGitCommitsResource(AsyncAPIResource):
         message: str,
         origin: str,
         sha: str,
+        expand: List[Literal["created_by"]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -232,6 +247,8 @@ class AsyncGitCommitsResource(AsyncAPIResource):
           origin: The URL of the git repository origin.
 
           sha: The SHA hash of the git commit.
+
+          expand: Fields to expand on the git commit resource.
 
           extra_headers: Send extra headers
 
@@ -252,7 +269,11 @@ class AsyncGitCommitsResource(AsyncAPIResource):
                 git_commit_create_params.GitCommitCreateParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform({"expand": expand}, git_commit_create_params.GitCommitCreateParams),
             ),
             cast_to=GitCommit,
         )
@@ -261,6 +282,7 @@ class AsyncGitCommitsResource(AsyncAPIResource):
         self,
         git_commit_id: str,
         *,
+        expand: List[Literal["created_by"]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -272,6 +294,8 @@ class AsyncGitCommitsResource(AsyncAPIResource):
         Retrieve a git commit by ID.
 
         Args:
+          expand: Fields to expand on the git commit resource.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -285,7 +309,13 @@ class AsyncGitCommitsResource(AsyncAPIResource):
         return await self._get(
             path_template("/git_commits/{git_commit_id}", git_commit_id=git_commit_id),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {"expand": expand}, git_commit_retrieve_params.GitCommitRetrieveParams
+                ),
             ),
             cast_to=GitCommit,
         )
@@ -294,7 +324,7 @@ class AsyncGitCommitsResource(AsyncAPIResource):
         self,
         *,
         id: SequenceNotStr[str] | Omit = omit,
-        expand: List[Literal["total_count"]] | Omit = omit,
+        expand: List[Literal["total_count", "created_by"]] | Omit = omit,
         limit: int | Omit = omit,
         offset: int | Omit = omit,
         order_by: List[Literal["id:asc", "id:desc", "created_at:desc", "created_at:asc"]] | Omit = omit,

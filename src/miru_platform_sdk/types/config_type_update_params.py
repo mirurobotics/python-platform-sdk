@@ -2,11 +2,15 @@
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import List
+from typing_extensions import Literal, TypedDict
 
 __all__ = ["ConfigTypeUpdateParams"]
 
 
 class ConfigTypeUpdateParams(TypedDict, total=False):
+    expand: List[Literal["created_by", "updated_by"]]
+    """Fields to expand on the config type resource."""
+
     name: str
     """The updated name of the config type."""

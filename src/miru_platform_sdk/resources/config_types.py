@@ -7,7 +7,12 @@ from typing_extensions import Literal
 
 import httpx
 
-from ..types import config_type_list_params, config_type_create_params, config_type_update_params
+from ..types import (
+    config_type_list_params,
+    config_type_create_params,
+    config_type_update_params,
+    config_type_retrieve_params,
+)
 from .._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
 from .._utils import path_template, maybe_transform, async_maybe_transform
 from .._compat import cached_property
@@ -50,6 +55,7 @@ class ConfigTypesResource(SyncAPIResource):
         *,
         name: str,
         slug: str,
+        expand: List[Literal["created_by", "updated_by"]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -64,6 +70,8 @@ class ConfigTypesResource(SyncAPIResource):
           name: The name of the config type.
 
           slug: An immutable, code-friendly name for the config type.
+
+          expand: Fields to expand on the config type resource.
 
           extra_headers: Send extra headers
 
@@ -83,7 +91,11 @@ class ConfigTypesResource(SyncAPIResource):
                 config_type_create_params.ConfigTypeCreateParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform({"expand": expand}, config_type_create_params.ConfigTypeCreateParams),
             ),
             cast_to=ConfigType,
         )
@@ -92,6 +104,7 @@ class ConfigTypesResource(SyncAPIResource):
         self,
         config_type_id: str,
         *,
+        expand: List[Literal["created_by", "updated_by"]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -103,6 +116,8 @@ class ConfigTypesResource(SyncAPIResource):
         Retrieve a config type by ID.
 
         Args:
+          expand: Fields to expand on the config type resource.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -116,7 +131,11 @@ class ConfigTypesResource(SyncAPIResource):
         return self._get(
             path_template("/config_types/{config_type_id}", config_type_id=config_type_id),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform({"expand": expand}, config_type_retrieve_params.ConfigTypeRetrieveParams),
             ),
             cast_to=ConfigType,
         )
@@ -125,6 +144,7 @@ class ConfigTypesResource(SyncAPIResource):
         self,
         config_type_id: str,
         *,
+        expand: List[Literal["created_by", "updated_by"]] | Omit = omit,
         name: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -137,6 +157,8 @@ class ConfigTypesResource(SyncAPIResource):
         Update a config type by ID.
 
         Args:
+          expand: Fields to expand on the config type resource.
+
           name: The updated name of the config type.
 
           extra_headers: Send extra headers
@@ -153,7 +175,11 @@ class ConfigTypesResource(SyncAPIResource):
             path_template("/config_types/{config_type_id}", config_type_id=config_type_id),
             body=maybe_transform({"name": name}, config_type_update_params.ConfigTypeUpdateParams),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform({"expand": expand}, config_type_update_params.ConfigTypeUpdateParams),
             ),
             cast_to=ConfigType,
         )
@@ -162,7 +188,7 @@ class ConfigTypesResource(SyncAPIResource):
         self,
         *,
         id: SequenceNotStr[str] | Omit = omit,
-        expand: List[Literal["total_count"]] | Omit = omit,
+        expand: List[Literal["total_count", "created_by", "updated_by"]] | Omit = omit,
         limit: int | Omit = omit,
         name: SequenceNotStr[str] | Omit = omit,
         offset: int | Omit = omit,
@@ -252,6 +278,7 @@ class AsyncConfigTypesResource(AsyncAPIResource):
         *,
         name: str,
         slug: str,
+        expand: List[Literal["created_by", "updated_by"]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -266,6 +293,8 @@ class AsyncConfigTypesResource(AsyncAPIResource):
           name: The name of the config type.
 
           slug: An immutable, code-friendly name for the config type.
+
+          expand: Fields to expand on the config type resource.
 
           extra_headers: Send extra headers
 
@@ -285,7 +314,11 @@ class AsyncConfigTypesResource(AsyncAPIResource):
                 config_type_create_params.ConfigTypeCreateParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform({"expand": expand}, config_type_create_params.ConfigTypeCreateParams),
             ),
             cast_to=ConfigType,
         )
@@ -294,6 +327,7 @@ class AsyncConfigTypesResource(AsyncAPIResource):
         self,
         config_type_id: str,
         *,
+        expand: List[Literal["created_by", "updated_by"]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -305,6 +339,8 @@ class AsyncConfigTypesResource(AsyncAPIResource):
         Retrieve a config type by ID.
 
         Args:
+          expand: Fields to expand on the config type resource.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -318,7 +354,13 @@ class AsyncConfigTypesResource(AsyncAPIResource):
         return await self._get(
             path_template("/config_types/{config_type_id}", config_type_id=config_type_id),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {"expand": expand}, config_type_retrieve_params.ConfigTypeRetrieveParams
+                ),
             ),
             cast_to=ConfigType,
         )
@@ -327,6 +369,7 @@ class AsyncConfigTypesResource(AsyncAPIResource):
         self,
         config_type_id: str,
         *,
+        expand: List[Literal["created_by", "updated_by"]] | Omit = omit,
         name: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -339,6 +382,8 @@ class AsyncConfigTypesResource(AsyncAPIResource):
         Update a config type by ID.
 
         Args:
+          expand: Fields to expand on the config type resource.
+
           name: The updated name of the config type.
 
           extra_headers: Send extra headers
@@ -355,7 +400,11 @@ class AsyncConfigTypesResource(AsyncAPIResource):
             path_template("/config_types/{config_type_id}", config_type_id=config_type_id),
             body=await async_maybe_transform({"name": name}, config_type_update_params.ConfigTypeUpdateParams),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform({"expand": expand}, config_type_update_params.ConfigTypeUpdateParams),
             ),
             cast_to=ConfigType,
         )
@@ -364,7 +413,7 @@ class AsyncConfigTypesResource(AsyncAPIResource):
         self,
         *,
         id: SequenceNotStr[str] | Omit = omit,
-        expand: List[Literal["total_count"]] | Omit = omit,
+        expand: List[Literal["total_count", "created_by", "updated_by"]] | Omit = omit,
         limit: int | Omit = omit,
         name: SequenceNotStr[str] | Omit = omit,
         offset: int | Omit = omit,

@@ -55,7 +55,7 @@ class GroupsResource(SyncAPIResource):
         self,
         *,
         name: str,
-        expand: List[Literal["parent"]] | Omit = omit,
+        expand: List[Literal["parent", "created_by", "updated_by"]] | Omit = omit,
         parent_id: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -105,7 +105,7 @@ class GroupsResource(SyncAPIResource):
         self,
         group_id: str,
         *,
-        expand: List[Literal["parent"]] | Omit = omit,
+        expand: List[Literal["parent", "created_by", "updated_by"]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -145,7 +145,7 @@ class GroupsResource(SyncAPIResource):
         self,
         group_id: str,
         *,
-        expand: List[Literal["parent"]] | Omit = omit,
+        expand: List[Literal["parent", "created_by", "updated_by"]] | Omit = omit,
         name: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -189,7 +189,7 @@ class GroupsResource(SyncAPIResource):
         self,
         *,
         id: SequenceNotStr[str] | Omit = omit,
-        expand: List[Literal["total_count", "parent"]] | Omit = omit,
+        expand: List[Literal["total_count", "parent", "created_by", "updated_by"]] | Omit = omit,
         limit: int | Omit = omit,
         name: SequenceNotStr[str] | Omit = omit,
         offset: int | Omit = omit,
@@ -270,7 +270,7 @@ class GroupsResource(SyncAPIResource):
         group_id: str,
         *,
         parent_id: Optional[str],
-        expand: List[Literal["parent"]] | Omit = omit,
+        expand: List[Literal["parent", "created_by", "updated_by"]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -334,7 +334,7 @@ class AsyncGroupsResource(AsyncAPIResource):
         self,
         *,
         name: str,
-        expand: List[Literal["parent"]] | Omit = omit,
+        expand: List[Literal["parent", "created_by", "updated_by"]] | Omit = omit,
         parent_id: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -384,7 +384,7 @@ class AsyncGroupsResource(AsyncAPIResource):
         self,
         group_id: str,
         *,
-        expand: List[Literal["parent"]] | Omit = omit,
+        expand: List[Literal["parent", "created_by", "updated_by"]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -424,7 +424,7 @@ class AsyncGroupsResource(AsyncAPIResource):
         self,
         group_id: str,
         *,
-        expand: List[Literal["parent"]] | Omit = omit,
+        expand: List[Literal["parent", "created_by", "updated_by"]] | Omit = omit,
         name: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -468,7 +468,7 @@ class AsyncGroupsResource(AsyncAPIResource):
         self,
         *,
         id: SequenceNotStr[str] | Omit = omit,
-        expand: List[Literal["total_count", "parent"]] | Omit = omit,
+        expand: List[Literal["total_count", "parent", "created_by", "updated_by"]] | Omit = omit,
         limit: int | Omit = omit,
         name: SequenceNotStr[str] | Omit = omit,
         offset: int | Omit = omit,
@@ -549,7 +549,7 @@ class AsyncGroupsResource(AsyncAPIResource):
         group_id: str,
         *,
         parent_id: Optional[str],
-        expand: List[Literal["parent"]] | Omit = omit,
+        expand: List[Literal["parent", "created_by", "updated_by"]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,

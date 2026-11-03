@@ -56,7 +56,8 @@ class DevicesResource(SyncAPIResource):
         self,
         *,
         name: str,
-        expand: List[Literal["current_deployment", "current_release", "group"]] | Omit = omit,
+        expand: List[Literal["current_deployment", "current_release", "group", "created_by", "updated_by"]]
+        | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -97,7 +98,8 @@ class DevicesResource(SyncAPIResource):
         self,
         device_id: str,
         *,
-        expand: List[Literal["current_deployment", "current_release", "group"]] | Omit = omit,
+        expand: List[Literal["current_deployment", "current_release", "group", "created_by", "updated_by"]]
+        | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -137,7 +139,8 @@ class DevicesResource(SyncAPIResource):
         self,
         device_id: str,
         *,
-        expand: List[Literal["current_deployment", "current_release", "group"]] | Omit = omit,
+        expand: List[Literal["current_deployment", "current_release", "group", "created_by", "updated_by"]]
+        | Omit = omit,
         name: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -184,7 +187,10 @@ class DevicesResource(SyncAPIResource):
         id: SequenceNotStr[str] | Omit = omit,
         agent_version: SequenceNotStr[str] | Omit = omit,
         current_release_id: SequenceNotStr[str] | Omit = omit,
-        expand: List[Literal["total_count", "current_deployment", "current_release", "group"]] | Omit = omit,
+        expand: List[
+            Literal["total_count", "current_deployment", "current_release", "group", "created_by", "updated_by"]
+        ]
+        | Omit = omit,
         group_id: SequenceNotStr[str] | Omit = omit,
         limit: int | Omit = omit,
         name: SequenceNotStr[str] | Omit = omit,
@@ -322,7 +328,8 @@ class AsyncDevicesResource(AsyncAPIResource):
         self,
         *,
         name: str,
-        expand: List[Literal["current_deployment", "current_release", "group"]] | Omit = omit,
+        expand: List[Literal["current_deployment", "current_release", "group", "created_by", "updated_by"]]
+        | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -363,7 +370,8 @@ class AsyncDevicesResource(AsyncAPIResource):
         self,
         device_id: str,
         *,
-        expand: List[Literal["current_deployment", "current_release", "group"]] | Omit = omit,
+        expand: List[Literal["current_deployment", "current_release", "group", "created_by", "updated_by"]]
+        | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -403,7 +411,8 @@ class AsyncDevicesResource(AsyncAPIResource):
         self,
         device_id: str,
         *,
-        expand: List[Literal["current_deployment", "current_release", "group"]] | Omit = omit,
+        expand: List[Literal["current_deployment", "current_release", "group", "created_by", "updated_by"]]
+        | Omit = omit,
         name: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -450,7 +459,10 @@ class AsyncDevicesResource(AsyncAPIResource):
         id: SequenceNotStr[str] | Omit = omit,
         agent_version: SequenceNotStr[str] | Omit = omit,
         current_release_id: SequenceNotStr[str] | Omit = omit,
-        expand: List[Literal["total_count", "current_deployment", "current_release", "group"]] | Omit = omit,
+        expand: List[
+            Literal["total_count", "current_deployment", "current_release", "group", "created_by", "updated_by"]
+        ]
+        | Omit = omit,
         group_id: SequenceNotStr[str] | Omit = omit,
         limit: int | Omit = omit,
         name: SequenceNotStr[str] | Omit = omit,

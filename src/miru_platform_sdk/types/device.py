@@ -8,6 +8,7 @@ from typing_extensions import Literal
 
 from .release import Release
 from .._models import BaseModel
+from .principal import Principal
 
 __all__ = ["Device"]
 
@@ -106,6 +107,12 @@ class Device(BaseModel):
     updated_by_id: str
     """ID of the principal who last updated the device."""
 
+    created_by: Optional[Principal] = None
+    """The principal who created the device.
+
+    Expand using `expand=created_by` in the query string.
+    """
+
     current_deployment: Optional["Deployment"] = None
     """The current deployment for the device."""
 
@@ -114,6 +121,12 @@ class Device(BaseModel):
 
     group: Optional["Group"] = None
     """The group this device belongs to. Null if the device is unassigned."""
+
+    updated_by: Optional[Principal] = None
+    """The principal who last updated the device.
+
+    Expand using `expand=updated_by` in the query string.
+    """
 
 
 from .group import Group

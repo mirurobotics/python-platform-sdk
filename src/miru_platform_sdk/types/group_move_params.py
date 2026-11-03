@@ -12,5 +12,5 @@ class GroupMoveParams(TypedDict, total=False):
     parent_id: Required[Optional[str]]
     """ID of the new parent group. Set to null to make this a top-level group."""
 
-    expand: List[Literal["parent"]]
+    expand: List[Literal["parent", "created_by", "updated_by"]]
     """Fields to expand on the group resource."""

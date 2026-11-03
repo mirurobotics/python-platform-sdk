@@ -2,7 +2,8 @@
 
 from __future__ import annotations
 
-from typing_extensions import Required, TypedDict
+from typing import List
+from typing_extensions import Literal, Required, TypedDict
 
 __all__ = ["GitCommitCreateParams"]
 
@@ -16,3 +17,6 @@ class GitCommitCreateParams(TypedDict, total=False):
 
     sha: Required[str]
     """The SHA hash of the git commit."""
+
+    expand: List[Literal["created_by"]]
+    """Fields to expand on the git commit resource."""

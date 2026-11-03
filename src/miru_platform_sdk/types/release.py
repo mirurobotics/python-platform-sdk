@@ -5,6 +5,7 @@ from datetime import datetime
 from typing_extensions import Literal
 
 from .._models import BaseModel
+from .principal import Principal
 from .config_schema import ConfigSchema
 
 __all__ = ["Release"]
@@ -56,3 +57,15 @@ class Release(BaseModel):
 
     config_schemas: Optional[List[ConfigSchema]] = None
     """Expand the config schemas using 'expand=config_schemas' in the query string."""
+
+    created_by: Optional[Principal] = None
+    """The principal who created the release.
+
+    Expand using `expand=created_by` in the query string.
+    """
+
+    updated_by: Optional[Principal] = None
+    """The principal who last updated the release.
+
+    Expand using `expand=updated_by` in the query string.
+    """

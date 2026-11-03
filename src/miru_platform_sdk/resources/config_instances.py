@@ -64,7 +64,7 @@ class ConfigInstancesResource(SyncAPIResource):
         *,
         config_schema_id: str,
         content: InstanceContentParam,
-        expand: List[Literal["content", "config_schema", "config_type"]] | Omit = omit,
+        expand: List[Literal["content", "config_schema", "config_type", "created_by"]] | Omit = omit,
         slot_key: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -117,7 +117,7 @@ class ConfigInstancesResource(SyncAPIResource):
         self,
         config_instance_id: str,
         *,
-        expand: List[Literal["content", "config_schema", "config_type"]] | Omit = omit,
+        expand: List[Literal["content", "config_schema", "config_type", "created_by"]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -159,7 +159,7 @@ class ConfigInstancesResource(SyncAPIResource):
         id: SequenceNotStr[str] | Omit = omit,
         config_schema_id: SequenceNotStr[str] | Omit = omit,
         config_type_id: SequenceNotStr[str] | Omit = omit,
-        expand: List[Literal["total_count", "content", "config_schema", "config_type"]] | Omit = omit,
+        expand: List[Literal["total_count", "content", "config_schema", "config_type", "created_by"]] | Omit = omit,
         limit: int | Omit = omit,
         offset: int | Omit = omit,
         order_by: List[Literal["id:asc", "id:desc", "created_at:desc", "created_at:asc"]] | Omit = omit,
@@ -295,7 +295,7 @@ class AsyncConfigInstancesResource(AsyncAPIResource):
         *,
         config_schema_id: str,
         content: InstanceContentParam,
-        expand: List[Literal["content", "config_schema", "config_type"]] | Omit = omit,
+        expand: List[Literal["content", "config_schema", "config_type", "created_by"]] | Omit = omit,
         slot_key: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -350,7 +350,7 @@ class AsyncConfigInstancesResource(AsyncAPIResource):
         self,
         config_instance_id: str,
         *,
-        expand: List[Literal["content", "config_schema", "config_type"]] | Omit = omit,
+        expand: List[Literal["content", "config_schema", "config_type", "created_by"]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -394,7 +394,7 @@ class AsyncConfigInstancesResource(AsyncAPIResource):
         id: SequenceNotStr[str] | Omit = omit,
         config_schema_id: SequenceNotStr[str] | Omit = omit,
         config_type_id: SequenceNotStr[str] | Omit = omit,
-        expand: List[Literal["total_count", "content", "config_schema", "config_type"]] | Omit = omit,
+        expand: List[Literal["total_count", "content", "config_schema", "config_type", "created_by"]] | Omit = omit,
         limit: int | Omit = omit,
         offset: int | Omit = omit,
         order_by: List[Literal["id:asc", "id:desc", "created_at:desc", "created_at:asc"]] | Omit = omit,

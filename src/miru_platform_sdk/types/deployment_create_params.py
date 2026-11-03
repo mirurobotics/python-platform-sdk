@@ -37,7 +37,7 @@ class DeploymentCreateParams(TypedDict, total=False):
     can only be deployed if their release is the device's current release.
     """
 
-    expand: List[Literal["device", "release", "parent", "config_instances"]]
+    expand: List[Literal["device", "release", "parent", "config_instances", "created_by", "updated_by", "queued_by"]]
     """Fields to expand on the deployment resource."""
 
     parent_id: Optional[str]

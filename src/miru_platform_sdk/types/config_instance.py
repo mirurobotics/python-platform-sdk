@@ -5,6 +5,7 @@ from datetime import datetime
 from typing_extensions import Literal
 
 from .._models import BaseModel
+from .principal import Principal
 from .config_type import ConfigType
 from .config_schema import ConfigSchema
 from .instance_content import InstanceContent
@@ -54,4 +55,10 @@ class ConfigInstance(BaseModel):
     """The configuration values associated with the config instance.
 
     Expand the content using 'expand=content' in the query string.
+    """
+
+    created_by: Optional[Principal] = None
+    """The principal who created the config instance.
+
+    Expand using `expand=created_by` in the query string.
     """

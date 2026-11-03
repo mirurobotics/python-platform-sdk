@@ -8,6 +8,7 @@ from typing_extensions import Literal
 
 from .release import Release
 from .._models import BaseModel
+from .principal import Principal
 from .config_instance import ConfigInstance
 
 __all__ = ["Deployment"]
@@ -138,6 +139,12 @@ class Deployment(BaseModel):
     Expand the config instances using 'expand=config_instances' in the query string.
     """
 
+    created_by: Optional[Principal] = None
+    """The principal who created the deployment.
+
+    Expand using `expand=created_by` in the query string.
+    """
+
     device: Optional["Device"] = None
     """Expand the device using 'expand=device' in the query string."""
 
@@ -148,8 +155,21 @@ class Deployment(BaseModel):
     in the query string.
     """
 
+    queued_by: Optional[Principal] = None
+    """The principal who queued the deployment.
+
+    Null if `queued_by_id` is null. Expand using `expand=queued_by` in the query
+    string.
+    """
+
     release: Optional[Release] = None
     """Expand the release using 'expand=release' in the query string."""
+
+    updated_by: Optional[Principal] = None
+    """The principal who last updated the deployment.
+
+    Expand using `expand=updated_by` in the query string.
+    """
 
 
 from .device import Device

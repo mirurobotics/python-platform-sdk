@@ -1,9 +1,11 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
+from typing import Optional
 from datetime import datetime
 from typing_extensions import Literal
 
 from .._models import BaseModel
+from .principal import Principal
 
 __all__ = ["GitCommit"]
 
@@ -40,3 +42,9 @@ class GitCommit(BaseModel):
 
     sha: str
     """The SHA hash of the git commit."""
+
+    created_by: Optional[Principal] = None
+    """The principal who created the git commit.
+
+    Expand using `expand=created_by` in the query string.
+    """

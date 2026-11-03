@@ -31,6 +31,16 @@ class TestConfigTypes:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
+    def test_method_create_with_all_params(self, client: Miru) -> None:
+        config_type = client.config_types.create(
+            name="My Config Type",
+            slug="my-config-type",
+            expand=["created_by"],
+        )
+        assert_matches_type(ConfigType, config_type, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
     def test_raw_response_create(self, client: Miru) -> None:
         response = client.config_types.with_raw_response.create(
             name="My Config Type",
@@ -61,7 +71,16 @@ class TestConfigTypes:
     @parametrize
     def test_method_retrieve(self, client: Miru) -> None:
         config_type = client.config_types.retrieve(
-            "cfg_typ_123",
+            config_type_id="cfg_typ_123",
+        )
+        assert_matches_type(ConfigType, config_type, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_retrieve_with_all_params(self, client: Miru) -> None:
+        config_type = client.config_types.retrieve(
+            config_type_id="cfg_typ_123",
+            expand=["created_by"],
         )
         assert_matches_type(ConfigType, config_type, path=["response"])
 
@@ -69,7 +88,7 @@ class TestConfigTypes:
     @parametrize
     def test_raw_response_retrieve(self, client: Miru) -> None:
         response = client.config_types.with_raw_response.retrieve(
-            "cfg_typ_123",
+            config_type_id="cfg_typ_123",
         )
 
         assert response.is_closed is True
@@ -81,7 +100,7 @@ class TestConfigTypes:
     @parametrize
     def test_streaming_response_retrieve(self, client: Miru) -> None:
         with client.config_types.with_streaming_response.retrieve(
-            "cfg_typ_123",
+            config_type_id="cfg_typ_123",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -96,7 +115,7 @@ class TestConfigTypes:
     def test_path_params_retrieve(self, client: Miru) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `config_type_id` but received ''"):
             client.config_types.with_raw_response.retrieve(
-                "",
+                config_type_id="",
             )
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
@@ -112,6 +131,7 @@ class TestConfigTypes:
     def test_method_update_with_all_params(self, client: Miru) -> None:
         config_type = client.config_types.update(
             config_type_id="cfg_typ_123",
+            expand=["created_by"],
             name="My Config Type",
         )
         assert_matches_type(ConfigType, config_type, path=["response"])
@@ -209,6 +229,16 @@ class TestAsyncConfigTypes:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
+    async def test_method_create_with_all_params(self, async_client: AsyncMiru) -> None:
+        config_type = await async_client.config_types.create(
+            name="My Config Type",
+            slug="my-config-type",
+            expand=["created_by"],
+        )
+        assert_matches_type(ConfigType, config_type, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
     async def test_raw_response_create(self, async_client: AsyncMiru) -> None:
         response = await async_client.config_types.with_raw_response.create(
             name="My Config Type",
@@ -239,7 +269,16 @@ class TestAsyncConfigTypes:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncMiru) -> None:
         config_type = await async_client.config_types.retrieve(
-            "cfg_typ_123",
+            config_type_id="cfg_typ_123",
+        )
+        assert_matches_type(ConfigType, config_type, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_retrieve_with_all_params(self, async_client: AsyncMiru) -> None:
+        config_type = await async_client.config_types.retrieve(
+            config_type_id="cfg_typ_123",
+            expand=["created_by"],
         )
         assert_matches_type(ConfigType, config_type, path=["response"])
 
@@ -247,7 +286,7 @@ class TestAsyncConfigTypes:
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncMiru) -> None:
         response = await async_client.config_types.with_raw_response.retrieve(
-            "cfg_typ_123",
+            config_type_id="cfg_typ_123",
         )
 
         assert response.is_closed is True
@@ -259,7 +298,7 @@ class TestAsyncConfigTypes:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncMiru) -> None:
         async with async_client.config_types.with_streaming_response.retrieve(
-            "cfg_typ_123",
+            config_type_id="cfg_typ_123",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -274,7 +313,7 @@ class TestAsyncConfigTypes:
     async def test_path_params_retrieve(self, async_client: AsyncMiru) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `config_type_id` but received ''"):
             await async_client.config_types.with_raw_response.retrieve(
-                "",
+                config_type_id="",
             )
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
@@ -290,6 +329,7 @@ class TestAsyncConfigTypes:
     async def test_method_update_with_all_params(self, async_client: AsyncMiru) -> None:
         config_type = await async_client.config_types.update(
             config_type_id="cfg_typ_123",
+            expand=["created_by"],
             name="My Config Type",
         )
         assert_matches_type(ConfigType, config_type, path=["response"])

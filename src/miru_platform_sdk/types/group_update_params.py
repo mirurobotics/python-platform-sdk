@@ -9,7 +9,7 @@ __all__ = ["GroupUpdateParams"]
 
 
 class GroupUpdateParams(TypedDict, total=False):
-    expand: List[Literal["parent"]]
+    expand: List[Literal["parent", "created_by", "updated_by"]]
     """Fields to expand on the group resource."""
 
     name: str

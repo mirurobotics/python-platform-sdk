@@ -9,5 +9,5 @@ __all__ = ["ConfigInstanceRetrieveParams"]
 
 
 class ConfigInstanceRetrieveParams(TypedDict, total=False):
-    expand: List[Literal["content", "config_schema", "config_type"]]
+    expand: List[Literal["content", "config_schema", "config_type", "created_by"]]
     """Fields to expand on the config instance resource."""

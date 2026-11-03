@@ -5,6 +5,7 @@ from datetime import datetime
 from typing_extensions import Literal
 
 from .._models import BaseModel
+from .principal import Principal
 from .config_type import ConfigType
 from .instance_slot import InstanceSlot
 from .schema_document import SchemaDocument
@@ -90,7 +91,19 @@ class ConfigSchema(BaseModel):
     config_type: Optional[ConfigType] = None
     """Expand the config type using 'expand=config_type' in the query string."""
 
+    created_by: Optional[Principal] = None
+    """The principal who created the config schema.
+
+    Expand using `expand=created_by` in the query string.
+    """
+
     documents: Optional[List[SchemaDocument]] = None
     """
     Expand the config schema documents using `expand=documents` in the query string.
+    """
+
+    updated_by: Optional[Principal] = None
+    """The principal who last updated the config schema.
+
+    Expand using `expand=updated_by` in the query string.
     """

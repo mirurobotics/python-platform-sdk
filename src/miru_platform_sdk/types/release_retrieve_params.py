@@ -9,5 +9,5 @@ __all__ = ["ReleaseRetrieveParams"]
 
 
 class ReleaseRetrieveParams(TypedDict, total=False):
-    expand: List[Literal["config_schemas"]]
+    expand: List[Literal["config_schemas", "created_by", "updated_by"]]
     """Fields to expand on the release resource."""

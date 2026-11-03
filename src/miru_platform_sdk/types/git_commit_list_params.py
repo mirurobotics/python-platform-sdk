@@ -14,7 +14,7 @@ class GitCommitListParams(TypedDict, total=False):
     id: SequenceNotStr[str]
     """The git commit IDs to filter by."""
 
-    expand: List[Literal["total_count"]]
+    expand: List[Literal["total_count", "created_by"]]
     """Fields to expand on each git commit in the list."""
 
     limit: int
