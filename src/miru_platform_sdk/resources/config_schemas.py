@@ -59,8 +59,7 @@ class ConfigSchemasResource(SyncAPIResource):
         documents: Iterable[config_schema_create_params.Document],
         format: Literal["json", "yaml", "cue"],
         language: SchemaLanguage,
-        expand: List[Literal["documents", "config_type", "config_schema_git_commits", "created_by", "updated_by"]]
-        | Omit = omit,
+        expand: List[Literal["documents", "config_type", "config_schema_git_commits", "created_by"]] | Omit = omit,
         git_commit: config_schema_create_params.GitCommit | Omit = omit,
         instance_format: Literal["json", "yaml", "jsonc", "xml", "csv", "text"] | Omit = omit,
         instance_slots: Iterable[InstanceSlotParam] | Omit = omit,
@@ -139,8 +138,7 @@ class ConfigSchemasResource(SyncAPIResource):
         self,
         config_schema_id: str,
         *,
-        expand: List[Literal["documents", "config_type", "config_schema_git_commits", "created_by", "updated_by"]]
-        | Omit = omit,
+        expand: List[Literal["documents", "config_type", "config_schema_git_commits", "created_by"]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -181,9 +179,7 @@ class ConfigSchemasResource(SyncAPIResource):
         *,
         id: SequenceNotStr[str] | Omit = omit,
         config_type_id: SequenceNotStr[str] | Omit = omit,
-        expand: List[
-            Literal["total_count", "documents", "config_type", "config_schema_git_commits", "created_by", "updated_by"]
-        ]
+        expand: List[Literal["total_count", "documents", "config_type", "config_schema_git_commits", "created_by"]]
         | Omit = omit,
         limit: int | Omit = omit,
         offset: int | Omit = omit,
@@ -271,8 +267,7 @@ class AsyncConfigSchemasResource(AsyncAPIResource):
         documents: Iterable[config_schema_create_params.Document],
         format: Literal["json", "yaml", "cue"],
         language: SchemaLanguage,
-        expand: List[Literal["documents", "config_type", "config_schema_git_commits", "created_by", "updated_by"]]
-        | Omit = omit,
+        expand: List[Literal["documents", "config_type", "config_schema_git_commits", "created_by"]] | Omit = omit,
         git_commit: config_schema_create_params.GitCommit | Omit = omit,
         instance_format: Literal["json", "yaml", "jsonc", "xml", "csv", "text"] | Omit = omit,
         instance_slots: Iterable[InstanceSlotParam] | Omit = omit,
@@ -353,8 +348,7 @@ class AsyncConfigSchemasResource(AsyncAPIResource):
         self,
         config_schema_id: str,
         *,
-        expand: List[Literal["documents", "config_type", "config_schema_git_commits", "created_by", "updated_by"]]
-        | Omit = omit,
+        expand: List[Literal["documents", "config_type", "config_schema_git_commits", "created_by"]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -397,9 +391,7 @@ class AsyncConfigSchemasResource(AsyncAPIResource):
         *,
         id: SequenceNotStr[str] | Omit = omit,
         config_type_id: SequenceNotStr[str] | Omit = omit,
-        expand: List[
-            Literal["total_count", "documents", "config_type", "config_schema_git_commits", "created_by", "updated_by"]
-        ]
+        expand: List[Literal["total_count", "documents", "config_type", "config_schema_git_commits", "created_by"]]
         | Omit = omit,
         limit: int | Omit = omit,
         offset: int | Omit = omit,

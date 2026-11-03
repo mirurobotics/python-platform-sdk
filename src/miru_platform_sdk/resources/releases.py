@@ -51,7 +51,7 @@ class ReleasesResource(SyncAPIResource):
         *,
         config_schema_ids: SequenceNotStr[str],
         version: str,
-        expand: List[Literal["config_schemas", "created_by", "updated_by", "archived_by"]] | Omit = omit,
+        expand: List[Literal["config_schemas", "created_by", "archived_by"]] | Omit = omit,
         description: Optional[str] | Omit = omit,
         git_commit_ref: GitCommitRefParam | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -109,7 +109,7 @@ class ReleasesResource(SyncAPIResource):
         self,
         release_id: str,
         *,
-        expand: List[Literal["config_schemas", "created_by", "updated_by", "archived_by"]] | Omit = omit,
+        expand: List[Literal["config_schemas", "created_by", "archived_by"]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -149,7 +149,7 @@ class ReleasesResource(SyncAPIResource):
         self,
         *,
         id: SequenceNotStr[str] | Omit = omit,
-        expand: List[Literal["total_count", "config_schemas", "created_by", "updated_by", "archived_by"]] | Omit = omit,
+        expand: List[Literal["total_count", "config_schemas", "created_by", "archived_by"]] | Omit = omit,
         limit: int | Omit = omit,
         offset: int | Omit = omit,
         order_by: List[Literal["id:asc", "id:desc", "created_at:desc", "created_at:asc"]] | Omit = omit,
@@ -235,7 +235,7 @@ class AsyncReleasesResource(AsyncAPIResource):
         *,
         config_schema_ids: SequenceNotStr[str],
         version: str,
-        expand: List[Literal["config_schemas", "created_by", "updated_by", "archived_by"]] | Omit = omit,
+        expand: List[Literal["config_schemas", "created_by", "archived_by"]] | Omit = omit,
         description: Optional[str] | Omit = omit,
         git_commit_ref: GitCommitRefParam | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -293,7 +293,7 @@ class AsyncReleasesResource(AsyncAPIResource):
         self,
         release_id: str,
         *,
-        expand: List[Literal["config_schemas", "created_by", "updated_by", "archived_by"]] | Omit = omit,
+        expand: List[Literal["config_schemas", "created_by", "archived_by"]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -333,7 +333,7 @@ class AsyncReleasesResource(AsyncAPIResource):
         self,
         *,
         id: SequenceNotStr[str] | Omit = omit,
-        expand: List[Literal["total_count", "config_schemas", "created_by", "updated_by", "archived_by"]] | Omit = omit,
+        expand: List[Literal["total_count", "config_schemas", "created_by", "archived_by"]] | Omit = omit,
         limit: int | Omit = omit,
         offset: int | Omit = omit,
         order_by: List[Literal["id:asc", "id:desc", "created_at:desc", "created_at:asc"]] | Omit = omit,

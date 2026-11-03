@@ -34,9 +34,6 @@ class Group(BaseModel):
     updated_at: datetime
     """Timestamp of when the group was last updated."""
 
-    updated_by_id: str
-    """ID of the principal who last updated the group."""
-
     created_by: Optional[Principal] = None
     """The principal who created the group.
 
@@ -47,10 +44,4 @@ class Group(BaseModel):
     """The parent group.
 
     Null for top-level groups. Expand using `expand=parent` in the query string.
-    """
-
-    updated_by: Optional[Principal] = None
-    """The principal who last updated the group.
-
-    Expand using `expand=updated_by` in the query string.
     """

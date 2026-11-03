@@ -111,9 +111,6 @@ class Device(BaseModel):
     updated_at: datetime
     """Timestamp of when the device was last updated."""
 
-    updated_by_id: str
-    """ID of the principal who last updated the device."""
-
     archived_by: Optional[Principal] = None
     """The principal who archived the device.
 
@@ -135,12 +132,6 @@ class Device(BaseModel):
 
     group: Optional["Group"] = None
     """The group this device belongs to. Null if the device is unassigned."""
-
-    updated_by: Optional[Principal] = None
-    """The principal who last updated the device.
-
-    Expand using `expand=updated_by` in the query string.
-    """
 
 
 from .group import Group

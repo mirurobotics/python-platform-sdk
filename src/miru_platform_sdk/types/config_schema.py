@@ -78,9 +78,6 @@ class ConfigSchema(BaseModel):
     updated_at: datetime
     """Timestamp of when the config schema was last updated."""
 
-    updated_by_id: str
-    """ID of the principal who last updated the config schema."""
-
     config_schema_git_commits: Optional[ConfigSchemaGitCommitList] = None
     """
     The git commits the config schema was registered from, with the schema's file
@@ -100,10 +97,4 @@ class ConfigSchema(BaseModel):
     documents: Optional[List[SchemaDocument]] = None
     """
     Expand the config schema documents using `expand=documents` in the query string.
-    """
-
-    updated_by: Optional[Principal] = None
-    """The principal who last updated the config schema.
-
-    Expand using `expand=updated_by` in the query string.
     """

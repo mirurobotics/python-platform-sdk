@@ -17,9 +17,7 @@ class ConfigSchemaListParams(TypedDict, total=False):
     config_type_id: SequenceNotStr[str]
     """The config type IDs to filter by."""
 
-    expand: List[
-        Literal["total_count", "documents", "config_type", "config_schema_git_commits", "created_by", "updated_by"]
-    ]
+    expand: List[Literal["total_count", "documents", "config_type", "config_schema_git_commits", "created_by"]]
     """Fields to expand on each config schema in the list."""
 
     limit: int

@@ -128,12 +128,6 @@ class Deployment(BaseModel):
     updated_at: datetime
     """Timestamp of when the deployment was last updated."""
 
-    updated_by_id: str
-    """ID of the principal who last updated the deployment.
-
-    This can be the device's principal when its agent reports a status change.
-    """
-
     config_instances: Optional[List[ConfigInstance]] = None
     """
     Expand the config instances using 'expand=config_instances' in the query string.
@@ -164,12 +158,6 @@ class Deployment(BaseModel):
 
     release: Optional[Release] = None
     """Expand the release using 'expand=release' in the query string."""
-
-    updated_by: Optional[Principal] = None
-    """The principal who last updated the deployment.
-
-    Expand using `expand=updated_by` in the query string.
-    """
 
 
 from .device import Device

@@ -9,5 +9,5 @@ __all__ = ["GroupRetrieveParams"]
 
 
 class GroupRetrieveParams(TypedDict, total=False):
-    expand: List[Literal["parent", "created_by", "updated_by"]]
+    expand: List[Literal["parent", "created_by"]]
     """Fields to expand on the group resource."""

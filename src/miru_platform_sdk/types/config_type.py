@@ -45,9 +45,6 @@ class ConfigType(BaseModel):
     updated_at: datetime
     """Timestamp of when the config type was last updated."""
 
-    updated_by_id: str
-    """ID of the principal who last updated the config type."""
-
     archived_by: Optional[Principal] = None
     """The principal who archived the config type.
 
@@ -59,10 +56,4 @@ class ConfigType(BaseModel):
     """The principal who created the config type.
 
     Expand using `expand=created_by` in the query string.
-    """
-
-    updated_by: Optional[Principal] = None
-    """The principal who last updated the config type.
-
-    Expand using `expand=updated_by` in the query string.
     """

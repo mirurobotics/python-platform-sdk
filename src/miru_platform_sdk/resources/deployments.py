@@ -60,9 +60,7 @@ class DeploymentsResource(SyncAPIResource):
         device_id: str,
         release_id: str,
         target_status: Literal["staged", "deployed"],
-        expand: List[
-            Literal["device", "release", "parent", "config_instances", "created_by", "updated_by", "queued_by"]
-        ]
+        expand: List[Literal["device", "release", "parent", "config_instances", "created_by", "queued_by"]]
         | Omit = omit,
         parent_id: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -139,9 +137,7 @@ class DeploymentsResource(SyncAPIResource):
         self,
         deployment_id: str,
         *,
-        expand: List[
-            Literal["device", "release", "parent", "config_instances", "created_by", "updated_by", "queued_by"]
-        ]
+        expand: List[Literal["device", "release", "parent", "config_instances", "created_by", "queued_by"]]
         | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -186,16 +182,7 @@ class DeploymentsResource(SyncAPIResource):
         device_id: SequenceNotStr[str] | Omit = omit,
         error_status: List[Literal["none", "failed", "retrying"]] | Omit = omit,
         expand: List[
-            Literal[
-                "total_count",
-                "device",
-                "release",
-                "parent",
-                "config_instances",
-                "created_by",
-                "updated_by",
-                "queued_by",
-            ]
+            Literal["total_count", "device", "release", "parent", "config_instances", "created_by", "queued_by"]
         ]
         | Omit = omit,
         limit: int | Omit = omit,
@@ -274,9 +261,7 @@ class DeploymentsResource(SyncAPIResource):
         self,
         deployment_id: str,
         *,
-        expand: List[
-            Literal["device", "release", "parent", "config_instances", "created_by", "updated_by", "queued_by"]
-        ]
+        expand: List[Literal["device", "release", "parent", "config_instances", "created_by", "queued_by"]]
         | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -317,9 +302,7 @@ class DeploymentsResource(SyncAPIResource):
         self,
         deployment_id: str,
         *,
-        expand: List[
-            Literal["device", "release", "parent", "config_instances", "created_by", "updated_by", "queued_by"]
-        ]
+        expand: List[Literal["device", "release", "parent", "config_instances", "created_by", "queued_by"]]
         | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -360,9 +343,7 @@ class DeploymentsResource(SyncAPIResource):
         self,
         deployment_id: str,
         *,
-        expand: List[
-            Literal["device", "release", "parent", "config_instances", "created_by", "updated_by", "queued_by"]
-        ]
+        expand: List[Literal["device", "release", "parent", "config_instances", "created_by", "queued_by"]]
         | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -428,9 +409,7 @@ class AsyncDeploymentsResource(AsyncAPIResource):
         device_id: str,
         release_id: str,
         target_status: Literal["staged", "deployed"],
-        expand: List[
-            Literal["device", "release", "parent", "config_instances", "created_by", "updated_by", "queued_by"]
-        ]
+        expand: List[Literal["device", "release", "parent", "config_instances", "created_by", "queued_by"]]
         | Omit = omit,
         parent_id: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -507,9 +486,7 @@ class AsyncDeploymentsResource(AsyncAPIResource):
         self,
         deployment_id: str,
         *,
-        expand: List[
-            Literal["device", "release", "parent", "config_instances", "created_by", "updated_by", "queued_by"]
-        ]
+        expand: List[Literal["device", "release", "parent", "config_instances", "created_by", "queued_by"]]
         | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -556,16 +533,7 @@ class AsyncDeploymentsResource(AsyncAPIResource):
         device_id: SequenceNotStr[str] | Omit = omit,
         error_status: List[Literal["none", "failed", "retrying"]] | Omit = omit,
         expand: List[
-            Literal[
-                "total_count",
-                "device",
-                "release",
-                "parent",
-                "config_instances",
-                "created_by",
-                "updated_by",
-                "queued_by",
-            ]
+            Literal["total_count", "device", "release", "parent", "config_instances", "created_by", "queued_by"]
         ]
         | Omit = omit,
         limit: int | Omit = omit,
@@ -644,9 +612,7 @@ class AsyncDeploymentsResource(AsyncAPIResource):
         self,
         deployment_id: str,
         *,
-        expand: List[
-            Literal["device", "release", "parent", "config_instances", "created_by", "updated_by", "queued_by"]
-        ]
+        expand: List[Literal["device", "release", "parent", "config_instances", "created_by", "queued_by"]]
         | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -689,9 +655,7 @@ class AsyncDeploymentsResource(AsyncAPIResource):
         self,
         deployment_id: str,
         *,
-        expand: List[
-            Literal["device", "release", "parent", "config_instances", "created_by", "updated_by", "queued_by"]
-        ]
+        expand: List[Literal["device", "release", "parent", "config_instances", "created_by", "queued_by"]]
         | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -732,9 +696,7 @@ class AsyncDeploymentsResource(AsyncAPIResource):
         self,
         deployment_id: str,
         *,
-        expand: List[
-            Literal["device", "release", "parent", "config_instances", "created_by", "updated_by", "queued_by"]
-        ]
+        expand: List[Literal["device", "release", "parent", "config_instances", "created_by", "queued_by"]]
         | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.

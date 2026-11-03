@@ -14,7 +14,7 @@ class GroupListParams(TypedDict, total=False):
     id: SequenceNotStr[str]
     """The group IDs to filter by."""
 
-    expand: List[Literal["total_count", "parent", "created_by", "updated_by"]]
+    expand: List[Literal["total_count", "parent", "created_by"]]
     """Fields to expand on each group in the list."""
 
     limit: int

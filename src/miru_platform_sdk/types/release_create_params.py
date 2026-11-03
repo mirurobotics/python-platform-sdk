@@ -18,7 +18,7 @@ class ReleaseCreateParams(TypedDict, total=False):
     version: Required[str]
     """The version of the release."""
 
-    expand: List[Literal["config_schemas", "created_by", "updated_by", "archived_by"]]
+    expand: List[Literal["config_schemas", "created_by", "archived_by"]]
     """Fields to expand on the release resource."""
 
     description: Optional[str]

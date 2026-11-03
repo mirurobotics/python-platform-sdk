@@ -56,9 +56,6 @@ class Release(BaseModel):
     updated_at: datetime
     """Timestamp of when the release was last updated."""
 
-    updated_by_id: str
-    """ID of the principal who last updated the release."""
-
     version: str
     """The version of the release."""
 
@@ -76,10 +73,4 @@ class Release(BaseModel):
     """The principal who created the release.
 
     Expand using `expand=created_by` in the query string.
-    """
-
-    updated_by: Optional[Principal] = None
-    """The principal who last updated the release.
-
-    Expand using `expand=updated_by` in the query string.
     """

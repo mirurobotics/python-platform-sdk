@@ -20,11 +20,7 @@ class DeviceListParams(TypedDict, total=False):
     current_release_id: SequenceNotStr[str]
     """The release IDs to filter devices by their current release."""
 
-    expand: List[
-        Literal[
-            "total_count", "current_deployment", "current_release", "group", "created_by", "updated_by", "archived_by"
-        ]
-    ]
+    expand: List[Literal["total_count", "current_deployment", "current_release", "group", "created_by", "archived_by"]]
     """Fields to expand on each device in the list."""
 
     group_id: SequenceNotStr[str]
