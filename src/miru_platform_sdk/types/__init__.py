@@ -23,6 +23,7 @@ from .api_key_list import APIKeyList as APIKeyList
 from .release_list import ReleaseList as ReleaseList
 from .config_schema import ConfigSchema as ConfigSchema
 from .instance_slot import InstanceSlot as InstanceSlot
+from .principal_type import PrincipalType as PrincipalType
 from .config_instance import ConfigInstance as ConfigInstance
 from .deployment_list import DeploymentList as DeploymentList
 from .git_commit_list import GitCommitList as GitCommitList

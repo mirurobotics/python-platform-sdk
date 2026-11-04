@@ -162,7 +162,7 @@ Methods:
 Types:
 
 ```python
-from miru_platform_sdk.types import Principal
+from miru_platform_sdk.types import Principal, PrincipalType
 ```
 
 Methods:

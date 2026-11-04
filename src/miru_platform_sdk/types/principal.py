@@ -3,6 +3,7 @@
 from typing_extensions import Literal
 
 from .._models import BaseModel
+from .principal_type import PrincipalType
 
 __all__ = ["Principal"]
 
@@ -16,3 +17,6 @@ class Principal(BaseModel):
 
     object: Literal["principal"]
     """The object type, which is always `principal`."""
+
+    type: PrincipalType
+    """The kind of principal. More types may be added, so handle unknown values."""
