@@ -25,6 +25,7 @@ from .config_schema import ConfigSchema as ConfigSchema
 from .instance_slot import InstanceSlot as InstanceSlot
 from .principal_type import PrincipalType as PrincipalType
 from .config_instance import ConfigInstance as ConfigInstance
+from .deleted_release import DeletedRelease as DeletedRelease
 from .deployment_list import DeploymentList as DeploymentList
 from .git_commit_list import GitCommitList as GitCommitList
 from .schema_document import SchemaDocument as SchemaDocument
@@ -53,6 +54,7 @@ from .deployment_list_params import DeploymentListParams as DeploymentListParams
 from .device_retrieve_params import DeviceRetrieveParams as DeviceRetrieveParams
 from .git_commit_list_params import GitCommitListParams as GitCommitListParams
 from .instance_content_param import InstanceContentParam as InstanceContentParam
+from .release_archive_params import ReleaseArchiveParams as ReleaseArchiveParams
 from .calibration_list_params import CalibrationListParams as CalibrationListParams
 from .config_type_list_params import ConfigTypeListParams as ConfigTypeListParams
 from .release_retrieve_params import ReleaseRetrieveParams as ReleaseRetrieveParams
@@ -60,6 +62,7 @@ from .config_schema_git_commit import ConfigSchemaGitCommit as ConfigSchemaGitCo
 from .deployment_create_params import DeploymentCreateParams as DeploymentCreateParams
 from .deployment_deploy_params import DeploymentDeployParams as DeploymentDeployParams
 from .git_commit_create_params import GitCommitCreateParams as GitCommitCreateParams
+from .release_unarchive_params import ReleaseUnarchiveParams as ReleaseUnarchiveParams
 from .config_schema_list_params import ConfigSchemaListParams as ConfigSchemaListParams
 from .config_type_create_params import ConfigTypeCreateParams as ConfigTypeCreateParams
 from .config_type_list_response import ConfigTypeListResponse as ConfigTypeListResponse

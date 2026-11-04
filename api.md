@@ -174,7 +174,7 @@ Methods:
 Types:
 
 ```python
-from miru_platform_sdk.types import Release, ReleaseList
+from miru_platform_sdk.types import DeletedRelease, Release, ReleaseList
 ```
 
 Methods:
@@ -182,6 +182,9 @@ Methods:
 - <code title="post /releases">client.releases.<a href="./src/miru_platform_sdk/resources/releases.py">create</a>(\*\*<a href="src/miru_platform_sdk/types/release_create_params.py">params</a>) -> <a href="./src/miru_platform_sdk/types/release.py">Release</a></code>
 - <code title="get /releases/{release_id}">client.releases.<a href="./src/miru_platform_sdk/resources/releases.py">retrieve</a>(release_id, \*\*<a href="src/miru_platform_sdk/types/release_retrieve_params.py">params</a>) -> <a href="./src/miru_platform_sdk/types/release.py">Release</a></code>
 - <code title="get /releases">client.releases.<a href="./src/miru_platform_sdk/resources/releases.py">list</a>(\*\*<a href="src/miru_platform_sdk/types/release_list_params.py">params</a>) -> <a href="./src/miru_platform_sdk/types/release_list.py">ReleaseList</a></code>
+- <code title="delete /releases/{release_id}">client.releases.<a href="./src/miru_platform_sdk/resources/releases.py">delete</a>(release_id) -> <a href="./src/miru_platform_sdk/types/deleted_release.py">DeletedRelease</a></code>
+- <code title="post /releases/{release_id}/archive">client.releases.<a href="./src/miru_platform_sdk/resources/releases.py">archive</a>(release_id, \*\*<a href="src/miru_platform_sdk/types/release_archive_params.py">params</a>) -> <a href="./src/miru_platform_sdk/types/release.py">Release</a></code>
+- <code title="post /releases/{release_id}/unarchive">client.releases.<a href="./src/miru_platform_sdk/resources/releases.py">unarchive</a>(release_id, \*\*<a href="src/miru_platform_sdk/types/release_unarchive_params.py">params</a>) -> <a href="./src/miru_platform_sdk/types/release.py">Release</a></code>
 
 # Users
 

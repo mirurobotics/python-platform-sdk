@@ -7,7 +7,13 @@ from typing_extensions import Literal
 
 import httpx
 
-from ..types import release_list_params, release_create_params, release_retrieve_params
+from ..types import (
+    release_list_params,
+    release_create_params,
+    release_archive_params,
+    release_retrieve_params,
+    release_unarchive_params,
+)
 from .._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
 from .._utils import path_template, maybe_transform, async_maybe_transform
 from .._compat import cached_property
@@ -21,6 +27,7 @@ from .._response import (
 from .._base_client import make_request_options
 from ..types.release import Release
 from ..types.release_list import ReleaseList
+from ..types.deleted_release import DeletedRelease
 from ..types.git_commit_ref_param import GitCommitRefParam
 
 __all__ = ["ReleasesResource", "AsyncReleasesResource"]
@@ -209,6 +216,121 @@ class ReleasesResource(SyncAPIResource):
             cast_to=ReleaseList,
         )
 
+    def delete(
+        self,
+        release_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> DeletedRelease:
+        """Delete a release.
+
+        A release that has deployments can't be deleted; archive it
+        instead.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not release_id:
+            raise ValueError(f"Expected a non-empty value for `release_id` but received {release_id!r}")
+        return self._delete(
+            path_template("/releases/{release_id}", release_id=release_id),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=DeletedRelease,
+        )
+
+    def archive(
+        self,
+        release_id: str,
+        *,
+        expand: List[Literal["config_schemas", "created_by", "archived_by"]] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> Release:
+        """
+        Archive a release.
+
+        Args:
+          expand: Fields to expand on the release resource.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not release_id:
+            raise ValueError(f"Expected a non-empty value for `release_id` but received {release_id!r}")
+        return self._post(
+            path_template("/releases/{release_id}/archive", release_id=release_id),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform({"expand": expand}, release_archive_params.ReleaseArchiveParams),
+            ),
+            cast_to=Release,
+        )
+
+    def unarchive(
+        self,
+        release_id: str,
+        *,
+        expand: List[Literal["config_schemas", "created_by", "archived_by"]] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> Release:
+        """
+        Unarchive a release.
+
+        Args:
+          expand: Fields to expand on the release resource.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not release_id:
+            raise ValueError(f"Expected a non-empty value for `release_id` but received {release_id!r}")
+        return self._post(
+            path_template("/releases/{release_id}/unarchive", release_id=release_id),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform({"expand": expand}, release_unarchive_params.ReleaseUnarchiveParams),
+            ),
+            cast_to=Release,
+        )
+
 
 class AsyncReleasesResource(AsyncAPIResource):
     @cached_property
@@ -393,6 +515,121 @@ class AsyncReleasesResource(AsyncAPIResource):
             cast_to=ReleaseList,
         )
 
+    async def delete(
+        self,
+        release_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> DeletedRelease:
+        """Delete a release.
+
+        A release that has deployments can't be deleted; archive it
+        instead.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not release_id:
+            raise ValueError(f"Expected a non-empty value for `release_id` but received {release_id!r}")
+        return await self._delete(
+            path_template("/releases/{release_id}", release_id=release_id),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=DeletedRelease,
+        )
+
+    async def archive(
+        self,
+        release_id: str,
+        *,
+        expand: List[Literal["config_schemas", "created_by", "archived_by"]] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> Release:
+        """
+        Archive a release.
+
+        Args:
+          expand: Fields to expand on the release resource.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not release_id:
+            raise ValueError(f"Expected a non-empty value for `release_id` but received {release_id!r}")
+        return await self._post(
+            path_template("/releases/{release_id}/archive", release_id=release_id),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform({"expand": expand}, release_archive_params.ReleaseArchiveParams),
+            ),
+            cast_to=Release,
+        )
+
+    async def unarchive(
+        self,
+        release_id: str,
+        *,
+        expand: List[Literal["config_schemas", "created_by", "archived_by"]] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> Release:
+        """
+        Unarchive a release.
+
+        Args:
+          expand: Fields to expand on the release resource.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not release_id:
+            raise ValueError(f"Expected a non-empty value for `release_id` but received {release_id!r}")
+        return await self._post(
+            path_template("/releases/{release_id}/unarchive", release_id=release_id),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform({"expand": expand}, release_unarchive_params.ReleaseUnarchiveParams),
+            ),
+            cast_to=Release,
+        )
+
 
 class ReleasesResourceWithRawResponse:
     def __init__(self, releases: ReleasesResource) -> None:
@@ -406,6 +643,15 @@ class ReleasesResourceWithRawResponse:
         )
         self.list = to_raw_response_wrapper(
             releases.list,
+        )
+        self.delete = to_raw_response_wrapper(
+            releases.delete,
+        )
+        self.archive = to_raw_response_wrapper(
+            releases.archive,
+        )
+        self.unarchive = to_raw_response_wrapper(
+            releases.unarchive,
         )
 
 
@@ -422,6 +668,15 @@ class AsyncReleasesResourceWithRawResponse:
         self.list = async_to_raw_response_wrapper(
             releases.list,
         )
+        self.delete = async_to_raw_response_wrapper(
+            releases.delete,
+        )
+        self.archive = async_to_raw_response_wrapper(
+            releases.archive,
+        )
+        self.unarchive = async_to_raw_response_wrapper(
+            releases.unarchive,
+        )
 
 
 class ReleasesResourceWithStreamingResponse:
@@ -437,6 +692,15 @@ class ReleasesResourceWithStreamingResponse:
         self.list = to_streamed_response_wrapper(
             releases.list,
         )
+        self.delete = to_streamed_response_wrapper(
+            releases.delete,
+        )
+        self.archive = to_streamed_response_wrapper(
+            releases.archive,
+        )
+        self.unarchive = to_streamed_response_wrapper(
+            releases.unarchive,
+        )
 
 
 class AsyncReleasesResourceWithStreamingResponse:
@@ -451,4 +715,13 @@ class AsyncReleasesResourceWithStreamingResponse:
         )
         self.list = async_to_streamed_response_wrapper(
             releases.list,
+        )
+        self.delete = async_to_streamed_response_wrapper(
+            releases.delete,
+        )
+        self.archive = async_to_streamed_response_wrapper(
+            releases.archive,
+        )
+        self.unarchive = async_to_streamed_response_wrapper(
+            releases.unarchive,
         )
