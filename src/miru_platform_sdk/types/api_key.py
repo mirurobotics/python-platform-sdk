@@ -4,7 +4,6 @@ from typing import List, Optional
 from datetime import datetime
 from typing_extensions import Literal
 
-from .user import User
 from .._models import BaseModel
 
 __all__ = ["APIKey"]
@@ -51,10 +50,3 @@ class APIKey(BaseModel):
 
     updated_at: datetime
     """Timestamp of when the API key was last updated."""
-
-    created_by: Optional[User] = None
-    """The user who created the API key.
-
-    Expand using `expand=created_by` in the query string, which also requires the
-    `users:read` scope.
-    """

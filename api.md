@@ -14,7 +14,7 @@ from miru_platform_sdk.types import APIKey, APIKeyList
 
 Methods:
 
-- <code title="get /api_keys/{api_key_id}">client.api_keys.<a href="./src/miru_platform_sdk/resources/api_keys.py">retrieve</a>(api_key_id, \*\*<a href="src/miru_platform_sdk/types/api_key_retrieve_params.py">params</a>) -> <a href="./src/miru_platform_sdk/types/api_key.py">APIKey</a></code>
+- <code title="get /api_keys/{api_key_id}">client.api_keys.<a href="./src/miru_platform_sdk/resources/api_keys.py">retrieve</a>(api_key_id) -> <a href="./src/miru_platform_sdk/types/api_key.py">APIKey</a></code>
 - <code title="get /api_keys">client.api_keys.<a href="./src/miru_platform_sdk/resources/api_keys.py">list</a>(\*\*<a href="src/miru_platform_sdk/types/api_key_list_params.py">params</a>) -> <a href="./src/miru_platform_sdk/types/api_key_list.py">APIKeyList</a></code>
 
 # Calibrations

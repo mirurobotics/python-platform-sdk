@@ -14,7 +14,7 @@ class APIKeyListParams(TypedDict, total=False):
     id: SequenceNotStr[str]
     """The API key IDs to filter by."""
 
-    expand: List[Literal["total_count", "created_by"]]
+    expand: List[Literal["total_count"]]
     """Fields to expand on each API key in the list."""
 
     limit: int

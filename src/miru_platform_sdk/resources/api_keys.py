@@ -7,7 +7,7 @@ from typing_extensions import Literal
 
 import httpx
 
-from ..types import api_key_list_params, api_key_retrieve_params
+from ..types import api_key_list_params
 from .._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
 from .._utils import path_template, maybe_transform, async_maybe_transform
 from .._compat import cached_property
@@ -49,7 +49,6 @@ class APIKeysResource(SyncAPIResource):
         self,
         api_key_id: str,
         *,
-        expand: List[Literal["created_by"]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -63,8 +62,6 @@ class APIKeysResource(SyncAPIResource):
         secret is never returned.
 
         Args:
-          expand: Fields to expand on the API key resource.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -78,11 +75,7 @@ class APIKeysResource(SyncAPIResource):
         return self._get(
             path_template("/api_keys/{api_key_id}", api_key_id=api_key_id),
             options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform({"expand": expand}, api_key_retrieve_params.APIKeyRetrieveParams),
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=APIKey,
         )
@@ -91,7 +84,7 @@ class APIKeysResource(SyncAPIResource):
         self,
         *,
         id: SequenceNotStr[str] | Omit = omit,
-        expand: List[Literal["total_count", "created_by"]] | Omit = omit,
+        expand: List[Literal["total_count"]] | Omit = omit,
         limit: int | Omit = omit,
         offset: int | Omit = omit,
         order_by: List[Literal["id:asc", "id:desc", "created_at:asc", "created_at:desc", "name:asc", "name:desc"]]
@@ -175,7 +168,6 @@ class AsyncAPIKeysResource(AsyncAPIResource):
         self,
         api_key_id: str,
         *,
-        expand: List[Literal["created_by"]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -189,8 +181,6 @@ class AsyncAPIKeysResource(AsyncAPIResource):
         secret is never returned.
 
         Args:
-          expand: Fields to expand on the API key resource.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -204,11 +194,7 @@ class AsyncAPIKeysResource(AsyncAPIResource):
         return await self._get(
             path_template("/api_keys/{api_key_id}", api_key_id=api_key_id),
             options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform({"expand": expand}, api_key_retrieve_params.APIKeyRetrieveParams),
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=APIKey,
         )
@@ -217,7 +203,7 @@ class AsyncAPIKeysResource(AsyncAPIResource):
         self,
         *,
         id: SequenceNotStr[str] | Omit = omit,
-        expand: List[Literal["total_count", "created_by"]] | Omit = omit,
+        expand: List[Literal["total_count"]] | Omit = omit,
         limit: int | Omit = omit,
         offset: int | Omit = omit,
         order_by: List[Literal["id:asc", "id:desc", "created_at:asc", "created_at:desc", "name:asc", "name:desc"]]
