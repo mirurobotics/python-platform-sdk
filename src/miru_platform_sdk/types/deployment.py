@@ -104,6 +104,20 @@ class Deployment(BaseModel):
     release_id: str
     """ID of the release."""
 
+    staged_at: Optional[datetime] = None
+    """Timestamp of when the deployment was staged.
+
+    Null when the deployment was created already queued (`queued_at` is not after
+    `created_at`); otherwise equal to `created_at`.
+    """
+
+    staged_by_id: Optional[str] = None
+    """ID of the principal who staged the deployment.
+
+    Null when the deployment was created already queued; otherwise equal to
+    `created_by_id`.
+    """
+
     status: Literal["drifted", "staged", "queued", "deployed", "removing", "archived", "failed", "retrying"]
     """
     This status merges the 'activity_status' and 'error_status' fields, with error
@@ -158,6 +172,13 @@ class Deployment(BaseModel):
 
     release: Optional[Release] = None
     """Expand the release using 'expand=release' in the query string."""
+
+    staged_by: Optional[Principal] = None
+    """The principal who staged the deployment.
+
+    Null if `staged_by_id` is null. Expand using `expand=staged_by` in the query
+    string.
+    """
 
 
 from .device import Device

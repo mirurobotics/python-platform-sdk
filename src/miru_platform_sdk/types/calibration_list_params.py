@@ -42,7 +42,10 @@ class CalibrationListParams(TypedDict, total=False):
     order_by: List[
         Literal["id:asc", "id:desc", "created_at:asc", "created_at:desc", "reported_at:asc", "reported_at:desc"]
     ]
-    """Sort order for the calibration results."""
+    """Sort order for the calibration results.
+
+    Defaults to `created_at` descending, with ties broken by `id`.
+    """
 
     report_id: SequenceNotStr[str]
     """The report IDs to filter by."""

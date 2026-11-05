@@ -23,7 +23,11 @@ class DeploymentListParams(TypedDict, total=False):
     error_status: List[Literal["none", "failed", "retrying"]]
     """The deployment error statuses to filter by."""
 
-    expand: List[Literal["total_count", "device", "release", "parent", "config_instances", "created_by", "queued_by"]]
+    expand: List[
+        Literal[
+            "total_count", "device", "release", "parent", "config_instances", "created_by", "staged_by", "queued_by"
+        ]
+    ]
     """Fields to expand on each deployment in the list."""
 
     limit: int

@@ -110,11 +110,10 @@ class CalibrationsResource(SyncAPIResource):
     ) -> CalibrationList:
         """List calibrations.
 
-        By default, results are ordered by `created_at` descending,
-        with ties broken by `id`.
-
         Args:
-          aspect: The aspect slugs to filter by. Aspect slugs are unique only within a component,
+          aspect: The aspect slugs to filter by.
+
+        Aspect slugs are unique only within a component,
               so filter by component too to match one component's aspect.
 
           component: The component slugs to filter by.
@@ -129,7 +128,8 @@ class CalibrationsResource(SyncAPIResource):
           offset: The offset of the items to return. An offset of 10 with a limit of 10 returns
               items 11-20.
 
-          order_by: Sort order for the calibration results.
+          order_by: Sort order for the calibration results. Defaults to `created_at` descending,
+              with ties broken by `id`.
 
           report_id: The report IDs to filter by.
 
@@ -260,11 +260,10 @@ class AsyncCalibrationsResource(AsyncAPIResource):
     ) -> CalibrationList:
         """List calibrations.
 
-        By default, results are ordered by `created_at` descending,
-        with ties broken by `id`.
-
         Args:
-          aspect: The aspect slugs to filter by. Aspect slugs are unique only within a component,
+          aspect: The aspect slugs to filter by.
+
+        Aspect slugs are unique only within a component,
               so filter by component too to match one component's aspect.
 
           component: The component slugs to filter by.
@@ -279,7 +278,8 @@ class AsyncCalibrationsResource(AsyncAPIResource):
           offset: The offset of the items to return. An offset of 10 with a limit of 10 returns
               items 11-20.
 
-          order_by: Sort order for the calibration results.
+          order_by: Sort order for the calibration results. Defaults to `created_at` descending,
+              with ties broken by `id`.
 
           report_id: The report IDs to filter by.
 
