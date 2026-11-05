@@ -46,15 +46,15 @@ class ConfigInstance(BaseModel):
     """
 
     config_schema: Optional[ConfigSchema] = None
-    """Expand the config schema using 'expand=config_schema' in the query string."""
+    """Expand the config schema using `expand=config_schema` in the query string."""
 
     config_type: Optional[ConfigType] = None
-    """Expand the config type using 'expand=config_type' in the query string."""
+    """Expand the config type using `expand=config_type` in the query string."""
 
     content: Optional[InstanceContent] = None
     """The configuration values associated with the config instance.
 
-    Expand the content using 'expand=content' in the query string.
+    Expand the content using `expand=content` in the query string.
     """
 
     created_by: Optional[Principal] = None

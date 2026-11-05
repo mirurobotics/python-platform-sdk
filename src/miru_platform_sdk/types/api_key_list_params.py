@@ -14,6 +14,13 @@ class APIKeyListParams(TypedDict, total=False):
     id: SequenceNotStr[str]
     """The API key IDs to filter by."""
 
+    deleted: Literal["false", "true", "any"]
+    """Filter by deleted state.
+
+    `any` (default) returns deleted and active API keys, `false` returns only active
+    API keys, and `true` returns only deleted API keys.
+    """
+
     expand: List[Literal["total_count"]]
     """Fields to expand on each API key in the list."""
 

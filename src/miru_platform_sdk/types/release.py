@@ -67,7 +67,7 @@ class Release(BaseModel):
     """
 
     config_schemas: Optional[List[ConfigSchema]] = None
-    """Expand the config schemas using 'expand=config_schemas' in the query string."""
+    """Expand the config schemas using `expand=config_schemas` in the query string."""
 
     created_by: Optional[Principal] = None
     """The principal who created the release.

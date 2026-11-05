@@ -144,7 +144,7 @@ class Deployment(BaseModel):
 
     config_instances: Optional[List[ConfigInstance]] = None
     """
-    Expand the config instances using 'expand=config_instances' in the query string.
+    Expand the config instances using `expand=config_instances` in the query string.
     """
 
     created_by: Optional[Principal] = None
@@ -154,12 +154,12 @@ class Deployment(BaseModel):
     """
 
     device: Optional["Device"] = None
-    """Expand the device using 'expand=device' in the query string."""
+    """Expand the device using `expand=device` in the query string."""
 
     parent: Optional["Deployment"] = None
     """The parent deployment that this deployment was patched from.
 
-    Null if this deployment has no parent. Expand the parent using 'expand=parent'
+    Null if this deployment has no parent. Expand the parent using `expand=parent`
     in the query string.
     """
 
@@ -171,7 +171,7 @@ class Deployment(BaseModel):
     """
 
     release: Optional[Release] = None
-    """Expand the release using 'expand=release' in the query string."""
+    """Expand the release using `expand=release` in the query string."""
 
     staged_by: Optional[Principal] = None
     """The principal who staged the deployment.

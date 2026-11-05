@@ -70,6 +70,7 @@ class TestAPIKeys:
     def test_method_list_with_all_params(self, client: Miru) -> None:
         api_key = client.api_keys.list(
             id=["api_key_123"],
+            deleted="false",
             expand=["total_count"],
             limit=10,
             offset=0,
@@ -158,6 +159,7 @@ class TestAsyncAPIKeys:
     async def test_method_list_with_all_params(self, async_client: AsyncMiru) -> None:
         api_key = await async_client.api_keys.list(
             id=["api_key_123"],
+            deleted="false",
             expand=["total_count"],
             limit=10,
             offset=0,

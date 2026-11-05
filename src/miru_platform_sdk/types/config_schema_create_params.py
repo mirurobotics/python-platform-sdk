@@ -97,6 +97,6 @@ class GitCommit(TypedDict, total=False):
     schema_filepaths: Required[SequenceNotStr[str]]
     """The file paths of the config schema files relative to the git repository root.
 
-    JSON Schema only supports a single file for a schema. CUE support multiple files
-    via [packages](https://cuelang.org/docs/references/spec/#packages).
+    JSON Schema only supports a single file for a schema. CUE supports multiple
+    files via [packages](https://cuelang.org/docs/references/spec/#packages).
     """

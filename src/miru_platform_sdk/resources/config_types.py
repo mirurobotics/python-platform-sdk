@@ -188,6 +188,7 @@ class ConfigTypesResource(SyncAPIResource):
         self,
         *,
         id: SequenceNotStr[str] | Omit = omit,
+        archived: Literal["false", "true", "any"] | Omit = omit,
         expand: List[Literal["total_count", "created_by", "archived_by"]] | Omit = omit,
         limit: int | Omit = omit,
         name: SequenceNotStr[str] | Omit = omit,
@@ -206,6 +207,10 @@ class ConfigTypesResource(SyncAPIResource):
 
         Args:
           id: The config type IDs to filter by.
+
+          archived: Filter by archived state. `any` (default) returns archived and non-archived
+              config types, `false` returns only non-archived config types, and `true` returns
+              only archived config types.
 
           expand: Fields to expand on each config type in the list.
 
@@ -239,6 +244,7 @@ class ConfigTypesResource(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "id": id,
+                        "archived": archived,
                         "expand": expand,
                         "limit": limit,
                         "name": name,
@@ -413,6 +419,7 @@ class AsyncConfigTypesResource(AsyncAPIResource):
         self,
         *,
         id: SequenceNotStr[str] | Omit = omit,
+        archived: Literal["false", "true", "any"] | Omit = omit,
         expand: List[Literal["total_count", "created_by", "archived_by"]] | Omit = omit,
         limit: int | Omit = omit,
         name: SequenceNotStr[str] | Omit = omit,
@@ -431,6 +438,10 @@ class AsyncConfigTypesResource(AsyncAPIResource):
 
         Args:
           id: The config type IDs to filter by.
+
+          archived: Filter by archived state. `any` (default) returns archived and non-archived
+              config types, `false` returns only non-archived config types, and `true` returns
+              only archived config types.
 
           expand: Fields to expand on each config type in the list.
 
@@ -464,6 +475,7 @@ class AsyncConfigTypesResource(AsyncAPIResource):
                 query=await async_maybe_transform(
                     {
                         "id": id,
+                        "archived": archived,
                         "expand": expand,
                         "limit": limit,
                         "name": name,

@@ -84,6 +84,7 @@ class APIKeysResource(SyncAPIResource):
         self,
         *,
         id: SequenceNotStr[str] | Omit = omit,
+        deleted: Literal["false", "true", "any"] | Omit = omit,
         expand: List[Literal["total_count"]] | Omit = omit,
         limit: int | Omit = omit,
         offset: int | Omit = omit,
@@ -103,6 +104,9 @@ class APIKeysResource(SyncAPIResource):
 
         Args:
           id: The API key IDs to filter by.
+
+          deleted: Filter by deleted state. `any` (default) returns deleted and active API keys,
+              `false` returns only active API keys, and `true` returns only deleted API keys.
 
           expand: Fields to expand on each API key in the list.
 
@@ -132,6 +136,7 @@ class APIKeysResource(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "id": id,
+                        "deleted": deleted,
                         "expand": expand,
                         "limit": limit,
                         "offset": offset,
@@ -203,6 +208,7 @@ class AsyncAPIKeysResource(AsyncAPIResource):
         self,
         *,
         id: SequenceNotStr[str] | Omit = omit,
+        deleted: Literal["false", "true", "any"] | Omit = omit,
         expand: List[Literal["total_count"]] | Omit = omit,
         limit: int | Omit = omit,
         offset: int | Omit = omit,
@@ -222,6 +228,9 @@ class AsyncAPIKeysResource(AsyncAPIResource):
 
         Args:
           id: The API key IDs to filter by.
+
+          deleted: Filter by deleted state. `any` (default) returns deleted and active API keys,
+              `false` returns only active API keys, and `true` returns only deleted API keys.
 
           expand: Fields to expand on each API key in the list.
 
@@ -251,6 +260,7 @@ class AsyncAPIKeysResource(AsyncAPIResource):
                 query=await async_maybe_transform(
                     {
                         "id": id,
+                        "deleted": deleted,
                         "expand": expand,
                         "limit": limit,
                         "offset": offset,

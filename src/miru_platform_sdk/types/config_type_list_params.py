@@ -14,6 +14,13 @@ class ConfigTypeListParams(TypedDict, total=False):
     id: SequenceNotStr[str]
     """The config type IDs to filter by."""
 
+    archived: Literal["false", "true", "any"]
+    """Filter by archived state.
+
+    `any` (default) returns archived and non-archived config types, `false` returns
+    only non-archived config types, and `true` returns only archived config types.
+    """
+
     expand: List[Literal["total_count", "created_by", "archived_by"]]
     """Fields to expand on each config type in the list."""
 

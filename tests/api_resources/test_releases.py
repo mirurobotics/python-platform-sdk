@@ -135,6 +135,7 @@ class TestReleases:
     def test_method_list_with_all_params(self, client: Miru) -> None:
         release = client.releases.list(
             id=["rls_123"],
+            archived="false",
             expand=["config_schemas"],
             limit=10,
             offset=0,
@@ -429,6 +430,7 @@ class TestAsyncReleases:
     async def test_method_list_with_all_params(self, async_client: AsyncMiru) -> None:
         release = await async_client.releases.list(
             id=["rls_123"],
+            archived="false",
             expand=["config_schemas"],
             limit=10,
             offset=0,

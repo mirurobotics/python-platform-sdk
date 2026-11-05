@@ -156,6 +156,7 @@ class ReleasesResource(SyncAPIResource):
         self,
         *,
         id: SequenceNotStr[str] | Omit = omit,
+        archived: Literal["false", "true", "any"] | Omit = omit,
         expand: List[Literal["total_count", "config_schemas", "created_by", "archived_by"]] | Omit = omit,
         limit: int | Omit = omit,
         offset: int | Omit = omit,
@@ -173,6 +174,10 @@ class ReleasesResource(SyncAPIResource):
 
         Args:
           id: The release IDs to filter by.
+
+          archived: Filter by archived state. `any` (default) returns archived and non-archived
+              releases, `false` returns only non-archived releases, and `true` returns only
+              archived releases.
 
           expand: Fields to expand on each release in the list.
 
@@ -204,6 +209,7 @@ class ReleasesResource(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "id": id,
+                        "archived": archived,
                         "expand": expand,
                         "limit": limit,
                         "offset": offset,
@@ -455,6 +461,7 @@ class AsyncReleasesResource(AsyncAPIResource):
         self,
         *,
         id: SequenceNotStr[str] | Omit = omit,
+        archived: Literal["false", "true", "any"] | Omit = omit,
         expand: List[Literal["total_count", "config_schemas", "created_by", "archived_by"]] | Omit = omit,
         limit: int | Omit = omit,
         offset: int | Omit = omit,
@@ -472,6 +479,10 @@ class AsyncReleasesResource(AsyncAPIResource):
 
         Args:
           id: The release IDs to filter by.
+
+          archived: Filter by archived state. `any` (default) returns archived and non-archived
+              releases, `false` returns only non-archived releases, and `true` returns only
+              archived releases.
 
           expand: Fields to expand on each release in the list.
 
@@ -503,6 +514,7 @@ class AsyncReleasesResource(AsyncAPIResource):
                 query=await async_maybe_transform(
                     {
                         "id": id,
+                        "archived": archived,
                         "expand": expand,
                         "limit": limit,
                         "offset": offset,

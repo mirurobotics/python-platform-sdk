@@ -25,8 +25,8 @@ class ConfigSchemaGitCommit(BaseModel):
     file_paths: List[str]
     """The file paths of the config schema files relative to the git repository root.
 
-    JSON Schema only support a single file for a schema. CUE support multiple files
-    via [packages](https://cuelang.org/docs/references/spec/#packages).
+    JSON Schema only supports a single file for a schema. CUE supports multiple
+    files via [packages](https://cuelang.org/docs/references/spec/#packages).
     """
 
     git_commit_id: str

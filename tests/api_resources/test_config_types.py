@@ -181,6 +181,7 @@ class TestConfigTypes:
     def test_method_list_with_all_params(self, client: Miru) -> None:
         config_type = client.config_types.list(
             id=["cfg_typ_123"],
+            archived="false",
             expand=["total_count"],
             limit=10,
             name=["Motion Control"],
@@ -379,6 +380,7 @@ class TestAsyncConfigTypes:
     async def test_method_list_with_all_params(self, async_client: AsyncMiru) -> None:
         config_type = await async_client.config_types.list(
             id=["cfg_typ_123"],
+            archived="false",
             expand=["total_count"],
             limit=10,
             name=["Motion Control"],

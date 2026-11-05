@@ -81,12 +81,12 @@ class ConfigSchema(BaseModel):
     config_schema_git_commits: Optional[ConfigSchemaGitCommitList] = None
     """
     The git commits the config schema was registered from, with the schema's file
-    paths at each commit. Expand using 'expand=config_schema_git_commits' in the
+    paths at each commit. Expand using `expand=config_schema_git_commits` in the
     query string.
     """
 
     config_type: Optional[ConfigType] = None
-    """Expand the config type using 'expand=config_type' in the query string."""
+    """Expand the config type using `expand=config_type` in the query string."""
 
     created_by: Optional[Principal] = None
     """The principal who created the config schema.
