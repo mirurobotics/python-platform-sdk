@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.14.1](https://github.com/mirurobotics/python-platform-sdk/compare/v0.14.0...v0.14.1) (2026-11-06)
+
+
+### Bug Fixes
+
+* **platform:** send 2026-11-04.everglades as the SDK's default Miru-Version ([#453](https://github.com/mirurobotics/python-platform-sdk/issues/453)) ([9d91ff3](https://github.com/mirurobotics/python-platform-sdk/commit/9d91ff3267090b8eae9966eb86bb8bd62c86093e))
+
 ## [0.14.0](https://github.com/mirurobotics/python-platform-sdk/compare/v0.13.0...v0.14.0) (2026-11-06)
 
 
