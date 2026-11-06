@@ -1,5 +1,32 @@
 # Changelog
 
+## [0.14.0](https://github.com/mirurobotics/python-platform-sdk/compare/v0.13.0...v0.14.0) (2026-11-06)
+
+
+### Features
+
+* add archived_by_id and archived_by to archived resources ([#423](https://github.com/mirurobotics/python-platform-sdk/issues/423)) ([dac772f](https://github.com/mirurobotics/python-platform-sdk/commit/dac772f59f1d58288124131d6c62033a0ee6abe0))
+* **device,agent:** let device apps read their calibrations from Miru via /cloud ([#370](https://github.com/mirurobotics/python-platform-sdk/issues/370)) ([3c8f97b](https://github.com/mirurobotics/python-platform-sdk/commit/3c8f97b5bc5b47309b0a9362db9adfb40b394d59))
+* **lint:** cap Device and Platform API operation and body schema descriptions at 120 characters ([#408](https://github.com/mirurobotics/python-platform-sdk/issues/408)) ([9d3a11d](https://github.com/mirurobotics/python-platform-sdk/commit/9d3a11d9dd4f44988b1d90a69a5ee46570bac916))
+* **platform:** add archived and deleted list filters, and tidy descriptions ([#446](https://github.com/mirurobotics/python-platform-sdk/issues/446)) ([1efcf64](https://github.com/mirurobotics/python-platform-sdk/commit/1efcf6479582489255272ac2a74b50a797f7a257))
+* **platform:** add attribution, users, archived_at and schema git commits ([#374](https://github.com/mirurobotics/python-platform-sdk/issues/374)) ([9ac6d5a](https://github.com/mirurobotics/python-platform-sdk/commit/9ac6d5addc91ae6ec0234471a87a0e34c0c8a036))
+* **platform:** add read-only API key endpoints behind api_keys:read ([#428](https://github.com/mirurobotics/python-platform-sdk/issues/428)) ([8ce17e7](https://github.com/mirurobotics/python-platform-sdk/commit/8ce17e7d0b594405c22fcc30bf364932c2de3ce3))
+* **platform:** add release archive, unarchive and delete endpoints ([#437](https://github.com/mirurobotics/python-platform-sdk/issues/437)) ([cd190db](https://github.com/mirurobotics/python-platform-sdk/commit/cd190db64ccf961ee2f1dd7ef130936fb539f514))
+* **platform:** add type to Principal ([#431](https://github.com/mirurobotics/python-platform-sdk/issues/431)) ([5320fbe](https://github.com/mirurobotics/python-platform-sdk/commit/5320fbe7253dd458cb3e4dcd20abf35f80111227))
+* **platform:** expand attribution IDs into principals ([#418](https://github.com/mirurobotics/python-platform-sdk/issues/418)) ([6fd8fd6](https://github.com/mirurobotics/python-platform-sdk/commit/6fd8fd6ea5823f0cf79ea67aaf23b39971a905ff))
+* **platform:** shorten list calibrations and add deployment staged_at and staged_by ([#443](https://github.com/mirurobotics/python-platform-sdk/issues/443)) ([a4585a0](https://github.com/mirurobotics/python-platform-sdk/commit/a4585a0d12ddb2787c4eb4ddb70a07c548dda241))
+
+
+### Bug Fixes
+
+* **platform:** document the users list's name order default ([#421](https://github.com/mirurobotics/python-platform-sdk/issues/421)) ([032c5cb](https://github.com/mirurobotics/python-platform-sdk/commit/032c5cb0eaccd90fe7213aebd919f333c8032f4b))
+
+
+### Refactors
+
+* **platform:** remove the API key created_by expansion ([#433](https://github.com/mirurobotics/python-platform-sdk/issues/433)) ([2b246c4](https://github.com/mirurobotics/python-platform-sdk/commit/2b246c4a96653b1d83f3e3344ee83bd7c7303b93))
+* **platform:** remove updated_by_id and the updated_by expansion ([#426](https://github.com/mirurobotics/python-platform-sdk/issues/426)) ([79d35fc](https://github.com/mirurobotics/python-platform-sdk/commit/79d35fcafe86713aa024e8972186adafaee80bb0))
+
 ## [0.13.0](https://github.com/mirurobotics/python-platform-sdk/compare/v0.12.0...v0.13.0) (2026-11-01)
 
 
