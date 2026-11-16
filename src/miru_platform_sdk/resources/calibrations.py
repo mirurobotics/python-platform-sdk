@@ -88,7 +88,6 @@ class CalibrationsResource(SyncAPIResource):
     def list(
         self,
         *,
-        aspect: SequenceNotStr[str] | Omit = omit,
         component: SequenceNotStr[str] | Omit = omit,
         device_id: SequenceNotStr[str] | Omit = omit,
         expand: List[Literal["content", "total_count"]] | Omit = omit,
@@ -99,7 +98,6 @@ class CalibrationsResource(SyncAPIResource):
         ]
         | Omit = omit,
         report_id: SequenceNotStr[str] | Omit = omit,
-        role: SequenceNotStr[str] | Omit = omit,
         serial_number: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -108,14 +106,10 @@ class CalibrationsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CalibrationList:
-        """List calibrations.
+        """
+        List calibrations.
 
         Args:
-          aspect: The aspect slugs to filter by.
-
-        Aspect slugs are unique only within a component,
-              so filter by component too to match one component's aspect.
-
           component: The component slugs to filter by.
 
           device_id: The device IDs to filter by.
@@ -132,9 +126,6 @@ class CalibrationsResource(SyncAPIResource):
               with ties broken by `id`.
 
           report_id: The report IDs to filter by.
-
-          role: The role slugs to filter by. Role slugs are unique only within a component, so
-              filter by component too to match one component's role.
 
           serial_number: The unit serial numbers to filter by.
 
@@ -155,7 +146,6 @@ class CalibrationsResource(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
-                        "aspect": aspect,
                         "component": component,
                         "device_id": device_id,
                         "expand": expand,
@@ -163,7 +153,6 @@ class CalibrationsResource(SyncAPIResource):
                         "offset": offset,
                         "order_by": order_by,
                         "report_id": report_id,
-                        "role": role,
                         "serial_number": serial_number,
                     },
                     calibration_list_params.CalibrationListParams,
@@ -238,7 +227,6 @@ class AsyncCalibrationsResource(AsyncAPIResource):
     async def list(
         self,
         *,
-        aspect: SequenceNotStr[str] | Omit = omit,
         component: SequenceNotStr[str] | Omit = omit,
         device_id: SequenceNotStr[str] | Omit = omit,
         expand: List[Literal["content", "total_count"]] | Omit = omit,
@@ -249,7 +237,6 @@ class AsyncCalibrationsResource(AsyncAPIResource):
         ]
         | Omit = omit,
         report_id: SequenceNotStr[str] | Omit = omit,
-        role: SequenceNotStr[str] | Omit = omit,
         serial_number: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -258,14 +245,10 @@ class AsyncCalibrationsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CalibrationList:
-        """List calibrations.
+        """
+        List calibrations.
 
         Args:
-          aspect: The aspect slugs to filter by.
-
-        Aspect slugs are unique only within a component,
-              so filter by component too to match one component's aspect.
-
           component: The component slugs to filter by.
 
           device_id: The device IDs to filter by.
@@ -282,9 +265,6 @@ class AsyncCalibrationsResource(AsyncAPIResource):
               with ties broken by `id`.
 
           report_id: The report IDs to filter by.
-
-          role: The role slugs to filter by. Role slugs are unique only within a component, so
-              filter by component too to match one component's role.
 
           serial_number: The unit serial numbers to filter by.
 
@@ -305,7 +285,6 @@ class AsyncCalibrationsResource(AsyncAPIResource):
                 timeout=timeout,
                 query=await async_maybe_transform(
                     {
-                        "aspect": aspect,
                         "component": component,
                         "device_id": device_id,
                         "expand": expand,
@@ -313,7 +292,6 @@ class AsyncCalibrationsResource(AsyncAPIResource):
                         "offset": offset,
                         "order_by": order_by,
                         "report_id": report_id,
-                        "role": role,
                         "serial_number": serial_number,
                     },
                     calibration_list_params.CalibrationListParams,

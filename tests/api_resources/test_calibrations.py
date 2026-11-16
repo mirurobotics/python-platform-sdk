@@ -78,7 +78,6 @@ class TestCalibrations:
     @parametrize
     def test_method_list_with_all_params(self, client: Miru) -> None:
         calibration = client.calibrations.list(
-            aspect=["pose"],
             component=["arm"],
             device_id=["dvc_123"],
             expand=["content"],
@@ -86,7 +85,6 @@ class TestCalibrations:
             offset=0,
             order_by=["created_at:desc"],
             report_id=["0b6f3c2e-6a51-4e0f-9a43-2f1d7c9e8b10"],
-            role=["front-left"],
             serial_number=["SN-1234"],
         )
         assert_matches_type(CalibrationList, calibration, path=["response"])
@@ -180,7 +178,6 @@ class TestAsyncCalibrations:
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncMiru) -> None:
         calibration = await async_client.calibrations.list(
-            aspect=["pose"],
             component=["arm"],
             device_id=["dvc_123"],
             expand=["content"],
@@ -188,7 +185,6 @@ class TestAsyncCalibrations:
             offset=0,
             order_by=["created_at:desc"],
             report_id=["0b6f3c2e-6a51-4e0f-9a43-2f1d7c9e8b10"],
-            role=["front-left"],
             serial_number=["SN-1234"],
         )
         assert_matches_type(CalibrationList, calibration, path=["response"])
