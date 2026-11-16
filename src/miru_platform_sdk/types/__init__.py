@@ -23,6 +23,7 @@ from .api_key_list import APIKeyList as APIKeyList
 from .release_list import ReleaseList as ReleaseList
 from .config_schema import ConfigSchema as ConfigSchema
 from .instance_slot import InstanceSlot as InstanceSlot
+from .deleted_device import DeletedDevice as DeletedDevice
 from .principal_type import PrincipalType as PrincipalType
 from .config_instance import ConfigInstance as ConfigInstance
 from .deleted_release import DeletedRelease as DeletedRelease
@@ -48,6 +49,7 @@ from .device_create_params import DeviceCreateParams as DeviceCreateParams
 from .device_ping_response import DevicePingResponse as DevicePingResponse
 from .device_update_params import DeviceUpdateParams as DeviceUpdateParams
 from .git_commit_ref_param import GitCommitRefParam as GitCommitRefParam
+from .device_archive_params import DeviceArchiveParams as DeviceArchiveParams
 from .group_retrieve_params import GroupRetrieveParams as GroupRetrieveParams
 from .release_create_params import ReleaseCreateParams as ReleaseCreateParams
 from .deployment_list_params import DeploymentListParams as DeploymentListParams

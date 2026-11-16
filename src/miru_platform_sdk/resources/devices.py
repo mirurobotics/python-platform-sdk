@@ -12,6 +12,7 @@ from ..types import (
     device_ping_params,
     device_create_params,
     device_update_params,
+    device_archive_params,
     device_retrieve_params,
 )
 from .._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
@@ -27,6 +28,7 @@ from .._response import (
 from .._base_client import make_request_options
 from ..types.device import Device
 from ..types.device_list import DeviceList
+from ..types.deleted_device import DeletedDevice
 from ..types.device_ping_response import DevicePingResponse
 
 __all__ = ["DevicesResource", "AsyncDevicesResource"]
@@ -263,6 +265,83 @@ class DevicesResource(SyncAPIResource):
                 ),
             ),
             cast_to=DeviceList,
+        )
+
+    def delete(
+        self,
+        device_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> DeletedDevice:
+        """Delete a device.
+
+        A device with deployments or calibrations can't be deleted;
+        archive it instead.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not device_id:
+            raise ValueError(f"Expected a non-empty value for `device_id` but received {device_id!r}")
+        return self._delete(
+            path_template("/devices/{device_id}", device_id=device_id),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=DeletedDevice,
+        )
+
+    def archive(
+        self,
+        device_id: str,
+        *,
+        expand: List[Literal["current_deployment", "current_release", "group", "created_by", "archived_by"]]
+        | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> Device:
+        """Archive a device.
+
+        Its agent can no longer authenticate.
+
+        Args:
+          expand: Fields to expand on the device resource.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not device_id:
+            raise ValueError(f"Expected a non-empty value for `device_id` but received {device_id!r}")
+        return self._post(
+            path_template("/devices/{device_id}/archive", device_id=device_id),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform({"expand": expand}, device_archive_params.DeviceArchiveParams),
+            ),
+            cast_to=Device,
         )
 
     def ping(
@@ -537,6 +616,83 @@ class AsyncDevicesResource(AsyncAPIResource):
             cast_to=DeviceList,
         )
 
+    async def delete(
+        self,
+        device_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> DeletedDevice:
+        """Delete a device.
+
+        A device with deployments or calibrations can't be deleted;
+        archive it instead.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not device_id:
+            raise ValueError(f"Expected a non-empty value for `device_id` but received {device_id!r}")
+        return await self._delete(
+            path_template("/devices/{device_id}", device_id=device_id),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=DeletedDevice,
+        )
+
+    async def archive(
+        self,
+        device_id: str,
+        *,
+        expand: List[Literal["current_deployment", "current_release", "group", "created_by", "archived_by"]]
+        | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> Device:
+        """Archive a device.
+
+        Its agent can no longer authenticate.
+
+        Args:
+          expand: Fields to expand on the device resource.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not device_id:
+            raise ValueError(f"Expected a non-empty value for `device_id` but received {device_id!r}")
+        return await self._post(
+            path_template("/devices/{device_id}/archive", device_id=device_id),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform({"expand": expand}, device_archive_params.DeviceArchiveParams),
+            ),
+            cast_to=Device,
+        )
+
     async def ping(
         self,
         device_id: str,
@@ -592,6 +748,12 @@ class DevicesResourceWithRawResponse:
         self.list = to_raw_response_wrapper(
             devices.list,
         )
+        self.delete = to_raw_response_wrapper(
+            devices.delete,
+        )
+        self.archive = to_raw_response_wrapper(
+            devices.archive,
+        )
         self.ping = to_raw_response_wrapper(
             devices.ping,
         )
@@ -612,6 +774,12 @@ class AsyncDevicesResourceWithRawResponse:
         )
         self.list = async_to_raw_response_wrapper(
             devices.list,
+        )
+        self.delete = async_to_raw_response_wrapper(
+            devices.delete,
+        )
+        self.archive = async_to_raw_response_wrapper(
+            devices.archive,
         )
         self.ping = async_to_raw_response_wrapper(
             devices.ping,
@@ -634,6 +802,12 @@ class DevicesResourceWithStreamingResponse:
         self.list = to_streamed_response_wrapper(
             devices.list,
         )
+        self.delete = to_streamed_response_wrapper(
+            devices.delete,
+        )
+        self.archive = to_streamed_response_wrapper(
+            devices.archive,
+        )
         self.ping = to_streamed_response_wrapper(
             devices.ping,
         )
@@ -654,6 +828,12 @@ class AsyncDevicesResourceWithStreamingResponse:
         )
         self.list = async_to_streamed_response_wrapper(
             devices.list,
+        )
+        self.delete = async_to_streamed_response_wrapper(
+            devices.delete,
+        )
+        self.archive = async_to_streamed_response_wrapper(
+            devices.archive,
         )
         self.ping = async_to_streamed_response_wrapper(
             devices.ping,
