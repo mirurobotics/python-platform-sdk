@@ -39,29 +39,35 @@ if TYPE_CHECKING:
         users,
         groups,
         devices,
+        uploads,
         api_keys,
         releases,
         principal,
+        file_rules,
         deployments,
         git_commits,
         calibrations,
         config_types,
         config_schemas,
         config_instances,
+        upload_collections,
         provisioning_tokens,
     )
     from .resources.users import UsersResource, AsyncUsersResource
     from .resources.groups import GroupsResource, AsyncGroupsResource
     from .resources.devices import DevicesResource, AsyncDevicesResource
+    from .resources.uploads import UploadsResource, AsyncUploadsResource
     from .resources.api_keys import APIKeysResource, AsyncAPIKeysResource
     from .resources.releases import ReleasesResource, AsyncReleasesResource
     from .resources.principal import PrincipalResource, AsyncPrincipalResource
+    from .resources.file_rules import FileRulesResource, AsyncFileRulesResource
     from .resources.deployments import DeploymentsResource, AsyncDeploymentsResource
     from .resources.git_commits import GitCommitsResource, AsyncGitCommitsResource
     from .resources.calibrations import CalibrationsResource, AsyncCalibrationsResource
     from .resources.config_types import ConfigTypesResource, AsyncConfigTypesResource
     from .resources.config_schemas import ConfigSchemasResource, AsyncConfigSchemasResource
     from .resources.config_instances import ConfigInstancesResource, AsyncConfigInstancesResource
+    from .resources.upload_collections import UploadCollectionsResource, AsyncUploadCollectionsResource
     from .resources.provisioning_tokens import ProvisioningTokensResource, AsyncProvisioningTokensResource
 
 __all__ = [
@@ -223,6 +229,12 @@ class Miru(SyncAPIClient):
         return DevicesResource(self)
 
     @cached_property
+    def file_rules(self) -> FileRulesResource:
+        from .resources.file_rules import FileRulesResource
+
+        return FileRulesResource(self)
+
+    @cached_property
     def provisioning_tokens(self) -> ProvisioningTokensResource:
         from .resources.provisioning_tokens import ProvisioningTokensResource
 
@@ -251,6 +263,18 @@ class Miru(SyncAPIClient):
         from .resources.releases import ReleasesResource
 
         return ReleasesResource(self)
+
+    @cached_property
+    def upload_collections(self) -> UploadCollectionsResource:
+        from .resources.upload_collections import UploadCollectionsResource
+
+        return UploadCollectionsResource(self)
+
+    @cached_property
+    def uploads(self) -> UploadsResource:
+        from .resources.uploads import UploadsResource
+
+        return UploadsResource(self)
 
     @cached_property
     def users(self) -> UsersResource:
@@ -515,6 +539,12 @@ class AsyncMiru(AsyncAPIClient):
         return AsyncDevicesResource(self)
 
     @cached_property
+    def file_rules(self) -> AsyncFileRulesResource:
+        from .resources.file_rules import AsyncFileRulesResource
+
+        return AsyncFileRulesResource(self)
+
+    @cached_property
     def provisioning_tokens(self) -> AsyncProvisioningTokensResource:
         from .resources.provisioning_tokens import AsyncProvisioningTokensResource
 
@@ -543,6 +573,18 @@ class AsyncMiru(AsyncAPIClient):
         from .resources.releases import AsyncReleasesResource
 
         return AsyncReleasesResource(self)
+
+    @cached_property
+    def upload_collections(self) -> AsyncUploadCollectionsResource:
+        from .resources.upload_collections import AsyncUploadCollectionsResource
+
+        return AsyncUploadCollectionsResource(self)
+
+    @cached_property
+    def uploads(self) -> AsyncUploadsResource:
+        from .resources.uploads import AsyncUploadsResource
+
+        return AsyncUploadsResource(self)
 
     @cached_property
     def users(self) -> AsyncUsersResource:
@@ -717,6 +759,12 @@ class MiruWithRawResponse:
         return DevicesResourceWithRawResponse(self._client.devices)
 
     @cached_property
+    def file_rules(self) -> file_rules.FileRulesResourceWithRawResponse:
+        from .resources.file_rules import FileRulesResourceWithRawResponse
+
+        return FileRulesResourceWithRawResponse(self._client.file_rules)
+
+    @cached_property
     def provisioning_tokens(self) -> provisioning_tokens.ProvisioningTokensResourceWithRawResponse:
         from .resources.provisioning_tokens import ProvisioningTokensResourceWithRawResponse
 
@@ -745,6 +793,18 @@ class MiruWithRawResponse:
         from .resources.releases import ReleasesResourceWithRawResponse
 
         return ReleasesResourceWithRawResponse(self._client.releases)
+
+    @cached_property
+    def upload_collections(self) -> upload_collections.UploadCollectionsResourceWithRawResponse:
+        from .resources.upload_collections import UploadCollectionsResourceWithRawResponse
+
+        return UploadCollectionsResourceWithRawResponse(self._client.upload_collections)
+
+    @cached_property
+    def uploads(self) -> uploads.UploadsResourceWithRawResponse:
+        from .resources.uploads import UploadsResourceWithRawResponse
+
+        return UploadsResourceWithRawResponse(self._client.uploads)
 
     @cached_property
     def users(self) -> users.UsersResourceWithRawResponse:
@@ -802,6 +862,12 @@ class AsyncMiruWithRawResponse:
         return AsyncDevicesResourceWithRawResponse(self._client.devices)
 
     @cached_property
+    def file_rules(self) -> file_rules.AsyncFileRulesResourceWithRawResponse:
+        from .resources.file_rules import AsyncFileRulesResourceWithRawResponse
+
+        return AsyncFileRulesResourceWithRawResponse(self._client.file_rules)
+
+    @cached_property
     def provisioning_tokens(self) -> provisioning_tokens.AsyncProvisioningTokensResourceWithRawResponse:
         from .resources.provisioning_tokens import AsyncProvisioningTokensResourceWithRawResponse
 
@@ -830,6 +896,18 @@ class AsyncMiruWithRawResponse:
         from .resources.releases import AsyncReleasesResourceWithRawResponse
 
         return AsyncReleasesResourceWithRawResponse(self._client.releases)
+
+    @cached_property
+    def upload_collections(self) -> upload_collections.AsyncUploadCollectionsResourceWithRawResponse:
+        from .resources.upload_collections import AsyncUploadCollectionsResourceWithRawResponse
+
+        return AsyncUploadCollectionsResourceWithRawResponse(self._client.upload_collections)
+
+    @cached_property
+    def uploads(self) -> uploads.AsyncUploadsResourceWithRawResponse:
+        from .resources.uploads import AsyncUploadsResourceWithRawResponse
+
+        return AsyncUploadsResourceWithRawResponse(self._client.uploads)
 
     @cached_property
     def users(self) -> users.AsyncUsersResourceWithRawResponse:
@@ -887,6 +965,12 @@ class MiruWithStreamedResponse:
         return DevicesResourceWithStreamingResponse(self._client.devices)
 
     @cached_property
+    def file_rules(self) -> file_rules.FileRulesResourceWithStreamingResponse:
+        from .resources.file_rules import FileRulesResourceWithStreamingResponse
+
+        return FileRulesResourceWithStreamingResponse(self._client.file_rules)
+
+    @cached_property
     def provisioning_tokens(self) -> provisioning_tokens.ProvisioningTokensResourceWithStreamingResponse:
         from .resources.provisioning_tokens import ProvisioningTokensResourceWithStreamingResponse
 
@@ -915,6 +999,18 @@ class MiruWithStreamedResponse:
         from .resources.releases import ReleasesResourceWithStreamingResponse
 
         return ReleasesResourceWithStreamingResponse(self._client.releases)
+
+    @cached_property
+    def upload_collections(self) -> upload_collections.UploadCollectionsResourceWithStreamingResponse:
+        from .resources.upload_collections import UploadCollectionsResourceWithStreamingResponse
+
+        return UploadCollectionsResourceWithStreamingResponse(self._client.upload_collections)
+
+    @cached_property
+    def uploads(self) -> uploads.UploadsResourceWithStreamingResponse:
+        from .resources.uploads import UploadsResourceWithStreamingResponse
+
+        return UploadsResourceWithStreamingResponse(self._client.uploads)
 
     @cached_property
     def users(self) -> users.UsersResourceWithStreamingResponse:
@@ -972,6 +1068,12 @@ class AsyncMiruWithStreamedResponse:
         return AsyncDevicesResourceWithStreamingResponse(self._client.devices)
 
     @cached_property
+    def file_rules(self) -> file_rules.AsyncFileRulesResourceWithStreamingResponse:
+        from .resources.file_rules import AsyncFileRulesResourceWithStreamingResponse
+
+        return AsyncFileRulesResourceWithStreamingResponse(self._client.file_rules)
+
+    @cached_property
     def provisioning_tokens(self) -> provisioning_tokens.AsyncProvisioningTokensResourceWithStreamingResponse:
         from .resources.provisioning_tokens import AsyncProvisioningTokensResourceWithStreamingResponse
 
@@ -1000,6 +1102,18 @@ class AsyncMiruWithStreamedResponse:
         from .resources.releases import AsyncReleasesResourceWithStreamingResponse
 
         return AsyncReleasesResourceWithStreamingResponse(self._client.releases)
+
+    @cached_property
+    def upload_collections(self) -> upload_collections.AsyncUploadCollectionsResourceWithStreamingResponse:
+        from .resources.upload_collections import AsyncUploadCollectionsResourceWithStreamingResponse
+
+        return AsyncUploadCollectionsResourceWithStreamingResponse(self._client.upload_collections)
+
+    @cached_property
+    def uploads(self) -> uploads.AsyncUploadsResourceWithStreamingResponse:
+        from .resources.uploads import AsyncUploadsResourceWithStreamingResponse
+
+        return AsyncUploadsResourceWithStreamingResponse(self._client.uploads)
 
     @cached_property
     def users(self) -> users.AsyncUsersResourceWithStreamingResponse:

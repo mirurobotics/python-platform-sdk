@@ -8,8 +8,10 @@ from .user import User as User
 from .group import Group as Group
 from .device import Device as Device
 from .shared import PaginatedList as PaginatedList
+from .upload import Upload as Upload
 from .api_key import APIKey as APIKey
 from .release import Release as Release
+from .file_rule import FileRule as FileRule
 from .principal import Principal as Principal
 from .user_list import UserList as UserList
 from .deployment import Deployment as Deployment
@@ -18,12 +20,15 @@ from .group_list import GroupList as GroupList
 from .calibration import Calibration as Calibration
 from .config_type import ConfigType as ConfigType
 from .device_list import DeviceList as DeviceList
+from .upload_list import UploadList as UploadList
 from .user_status import UserStatus as UserStatus
 from .api_key_list import APIKeyList as APIKeyList
 from .release_list import ReleaseList as ReleaseList
 from .config_schema import ConfigSchema as ConfigSchema
 from .instance_slot import InstanceSlot as InstanceSlot
+from .upload_status import UploadStatus as UploadStatus
 from .deleted_device import DeletedDevice as DeletedDevice
+from .file_rule_list import FileRuleList as FileRuleList
 from .principal_type import PrincipalType as PrincipalType
 from .config_instance import ConfigInstance as ConfigInstance
 from .deleted_release import DeletedRelease as DeletedRelease
@@ -36,10 +41,12 @@ from .instance_content import InstanceContent as InstanceContent
 from .user_list_params import UserListParams as UserListParams
 from .group_list_params import GroupListParams as GroupListParams
 from .group_move_params import GroupMoveParams as GroupMoveParams
+from .upload_collection import UploadCollection as UploadCollection
 from .config_schema_list import ConfigSchemaList as ConfigSchemaList
 from .device_list_params import DeviceListParams as DeviceListParams
 from .device_ping_params import DevicePingParams as DevicePingParams
 from .provisioning_token import ProvisioningToken as ProvisioningToken
+from .upload_list_params import UploadListParams as UploadListParams
 from .api_key_list_params import APIKeyListParams as APIKeyListParams
 from .group_create_params import GroupCreateParams as GroupCreateParams
 from .group_update_params import GroupUpdateParams as GroupUpdateParams
@@ -50,6 +57,7 @@ from .device_ping_response import DevicePingResponse as DevicePingResponse
 from .device_update_params import DeviceUpdateParams as DeviceUpdateParams
 from .git_commit_ref_param import GitCommitRefParam as GitCommitRefParam
 from .device_archive_params import DeviceArchiveParams as DeviceArchiveParams
+from .file_rule_list_params import FileRuleListParams as FileRuleListParams
 from .group_retrieve_params import GroupRetrieveParams as GroupRetrieveParams
 from .release_create_params import ReleaseCreateParams as ReleaseCreateParams
 from .deployment_list_params import DeploymentListParams as DeploymentListParams
@@ -57,6 +65,7 @@ from .device_retrieve_params import DeviceRetrieveParams as DeviceRetrieveParams
 from .git_commit_list_params import GitCommitListParams as GitCommitListParams
 from .instance_content_param import InstanceContentParam as InstanceContentParam
 from .release_archive_params import ReleaseArchiveParams as ReleaseArchiveParams
+from .upload_collection_list import UploadCollectionList as UploadCollectionList
 from .calibration_list_params import CalibrationListParams as CalibrationListParams
 from .config_type_list_params import ConfigTypeListParams as ConfigTypeListParams
 from .release_retrieve_params import ReleaseRetrieveParams as ReleaseRetrieveParams
@@ -81,8 +90,10 @@ from .config_instance_list_response import ConfigInstanceListResponse as ConfigI
 from .config_schema_git_commit_list import ConfigSchemaGitCommitList as ConfigSchemaGitCommitList
 from .config_schema_retrieve_params import ConfigSchemaRetrieveParams as ConfigSchemaRetrieveParams
 from .deployment_list_drifts_params import DeploymentListDriftsParams as DeploymentListDriftsParams
+from .upload_collection_list_params import UploadCollectionListParams as UploadCollectionListParams
 from .config_instance_download_params import ConfigInstanceDownloadParams as ConfigInstanceDownloadParams
 from .config_instance_retrieve_params import ConfigInstanceRetrieveParams as ConfigInstanceRetrieveParams
+from .upload_collection_retrieve_params import UploadCollectionRetrieveParams as UploadCollectionRetrieveParams
 
 # Rebuild cyclical models only after all modules are imported.
 # This ensures that, when building the deferred (due to cyclical references) model schema,

@@ -117,6 +117,19 @@ Methods:
 - <code title="post /devices/{device_id}/archive">client.devices.<a href="./src/miru_platform_sdk/resources/devices.py">archive</a>(device_id, \*\*<a href="src/miru_platform_sdk/types/device_archive_params.py">params</a>) -> <a href="./src/miru_platform_sdk/types/device.py">Device</a></code>
 - <code title="post /devices/{device_id}/ping">client.devices.<a href="./src/miru_platform_sdk/resources/devices.py">ping</a>(device_id, \*\*<a href="src/miru_platform_sdk/types/device_ping_params.py">params</a>) -> <a href="./src/miru_platform_sdk/types/device_ping_response.py">DevicePingResponse</a></code>
 
+# FileRules
+
+Types:
+
+```python
+from miru_platform_sdk.types import FileRule, FileRuleList
+```
+
+Methods:
+
+- <code title="get /file_rules/{file_rule_id}">client.file_rules.<a href="./src/miru_platform_sdk/resources/file_rules.py">retrieve</a>(file_rule_id) -> <a href="./src/miru_platform_sdk/types/file_rule.py">FileRule</a></code>
+- <code title="get /file_rules">client.file_rules.<a href="./src/miru_platform_sdk/resources/file_rules.py">list</a>(\*\*<a href="src/miru_platform_sdk/types/file_rule_list_params.py">params</a>) -> <a href="./src/miru_platform_sdk/types/file_rule_list.py">FileRuleList</a></code>
+
 # ProvisioningTokens
 
 Types:
@@ -187,6 +200,32 @@ Methods:
 - <code title="delete /releases/{release_id}">client.releases.<a href="./src/miru_platform_sdk/resources/releases.py">delete</a>(release_id) -> <a href="./src/miru_platform_sdk/types/deleted_release.py">DeletedRelease</a></code>
 - <code title="post /releases/{release_id}/archive">client.releases.<a href="./src/miru_platform_sdk/resources/releases.py">archive</a>(release_id, \*\*<a href="src/miru_platform_sdk/types/release_archive_params.py">params</a>) -> <a href="./src/miru_platform_sdk/types/release.py">Release</a></code>
 - <code title="post /releases/{release_id}/unarchive">client.releases.<a href="./src/miru_platform_sdk/resources/releases.py">unarchive</a>(release_id, \*\*<a href="src/miru_platform_sdk/types/release_unarchive_params.py">params</a>) -> <a href="./src/miru_platform_sdk/types/release.py">Release</a></code>
+
+# UploadCollections
+
+Types:
+
+```python
+from miru_platform_sdk.types import UploadCollection, UploadCollectionList
+```
+
+Methods:
+
+- <code title="get /upload_collections/{upload_collection_id}">client.upload_collections.<a href="./src/miru_platform_sdk/resources/upload_collections.py">retrieve</a>(upload_collection_id, \*\*<a href="src/miru_platform_sdk/types/upload_collection_retrieve_params.py">params</a>) -> <a href="./src/miru_platform_sdk/types/upload_collection.py">UploadCollection</a></code>
+- <code title="get /upload_collections">client.upload_collections.<a href="./src/miru_platform_sdk/resources/upload_collections.py">list</a>(\*\*<a href="src/miru_platform_sdk/types/upload_collection_list_params.py">params</a>) -> <a href="./src/miru_platform_sdk/types/upload_collection_list.py">UploadCollectionList</a></code>
+
+# Uploads
+
+Types:
+
+```python
+from miru_platform_sdk.types import Upload, UploadList, UploadStatus
+```
+
+Methods:
+
+- <code title="get /uploads/{upload_id}">client.uploads.<a href="./src/miru_platform_sdk/resources/uploads.py">retrieve</a>(upload_id) -> <a href="./src/miru_platform_sdk/types/upload.py">Upload</a></code>
+- <code title="get /uploads">client.uploads.<a href="./src/miru_platform_sdk/resources/uploads.py">list</a>(\*\*<a href="src/miru_platform_sdk/types/upload_list_params.py">params</a>) -> <a href="./src/miru_platform_sdk/types/upload_list.py">UploadList</a></code>
 
 # Users
 

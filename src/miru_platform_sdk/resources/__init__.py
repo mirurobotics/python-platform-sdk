@@ -24,6 +24,14 @@ from .devices import (
     DevicesResourceWithStreamingResponse,
     AsyncDevicesResourceWithStreamingResponse,
 )
+from .uploads import (
+    UploadsResource,
+    AsyncUploadsResource,
+    UploadsResourceWithRawResponse,
+    AsyncUploadsResourceWithRawResponse,
+    UploadsResourceWithStreamingResponse,
+    AsyncUploadsResourceWithStreamingResponse,
+)
 from .api_keys import (
     APIKeysResource,
     AsyncAPIKeysResource,
@@ -47,6 +55,14 @@ from .principal import (
     AsyncPrincipalResourceWithRawResponse,
     PrincipalResourceWithStreamingResponse,
     AsyncPrincipalResourceWithStreamingResponse,
+)
+from .file_rules import (
+    FileRulesResource,
+    AsyncFileRulesResource,
+    FileRulesResourceWithRawResponse,
+    AsyncFileRulesResourceWithRawResponse,
+    FileRulesResourceWithStreamingResponse,
+    AsyncFileRulesResourceWithStreamingResponse,
 )
 from .deployments import (
     DeploymentsResource,
@@ -95,6 +111,14 @@ from .config_instances import (
     AsyncConfigInstancesResourceWithRawResponse,
     ConfigInstancesResourceWithStreamingResponse,
     AsyncConfigInstancesResourceWithStreamingResponse,
+)
+from .upload_collections import (
+    UploadCollectionsResource,
+    AsyncUploadCollectionsResource,
+    UploadCollectionsResourceWithRawResponse,
+    AsyncUploadCollectionsResourceWithRawResponse,
+    UploadCollectionsResourceWithStreamingResponse,
+    AsyncUploadCollectionsResourceWithStreamingResponse,
 )
 from .provisioning_tokens import (
     ProvisioningTokensResource,
@@ -148,6 +172,12 @@ __all__ = [
     "AsyncDevicesResourceWithRawResponse",
     "DevicesResourceWithStreamingResponse",
     "AsyncDevicesResourceWithStreamingResponse",
+    "FileRulesResource",
+    "AsyncFileRulesResource",
+    "FileRulesResourceWithRawResponse",
+    "AsyncFileRulesResourceWithRawResponse",
+    "FileRulesResourceWithStreamingResponse",
+    "AsyncFileRulesResourceWithStreamingResponse",
     "ProvisioningTokensResource",
     "AsyncProvisioningTokensResource",
     "ProvisioningTokensResourceWithRawResponse",
@@ -178,6 +208,18 @@ __all__ = [
     "AsyncReleasesResourceWithRawResponse",
     "ReleasesResourceWithStreamingResponse",
     "AsyncReleasesResourceWithStreamingResponse",
+    "UploadCollectionsResource",
+    "AsyncUploadCollectionsResource",
+    "UploadCollectionsResourceWithRawResponse",
+    "AsyncUploadCollectionsResourceWithRawResponse",
+    "UploadCollectionsResourceWithStreamingResponse",
+    "AsyncUploadCollectionsResourceWithStreamingResponse",
+    "UploadsResource",
+    "AsyncUploadsResource",
+    "UploadsResourceWithRawResponse",
+    "AsyncUploadsResourceWithRawResponse",
+    "UploadsResourceWithStreamingResponse",
+    "AsyncUploadsResourceWithStreamingResponse",
     "UsersResource",
     "AsyncUsersResource",
     "UsersResourceWithRawResponse",
