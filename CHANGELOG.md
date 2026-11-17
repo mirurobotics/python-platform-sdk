@@ -1,5 +1,28 @@
 # Changelog
 
+## [0.15.0](https://github.com/mirurobotics/python-platform-sdk/compare/v0.14.1...v0.15.0) (2026-11-17)
+
+
+### ⚠ BREAKING CHANGES
+
+* **calibrations:** flatten components, remove roles and aspects ([#470](https://github.com/mirurobotics/python-platform-sdk/issues/470))
+
+### Features
+
+* **frontend:** add an endpoint to queue a backup run ([#452](https://github.com/mirurobotics/python-platform-sdk/issues/452)) ([167b12d](https://github.com/mirurobotics/python-platform-sdk/commit/167b12d487eab3ca442f0a562a472682ca98609d))
+* **platform:** add device archive and delete endpoints ([#489](https://github.com/mirurobotics/python-platform-sdk/issues/489)) ([8818345](https://github.com/mirurobotics/python-platform-sdk/commit/88183455ddef96e339610dafbb8e6efe70bb12c0))
+* **platform:** add read-only uploads, upload collections and file rules ([#490](https://github.com/mirurobotics/python-platform-sdk/issues/490)) ([e7918e0](https://github.com/mirurobotics/python-platform-sdk/commit/e7918e054db06d408473911d151c4a5cc63e3565))
+
+
+### Bug Fixes
+
+* **platform:** send 2026-11-16.lassen as the SDK's default Miru-Version ([#519](https://github.com/mirurobotics/python-platform-sdk/issues/519)) ([1a3222a](https://github.com/mirurobotics/python-platform-sdk/commit/1a3222a645c49794bcba25f749ecc3d2be3fcd12))
+
+
+### Refactors
+
+* **calibrations:** flatten components, remove roles and aspects ([#470](https://github.com/mirurobotics/python-platform-sdk/issues/470)) ([8c78643](https://github.com/mirurobotics/python-platform-sdk/commit/8c786433f0ed375c4722f27a07001bc31c8e7c93))
+
 ## [0.14.1](https://github.com/mirurobotics/python-platform-sdk/compare/v0.14.0...v0.14.1) (2026-11-06)
 
 
