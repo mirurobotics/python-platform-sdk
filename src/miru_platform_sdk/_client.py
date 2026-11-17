@@ -137,7 +137,7 @@ class Miru(SyncAPIClient):
         self.api_key = api_key
 
         if miru_version is None:
-            miru_version = os.environ.get("MIRU_API_VERSION") or "2026-11-04.everglades"
+            miru_version = os.environ.get("MIRU_API_VERSION") or "2026-11-16.lassen"
         self.miru_version = miru_version
 
         self._environment = environment
@@ -447,7 +447,7 @@ class AsyncMiru(AsyncAPIClient):
         self.api_key = api_key
 
         if miru_version is None:
-            miru_version = os.environ.get("MIRU_API_VERSION") or "2026-11-04.everglades"
+            miru_version = os.environ.get("MIRU_API_VERSION") or "2026-11-16.lassen"
         self.miru_version = miru_version
 
         self._environment = environment
